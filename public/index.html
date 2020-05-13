@@ -1,17 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>vue-todo</title>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Icons -->
+  <link href="./css/vendor/nucleo.css" rel="stylesheet">
+  <link href="./css/vendor/font-awesome.min.css" rel="stylesheet">
+  <!-- Argon CSS -->
+  <link type="text/css" href="https://demos.creative-tim.com/argon-design-system/assets/css/argon-design-system.min.css?v=1.2.0" rel="stylesheet">
+  <!-- Docs CSS -->
+  <link type="text/css" href="./css/docs.min.css" rel="stylesheet">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <style>
+    html,
+    body,
+    #app {
+      height: 100%
+    }
+
+    .my-style .vue-notification  {
+      background: none;
+      width: auto;
+      margin: 0;
+      border:0;
+    }
+    .my-style .vue-notification{
+      /* margin: 20px */
+    }
+  </style>
+</head>
+
+<body>
+<div id="app"></div>
+<!-- built files will be auto injected -->
+<script src="./vendor/jquery/jquery.min.js"></script>
+<script src="./vendor/popper/popper.min.js"></script>
+<script src="./vendor/bootstrap/bootstrap.min.js"></script>
+<script src="./vendor/headroom/headroom.min.js"></script>
+<script src="./vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<!-- Argon JS -->
+<script src="./argon.js"></script>
+<!--<script src="/build.js"></script>-->
+</body>
+
 </html>
