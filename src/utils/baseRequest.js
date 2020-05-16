@@ -3,10 +3,14 @@ import { message } from 'ant-design-vue'
 import router from '@/router'
 import { resetRouter } from '@/router'
 
+const token = localStorage.getItem('token')
 const baseRequest = axios.create({
   baseURL: '',
   withCredentials: true,
-  timeout: 20 * 1000
+  timeout: 20 * 1000,
+  headers: {
+    authorization: token? `Bearer ${token}` : ''
+  }
 })
 
 // response interceptor

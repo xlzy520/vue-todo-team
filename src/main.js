@@ -7,7 +7,7 @@ import store from './store'
 import Notifications from 'vue-notification'
 import 'ant-design-vue/dist/antd.css';
 import './style/index.scss'
-import Antd from 'ant-design-vue'
+import Antd, { message } from 'ant-design-vue'
 import './permission' // permission control
 
 const firebaseConfig = {
@@ -24,8 +24,8 @@ import formRules from './utils/formRules'
 Vue.prototype.$rules = formRules
 
 // firebase.initializeApp(firebaseConfig)
-Vue.prototype.$message = (message, type = 'success', duration = 1) => { // 默认消息提示持续1S
-  Antd.message[type](message, duration)
+Vue.prototype.$msg = (msg, type = 'success', duration = 1) => { // 默认消息提示持续1S
+  message[type](msg, duration)
 }
 Vue.config.productionTip = false
 Vue.use(Notifications)

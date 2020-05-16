@@ -10,59 +10,66 @@
           </div>
           <div class="col-lg-6 order-lg-1 mt-0">
             <div class="card bg-gradient-secondary shadow shadow-lg--hover mt-5">
-              <form class="card-body p-lg-5" @submit="login($event)">
-                <h4 class="mb-1 text-center">{{title}}</h4>
-                <p class="mt-0 text-center">来访问这个最酷与最棒的项目。.</p>
-                <div class="form-group mt-5">
-                  <div class="input-group input-group-alternative">
-                    <div class="input-group-prepend">
+              <a-spin :spinning="loading">
+                <div class="card-body p-lg-5" >
+                  <h4 class="mb-1 text-center">{{title}}</h4>
+                  <p class="mt-0 text-center">在ICO-清单中记录和规划大小事务、用更少的时间达成目标，从冗杂的待办事项中解脱出来。</p>
+                  <div class="form-group mt-5">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
                       <span class="input-group-text">
                         <i class="ni ni-user-run"></i>
                       </span>
+                      </div>
+                      <input
+                          class="form-control"
+                          placeholder="手机号"
+                          name="username"
+                          v-model="userDetails.phone"
+                      />
                     </div>
-                    <input
-                      class="form-control"
-                      placeholder="Your Email address"
-                      name="email"
-                      type="email"
-                    />
                   </div>
-                </div>
-                <div class="form-group">
-                  <div class="input-group input-group-alternative">
-                    <div class="input-group-prepend">
+                  <div class="form-group">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
                       <span class="input-group-text">
-                        <i class="ni ni-email-83"></i>
+                        <i class="ni ni-lock-circle-open"></i>
                       </span>
-                    </div>
-                    <input
-                      class="form-control"
-                      placeholder="Your Password"
-                      name="password"
-                      type="password"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <button type="submit" class="btn btn-success btn-round btn-block btn-lg">登录</button>
-<!--                  <p class="text-center my-2">OR</p>-->
-                  <div class="row d-flex align-items-center">
-<!--                    <div class="col-md-6">-->
-<!--                      <a @click="googleLogin" class="google-img-wrapper">-->
-<!--                        <img-->
-<!--                          src="/img/google-signin.png"-->
-<!--                          class="google-signin-img img-fluid"-->
-<!--                        />-->
-<!--                      </a>-->
-<!--                    </div>-->
-                    <div class="col-md-6">
-                      <router-link to="/register" class="register-link">
-                        <span class="nav-link-inner--text">注册?</span>
-                      </router-link>
+                      </div>
+                      <input
+                          class="form-control"
+                          placeholder="密码"
+                          name="password"
+                          type="password"
+                          v-model="userDetails.password"
+                      />
                     </div>
                   </div>
+                  <div>
+                    <button :loading="loading" type="submit" class="btn btn-success btn-round btn-block btn-lg" @click="login">登录</button>
+                    <!--                  <p class="text-center my-2">OR</p>-->
+                    <div class="row d-flex align-items-center">
+                      <!--                    <div class="col-md-6">-->
+                      <!--                      <a @click="googleLogin" class="google-img-wrapper">-->
+                      <!--                        <img-->
+                      <!--                          src="/img/google-signin.png"-->
+                      <!--                          class="google-signin-img img-fluid"-->
+                      <!--                        />-->
+                      <!--                      </a>-->
+                      <!--                    </div>-->
+                      <div class="col-md-12 mt-2 login-footer">
+                        <router-link to="/resetPassword" class="login-footer-link">
+                          <span class="nav-link-inner--text">忘记密码?</span>
+                        </router-link>
+                        <router-link to="/register" class="login-footer-link">
+                          <span class="nav-link-inner--text">注册?</span>
+                        </router-link>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </form>
+
+              </a-spin>
             </div>
           </div>
         </div>
@@ -82,6 +89,7 @@ import { Bus } from "./utils/bus";
 import user from "../api/user";
 import vueStore from "../store";
 import { mapActions, mapGetters } from "vuex";
+import baseRequest from "../utils/baseRequest";
 
 export default {
   name: "Login",
@@ -89,22 +97,26 @@ export default {
     return {
       title: "登录",
       userDetails: {
-        email: null,
-        password: null
-      }
+        phone: '13588043792',
+        password: '123456'
+      },
+      loading: false
     };
   },
   methods: {
     ...mapActions(["saveUserData"]),
-    login(e) {
-      e.preventDefault();
-      let email = e.target.elements.email.value;
-      let password = e.target.elements.password.value;
-      user.login({
-        email,
-        password
-      }).then(res=>{
+    login() {
+      this.loading = true
+      user.login(this.userDetails).then(res=>{
         console.log(res);
+        localStorage.setItem('token', res.token)
+        baseRequest.defaults.headers['authorization'] = 'Bearer ' + res.token
+        this.$store.dispatch('saveUserData', res)
+        this.$router.push('todo');
+      }).catch(err=>{
+
+      }).finally(()=>{
+        this.loading = false
       })
       // firebase
       //   .auth()
@@ -202,7 +214,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 section.main-section {
   height: 100vh;
   display: flex;
@@ -212,12 +224,10 @@ section.main-section {
 .section {
   padding-top: 0;
 }
-.google-img-wrapper {
-  cursor: pointer;
-}
-.google-signin-img {
-  width: 175px;
-}
+ .login-footer{
+   display: flex;
+   justify-content: space-between;
+ }
 </style>
 
 

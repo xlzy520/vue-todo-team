@@ -11,6 +11,12 @@ export default {
   getInfo() {
     return fetch('/info', null, 'get')
   },
+  getQuestion(data){
+    return fetch('/getQuestion', data)
+  },
+  resetPassword(data){
+    return fetch('/resetPassword', data)
+  },
   logout() {
     return fetch('/logout')
   }

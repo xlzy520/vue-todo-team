@@ -7,11 +7,11 @@
             <div class="card bg-gradient-secondary shadow shadow-lg--hover mt-5">
               <div class="card-body p-lg-5">
                 <h4 class="mb-1 text-center">注册</h4>
-                <p class="mt-0 text-center">来访问这个最酷与最棒的项目。</p>
+                <p class="mt-0 text-center">在ICO-清单中记录和规划大小事务、用更少的时间达成目标，从冗杂的待办事项中解脱出来。</p>
                 <a-form-model ref="ruleForm" :model="form" :label-col="labelCol" :wrapper-col="wrapperCol" :rules="rules">
-                  <a-form-model-item hasFeedback label="用户名" prop="username">
-                    <a-input v-model="form.username" placeholder="用户名" >
-                      <a-icon slot="prefix" type="user" />
+                  <a-form-model-item hasFeedback label="手机号" prop="phone">
+                    <a-input v-model="form.phone" type="phone" placeholder="手机号" >
+                      <a-icon slot="prefix" type="phone" />
                     </a-input>
                   </a-form-model-item>
                   <a-form-model-item hasFeedback label="密码" prop="password">
@@ -34,14 +34,9 @@
                       <a-icon slot="prefix" type="mail" />
                     </a-input>
                   </a-form-model-item>
-                  <a-form-model-item hasFeedback label="手机号" prop="phone">
-                    <a-input v-model="form.phone" type="phone" placeholder="手机号" >
-                      <a-icon slot="prefix" type="phone" />
-                    </a-input>
-                  </a-form-model-item>
                   <a-form-model-item hasFeedback label="姓名" prop="name">
                     <a-input v-model="form.name" placeholder="姓名" >
-                      <a-icon slot="prefix" type="name" />
+                      <a-icon slot="prefix" type="idcard" />
                     </a-input>
                   </a-form-model-item>
                   <a-form-model-item hasFeedback label="性别" prop="gender">
@@ -49,13 +44,10 @@
                       <a-select-option value="male">男</a-select-option>
                       <a-select-option value="female">女</a-select-option>
                     </a-select>
-<!--                    <a-input v-model="form.gender" type="phone" placeholder="性别" >-->
-<!--                      <a-icon slot="prefix" type="gender" />-->
-<!--                    </a-input>-->
                   </a-form-model-item>
                   <a-form-model-item hasFeedback label="年龄" prop="age">
                     <a-input v-model="form.age" placeholder="年龄" >
-                      <a-icon slot="prefix" type="age" />
+                      <a-icon slot="prefix" type="calendar" />
                     </a-input>
                   </a-form-model-item>
                   <a-form-model-item hasFeedback label="特长" prop="skill">
@@ -99,10 +91,6 @@ export default {
         gender: 'male'
       },
       rules: {
-        username: [
-          this.$rules.required('用户名', 'change'),
-          this.$rules.minMax(1, 20, '请输入1-20位用户名', 'change'),
-        ],
         password: [
           this.$rules.required('密码', 'change'),
           this.$rules.minMax(6, 20, '请输入6-20位密码', 'change'),

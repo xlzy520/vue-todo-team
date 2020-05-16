@@ -5,9 +5,9 @@ export default {
   temp: '',
   data: [],
   todos: [
-    { "completed": false, "id": 201, "title": "Standup meeting with the team @5pm", "description": null, "inDate": "Jul 10", "priority": "Low", "tags": [{ "name": "Personal", "color": "rgb(102, 204, 255)" }], "priorityColor": "#5e72e4" },
-    { "completed": false, "id": 202, "title": "Order pizza for Granny tonight", "description": "Thin crust medium size roasted chicken", "inDate": "Jul 10", "priority": "High", "tags": [{ "name": "Home", "color": "rgb(255, 203, 0)" }, { "name": "Personal", "color": "rgb(102, 204, 255)" }], "priorityColor": "#f5365c" },
-    { "completed": false, "id": 203, "title": "Design, Develop and Deploy Apps to Netlify for Clients", "description": null, "inDate": "Jul 10", "priority": "Medium", "tags": [{ "name": "Home", "color": "rgb(255, 203, 0)" }], "priorityColor": "#ffbb33" }
+    { "completed": false, "id": 201, "title": "尝试还能不能完成picgo插件", "description": null, "inDate": "5月18日", "priority": "Low", "tags": [{ "name": "Personal", "color": "rgb(102, 204, 255)" }], "priorityColor": "#5e72e4" },
+    { "completed": false, "id": 202, "title": "支持账号密码登陆保存", "description": "hhhhh哈哈哈哈哈哈哈哈哈哈哈", "inDate": "5月10日", "priority": "High", "tags": [{ "name": "Home", "color": "rgb(255, 203, 0)" }, { "name": "Personal", "color": "rgb(102, 204, 255)" }], "priorityColor": "#f5365c" },
+    { "completed": false, "id": 203, "title": "云数据库化", "description": null, "inDate": "5月10日", "priority": "Medium", "tags": [{ "name": "Home", "color": "rgb(255, 203, 0)" }], "priorityColor": "#ffbb33" }
   ],
   allTags: [
     {

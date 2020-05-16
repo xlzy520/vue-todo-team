@@ -2,7 +2,7 @@
   <div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-gradient-info">
       <div class="container justify-content-center mt-5">
-        <a class="navbar-brand" href="#">TRAKK 'EM All !!</a>
+        <a class="navbar-brand" href="#">执笔 !!</a>
       </div>
     </nav>
   </div>

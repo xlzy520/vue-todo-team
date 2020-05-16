@@ -5,44 +5,51 @@
       <main class="container card shadow shadow-lg--hover mt-3" id="todolist">
         <div class="row mb-3">
           <div class="col-6">
-            <h1>{{title}}</h1>
+            <h1>待办事项</h1>
             <p>{{userData.name}}</p>
           </div>
           <div class="col-6 text-right">
             <div class="user-icon">
-              <div class="dropdown">
+              <a-dropdown :trigger="['click']">
                 <img
-                  :src="getUserData.profileImage ? getUserData.profileImage : '/img/user-avatar.png' "
-                  id="dropdownMenuButton"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                  class="dropdown-toggle img-fluid"
+                    src="https://cdn.jsdelivr.net/gh/xlzy520/nav@gh-pages/favicon.png"
+                    id="dropdownMenuButton"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    class="dropdown-toggle img-fluid"
                 />
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#" v-if="userLoggedIn" @click="googleLogout">Logout</a>
-                  <a
-                    class="dropdown-item"
-                    href="#"
-                    @click="toggleFullScreen"
-                  >{{ isFullScreen ? 'Exit Full Screen' : 'Full Screen'}}</a>
-                </div>
+                <a-menu slot="overlay">
+
+                  <a-menu-item @click="toggleFullScreen">
+                    <a-icon :type="isFullScreen?'fullscreen': 'fullscreen-exit'" />
+                    <span>{{ isFullScreen ? '退出全屏' : '进入全屏'}}</span>
+<!--                    <a class="dropdown-item" href="#" @click="toggleFullScreen"></a>-->
+                  </a-menu-item>
+                  <a-menu-item @click="logout">
+                    <a-icon type="logout" />
+                    <span>退出登录</span>
+
+                    <!--                    <a href="#" @click="logout"></a>-->
+                  </a-menu-item>
+                </a-menu>
+              </a-dropdown>
+<!--              <div class="dropdown">-->
+<!--               -->
+<!--                 -->
+<!--                </div>-->
               </div>
             </div>
-          </div>
         </div>
         <div class="row">
           <div class="col-4">
-            <span class="badge badge-primary">Total : {{getTodos.length || 0}}</span>
-            <!-- <h6 class="count total">Total : {{todos.length}}</h6> -->
+            <span class="badge badge-primary">总共 : {{todos.length || 0}}</span>
           </div>
           <div class="col-4">
-            <span class="badge badge-success">Success : {{completedTodos.length || 0}}</span>
-            <!-- <h6 class="count completed">Completed : </h6> -->
+            <span class="badge badge-success">完成 : {{completedTodos.length || 0}}</span>
           </div>
           <div class="col-4">
-            <span class="badge badge-warning">Pending : {{pendingTodos.length || 0}}</span>
-            <!-- <h6 class="count pending">Pending : {{pendingTodos.length}}</h6> -->
+            <span class="badge badge-warning">进行中 : {{pendingTodos.length || 0}}</span>
           </div>
           <div class="col-md-12 mt-3">
             <div class="form-group">
@@ -50,8 +57,8 @@
                 type="text"
                 name="newTodo"
                 class="add-todo-field form-control"
-                placeholder="Enter New To-Do"
-                v-on:keydown.enter="addnewTodo($event)"
+                placeholder="输入新的代办事项"
+                @keydown.enter="addnewTodo($event)"
                 autocomplete="off"
                 v-model.trim="newTodoText"
               />
@@ -71,7 +78,7 @@
                 <li
                   class="todo-item"
                   :class="todo.completed ? 'done': 'undone'"
-                  v-for="(todo,key) in getTodos"
+                  v-for="(todo,key) in todos"
                   :key="key"
                   @click="showDetail(todo, $event)"
                 >
@@ -98,25 +105,25 @@
                   </div>
                   <div class="todo-priority">
                     <div class="priority-dot" :style="{background:todo.priorityColor}"></div>
-                    <span>{{todo.priority }} Priority</span>
+                    <span>{{todo.priority }}</span>
                   </div>
                   <div class="todo-tags">
-                    <i
-                      class="fa fa-tag"
-                      aria-hidden="true"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    ></i>
-                    <div class="dropdown-menu" v-if="todo.tags.length <= 0">
+<!--                    <i-->
+<!--                      class="fa fa-tag"-->
+<!--                      aria-hidden="true"-->
+<!--                      data-toggle="dropdown"-->
+<!--                      aria-haspopup="true"-->
+<!--                      aria-expanded="false"-->
+<!--                    ></i>-->
+                    <div class="dropdown-menu" v-show="todo.tags.length <= 0">
                       <div class="dropdown-header">
-                        <i class="fa fa-tag" aria-hidden="true"></i> Tags
+                        <i class="fa fa-tag" aria-hidden="true"></i> 标签
                       </div>
-                      <div class="no-tags">No tags attached</div>
+                      <div class="no-tags">无可选择的标签</div>
                     </div>
                     <div class="dropdown-menu" v-if="todo.tags.length > 0">
                       <div class="dropdown-header">
-                        <i class="fa fa-tag" aria-hidden="true"></i> Tags
+                        <i class="fa fa-tag" aria-hidden="true"></i> 标签
                       </div>
                       <span
                         class="badge badge-pill badge-info"
@@ -128,7 +135,7 @@
                         {{tag.name}}
                       </span>
                     </div>
-                    <!-- <span class="label todo-tags" v-if="todo.tags">
+                    <span class="label todo-tags" v-show="todo.tags">
                       <span
                         class="badge badge-pill badge-info"
                         :style="{background:tag.color, color:'#fff'}"
@@ -138,7 +145,7 @@
                         <i class="fa fa-tag" aria-hidden="true"></i>
                         {{tag.name}}
                       </span>
-                    </span>-->
+                    </span>
                   </div>
 
                   <span class="todo-date">{{todo.inDate}}</span>
@@ -156,7 +163,7 @@
                       >{{ todo.completed ? 'check_box' : 'check_box_outline_blank' }}</i>
                     </button>
                     <button
-                      @click.stop="removeTodo(key)"
+                      @click.stop="removeTodo(todo)"
                       type="button"
                       aria-label="Delete"
                       title="Delete"
@@ -170,7 +177,7 @@
             </draggable>
           </VuePerfectScrollbar>
         </ul>
-        <div class="todo-footer" v-if="getTodos.length >0">
+        <div class="todo-footer" v-if="todos.length >0">
           <ul>
             <div class="actions">
               <button
@@ -180,7 +187,7 @@
                 title="Delete"
                 class="btn-picto"
               >
-                Clear All
+                清除全部
                 <i aria-hidden="true" class="material-icons">delete</i>
               </button>
             </div>
@@ -201,6 +208,8 @@ import moment from "moment";
 // import firebase from "firebase";
 import navbar from "./Navbar";
 import todoDetailModal from "./TodoDetailModal";
+import taskApi from "../api/task";
+import axios from 'axios'
 import { Bus } from "./utils/bus";
 import vueStore from "../store";
 import { mapActions, mapGetters } from "vuex";
@@ -215,13 +224,12 @@ export default {
     Bus
   },
   name: "Todo",
-  data: function() {
+  data() {
     return {
-      title: "TODO-LIST",
       todos: [],
       completedTodos: 0,
       pendingTodos: 0,
-      checkkAll: false,
+      checkAll: false,
       newTodoText: "",
       isFullScreen: false,
       elem: document.documentElement,
@@ -231,21 +239,46 @@ export default {
       userInfo: ""
     };
   },
-  mounted() {},
-  watch: {
-    isFullScreen: function(newValue, oldValue) {}
+  mounted() {
+    // function dataUrlToFile(dataUrl,fileName){
+    //   let arr =dataUrl.split(',');
+    //   let mime=arr[0].match(/:(.*?);/)[1];
+    //   let bstr=atob(arr[1])
+    //   let n=bstr.length
+    //   let u8arr=new Uint8Array(n);
+    //   while (n--){
+    //     u8arr[n]=bstr.charCodeAt(n);
+    //   }
+    //   return new File([u8arr],fileName,{type:mime});
+    // }
+    // const base = 'data:image/ico;base64,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'
+    // const file = dataUrlToFile(base, '12.ico')
+    // const form = new FormData()
+    // form.append('file', file)
+    // form.append('sss', 12)
+    // form.append('ss3s', 132)
+    // axios.post('222', form,{
+    //   headers: {
+    //     'Content-Type': 'multipart/form-data'
+    //   },
+    // })
+
   },
+  // watch: {
+  //   isFullScreen: function(newValue, oldValue) {}
+  // },
   created() {
-    this.userLoggedIn = true;
-    let that = this;
-    document.onfullscreenchange = function(event) {
-      if (!that.isFullScreen) {
-        that.isFullScreen = true;
-      } else {
-        that.isFullScreen = false;
-      }
-    };
-    this.updateTodos();
+    this.fetchTodoList();
+    // this.userLoggedIn = true;
+    // let that = this;
+    // document.onfullscreenchange = function(event) {
+    //   if (!that.isFullScreen) {
+    //     that.isFullScreen = true;
+    //   } else {
+    //     that.isFullScreen = false;
+    //   }
+    // };
+    // this.updateTodos();
     console.log("getTodos ", this.getTodos);
   },
   computed: {
@@ -253,6 +286,12 @@ export default {
   },
   methods: {
     ...mapActions(["createNewTodo", "markAsComplete", "deleteTodo"]),
+    fetchTodoList(){
+      taskApi.list().then(res=>{
+        this.todos = res.list || []
+        console.log(res);
+      })
+    },
     toggleFullScreen() {
       !this.isFullScreen ? this.openFullscreen() : this.closeFullscreen();
     },
@@ -287,22 +326,24 @@ export default {
         document.msExitFullscreen();
       }
     },
-    googleLogout() {
-      let that = this;
-      var provider = new firebase.auth.GoogleAuthProvider();
-      firebase
-        .auth()
-        .signOut()
-        .then(
-          function() {
-            that.userLoggedIn = false;
-            that.showNotification("You are logged out", "alert-danger");
-            that.$router.replace("/");
-          },
-          function(error) {
-            console.error("Sign Out Error", error);
-          }
-        );
+    logout() {
+      localStorage.removeItem('token')
+      this.$router.push(`/login?redirect=${this.$route.fullPath}`)
+      // let that = this;
+      // var provider = new firebase.auth.GoogleAuthProvider();
+      // firebase
+      //   .auth()
+      //   .signOut()
+      //   .then(
+      //     function() {
+      //       that.userLoggedIn = false;
+      //       that.showNotification("You are logged out", "alert-danger");
+      //       that.$router.replace("/");
+      //     },
+      //     function(error) {
+      //       console.error("Sign Out Error", error);
+      //     }
+      //   );
     },
     showNotification(msg, alertType) {
       this.$notify({
@@ -332,11 +373,17 @@ export default {
       this.updateTodos();
     },
     updateTodos() {
-      this.completedTodos = this.getTodos.filter(item => item.completed);
-      this.pendingTodos = this.getTodos.filter(item => !item.completed);
+      this.completedTodos = this.todos.filter(item => item.completed);
+      this.pendingTodos = this.todos.filter(item => !item.completed);
     },
-    removeTodo(key) {
-      this.deleteTodo(key);
+    removeTodo(todo) {
+      // console.log(key);
+      taskApi.delete({
+        id: todo.id
+      }).then(res=>{
+
+      })
+      // this.deleteTodo(key);
       this.updateTodos();
     },
     completeTodo(key) {
@@ -348,19 +395,22 @@ export default {
         e.preventDefault();
         let newTodo = {
           completed: false,
-          id: uuidv4(),
           title: this.newTodoText,
-          description: null,
-          inDate: moment().format("MMM D"),
+          desc: null,
+          inDate: moment().format("MM月DD日"),
           priority: "None",
           tags: [],
           priorityColor: "#11cdef"
         };
-        this.createNewTodo(newTodo);
+        taskApi.add(newTodo).then(res=>{
+          this.$msg('新增成功')
+          this.fetchTodoList()
+        })
+        // this.createNewTodo(newTodo);
         // this.userData.todos.push(newTodo);
 
         // this.todos.unshift(newTodo);
-        newTodo.id++;
+        // newTodo.id++;
         this.newTodoText = "";
         this.updateTodos();
       }
@@ -645,7 +695,7 @@ form input,
   font-size: 20px;
 }
 .todo-info {
-  flex: 1 70%;
+  flex: 1 500px;
 }
 .todo-date {
   font-size: 12px;
@@ -710,12 +760,13 @@ form input,
   }
 }
 .todo-priority {
-  flex: 1 20%;
+  flex: 1 1 100px;
   display: flex;
   align-items: center;
 }
 .todo-tags {
-  flex: 1 10%;
+  display: flex;
+  flex: 1 1 180px;
   text-align: center;
 }
 .todo-tags .fa-tag[data-toggle="dropdown"] {

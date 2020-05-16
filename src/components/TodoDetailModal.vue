@@ -12,7 +12,7 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Task Detail</h5>
+            <h5 class="modal-title" id="exampleModalLabel">任务详情</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -46,7 +46,7 @@
                   class="text-primary add-link"
                   @click="editTodoDescription"
                   v-if="showDescriptionBtn"
-                >{{taskDetail.description ? 'Edit ' : 'Add '}}description</p>
+                >{{taskDetail.description ? '编辑' : '新增'}}描述</p>
                 <textarea
                   v-if="showAddDecriptionField"
                   class="form-control"
@@ -76,7 +76,7 @@
                     >
                       <i class="fa fa-exclamation" aria-hidden="true"></i>
                       <i class="fa fa-exclamation" aria-hidden="true"></i>
-                      <i class="fa fa-exclamation mr-2" aria-hidden="true"></i>Priority
+                      <i class="fa fa-exclamation mr-2" aria-hidden="true"></i>优先级
                     </a>
                   </li>
                   <li class="nav-item">
@@ -89,7 +89,7 @@
                       aria-controls="tabs-icons-text-3"
                       aria-selected="false"
                     >
-                      <i class="fa fa-tags mr-2" aria-hidden="true"></i>Tags
+                      <i class="fa fa-tags mr-2" aria-hidden="true"></i>标签
                     </a>
                   </li>
                 </ul>
@@ -104,7 +104,7 @@
                 >
                   <div class="card shadow">
                     <div class="card-body">
-                      <p class="description">Set priority of your task</p>
+                      <p class="description">设置优先级</p>
                       <div class="custom-control custom-radio mb-2">
                         <input
                           name="custom-radio-1"
@@ -119,7 +119,7 @@
                             <i class="fa fa-exclamation" aria-hidden="true"></i>
                             <i class="fa fa-exclamation" aria-hidden="true"></i>
                             <i class="fa fa-exclamation" aria-hidden="true"></i>
-                          </div>High
+                          </div>高
                         </label>
                       </div>
                       <div class="custom-control custom-radio mb-2">
@@ -135,7 +135,7 @@
                           <div class="icon-wrapper">
                             <i class="fa fa-exclamation" aria-hidden="true"></i>
                             <i class="fa fa-exclamation" aria-hidden="true"></i>
-                          </div>Medium
+                          </div>普通
                         </label>
                       </div>
                       <div class="custom-control custom-radio mb-2">
@@ -150,7 +150,7 @@
                         <label class="custom-control-label low" for="customRadio3">
                           <div class="icon-wrapper">
                             <i class="fa fa-exclamation" aria-hidden="true"></i>
-                          </div>Low
+                          </div>低
                         </label>
                       </div>
                       <div class="custom-control custom-radio mb-2">
@@ -167,7 +167,7 @@
                             <i class="fa fa-exclamation" aria-hidden="true"></i>
                             <i class="fa fa-exclamation" aria-hidden="true"></i>
                             <i class="fa fa-exclamation" aria-hidden="true"></i>
-                          </div>None
+                          </div>最低
                         </label>
                       </div>
                     </div>
@@ -248,7 +248,7 @@
                           v-if="searchTag.length<=0"
                           class="tag-item mark"
                           @click="createNewTag(searchText)"
-                        >Create "{{searchText}}"</li>
+                        >创建 "{{searchText}}"</li>
                       </ul>
                     </div>
                   </div>
@@ -258,8 +258,8 @@
           </div>
 
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" @click="saveTaskData">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+            <button type="button" class="btn btn-primary" @click="saveTaskData">保存</button>
           </div>
         </div>
       </div>
@@ -272,6 +272,7 @@ import { Bus } from "./utils/bus";
 import ClickOutside from "vue-click-outside";
 import vueStore from "../store";
 import { mapActions, mapGetters } from "vuex";
+import taskApi from "../api/task";
 export default {
   name: "todoDetailModal",
   data() {
@@ -323,6 +324,11 @@ export default {
         id: this.taskDetail.id,
         tags: this.taskDetail.tags
       });
+
+      taskApi.update(this.taskDetail).then(res=>{
+        console.log(res);
+      })
+
       $("#genericPopup").modal("hide");
     },
     editTodoTitle() {

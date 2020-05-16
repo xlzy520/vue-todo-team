@@ -5,16 +5,18 @@ import login from "../components/Login";
 import todo from "../components/Todo";
 import PageNotFound from "../components/Page404";
 import register from "../components/register";
+import resetPassword from "../components/resetPassword";
 
 Vue.use(VueRouter)
 
 
 const routes = [
   { path:  '/', component: login },
-  { path:  '/login', component: login },
   { path: '/todo', component: todo },
+  { path:  '/login', component: login },
   { path: "*", component: PageNotFound},
   { path: '/register', component: register },
+  { path: '/resetPassword', component: resetPassword },
 ];
 
 // const router = new VueRouter({
@@ -39,7 +41,8 @@ const routes = [
 // ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  mode: 'hash'
 })
 
 export default router

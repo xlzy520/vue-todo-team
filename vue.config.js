@@ -23,7 +23,7 @@ module.exports = {
     open: false,
     overlay: {
       warnings: false,
-      errors: true
+      errors: false
     },
     proxy: {
       '/': {

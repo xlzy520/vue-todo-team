@@ -14,7 +14,7 @@ export default {
   float5: { pattern: /^(([1-9]\d{0,3})(\.\d{1,2})?|0\.\d{1,2})$/g, message: '请输入范围0~9999的数', trigger: 'change' }, // 包括小数
   word_number_chinese: { pattern: /^[a-zA-Z0-9\u4e00-\u9fa5]+$/g, message: '请输入数字、字母、汉字' },
   phone: { pattern: /^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/,
-    message: '请填写符合要求的11位手机号', trigger: 'blur' },
+    message: '请填写符合要求的11位手机号', trigger: 'change' },
   email: {pattern: /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/,
     message: '请填写正确的邮箱', trigger: 'blur'}
 }
