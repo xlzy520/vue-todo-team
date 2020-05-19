@@ -1,0 +1,91 @@
+@import "./scss/utils/variables";
+.container {
+    min-width: rem-calc(200);
+    background-color: $white;
+    box-shadow: rem-calc(0) rem-calc(4) rem-calc(11) rem-calc(0) rgba(0, 0, 0, 0.16);
+    border-radius: rem-calc(4);
+    border: 1px solid $black12;
+    padding: rem-calc(18);
+    .inputWrapper {
+        display: flex;
+        height: rem-calc(34);
+        overflow: hidden;
+        width: 100%;
+        align-items: center;
+        .label,
+        .unit {
+            height: 22px;
+            font-size: rem-calc(14);
+            font-weight: 400;
+            color: $black85;
+            line-height: 22px;
+        }
+        .input {
+            flex: auto;
+            width: rem-calc(106);
+            box-sizing: border-box;
+            margin: 0 rem-calc(6);
+            border-radius: rem-calc(4);
+            background: $white;
+            border: 1px solid $black14;
+        }
+    }
+    .actionArea {
+        margin-top: rem-calc(26);
+        overflow: hidden;
+        width: 100%;
+        display: flex;
+        button {
+            flex: auto;
+            flex-basis: 0;
+            min-width: auto;
+            height: rem-calc(32);
+            font-size: rem-calc(13);
+            font-weight: 500;
+            color: $white;
+            line-height: rem-calc(12);
+            border-radius: rem-calc(4);
+            padding: 0;
+            &:not(:nth-of-type(1)) {
+                margin-left: rem-calc(12);
+            }
+            &.cancel {
+                border: 1px solid $white2;
+                background-color: transparent;
+                background: rgba(0, 0, 0, 0.08);
+                color: $black;
+            }
+            &.primary {
+                border: 0;
+            }
+        }
+    }
+}
+
+[class*="-dark-theme"] {
+    .container {
+        background: #333335;
+        box-shadow: 0 0 rem-calc(3) 0 rgba(0, 0, 0, 0.98);
+        border-radius: 4px;
+        border-color: $white14;
+    }
+    .inputWrapper {
+        .label,
+        .unit {
+            color: $white85;
+        }
+        .input {
+            background-color: #444346;
+            border-color: $white06;
+        }
+    }
+    .actionArea {
+        button {
+            &.cancel {
+                border: 1px solid $white2;
+                background-color: transparent;
+                color: $white;
+            }
+        }
+    }
+}

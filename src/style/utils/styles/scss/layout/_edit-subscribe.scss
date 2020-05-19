@@ -1,0 +1,88 @@
+.edit-subscribe {
+    .divider {
+        width: 100%;
+        height: 1px;
+        margin: rem-calc(14) 0;
+        background-color: $black06;
+    }
+
+    .calendar-items {
+        & > li {
+            height: rem-calc(30);
+            line-height: rem-calc(30);
+        }
+    }
+}
+
+.edit-subscribe-account {
+    height: $popup-max-height;
+    .popup-body {
+        padding: rem-calc(16) 0 0 0;
+        display: flex;
+        flex-direction: column;
+
+        .antiscroll-wrap {
+            flex: auto;
+            display: flex;
+            flex-direction: column;
+            padding: 0 rem-calc(24);
+            overflow: hidden;
+            .antiscroll-inner {
+                flex: auto;
+            }
+        }
+    }
+    .calendar-items {
+        max-width: 100%;
+        & > li {
+            height: rem-calc(58);
+            line-height: rem-calc(58);
+            border-bottom: 1px solid $black06;
+            max-width: 100%;
+
+            .s-menu {
+                margin-top: rem-calc(14);
+            }
+        }
+    }
+
+    .select-menu {
+        .select-list {
+            width: rem-calc(180);
+            position: fixed;
+        }
+    }
+}
+
+.edit-subscribe,
+.edit-subscribe-account {
+    .calendar-items {
+        .s-menu {
+            width: rem-calc(180);
+        }
+
+        .text-primary {
+            max-width: rem-calc(360px);
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    }
+
+    .popup-footer {
+        width: 100%;
+        text-align: right;
+        line-height: rem-calc(36);
+
+        .unsubscribe {
+            float: left;
+            margin-left: 0;
+        }
+
+        .rebind {
+            float: left;
+            margin-left: rem-calc(15);
+            color: rgba(0, 0, 0, 0.54);
+        }
+    }
+}

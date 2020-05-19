@@ -1,0 +1,86 @@
+// variables
+@import "../utils/variables";
+
+@media print {
+    @page {
+        size: auto;
+        margin: 22mm 18mm;
+    }
+    body.print-detail {
+        height: auto;
+        overflow: auto;
+        margin: 0;
+        #task-detail-view {
+            background-color: white !important;
+            -webkit-print-color-adjust: exact;
+        }
+        #task-detail-inner {
+            display: block;
+        }
+        #root {
+            overflow: visible;
+        }
+
+        .g-left,
+        .left-bg,
+        .g-center {
+            display: none;
+        }
+
+        .g-right {
+            position: static;
+            border: none;
+            left: 0;
+            top: 0;
+            width: 100%;
+
+            .detail-fullscreen {
+                .td-header {
+                    display: none;
+                }
+                .td-body {
+                    padding-top: 0;
+                    .content-editor {
+                        position: static !important;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+
+        .comments-footer,
+        .antiscroll-scrollbar,
+        .footer {
+            display: none;
+        }
+
+        .antiscroll-wrap,
+        .antiscroll-inner,
+        .b-h {
+            // 打印不应该存在滚动条
+            height: auto !important;
+            width: 100% !important;
+            & > div {
+                width: 100% !important;
+            }
+        }
+
+        .td-body {
+            .editor-with-link,
+            .link-viewer {
+                height: auto;
+            }
+            .md-tl {
+                display: none;
+            }
+        }
+
+        .td-btns .td-check {
+            // padding-top: rem-calc(10);
+        }
+
+        // .td-btns .td-reminder .td-time .selected-date {
+        //     top: -6px;
+        // }
+    }
+}

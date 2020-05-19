@@ -1,0 +1,110 @@
+$s-backup-divider: rem-calc(10);
+
+$s-backup-row-left-w: rem-calc(110);
+
+.backup-panel {
+    .row {
+        border-bottom: 1px solid;
+
+        &:last-child {
+            border-bottom: 0;
+        }
+
+        form {
+            position: relative;
+        }
+
+        .row-right {
+            & > * {
+                float: right;
+                margin-left: rem-calc(20);
+            }
+
+            .tip {
+                display: none;
+                position: absolute;
+                background-color: $black;
+                color: $white;
+                width: rem-calc(120);
+                padding: rem-calc(8);
+                line-height: rem-calc(18);
+                margin-top: rem-calc(40);
+                margin-left: 0;
+                z-index: 999;
+                font-size: rem-calc(12);
+
+                .icon-pointer-black-up {
+                    position: absolute;
+                    top: 0;
+                    left: 50%;
+                    transform: translate(-50%, -100%);
+                }
+            }
+
+            .file-wrap:hover + .tip {
+                display: block;
+            }
+        }
+    }
+
+    .generate {
+        .title {
+            line-height: $s-tab-height;
+        }
+
+        .btns {
+            margin-top: $s-backup-divider;
+            margin-bottom: $s-backup-divider;
+
+            button {
+                &:first-child {
+                    margin-right: $s-backup-divider;
+                }
+            }
+        }
+
+        .desc {
+            padding-bottom: $s-backup-divider * 2;
+            border-bottom: $base-border;
+        }
+
+        .import-tick {
+            .control-form input {
+                display: block;
+                margin-top: rem-calc(8);
+                height: rem-calc(36);
+                width: rem-calc(266);
+            }
+        }
+
+        .import-apps {
+            margin-top: $s-backup-divider * 2;
+            margin-bottom: $s-backup-divider;
+        }
+    }
+}
+
+// ical
+.ical-pop {
+    .line {
+        padding-bottom: rem-calc(26);
+
+        .left {
+            &:first-child {
+                width: $s-backup-row-left-w;
+            }
+        }
+    }
+
+    .s-menu {
+        width: rem-calc(150);
+    }
+
+    .file-wrap {
+        position: relative;
+    }
+
+    .file-name {
+        height: rem-calc(20);
+    }
+}

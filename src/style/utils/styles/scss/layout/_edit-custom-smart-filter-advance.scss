@@ -1,0 +1,429 @@
+$select-w: rem-calc(214);
+$select-h: rem-calc(30);
+$select-max-h: rem-calc(164);
+$select-padding: 0 rem-calc(12);
+$select-font-color: $base-font-color-link;
+$select-right: rem-calc(12);
+$select-border: 1px solid $timberwolf;
+
+.smart-filter-advance {
+    min-height: rem-calc(171);
+    max-height: rem-calc(171);
+
+    .filters-wrap {
+        & > .filter-condition,
+        & > .condition-logic {
+            position: relative;
+            float: left;
+            margin-right: rem-calc(8);
+            margin-bottom: rem-calc(8);
+            max-width: 100%;
+
+            & > .select-menu,
+            & > .select-menu {
+                & > .select-title {
+                    padding: rem-calc(6) rem-calc(20) rem-calc(6) rem-calc(8);
+                    line-height: rem-calc(18);
+                }
+            }
+
+            & > .select-menu {
+                & > .select-title {
+                    .bold {
+                        font-weight: bold;
+                        vertical-align: baseline;
+                    }
+                }
+            }
+
+            & > .select-menu.no-select {
+                & > .select-title {
+                    padding-left: rem-calc(6);
+                    padding-right: rem-calc(6);
+                }
+            }
+        }
+
+        & > .condition-logic {
+            & > .select-menu {
+                & > .select-title {
+                    padding-right: rem-calc(8);
+                }
+            }
+        }
+
+        & > .condition-logic {
+            &.and,
+            &.or,
+            &.not {
+                & > .select-menu {
+                    & > .select-title {
+                        padding-right: rem-calc(28);
+                    }
+                }
+            }
+        }
+
+        .warn {
+            display: none;
+            position: absolute;
+            z-index: 11;
+            top: rem-calc(4);
+            left: rem-calc(4);
+
+            .icon-warning {
+                width: rem-calc(16);
+            }
+        }
+
+        .warning-tooltip {
+            position: absolute;
+            left: 33px;
+            top: -5px;
+            padding: 12px;
+            z-index: 12;
+            min-width: rem-calc(260);
+            font-size: 12px;
+            line-height: 18px;
+            text-align: justify;
+            display: none;
+
+            &:before,
+            &:after {
+                top: 15px;
+                transform: rotateZ(-90deg);
+            }
+
+            &:before {
+                left: -13px;
+            }
+
+            &:after {
+                left: -12px;
+            }
+        }
+
+        .filter-condition.expired {
+            .warn {
+                display: block;
+            }
+            .warning-tooltip {
+                display: block;
+            }
+
+            & > .select-menu {
+                & > .select-title {
+                    padding-left: rem-calc(20);
+                    padding-right: rem-calc(20);
+                }
+            }
+        }
+    }
+
+    .delete-filter,
+    .delete-logic {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 10;
+        height: $select-h;
+        width: rem-calc(20);
+        line-height: $select-h;
+        text-align: center;
+        display: none;
+
+        svg {
+            width: rem-calc(12);
+            height: rem-calc(12);
+            opacity: 0.53;
+        }
+    }
+
+    .filter-condition:hover .delete-filter,
+    .condition-logic:hover .delete-logic {
+        display: inline-block;
+    }
+
+    .select-condition > .dropdown-toggle,
+    .select-menu.no-select > .select-title {
+        display: inline-block;
+        padding: 0 rem-calc(6);
+        height: $select-h;
+        line-height: $select-h;
+        border: 1px dashed $black1;
+        text-align: center;
+        border-radius: rem-calc(2);
+        color: $black36;
+    }
+
+    .condition-logic {
+        .select-title {
+            background-color: $black04;
+            border: 1px dashed $black1;
+            border-radius: rem-calc(2);
+            color: $black36;
+        }
+
+        &.and,
+        &.or,
+        &.not {
+            .select-title {
+                border-style: solid;
+            }
+        }
+
+        &.and {
+            .select-title {
+                background-color: $filter-advance-and-2;
+                border-color: $filter-advance-and-2;
+                color: $filter-advance-and-color;
+            }
+        }
+
+        &.or {
+            .select-title {
+                background-color: $filter-advance-or-2;
+                border-color: $filter-advance-or-2;
+                color: $filter-advance-or-color;
+            }
+        }
+
+        &.not {
+            .select-title {
+                background-color: $filter-advance-not-2;
+                border-color: $filter-advance-not-2;
+                color: $filter-advance-not-color;
+            }
+        }
+    }
+
+    .add-more-filter {
+        float: left;
+        font-size: rem-calc(12);
+        line-height: $select-h;
+    }
+}
+
+.smart-filter-advance-condition-logic {
+    width: rem-calc(60);
+    text-align: left;
+    li.dropdown-menu-menu-item {
+        padding: 0 rem-calc(12);
+        & > a {
+            min-width: auto;
+            padding: 0;
+        }
+    }
+}
+
+.smart-filter-advance-select-menu {
+    z-index: 1100;
+    padding: 0;
+    width: $select-w;
+    overflow: hidden;
+
+    & > .select-list {
+        padding-top: 0;
+        padding-bottom: 0;
+
+        .list-wrapper {
+            margin-top: rem-calc(42);
+            margin-bottom: rem-calc(48);
+            .antiscroll-inner {
+                max-height: $select-max-h + 16;
+            }
+        }
+
+        .section-title,
+        .option-item {
+            @include liheight(rem-calc(32));
+        }
+
+        .logic-switch {
+            top: 0;
+            position: absolute;
+            width: 100%;
+            padding: rem-calc(9) rem-calc(12);
+            height: rem-calc(42);
+            line-height: rem-calc(24);
+            border-bottom: 1px solid $whitelilac;
+            button {
+                height: rem-calc(24);
+                float: right;
+                min-width: auto;
+                padding: rem-calc(3) rem-calc(5);
+                background-color: $black04;
+                border: 1px solid $black06;
+                color: $black24;
+            }
+
+            button.active {
+                &.btn-not {
+                    background-color: $filter-advance-not-2;
+                    border-color: $filter-advance-not-2;
+                    color: $filter-advance-not-color;
+                }
+
+                &.btn-and {
+                    background-color: $filter-advance-and-2;
+                    border-color: $filter-advance-and-2;
+                    color: $filter-advance-and-color;
+                }
+
+                &.btn-or {
+                    background-color: $filter-advance-or-2;
+                    border-color: $filter-advance-or-2;
+                    color: $filter-advance-or-color;
+                }
+            }
+
+            button[disabled] {
+                background-color: $black04;
+                color: $black12;
+                cursor: not-allowed;
+            }
+        }
+
+        .control {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: rem-calc(48);
+            border-top: 1px solid $whitelilac;
+            padding: rem-calc(10);
+            .btns {
+                width: 100%;
+                display: flex;
+            }
+            button {
+                flex: 1;
+                min-width: auto;
+
+                &:first-child {
+                    float: left;
+                    margin-right: rem-calc(10);
+                }
+
+                &:last-child {
+                    float: right;
+                }
+            }
+        }
+    }
+
+    &.filter-list {
+        .list-wrapper {
+            padding-bottom: rem-calc(6);
+        }
+
+        .list-divider {
+            width: 100%;
+            height: rem-calc(1);
+            margin: rem-calc(6) 0;
+            background-color: $black08;
+        }
+
+        .subscribe {
+            .icon-subcalendar-list {
+                margin-top: rem-calc(-2);
+            }
+        }
+    }
+
+    &.filter-tag {
+        width: rem-calc(264);
+    }
+
+    &.filter-duedate {
+        width: rem-calc(264);
+
+        .option-item {
+            overflow-x: visible;
+            overflow-y: visible;
+        }
+
+        [data-key="today"] {
+            .outer-date {
+                position: absolute;
+                width: rem-calc(24);
+                height: rem-calc(24);
+                top: rem-calc(4);
+                left: rem-calc(12);
+                line-height: rem-calc(24);
+                text-align: center;
+                padding: 0;
+                min-width: auto;
+
+                .inner-date {
+                    display: inline-block;
+                    font-size: rem-calc(12);
+                    transform: scale(0.8);
+                }
+            }
+        }
+
+        // .icon-selected {
+        //     display: none;
+        // }
+    }
+
+    .filter-duedate-ndays {
+        .antiscroll-inner {
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        &.ndays-menu {
+            display: inline-block;
+            position: relative;
+            width: rem-calc(80);
+            border: 1px solid $timberwolf;
+            margin: 0 rem-calc(4);
+            height: auto;
+            max-width: auto;
+            min-width: auto;
+            padding: 0;
+
+            .selected-title {
+                padding-left: rem-calc(25);
+                line-height: rem-calc(25);
+            }
+
+            .selected-arrow {
+                color: $base-font-color-info;
+                @include liheight(rem-calc(25));
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: $select-h;
+                text-align: center;
+                cursor: pointer;
+            }
+
+            .dropdown-menu {
+                top: rem-calc(-125);
+                left: rem-calc(-2);
+
+                &.ndays-menu,
+                &.ndays-dropdown-menu {
+                    min-height: rem-calc(180) !important;
+                }
+
+                li {
+                    margin-bottom: rem-calc(1);
+
+                    & > a {
+                        height: rem-calc(30);
+                        line-height: rem-calc(30);
+                        min-width: rem-calc(80);
+                        padding: 0 rem-calc(25);
+                    }
+                }
+            }
+        }
+
+        &.filter-duedate-ndays-later {
+            margin-left: 0;
+        }
+    }
+}

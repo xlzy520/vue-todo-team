@@ -1,0 +1,193 @@
+.left-menu-t {
+    z-index: 4;
+    display: none;
+    position: absolute;
+    top: rem-calc(28);
+    left: rem-calc(29);
+    width: rem-calc(14);
+    height: rem-calc(14);
+
+    .icon-left-menu {
+        width: rem-calc(16);
+        height: rem-calc(16);
+        fill: $manatee;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    // @include hamburger(rem-calc(14), 0, 0, 1px, 5px, $manatee, $manatee, true);
+}
+
+.summary ~ .left-menu-t {
+    top: rem-calc(22);
+}
+.tkcalendar-view ~ .left-menu-t {
+    top: rem-calc(24);
+}
+
+.left-menu-c {
+    top: rem-calc(18);
+}
+
+.right-menu-t {
+    z-index: $zindex-3;
+    display: none;
+    position: absolute;
+    top: rem-calc(26);
+    left: rem-calc(22);
+    color: $manatee;
+    width: rem-calc(20);
+    height: rem-calc(20);
+
+    .icon-back-settings {
+        position: absolute;
+        top: 0;
+        left: 0;
+        fill: $manatee;
+        width: rem-calc(20);
+        height: rem-calc(20);
+    }
+}
+
+.subscribe-event-detail {
+    .right-menu-t {
+        top: rem-calc(32);
+    }
+}
+
+// 两列
+@media #{$large-only} {
+    .g-left {
+        z-index: 5;
+        left: -$grid-left-width;
+    }
+
+    .g-right {
+        right: 0;
+        width: $grid-right-width-col-2;
+    }
+
+    .g-center {
+        left: 0;
+        right: $grid-right-width-col-2;
+    }
+
+    .g-full-right {
+        left: 0;
+        right: 0;
+    }
+}
+
+// 一列
+@media #{$medium-only} {
+    .g-left {
+        z-index: 5;
+        left: -$grid-left-width;
+    }
+
+    .g-right {
+        z-index: 4;
+        width: $grid-right-width-col-1;
+        right: -$grid-right-width-col-1;
+        background-color: $white; // @maoq 为了消除该层浮起以后露出center中的空白页的问题
+    }
+
+    .g-center {
+        left: 0;
+        right: 0;
+    }
+
+    .g-full-right {
+        left: 0;
+        right: 0;
+    }
+}
+
+// 一列最小
+@media #{$small-only} {
+    .g-left {
+        z-index: 5;
+        left: -10-$grid-left-width;
+        width: $grid-left-width;
+    }
+
+    .g-right {
+        z-index: 5;
+        right: -100%;
+        width: 100%;
+    }
+
+    .g-center {
+        left: 0;
+        right: 0;
+    }
+
+    .g-full-right {
+        left: 0;
+        right: 0;
+    }
+
+    .detail-show {
+        .g-center {
+            display: none;
+        }
+    }
+}
+
+//
+@media #{$large-low} {
+    .left-menu-t {
+        display: block;
+    }
+    .tasklist {
+        .tl-bar {
+            padding-left: rem-calc(60);
+        }
+    }
+
+    .g-center {
+        transition: all 0.2s ease-in-out;
+    }
+
+    .g-full-right {
+        transition: all 0.2s ease-in-out;
+    }
+}
+
+@media #{$medium-low} {
+    .right-menu-t {
+        display: block;
+    }
+
+    .td-bar {
+        padding-left: rem-calc(40);
+    }
+
+    .timecard {
+        left: rem-calc(-70);
+    }
+
+    .right-divider {
+        display: none;
+    }
+}
+
+.list-show {
+    .g-left {
+        left: 0;
+        box-shadow: $base-box-shadow;
+    }
+
+    .left-menu-t {
+        z-index: 0;
+    }
+}
+
+.detail-show {
+    .g-right {
+        display: block;
+        right: 0;
+        box-shadow: $base-box-shadow;
+    }
+}

@@ -1,0 +1,42 @@
+@import "./scss/utils/variables";
+.calendarArchiveMenuContainer {
+    position: absolute;
+    z-index: 11;
+    .calendarArchiveMenuItem {
+        background: $white;
+        box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.15), 0 3px 8px 0 rgba(0, 0, 0, 0.15);
+        border-radius: rem-calc(4);
+        width: rem-calc(184);
+        height: rem-calc(36);
+        padding: rem-calc(6) rem-calc(10);
+        cursor: pointer;
+        &:not(:last-of-type) {
+            margin-bottom: rem-calc(11);
+        }
+        .icon {
+            height: 18px;
+        }
+        .text {
+            margin-left: rem-calc(6);
+            line-height: rem-calc(24);
+            opacity: 0.85;
+            font-weight: 500;
+            font-size: 13px;
+            color: #000000;
+        }
+    }
+}
+
+[class*="-dark-theme"] .calendarArchiveMenuContainer {
+    .calendarArchiveMenuItem {
+        background: $night-black;
+        box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.15), 0 3px 8px 0 rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+        .icon {
+            height: 18px;
+        }
+        .text {
+            color: white;
+        }
+    }
+}

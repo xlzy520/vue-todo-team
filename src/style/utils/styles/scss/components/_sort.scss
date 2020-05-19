@@ -1,0 +1,19 @@
+// sort
+.ui-sortable-helper {
+    overflow: hidden;
+}
+
+.ui-sortable-placeholder {
+    visibility: visible !important;
+    overflow: visible !important;
+    width: 100%;
+}
+
+.tasks,
+.subtasks {
+    .ui-sortable-placeholder {
+        position: absolute;
+        z-index: 1;
+        height: 1px;
+    }
+}

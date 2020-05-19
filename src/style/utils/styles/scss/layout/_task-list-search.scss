@@ -1,0 +1,13 @@
+.keyword-bar {
+    position: relative;
+    line-height: rem-calc(36);
+
+    .search-title > span {
+        display: inline-block;
+        vertical-align: baseline;
+
+        &:first-child {
+            margin-right: rem-calc(10);
+        }
+    }
+}

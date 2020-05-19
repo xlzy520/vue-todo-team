@@ -1,0 +1,41 @@
+@import "./scss/utils/variables";
+i.dayCircle {
+    width: rem-calc(30);
+    height: rem-calc(30);
+    line-height: rem-calc(30);
+    border: none;
+    border-radius: 50%;
+    display: block;
+    text-align: center;
+    margin: rem-calc(4) auto;
+    position: relative;
+    font-weight: 500;
+    svg {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    &.hideCircleProgress {
+        svg {
+            circle:last-child {
+                opacity: 0;
+            }
+        }
+    }
+}
+
+.fadeIn-enter {
+    opacity: 0;
+}
+.fadeIn-enter-active {
+    opacity: 1;
+    transition: opacity 200ms;
+}
+.fadeIn-exit {
+    opacity: 1;
+}
+.fadeIn-exit-active {
+    opacity: 0;
+    transition: opacity 200ms;
+}

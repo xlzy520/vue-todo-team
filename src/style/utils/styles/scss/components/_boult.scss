@@ -1,0 +1,94 @@
+/* 弹出层的箭头 */
+$boult-size: rem-calc(9);
+$boult-color: $timberwolf;
+$boult-bg-color: $white;
+
+@mixin boult($size, $color: $white) {
+    content: "";
+    position: absolute;
+    left: calc(50% - 9px);
+    top: 100%;
+    border-right: solid $size transparent;
+    border-left: solid $size transparent;
+    border-bottom: solid $size $color;
+    z-index: $zindex-dropdown + 1;
+}
+
+.boult {
+    &:before {
+        @include boult($boult-size, $boult-color);
+        top: calc(100% - 1px);
+    }
+
+    &:after {
+        @include boult($boult-size, $boult-bg-color);
+    }
+}
+
+.boult.up {
+    .boult:before,
+    .boult:after {
+        bottom: 100%;
+        top: initial;
+        top: auto;
+        left: 0;
+        transform: rotate(180deg);
+    }
+}
+
+// 在dropdown下的显示
+.dropdown,
+.dropup {
+    .boult:before,
+    .boult:after {
+        display: none;
+    }
+
+    &.open {
+        .boult:before,
+        .boult:after {
+            display: block;
+        }
+    }
+}
+
+// 如果菜单出现的位置在上面，箭头相反
+.dropup {
+    & > .boult,
+    & > * > .boult {
+        &:before,
+        &:after {
+            bottom: 100%;
+            top: initial;
+            top: auto;
+            left: 0;
+            transform: rotate(180deg);
+        }
+    }
+}
+
+.dropdown-menu {
+    position: absolute;
+    .boult {
+        position: absolute;
+    }
+    .boult:before {
+        left: 0;
+        top: -1px;
+    }
+    .boult:after {
+        left: 0;
+        top: 0;
+    }
+}
+
+.dropup-menu {
+    .boult:before,
+    .boult:after {
+        bottom: 100%;
+        top: initial;
+        top: auto;
+        left: 0;
+        transform: rotate(180deg);
+    }
+}

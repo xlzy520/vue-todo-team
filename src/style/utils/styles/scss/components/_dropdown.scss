@@ -1,0 +1,531 @@
+//
+// Dropdown menus
+// --------------------------------------------------
+
+//** Width of the `border` for generating carets that indicator dropdowns.
+$caret-width-base: 4px !default;
+
+//** Background for the dropdown menu.
+$dropdown-bg: $body-bg !default;
+//** Dropdown menu `border-color`.
+$dropdown-border: $base-border-color !default;
+
+//** Divider color for between dropdown items.
+$dropdown-divider-bg: $base-divider-bg !default;
+
+$dropdown-default-color: $base-font-color-primary !default;
+
+//** Hover color for dropdown links.
+$dropdown-link-hover-color: $base-font-color-deepbg !default;
+//** Hover background for dropdown links.
+$dropdown-link-hover-bg: $base-active-bg !default;
+
+//** Active dropdown menu item text color.
+$dropdown-link-active-color: $base-font-color-deepbg !default;
+//** Active dropdown menu item background color.
+$dropdown-link-active-bg: $base-active-bg !default;
+
+//** Disabled dropdown menu item background color.
+$dropdown-link-disabled-color: $disabled !default;
+
+// drop menu list
+$drop-item-height: rem-calc(36);
+$drop-item-max-width: rem-calc(186);
+$drop-item-min-width: rem-calc(110);
+$drop-item-padding: 0 rem-calc(24) 0 rem-calc(16);
+$drop-item-tny-padding: 0 rem-calc(10);
+$drop-divider-margin: rem-calc(6) 0;
+// 只有icon
+$drop-item-icon-only-padding: 0 rem-calc(12);
+
+$drop-list-inner-max-height: $drop-item-height * 8;
+$drop-list-max-height: $drop-list-inner-max-height + $base-list-padding-t-b * 2 + rem-calc(2); // 2px border
+
+$drop-item-icon-margin-left: 0;
+$drop-item-icon-margin-right: rem-calc(12);
+
+// font size
+$drop-item-font-size: rem-calc(13);
+
+// Dropdown arrow/caret
+.caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: $caret-width-base dashed;
+    border-top: $caret-width-base solid \9; // IE8
+    border-right: $caret-width-base solid transparent;
+    border-left: $caret-width-base solid transparent;
+}
+
+// The dropdown wrapper (div)
+.dropup,
+.dropdown {
+    position: relative;
+}
+
+// Prevent the focus on the dropdown toggle when closing dropdowns
+.dropdown-toggle:focus {
+    outline: 0;
+}
+
+// The dropdown menu (ul)
+.dropdown-menu-hidden {
+    display: none;
+}
+
+.dropdown-menu-menu {
+    max-height: $drop-list-inner-max-height;
+    overflow-y: auto;
+}
+
+.dropdown-menu {
+    // overflow: auto;
+    // overflow-x: hidden;
+    overflow: visible;
+    top: 100%;
+
+    .dropdown-section-title {
+        line-height: rem-calc(20);
+        padding-left: rem-calc(16);
+        padding-top: rem-calc(6);
+        padding-bottom: rem-calc(4);
+        margin-top: rem-calc(6);
+        border-top: rem-calc(1) solid $black08;
+        font-size: rem-calc(12);
+        color: $black54;
+        background-color: unset !important;
+        position: relative;
+        .text {
+            display: inline-block;
+            @include ellipsis();
+        }
+    }
+
+    .list-divider + .dropdown-section-title {
+        border-top-width: 0;
+        margin-top: 0;
+    }
+}
+
+.dropdown-menu,
+.dropdown-menu-menu-submenu-popup {
+    z-index: $zindex-dropdown;
+    float: left;
+    max-height: $drop-list-max-height;
+    // overflow: auto;
+    // overflow-x: hidden;
+    padding: $base-list-padding-t-b 0;
+    list-style: none;
+    text-align: left;
+    background-color: $dropdown-bg;
+    border-radius: $base-border-radius;
+    box-shadow: $small-shadow;
+
+    li.dropdown-menu-menu-item > a,
+    li.dropdown-menu-item > a,
+    .dropdown-menu-menu-submenu-title {
+        position: relative;
+        display: block;
+        padding: $drop-item-padding;
+        clear: both;
+        cursor: pointer;
+        font-weight: normal;
+        @include liheight($drop-item-height);
+        @include ellipsis();
+        max-width: $drop-item-max-width;
+        min-width: $drop-item-min-width;
+        color: $dropdown-default-color;
+        font-size: $drop-item-font-size;
+
+        & a {
+            color: $dropdown-default-color;
+        }
+    }
+
+    li.dropdown-menu-menu-item-disabled {
+        & > a {
+            cursor: $cursor-disabled-value;
+            color: $dropdown-link-disabled-color;
+        }
+    }
+
+    li > div {
+        padding: $drop-item-padding;
+    }
+
+    &.dropdown-tny {
+        li > a {
+            min-width: rem-calc(44);
+            padding: $drop-item-tny-padding;
+        }
+    }
+
+    // icon-text-icon
+    &.i-text-i {
+        li > a,
+        li > .dropdown-menu-menu-submenu-title {
+            max-width: rem-calc(280);
+            min-width: rem-calc(216);
+            padding-left: rem-calc(14);
+            padding-right: rem-calc(40);
+        }
+    }
+
+    li.project-submenu-item > a {
+        padding-left: rem-calc(12);
+        padding-right: rem-calc(40);
+    }
+
+    // icon-text
+    &.i-text {
+        li > a {
+            padding-left: rem-calc(12);
+            padding-right: rem-calc(24);
+        }
+    }
+
+    &.dropdown-group {
+        li > a {
+            padding-right: rem-calc(40);
+        }
+    }
+
+    [class^="icon-"],
+    [class*=" icon-"] {
+        margin-left: $drop-item-icon-margin-left;
+        margin-right: $drop-item-icon-margin-right;
+    }
+
+    .divider {
+        height: 1px;
+        margin: $drop-divider-margin;
+        overflow: hidden;
+        background-color: $dropdown-divider-bg;
+    }
+
+    span.emoji {
+        display: inline-block;
+        width: rem-calc(24);
+        margin-right: $drop-item-icon-margin-right;
+        font-size: rem-calc(18);
+        vertical-align: bottom;
+        text-align: center;
+    }
+
+    &.icononly {
+        li > a {
+            padding: $drop-item-icon-only-padding;
+
+            [class^="icon-"],
+            [class*=" icon-"] {
+                margin: 0;
+                margin-bottom: rem-calc(3);
+            }
+        }
+
+        left: rem-calc(-11);
+    }
+
+    .direct {
+        width: $small-icon-size;
+        height: $small-icon-size;
+        right: rem-calc(0);
+        top: rem-calc(10);
+    }
+}
+
+.dropdown-menu-auto-width {
+    li.dropdown-menu-menu-item > a,
+    li.dropdown-menu-item > a,
+    .dropdown-menu-menu-submenu-title {
+        max-width: 100%;
+    }
+}
+
+// Hover/Focus state
+.dropdown-menu-menu-submenu-open,
+.dropdown-menu-item:hover,
+.dropdown-menu-menu-item-active,
+.dropdown-menu-item > a:hover,
+.dropdown-menu-menu-item > a:hover {
+    text-decoration: none;
+
+    // .text-primary,
+    // .text-secondary,
+    // strong {
+    //     text-decoration: none;
+    //     color: $dropdown-link-hover-color;
+    //     background-color: $dropdown-link-hover-bg;
+    // }
+}
+.dropdown-menu-menu-item-active > a:hover {
+    background-color: unset;
+}
+
+.dropdown-menu,
+.dropdown-menu-menu-submenu {
+    .dropdown-menu-menu-item-selected,
+    li.active {
+        & {
+            text-decoration: none;
+            outline: 0;
+            color: $dropdown-link-active-bg;
+        }
+
+        & > a {
+            color: $dropdown-link-active-bg;
+        }
+
+        & > span > a {
+            color: $dropdown-link-active-bg;
+        }
+
+        .text-primary,
+        .text-secondary,
+        strong {
+            color: $dropdown-link-active-bg;
+        }
+    }
+
+    .dropdown-menu-menu-item-selected.unhighlighted {
+        color: initial !important;
+    }
+}
+
+// Disabled state
+//
+// Gray out text and ensure the hover/focus state remains gray
+
+.dropdown-menu .disabled .dropdown-menu-menu-item {
+    &,
+    &:hover,
+    &:focus {
+        color: $dropdown-link-disabled-color;
+    }
+
+    // Nuke hover/focus effects
+    &:hover,
+    &:focus {
+        text-decoration: none;
+        background-color: transparent;
+        background-image: none; // Remove CSS gradient
+        cursor: $cursor-disabled-value;
+    }
+}
+
+// Dropdown section headers
+.dropdown-header {
+    display: block;
+    padding: 3px 20px;
+    line-height: $li-line-height;
+    white-space: nowrap; // as with > li > a
+}
+
+// Backdrop to catch body clicks on mobile, etc.
+.dropdown-backdrop {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: ($zindex-dropdown - 10);
+}
+
+// Allow for dropdowns to go bottom up (aka, dropup-menu)
+//
+// Just add .dropup after the standard .dropdown class and you're set, bro.
+
+.dropup {
+    // Reverse the caret
+    .caret {
+        border-top: 0;
+        border-bottom: $caret-width-base dashed;
+        border-bottom: $caret-width-base solid \9; // IE8
+        content: "";
+    }
+
+    // Different positioning for bottom up menu
+    .dropdown-menu {
+        top: auto;
+        bottom: 100%;
+        margin-bottom: 8px;
+    }
+}
+
+// 有箭头的时候整体向下移动
+.dropdown {
+    .boult ~ div > .dropdown-menu,
+    .boult ~ div > .menu-ul {
+        top: calc(100% + 8px);
+
+        &.pull-right {
+            right: rem-calc(-15);
+        }
+
+        &.pull-left {
+            left: rem-calc(-10);
+        }
+    }
+}
+
+/** dirty fix **/
+.dropdown-menu strong {
+    color: inherit;
+    font-weight: normal;
+}
+
+.project-dropdown-menu {
+    ul {
+        max-height: $drop-list-inner-max-height;
+    }
+}
+
+.menu-ul {
+    position: absolute;
+
+    .dropdown-menu {
+        position: relative;
+        overflow: hidden;
+
+        ul {
+            max-height: $drop-list-inner-max-height;
+
+            .group-item .direct {
+                width: rem-calc(16);
+                height: rem-calc(16);
+            }
+
+            li a:hover .direct {
+                color: $manatee;
+            }
+        }
+    }
+
+    .groups-ul {
+        position: absolute;
+        bottom: auto;
+    }
+
+    .antiscroll-scrollbar-vertical {
+        margin-top: $base-list-padding-t-b;
+    }
+}
+
+/** /dirty fix **/
+
+/** 二级菜单 **/
+.dropdown-menu-menu-submenu-hidden {
+    display: none;
+}
+
+.dropdown-menu-menu-submenu-popup {
+    position: absolute;
+    left: 100%;
+    right: auto;
+    top: 0;
+    z-index: $zindex-dropdown;
+    float: left;
+    max-height: $drop-list-max-height;
+    // overflow: auto;
+    // overflow-x: hidden;
+    padding: $base-list-padding-t-b 0;
+    list-style: none;
+    text-align: left;
+    background-color: $dropdown-bg;
+    border-radius: $base-border-radius;
+    box-shadow: $small-shadow;
+
+    // &.open-sub {
+    //     text-decoration: none;
+    //     background-color: $base-active-popup-bg;
+    // }
+
+    // &.open-sub > .submenu.dropdown-menu {
+    //     display: block;
+    // }
+}
+
+.submenu-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.TickTick-typeahead.dropdown-menu {
+    overflow: auto;
+    z-index: 1100; // global-quick-add
+
+    .active > a {
+        & {
+            text-decoration: none;
+            outline: 0;
+            background-color: $base-active-popup-bg !important;
+
+            .text-primary,
+            .text-secondary,
+            strong {
+                color: $dropdown-link-active-bg;
+            }
+        }
+    }
+
+    li > a {
+        &:hover,
+        &:focus,
+        &.open {
+            background-color: inherit;
+        }
+    }
+}
+
+.dropdown-custom {
+    .dropdown-menu {
+        position: absolute;
+        display: none;
+    }
+
+    &.open {
+        .dropdown-menu {
+            display: block;
+        }
+    }
+}
+
+.order-by-dropdown-menu {
+    .sort-by-duedate-default,
+    .sort-by-priority-default {
+        display: list-item;
+
+        & > a {
+            font-size: rem-calc(12);
+            display: inline-block;
+            text-overflow: initial;
+        }
+    }
+}
+
+.task-mode-menu {
+    .dropdown-menu-menu-item-selected {
+        svg {
+            fill: $dropdown-link-active-bg;
+        }
+    }
+}
+
+.modal-dropdown-menu {
+    z-index: $zindex-modal-dropdown !important;
+}
+
+.assignment.dropdown {
+    .dropdown-toggle:not([disabled]) {
+        &.active,
+        &:hover {
+            .avatar {
+                transform: scale(1.1);
+                transition: transform 0.2s ease-out;
+            }
+        }
+    }
+}

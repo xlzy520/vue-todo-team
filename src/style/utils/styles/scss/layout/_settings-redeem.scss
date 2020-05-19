@@ -1,0 +1,110 @@
+
+$redeem-panel-w: rem-calc(590);
+$redeem-width: rem-calc(396);
+$redeem-divider: rem-calc(8);
+$redeem-bg-height: rem-calc(250);
+
+$redeem-icon-size: rem-calc(46);
+
+.redeem-panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  text-align: center;
+  padding-top: $redeem-bg-height;
+  background-image: url('/static/img/redeem-bg.png');
+  background-size: 100% $redeem-bg-height;
+  background-repeat: repeat-x;
+
+  // .r-icon {
+  //   margin-bottom: $redeem-divider * 1.25;
+  // }
+
+  .r-title {
+    font-size: rem-calc(16);
+    line-height: 1;
+    margin-bottom: $redeem-divider;
+  }
+
+  .r-account {
+    line-height: 1;
+    margin-bottom: rem-calc(50);
+  }
+
+  .r-action {
+    display: inline-block;
+    margin: 0 auto;
+    height: rem-calc(80);
+
+    input {
+      width: rem-calc(280);
+      float: left;
+      border-radius: rem-calc(2) 0 0;
+    }
+
+    .btns {
+      float: left;
+
+      button {
+        border: 1px solid $black14;
+        border-left-width: 0;
+        border-radius: 0 rem-calc(2) rem-calc(2);
+        background-color: white;
+        color: $black85;
+        min-width: rem-calc(80);
+
+        &.disabled {
+          color: $black24;
+          background-color: white;
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+          background-color: white;
+        }
+
+        &:active {
+          color: $black54;
+        }
+      }
+    }
+
+    .r-error,
+    .r-expired,
+    .r-validated {
+      text-align: left;
+      line-height: 2;
+      margin-top: $redeem-divider / 2;
+    }
+  }
+
+  .r-code {
+    button {
+      background-color: $moonyellow;
+      margin-bottom: rem-calc(10);
+    }
+
+    .text-info-title {
+      a,
+      a:visited {
+        color: $black54;
+      }
+    }
+  }
+}
+
+// < 920
+@media #{$medium-low} {
+  .redeem-panel {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+@media not all, not all, (-webkit-min-device-pixel-ratio: 1.5), not all, (min-resolution: 1.5dppx) {
+  .redeem-panel {
+    background-image: url('/static/img/redeem-bg@2.png');
+  }
+}

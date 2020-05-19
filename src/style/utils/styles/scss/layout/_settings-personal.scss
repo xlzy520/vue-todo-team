@@ -1,0 +1,252 @@
+$p-padding-left: rem-calc(184);
+
+.personal-panel {
+    position: relative;
+
+    .settings-rank {
+        position: relative;
+        height: rem-calc(180);
+        margin-top: -$s-base-p-t;
+        margin-bottom: rem-calc(20);
+        border-bottom: 1px solid $black06;
+
+        .avatar-panel {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+
+            .avatar-img {
+                position: relative;
+                display: inline-block;
+                overflow: hidden;
+                vertical-align: middle;
+
+                .pro-med {
+                    position: absolute;
+                    top: rem-calc(3);
+                    right: rem-calc(3);
+                }
+
+                .edit-avatar {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: $avatar-size-lrg;
+                    height: $avatar-size-lrg;
+                    background-color: $black3;
+                    border-radius: 50%;
+                    text-align: center;
+                    display: none;
+
+                    .icon-edit-avatar {
+                        @include center;
+                    }
+                }
+
+                &:hover {
+                    .edit-avatar {
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+
+        .hw-panel {
+            @include centerY;
+            width: 100%;
+            border-radius: rem-calc(4);
+            padding-left: $p-padding-left;
+
+            .hw-line + .hw-line {
+                margin-top: rem-calc(6);
+            }
+
+            .nickname {
+                position: relative;
+                font-size: rem-calc(28);
+                border-bottom: 1px solid transparent;
+                white-space: nowrap;
+                overflow: hidden;
+
+                &:hover {
+                    cursor: pointer;
+                }
+
+                &:focus {
+                    cursor: text;
+                }
+
+                &:empty:before {
+                    content: attr(placeholder);
+                    display: block;
+                    /* For Firefox */
+                    color: $black18;
+                }
+            }
+
+            .hw-list {
+                display: flex;
+                position: relative;
+                width: 100%;
+            }
+
+            .hw-item {
+                text-align: center;
+                display: inline-block;
+                line-height: rem-calc(28);
+
+                .name {
+                    padding-right: rem-calc(12);
+                }
+
+                .number {
+                    border-left: rem-calc(1) solid $timberwolf;
+                    padding-left: rem-calc(12);
+                }
+            }
+
+            .hw-item:first-child {
+                .number {
+                    border: none;
+                    padding-left: 0;
+                }
+            }
+
+            .hw-more-hard {
+                line-height: rem-calc(28);
+            }
+        }
+    }
+
+    .controls {
+        margin-left: $p-padding-left;
+        position: relative;
+
+        a {
+            vertical-align: middle;
+        }
+
+        .icon-warning {
+            margin-left: rem-calc(4);
+            cursor: pointer;
+        }
+
+        .control-action {
+            .control-name {
+                display: inline-block;
+                max-width: rem-calc(340);
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+
+            .control-name:not(:empty) ~ .control-edit {
+                padding-left: rem-calc(18);
+            }
+        }
+
+        .control-form {
+            width: rem-calc(266);
+
+            .tick-input-wrapper {
+                margin-top: rem-calc(8);
+            }
+
+            button {
+                margin-top: rem-calc(10);
+                width: rem-calc(129);
+
+                &:first-child {
+                    margin-right: rem-calc(4);
+                }
+            }
+        }
+    }
+
+    // delete account
+    .delete-account-btn {
+        position: absolute;
+        bottom: rem-calc(-160);
+        margin-left: $p-padding-left;
+        margin-bottom: rem-calc(60);
+    }
+}
+
+.delete-wrap {
+    position: relative;
+
+    input[type="checkbox"] {
+        margin: 0;
+        vertical-align: middle;
+    }
+
+    input[type="checkbox"] + label {
+        vertical-align: middle;
+        line-height: unset;
+    }
+
+    input.psw {
+        width: 100%;
+    }
+
+    .text-alert {
+        // line-height: $li-line-height;
+    }
+
+    .alert {
+        margin-bottom: rem-calc(20);
+    }
+
+    .control-label {
+        line-height: $li-line-height;
+
+        strong {
+            vertical-align: middle;
+        }
+    }
+
+    .has-password .control-label {
+        position: absolute;
+        left: 0;
+    }
+
+    .box {
+        margin-bottom: rem-calc(16);
+        &:first-child {
+            margin-top: rem-calc(28);
+        }
+
+        &:last-child {
+            margin-bottom: rem-calc(50);
+        }
+    }
+}
+
+#ranking {
+    vertical-align: baseline;
+}
+
+// < 920
+@media #{$medium-low} {
+    .personal-panel {
+        .controls {
+            float: left;
+            margin-left: 0;
+        }
+    }
+}
+
+@media #{$small-only} {
+    .personal-panel .settings-rank .hw-panel .hw-item {
+        padding: 0 rem-calc(10);
+    }
+
+    .personal-panel .row-left {
+        width: auto;
+    }
+
+    .personal-panel .delete-account-btn {
+        bottom: rem-calc(-120);
+    }
+}

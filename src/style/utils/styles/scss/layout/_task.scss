@@ -1,0 +1,418 @@
+@import "src/style/utils/var.scss";
+
+%t-line-bg {
+    background-color: transparent;
+}
+
+.task {
+    //position: absolute;
+    width: 100%;
+    transition: top 0.2s ease, opacity 0.2s ease;
+    font-size: 0;
+    height: rem-calc(40);
+
+    &.hide-height {
+        height: 0;
+    }
+
+    &.hide-opacity {
+        opacity: 0;
+    }
+
+    &.diff-task.task-enter {
+        height: 0;
+    }
+
+    &.diff-task.task-enter.task-enter-active {
+        height: rem-calc(40);
+        transition: height 0.2s ease;
+    }
+
+    &.task-exit {
+        height: 0;
+    }
+
+    &.diff-task.task-exit {
+        height: rem-calc(40);
+    }
+
+    &.diff-task.task-exit.task-exit-active {
+        height: 0;
+        transition: height 0.2s ease;
+    }
+
+    .content-print {
+        display: none;
+    }
+
+    .l-task-bg {
+        margin: 0 rem-calc(16);
+        background-clip: content-box;
+        border-radius: rem-calc(4);
+    }
+
+    .l-task {
+        display: block;
+        padding-left: rem-calc(12);
+        padding-right: rem-calc(12);
+    }
+
+    .t-inner {
+        @include liheight(rem-calc(38));
+    }
+
+    .t-menu-toggle {
+        visibility: hidden;
+        position: absolute;
+        top: rem-calc(14);
+        right: rem-calc(2);
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &.open {
+            visibility: visible;
+        }
+
+        svg {
+            width: rem-calc(12);
+            height: rem-calc(12);
+            fill: black;
+        }
+    }
+
+    .t-line {
+        height: rem-calc(1);
+        width: calc(100% - 80px);
+        margin-left: rem-calc(52);
+    }
+
+    .t-line.bottom {
+        @extend %t-line-bg;
+    }
+
+    &:first-child {
+        .t-line {
+            @extend %t-line-bg;
+        }
+    }
+
+    &:last-child {
+        .t-line.bottom {
+            @extend %t-line-bg;
+        }
+
+        &:hover,
+        &.active {
+            .t-line.bottom {
+                @extend %t-line-bg;
+            }
+        }
+    }
+
+    &:hover,
+    &.active {
+        .t-line {
+            @extend %t-line-bg;
+        }
+
+        & + .task {
+            .t-line.top {
+                @extend %t-line-bg;
+            }
+        }
+    }
+
+    &.selected .t-line,
+    &.selected + .task .t-line.top {
+        background-color: transparent !important;
+    }
+
+    .drag {
+        left: 0;
+        cursor: move;
+        padding-left: rem-calc(3);
+        padding-right: rem-calc(1);
+    }
+
+    &:hover {
+        .drag {
+            visibility: visible;
+        }
+
+        .t-menu-toggle {
+            visibility: visible;
+            // display: block;
+        }
+    }
+
+    .t-check {
+        position: absolute;
+        padding-right: rem-calc(10);
+    }
+
+    .title-wrap {
+        height: 100%;
+        margin-left: rem-calc(24);
+        margin-right: rem-calc(10);
+
+        .title {
+            height: 100%;
+            white-space: nowrap;
+            word-break: keep-all;
+            overflow: hidden;
+            padding: rem-calc(8) 0;
+            line-height: rem-calc(22);
+            [contenteditable] {
+                min-height: rem-calc(22);
+            }
+            &.pastable-focus {
+                text-overflow: initial;
+            }
+        }
+    }
+
+    &.dragging {
+        .l-task {
+            background-color: #4b6fde;
+        }
+    }
+
+    .tag-list {
+        display: inline-block;
+
+        .tag-item {
+            position: relative;
+            margin-left: rem-calc(3);
+            max-width: rem-calc(100);
+            .tag-name {
+                max-width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                vertical-align: baseline;
+                display: inline-block;
+                white-space: nowrap;
+            }
+        }
+    }
+
+    .task-tips-more {
+        display: inline-block;
+    }
+
+    .tips {
+        max-height: rem-calc(38); // fix the strange bug
+        z-index: 1;
+        white-space: nowrap;
+
+        &.t-more-tips {
+            padding-left: rem-calc(22);
+            white-space: normal;
+            max-height: none;
+
+            .tag-list {
+                padding-bottom: rem-calc(10);
+            }
+
+            .tag-item {
+                height: rem-calc(16);
+                line-height: rem-calc(16);
+            }
+        }
+
+        .i-4 {
+            height: rem-calc(16);
+        }
+
+        .tip {
+            display: none;
+            margin-left: rem-calc(4);
+
+            &.show {
+                display: inline;
+            }
+        }
+
+        .project-hint,
+        .date-hint,
+        .assignment {
+            margin-left: rem-calc(8);
+        }
+
+        .t-date {
+            font-size: $base-font-size-sml;
+
+            span {
+                vertical-align: baseline;
+            }
+        }
+
+        .project-hint {
+            i {
+                width: rem-calc(6);
+                height: rem-calc(6);
+                border-radius: 50%;
+                margin-left: rem-calc(0);
+                margin-right: rem-calc(2);
+            }
+
+            &.has-color {
+                i {
+                    display: inline-block;
+                }
+            }
+
+            .project-name {
+                display: inline-block;
+                max-width: rem-calc(72);
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-size: rem-calc(10);
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        .assignment {
+            position: relative;
+
+            .dropdown-menu {
+                left: rem-calc(-150);
+            }
+        }
+
+        .progress-text {
+            color: $black54;
+        }
+
+        .progress-hint {
+            canvas {
+                border: 1px solid $black12;
+                border-radius: 50%;
+                margin: 0 rem-calc(2);
+            }
+            &.habit {
+                > svg {
+                    vertical-align: middle;
+                    > circle {
+                        &:nth-of-type(1) {
+                            // background
+                            opacity: 0.08;
+                        }
+                        &:nth-of-type(2) {
+                            // progress
+                            opacity: 0.56;
+                        }
+                    }
+                }
+            }
+        }
+
+        .icon-assignment-nobody {
+            margin-right: rem-calc(12);
+        }
+    }
+
+    &.checked {
+        .tips {
+            .tip.progress-hint.show {
+                display: none;
+            }
+
+            .i-o-12 {
+                opacity: 0.08;
+            }
+        }
+    }
+}
+
+.drag-help.task {
+    .drag,
+    .t-menu-toggle {
+        visibility: hidden !important;
+    }
+}
+
+.show-more,
+.tl-loading {
+    height: rem-calc(44);
+    padding-top: rem-calc(8);
+    line-height: rem-calc(36);
+}
+
+.show-more,
+.tl-loading {
+    margin-left: rem-calc(28);
+    margin-right: rem-calc(28);
+    cursor: pointer;
+}
+
+.task-item-assignment {
+    position: absolute;
+
+    .dropdown-menu {
+        position: relative;
+        overflow-y: auto;
+        max-height: rem-calc(180);
+
+        li > a {
+            min-width: rem-calc(186);
+        }
+    }
+}
+
+// sort
+$t-p-r: rem-calc(3) + $col-padding;
+$t-title-m-r: rem-calc(10);
+
+.tasks {
+    .ui-sortable-placeholder {
+        margin-left: rem-calc(52);
+        width: calc(100% - 80px) !important; // @todo
+    }
+}
+
+.task.drag-help {
+    height: rem-calc(36);
+}
+
+.task.t-multi {
+    font-size: $body-font-size;
+    line-height: rem-calc(38);
+    padding: 0 rem-calc(23);
+}
+
+.task.ui-sortable-helper {
+    z-index: 2;
+
+    // border: 1px solid;
+    > a {
+        padding: 0 rem-calc(14);
+    }
+
+    .t-line {
+        @extend %t-line-bg;
+    }
+
+    .tag-list {
+        display: none;
+    }
+}
+
+.bar-adaption {
+    display: flex;
+    flex-direction: column;
+
+    .tl-body {
+        flex: 1;
+        padding-top: 0;
+        overflow: hidden;
+    }
+
+    .tl-bar {
+        position: relative;
+    }
+}

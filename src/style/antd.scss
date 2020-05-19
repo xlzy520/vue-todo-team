@@ -4,3 +4,24 @@
 .has-success:after{
   background-color: initial;
 }
+
+
+.task-list-body{
+  .ant-collapse > .ant-collapse-item > .ant-collapse-header{
+    color: rgba(0,0,0,.36);
+    font-size: 12px;
+    padding: 5px 16px;
+    padding-left: 50px;
+
+  }
+  .ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow{
+    left: 30px;
+  }
+  .ant-collapse{
+    background-color: #fff;
+  }
+  .ant-collapse-content > .ant-collapse-content-box{
+    padding: 0;
+  }
+
+}

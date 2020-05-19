@@ -1,0 +1,112 @@
+$s-select-w: rem-calc(288);
+$s-select-h: rem-calc(30);
+$row-height: rem-calc(60);
+
+.smart-project-panel {
+    .row {
+        position: relative;
+        padding: 0;
+        min-height: $row-height;
+        line-height: $row-height;
+
+        & > svg {
+            height: $row-height;
+            line-height: $row-height;
+            fill: $black54;
+            margin-right: rem-calc(8);
+        }
+    }
+
+    .beta {
+        line-height: $row-height - rem-calc(10);
+    }
+
+    .row-left {
+        margin: 0;
+        width: rem-calc(154);
+    }
+
+    .outer-date {
+        position: absolute;
+        height: rem-calc(24);
+        width: rem-calc(24);
+        top: rem-calc(17);
+        left: 0;
+        text-align: center;
+        line-height: rem-calc(24);
+
+        .inner-date {
+            color: $white;
+            font-size: rem-calc(10);
+        }
+    }
+
+    .s-menu {
+        padding: ($row-height - $s-select-h)/2 0;
+        float: left;
+    }
+
+    .select-menu {
+        width: $s-select-w;
+    }
+
+    .row:last-child {
+        .row-right {
+            float: left;
+        }
+    }
+
+    .smart-project-plugin {
+        margin-top: rem-calc(13);
+        padding-top: rem-calc(15);
+        border-top: rem-calc(1) solid rgba(0, 0, 0, 0.08);
+
+        > .row {
+            padding: rem-calc(13) 0;
+            .row-left {
+                width: rem-calc(186);
+                line-height: 1;
+            }
+            .s-menu {
+                padding: 0;
+                width: calc(100% - 186px);
+                .select-menu {
+                    margin-bottom: rem-calc(12);
+                }
+                > p {
+                    line-height: 1;
+                    margin-bottom: rem-calc(10);
+                }
+            }
+        }
+
+        .smart-project-plugin-item {
+            display: inline-block;
+            overflow: hidden;
+            width: 100%;
+
+            .wrapper {
+                width: $s-select-w;
+
+                .switch {
+                    float: right;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 565px) {
+    .smart-project-panel {
+        .smart-project-plugin {
+            > .row {
+                .row-left {
+                    line-height: inherit;
+                }
+                .s-menu {
+                    width: auto;
+                }
+            }
+        }
+    }
+}

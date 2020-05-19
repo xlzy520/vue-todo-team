@@ -1,0 +1,250 @@
+$sprite: (
+  s-pro-attachment: (
+  offset-x: 0px,
+  offset-y: 0px,
+  width: 200px,
+  height: 120px,
+  total-width: 600px,
+  total-height: 600px,
+  image: '~dida-pro.png'
+  ),
+  s-pro-cal: (
+  offset-x: -200px,
+  offset-y: 0px,
+  width: 200px,
+  height: 120px,
+  total-width: 600px,
+  total-height: 600px,
+  image: '~dida-pro.png'
+  ),
+  s-pro-csl: (
+  offset-x: 0px,
+  offset-y: -120px,
+  width: 200px,
+  height: 120px,
+  total-width: 600px,
+  total-height: 600px,
+  image: '~dida-pro.png'
+  ),
+  s-pro-limit: (
+  offset-x: -200px,
+  offset-y: -120px,
+  width: 200px,
+  height: 120px,
+  total-width: 600px,
+  total-height: 600px,
+  image: '~dida-pro.png'
+  ),
+  s-pro-mini-cal: (
+  offset-x: 0px,
+  offset-y: -240px,
+  width: 200px,
+  height: 120px,
+  total-width: 600px,
+  total-height: 600px,
+  image: '~dida-pro.png'
+  ),
+  s-pro-reminder: (
+  offset-x: -200px,
+  offset-y: -240px,
+  width: 200px,
+  height: 120px,
+  total-width: 600px,
+  total-height: 600px,
+  image: '~dida-pro.png'
+  ),
+  s-pro-search: (
+  offset-x: -400px,
+  offset-y: 0px,
+  width: 200px,
+  height: 120px,
+  total-width: 600px,
+  total-height: 600px,
+  image: '~dida-pro.png'
+  ),
+  s-pro-share: (
+  offset-x: -400px,
+  offset-y: -120px,
+  width: 200px,
+  height: 120px,
+  total-width: 600px,
+  total-height: 600px,
+  image: '~dida-pro.png'
+  ),
+  s-pro-siri: (
+  offset-x: -400px,
+  offset-y: -240px,
+  width: 200px,
+  height: 120px,
+  total-width: 600px,
+  total-height: 600px,
+  image: '~dida-pro.png'
+  ),
+  s-pro-subscribe: (
+  offset-x: 0px,
+  offset-y: -360px,
+  width: 200px,
+  height: 120px,
+  total-width: 600px,
+  total-height: 600px,
+  image: '~dida-pro.png'
+  ),
+  s-pro-subtask-desc: (
+  offset-x: -200px,
+  offset-y: -360px,
+  width: 200px,
+  height: 120px,
+  total-width: 600px,
+  total-height: 600px,
+  image: '~dida-pro.png'
+  ),
+  s-pro-subtask-reminder: (
+  offset-x: -400px,
+  offset-y: -360px,
+  width: 200px,
+  height: 120px,
+  total-width: 600px,
+  total-height: 600px,
+  image: '~dida-pro.png'
+  ),
+  s-pro-summary: (
+  offset-x: 0px,
+  offset-y: -480px,
+  width: 200px,
+  height: 120px,
+  total-width: 600px,
+  total-height: 600px,
+  image: '~dida-pro.png'
+  ),
+  s-pro-t-activity: (
+  offset-x: -200px,
+  offset-y: -480px,
+  width: 200px,
+  height: 120px,
+  total-width: 600px,
+  total-height: 600px,
+  image: '~dida-pro.png'
+  ),
+parts: (
+  total-width: 600px,
+  total-height: 600px,
+  image: '~dida-pro.png'
+  )
+);
+
+
+  @mixin sprite-size($image) {
+  background-size: map-get(map-get($sprite, $image), 'total-width') map-get(map-get($sprite, $image), 'total-height');
+  }
+
+  @mixin sprite-width($image) {
+  width: map-get(map-get($sprite, $image), 'width');
+  }
+
+  @mixin sprite-height($image) {
+  height: map-get(map-get($sprite, $image), 'height');
+  }
+
+  @mixin sprite-position($image) {
+  background-position: map-get(map-get($sprite, $image), 'offset-x') map-get(map-get($sprite, $image), 'offset-y');
+  }
+
+  @mixin sprite-image($image) {
+  background-image: url(map-get(map-get($sprite, $image), 'image') + '.png');
+  }
+
+  @mixin sprite-image-retina($image) {
+  background-image: url(map-get(map-get($sprite, $image), 'image') + '@2.png');
+  }
+
+
+
+
+  .icon-s-pro-attachment {
+  @include sprite-width("s-pro-attachment");
+  @include sprite-height("s-pro-attachment");
+  @include sprite-position("s-pro-attachment");
+  }
+  .icon-s-pro-cal {
+  @include sprite-width("s-pro-cal");
+  @include sprite-height("s-pro-cal");
+  @include sprite-position("s-pro-cal");
+  }
+  .icon-s-pro-csl {
+  @include sprite-width("s-pro-csl");
+  @include sprite-height("s-pro-csl");
+  @include sprite-position("s-pro-csl");
+  }
+  .icon-s-pro-limit {
+  @include sprite-width("s-pro-limit");
+  @include sprite-height("s-pro-limit");
+  @include sprite-position("s-pro-limit");
+  }
+  .icon-s-pro-mini-cal {
+  @include sprite-width("s-pro-mini-cal");
+  @include sprite-height("s-pro-mini-cal");
+  @include sprite-position("s-pro-mini-cal");
+  }
+  .icon-s-pro-reminder {
+  @include sprite-width("s-pro-reminder");
+  @include sprite-height("s-pro-reminder");
+  @include sprite-position("s-pro-reminder");
+  }
+  .icon-s-pro-search {
+  @include sprite-width("s-pro-search");
+  @include sprite-height("s-pro-search");
+  @include sprite-position("s-pro-search");
+  }
+  .icon-s-pro-share {
+  @include sprite-width("s-pro-share");
+  @include sprite-height("s-pro-share");
+  @include sprite-position("s-pro-share");
+  }
+  .icon-s-pro-siri {
+  @include sprite-width("s-pro-siri");
+  @include sprite-height("s-pro-siri");
+  @include sprite-position("s-pro-siri");
+  }
+  .icon-s-pro-subscribe {
+  @include sprite-width("s-pro-subscribe");
+  @include sprite-height("s-pro-subscribe");
+  @include sprite-position("s-pro-subscribe");
+  }
+  .icon-s-pro-subtask-desc {
+  @include sprite-width("s-pro-subtask-desc");
+  @include sprite-height("s-pro-subtask-desc");
+  @include sprite-position("s-pro-subtask-desc");
+  }
+  .icon-s-pro-subtask-reminder {
+  @include sprite-width("s-pro-subtask-reminder");
+  @include sprite-height("s-pro-subtask-reminder");
+  @include sprite-position("s-pro-subtask-reminder");
+  }
+  .icon-s-pro-summary {
+  @include sprite-width("s-pro-summary");
+  @include sprite-height("s-pro-summary");
+  @include sprite-position("s-pro-summary");
+  }
+  .icon-s-pro-t-activity {
+  @include sprite-width("s-pro-t-activity");
+  @include sprite-height("s-pro-t-activity");
+  @include sprite-position("s-pro-t-activity");
+  }
+
+
+.icon_pro {
+  @include sprite-size('parts');
+  background-repeat: no-repeat;
+  display: inline-block;
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (   min--moz-device-pixel-ratio: 2),
+  only screen and (     -o-min-device-pixel-ratio: 2/1),
+  only screen and (        min-device-pixel-ratio: 2),
+  only screen and (                min-resolution: 192dpi),
+  only screen and (                min-resolution: 2dppx) {
+
+    @include sprite-size('parts');
+
+  }
+}

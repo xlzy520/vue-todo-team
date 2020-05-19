@@ -1,0 +1,31 @@
+.tc-repeat-count {
+    width: $tc-smart-menu-width;
+    position: absolute;
+    left: rem-calc(10);
+    top: rem-calc(35);
+    padding: rem-calc(10);
+    background-color: $base-bg;
+    color: $black85;
+
+    input {
+        color: $black85;
+    }
+
+    .row {
+        display: flex;
+        margin-bottom: rem-calc(10);
+        align-items: center;
+
+        span {
+            flex: 3;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        input {
+            flex: 2;
+            min-width: 0;
+            overflow: hidden;
+        }
+    }
+}

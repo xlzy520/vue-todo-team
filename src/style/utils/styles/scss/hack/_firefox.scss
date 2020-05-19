@@ -1,0 +1,13 @@
+.firefox {
+    .antiscroll-inner {
+        scrollbar-width: none;
+    }
+
+    .lists {
+        .smart-project-view-area {
+            .project-box > svg {
+                margin-bottom: 1px;
+            }
+        }
+    }
+}

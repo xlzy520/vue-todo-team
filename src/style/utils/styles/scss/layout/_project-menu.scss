@@ -1,0 +1,10 @@
+.project-menu, .project-dropdown-menu {
+    max-height: rem-calc(305);
+    .dropdown-menu-menu {
+        max-height: rem-calc(295);
+        & > li {
+            // @nanhai MenuItem组件当鼠标hover上去时该组件会滚入到视图中，所以要加个间距。
+            margin-bottom: rem-calc(1);
+        }
+    }
+}

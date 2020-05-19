@@ -1,0 +1,247 @@
+$base-size: rem-calc(58);
+
+#pomodoro-timer .wrapper {
+    position: relative;
+    height: $base-size;
+    color: $white8;
+
+    .icons {
+        position: absolute;
+        right: rem-calc(24);
+        top: 50%;
+        transform: translateY(-50%);
+        width: rem-calc(28);
+        height: rem-calc(28);
+        z-index: 1;
+
+        &.run-animation {
+            .circle-warpper > div {
+                display: block;
+            }
+            .right-circle > div {
+                animation-name: circle_progress_right;
+            }
+            .left-circle > div {
+                animation-name: circle_progress_left;
+            }
+        }
+
+        .circle-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            border-radius: 50%;
+            border: rem-calc(2) solid rgba(#4b6fde, 0.36);
+        }
+
+        .circle-warpper {
+            width: rem-calc(14);
+            height: rem-calc(28);
+            position: absolute;
+            top: 0;
+            overflow: hidden;
+
+            &.right-circle {
+                right: 0;
+                > div {
+                    right: 0;
+                    border-right-color: #4b6fde;
+                    border-top-color: #4b6fde;
+                }
+            }
+
+            &.left-circle {
+                left: 0;
+                > div {
+                    left: 0;
+                    border-left-color: #4b6fde;
+                    border-bottom-color: #4b6fde;
+                }
+            }
+
+            > div {
+                width: rem-calc(28);
+                height: rem-calc(28);
+                border: rem-calc(2) solid transparent;
+                position: absolute;
+                border-radius: 50%;
+                transform: rotate(-135deg);
+                top: 0;
+                animation-iteration-count: 1;
+                animation-timing-function: linear;
+                display: none;
+            }
+        }
+
+        svg {
+            position: absolute;
+            width: rem-calc(10);
+            height: rem-calc(10);
+            display: block;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            fill: #4b6fde;
+        }
+        .icon-pomo-start {
+            padding-left: rem-calc(2);
+        }
+        .icon-pomo-stop {
+            width: rem-calc(8);
+            height: rem-calc(8);
+        }
+    }
+
+    .detail {
+        position: relative;
+        align-items: center;
+        height: 100%;
+        padding: rem-calc(12) rem-calc(64) rem-calc(12) rem-calc(24);
+        text-align: left;
+
+        .time {
+            font-size: rem-calc(18);
+            line-height: rem-calc(18);
+        }
+
+        .title {
+            cursor: pointer;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            font-size: rem-calc(12);
+            max-width: calc(100% - 16px);
+
+            &.has-task:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .title-and-setting {
+        display: flex;
+        align-items: center;
+        line-height: rem-calc(16);
+    }
+
+    .pomodoro-settings {
+        text-align: center;
+        line-height: 1;
+        margin-left: rem-calc(4);
+        display: none;
+
+        svg {
+            width: rem-calc(16);
+            height: rem-calc(16);
+        }
+    }
+
+    &:hover {
+        .detail .title {
+            display: block;
+        }
+        .pomodoro-settings {
+            display: inline-block;
+        }
+    }
+}
+
+#datepicker + #pomodoro-timer .wrapper {
+    border-top-width: rem-calc(1);
+    border-top-style: solid;
+}
+
+@keyframes circle_progress_right {
+    0% {
+        -webkit-transform: rotate(-135deg);
+    }
+    50%,
+    100% {
+        -webkit-transform: rotate(45deg);
+    }
+}
+@keyframes circle_progress_left {
+    0%,
+    49% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+        -webkit-transform: rotate(-135deg);
+    }
+    100% {
+        -webkit-transform: rotate(45deg);
+    }
+}
+
+.edit-pomodoro {
+    width: rem-calc(434);
+    height: $popup-max-height;
+    .popup-body {
+        padding: 0;
+        .antiscroll-wrap {
+            padding: rem-calc(16) rem-calc(24);
+        }
+    }
+    .row {
+        display: flex;
+
+        & + .row {
+            margin-top: rem-calc(16);
+        }
+
+        .label,
+        .s-menu {
+            flex: 1;
+        }
+
+        .label {
+            line-height: rem-calc(30);
+        }
+
+        .s-menu {
+            & > input {
+                max-width: rem-calc(100);
+                min-width: rem-calc(100);
+            }
+
+            &.auto-pomo {
+                > p {
+                    margin-bottom: rem-calc(16);
+                }
+            }
+
+            input[type="checkbox"] {
+                margin: 0;
+                vertical-align: middle;
+            }
+
+            input[type="checkbox"] + label {
+                line-height: unset;
+            }
+        }
+    }
+
+    .divider {
+        border-top: 1px solid;
+        margin: rem-calc(14) 0;
+    }
+
+    .select-list {
+        max-height: rem-calc(200);
+    }
+
+    .action {
+        display: inline-block;
+        margin-top: rem-calc(6);
+    }
+
+    .hide-goal {
+        input,
+        span {
+            display: none;
+        }
+    }
+}

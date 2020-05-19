@@ -327,6 +327,7 @@ export default {
 
       taskApi.update(this.taskDetail).then(res=>{
         console.log(res);
+        this.$emit('fetchTodoList');
       })
 
       $("#genericPopup").modal("hide");

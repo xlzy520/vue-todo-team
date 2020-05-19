@@ -1,0 +1,29 @@
+/*cursor style*/
+.cr-pointer {
+    cursor: $cursor-pointer-value;
+}
+
+.cr-disabled {
+    cursor: $cursor-disabled-value;
+}
+
+input[type="button"] {
+    cursor: $cursor-pointer-value;
+    &.disabled {
+        cursor: $cursor-disabled-value;
+    }
+}
+
+a[disabled],
+input[disabled] {
+    cursor: $cursor-disabled-value;
+}
+
+.cr-text {
+    cursor: $cursor-text-value;
+}
+
+.cr-help {
+    cursor: $cursor-help-value;
+}
+/*cursor style end*/

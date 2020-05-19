@@ -1,0 +1,137 @@
+.filter-advance {
+    font-size: rem-calc(12);
+    line-height: rem-calc(12);
+    margin: rem-calc(12) rem-calc(28) rem-calc(36) rem-calc(28);
+
+    .direct {
+        position: static;
+        margin-right: rem-calc(24);
+        font-size: rem-calc(12);
+        &:before {
+            right: 0;
+            top: rem-calc(7);
+            height: rem-calc(6);
+            width: rem-calc(6);
+        }
+    }
+
+    svg[class^="icon-chevron"] {
+        width: rem-calc(12);
+        height: rem-calc(12);
+    }
+
+    .kalendae {
+        svg[class^="icon-chevron"] {
+            width: rem-calc(24);
+            height: rem-calc(24);
+        }
+    }
+
+    .filter-duedate {
+        .custom {
+            position: absolute;
+            background-color: $white;
+            width: rem-calc(227);
+            padding: rem-calc(10);
+            z-index: 2000;
+            input {
+                display: block;
+                margin-bottom: rem-calc(8);
+            }
+            input.btn {
+                margin-bottom: 0;
+                padding: 0;
+            }
+            .s-time,
+            .e-time {
+                width: 100%;
+            }
+            .btn {
+                display: inline-block;
+            }
+            .custom-name {
+                display: block;
+                margin-bottom: rem-calc(3);
+            }
+        }
+    }
+
+    .filter-project {
+        &.open {
+            .menu {
+                display: block;
+            }
+            .select-list {
+                display: block;
+            }
+        }
+        .menu {
+            position: absolute;
+            min-width: rem-calc(216);
+            max-width: rem-calc(260);
+            background-color: $white;
+            display: none;
+            z-index: 2;
+        }
+        .select-list {
+            position: relative;
+            max-height: rem-calc(250);
+            width: 100%;
+            box-shadow: none;
+            border: none;
+            margin-top: 0;
+
+            .list-divider {
+                width: 100%;
+                height: rem-calc(1);
+                margin: rem-calc(6) 0;
+                background-color: $black08;
+            }
+        }
+
+        .control {
+            border-top: $base-border;
+            position: relative;
+            z-index: 1;
+            background: $white;
+            padding: rem-calc(12);
+
+            .btn {
+                width: 48%;
+                min-width: auto;
+                min-width: initial;
+
+                &:last-child {
+                    float: right;
+                }
+            }
+        }
+    }
+
+    .dropdown {
+        display: inline-block;
+        // margin-right: rem-calc(38);
+
+        .select-title {
+            border: none;
+        }
+
+        .options-item {
+            padding-right: rem-calc(30);
+            [class^="icon-"],
+            .emoji {
+                margin-right: rem-calc(6);
+            }
+        }
+
+        .group-project-item {
+            padding-left: rem-calc(38);
+        }
+    }
+
+    .list-wrapper {
+        .antiscroll-inner {
+            max-height: rem-calc(250);
+        }
+    }
+}

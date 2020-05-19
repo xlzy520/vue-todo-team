@@ -1,0 +1,36 @@
+@import "./scss/utils/variables";
+.trend {
+    display: flex;
+    height: rem-calc(21);
+    align-items: center;
+    justify-content: center;
+    &.mobile {
+        justify-content: left;
+    }
+    .icon {
+        width: rem-calc(12);
+        height: rem-calc(12);
+        margin-right: rem-calc(2);
+        &.down {
+            transform: rotate(180deg);
+        }
+    }
+
+    .info {
+        font-size: rem-calc(10);
+        font-weight: 400;
+        color: rgba(0, 0, 0, 0.24);
+        line-height: rem-calc(12);
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+}
+
+[class*="-dark-theme"] {
+    .trend {
+        .info {
+            color: rgba(255, 255, 255, 0.24);
+        }
+    }
+}

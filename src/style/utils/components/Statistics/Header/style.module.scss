@@ -1,0 +1,36 @@
+@import "./scss/utils/variables";
+.header {
+    max-width: rem-calc(960);
+    width: 100%;
+    height: rem-calc(50);
+    .container {
+        display: flex;
+        height: 100%;
+        align-items: center;
+        .title {
+            font-size: rem-calc(28);
+            font-weight: 500;
+            color: black;
+            line-height: rem-calc(40);
+        }
+        .segmentedControlWrapper {
+            flex: auto;
+            .segmentedControl {
+                width: rem-calc(319);
+                height: rem-calc(36);
+            }
+        }
+        .button {
+        }
+    }
+}
+
+[class*="-dark-theme"] {
+    .header {
+        .container {
+            .title {
+                color: white;
+            }
+        }
+    }
+}

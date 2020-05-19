@@ -1,0 +1,31 @@
+.feature-tip {
+	position: absolute;
+    padding: 0 rem-calc(8);
+    height: rem-calc(30);
+    line-height: rem-calc(30);
+    text-align: center;
+    background-color: black;
+    color: $white9;
+    min-width: rem-calc(100);
+    z-index: 1;
+    white-space: nowrap;
+
+    & > i {
+    	position: absolute;
+    }
+
+    & > span {
+    	font-size: rem-calc(12);
+    }
+
+    &:right {
+        left: calc(100% + 10px);
+        top: 50%;
+        transfrom: translateY(-50%);
+
+        & > i {
+            left: rem-calc(-6);
+            top: rem-calc(9);
+        }
+    }
+}

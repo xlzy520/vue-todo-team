@@ -1,0 +1,13 @@
+@import "./scss/utils/variables";
+i.dayCircle {
+    width: rem-calc(30);
+    height: rem-calc(30);
+    line-height: rem-calc(30);
+    border: none;
+    border-radius: 50%;
+    display: block;
+    text-align: center;
+    margin: rem-calc(4) auto;
+    font-weight: 500;
+    cursor: pointer;
+}

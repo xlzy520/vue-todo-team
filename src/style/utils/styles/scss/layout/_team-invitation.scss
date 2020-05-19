@@ -1,0 +1,28 @@
+.team-invitation-view {
+    width: $popup-med;
+    .popup-footer {
+        width: 100%;
+    }
+
+    .invite-content {
+        margin-top: rem-calc(16);
+        padding: rem-calc(10);
+        font-size: rem-calc(12);
+        border-radius: rem-calc(2);
+        color: $black54;
+        background: #eee;
+        width: 100%;
+        overflow: hidden;
+        word-break: break-word;
+    }
+
+    .invite-footer {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        .buttons {
+            flex: 1;
+            text-align: right;
+        }
+    }
+}

@@ -1,0 +1,56 @@
+
+// direct color === font color
+@mixin css-direct($direct-top, $direct-right, $direct-size, $direct-direction, $d-border-width:1px) {
+  content: "";
+  position: absolute;
+  top: $direct-top;
+  right: $direct-right;
+  height: $direct-size;
+  width: $direct-size;
+  border-style: solid;
+  border-width: $d-border-width;
+  border-top-color: transparent;
+  border-left-color: transparent;
+
+  @if ($direct-direction == up) {
+    transform: rotate(-135deg);
+  }
+  @if ($direct-direction == down) {
+    transform: rotate(45deg);
+  }
+  @if ($direct-direction == left) {
+    transform: rotate(135deg);
+  }
+  @if ($direct-direction == right) {
+    transform: rotate(-45deg);
+  }
+}
+
+
+.direct {
+  position: absolute;
+  display: inline-block;
+
+  // &:before {
+  //   @include css-direct(rem-calc(2), rem-calc(10), rem-calc(9), right)
+  // }
+
+  // &.left {
+  //   &:before {
+  //     transform: rotate(135deg);
+  //   }
+  // }
+
+  // &.up {
+  //   &:before {
+  //     transform: rotate(-135deg);
+  //   }
+  // }
+
+  // &.down {
+  //   &:before {
+  //     transform: rotate(45deg);
+  //   }
+  // }  
+
+}

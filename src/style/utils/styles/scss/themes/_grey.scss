@@ -1,0 +1,192 @@
+@import "src/style/utils/var.scss";
+
+$theme: $indigo;
+
+.grey-theme {
+    .fill-theme {
+        fill: $theme;
+    }
+
+    .fill-theme-force {
+        fill: $theme !important;
+    }
+
+    .title-edit::selection {
+        background: #aebce8;
+    }
+
+    // toolbar
+    .tool-bar {
+        .t-name {
+            color: $base-font-color-lightbg;
+            opacity: 1;
+        }
+    }
+
+    .inner-date {
+        color: $white;
+    }
+
+    .i-1 {
+        fill: $black;
+    }
+
+    .tool-bar {
+        .t-notify,
+        .t-search {
+            .i-1 {
+                opacity: 0.36;
+
+                &:hover {
+                    opacity: 0.54;
+                }
+            }
+        }
+
+        .indicator {
+            background-color: $black4;
+        }
+    }
+
+    .lists {
+        li > a,
+        div.p-sort-help > a,
+        .f-header > a,
+        .fake-li > a,
+        .l-c > a,
+        .l-new > a {
+            color: rgba($grey-basestyle-font-color, 0.85);
+
+            svg {
+                fill: rgba($grey-basestyle-font-color, 0.36);
+            }
+
+            .count {
+                color: rgba($grey-basestyle-font-color, 0.36);
+            }
+        }
+
+        .team-project-empty {
+            color: rgba($grey-basestyle-font-color, 0.56);
+        }
+
+        .team-header-box {
+            color: rgba($grey-basestyle-font-color, 0.56);
+            .count {
+                color: rgba($grey-basestyle-font-color, 0.85);
+            }
+        }
+
+        .inner-date {
+            color: $grey-sidebar-inner-date-color;
+        }
+
+        .active > a {
+            color: rgba($grey-basestyle-font-color, 0.85);
+
+            svg {
+                fill: rgba($grey-basestyle-font-color, 0.54);
+            }
+
+            .count {
+                color: rgba($grey-basestyle-font-color, 0.85);
+            }
+        }
+
+        .l-l-t {
+            a.l-tab {
+                color: rgba($grey-basestyle-font-color, 0.36);
+                border-bottom-color: rgba($grey-basestyle-font-color, 0.04);
+                &.t-active {
+                    color: rgba($grey-basestyle-font-color, 0.85);
+                }
+            }
+        }
+
+        .ui-sortable-placeholder {
+            border-color: $black15;
+        }
+    }
+
+    .l-divider {
+        background-color: rgba($grey-basestyle-font-color, 0.04);
+    }
+
+    // 侧边栏
+    .g-left {
+        background-color: $grey-color;
+        border-right: 1px solid $black07;
+        .upgrade-button {
+            background-color: $grey-upgrade-button-bg;
+        }
+    }
+
+    // 侧边栏正常状态下字体和icon透明度
+    .lists {
+        .l-tabs .l-tab {
+            border-bottom-color: $black06;
+        }
+
+        // 切换标签和tag
+        .l-c > a.l-tab {
+            color: $black36;
+
+            &:hover {
+                color: $black54;
+            }
+
+            &.t-active {
+                color: $black85;
+            }
+        }
+
+        .l-l-t {
+            .l-tab-slide {
+                background-color: $black85;
+            }
+        }
+
+        .ui-sortable-helper,
+        .ui-sortable-helper a,
+        .active.ui-sortable-helper a {
+            background-color: $whitegray;
+        }
+
+        .empty-tag {
+            svg {
+                fill: $black;
+            }
+
+            span {
+                color: $black;
+            }
+        }
+    }
+
+    .group-drag-hovered,
+    .project-drag-hovered,
+    .tag-drag-hovered,
+    .csl_drag-hovered {
+        > .f-header > .l-item,
+        > .l-item {
+            box-shadow: inset 0 0 0 1px $black12;
+        }
+    }
+
+    .column-list-view {
+        .column {
+            .column-main,
+            &.new-column {
+                background-color: $grey-column-bg;
+            }
+        }
+    }
+}
+
+@media #{$large-low} {
+    .grey-theme {
+        .g-left {
+            background-color: #f3f4f7;
+        }
+    }
+}

@@ -1,0 +1,84 @@
+@import "src/style/utils/var.scss";
+
+.antiscroll-wrap {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}
+
+.antiscroll-scrollbar {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 7px;
+    opacity: 0;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    transition: linear .3s opacity;
+}
+
+.antiscroll-scrollbar-shown {
+    opacity: 1;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+}
+
+.antiscroll-scrollbar-horizontal {
+    left: 0;
+    bottom: 2px;
+    height: 7px;
+    margin-left: 2px;
+}
+
+.antiscroll-scrollbar-vertical {
+    top: 0;
+    right: 2px;
+    width: rem-calc(4);
+    margin-top: 2px;
+    z-index: 1;
+}
+
+.antiscroll-inner {
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    -ms-overflow-style: none;
+}
+
+/** A bug in Chrome 25 on Lion requires each selector to have their own
+    blocks. E.g. the following:
+    .antiscroll-inner::-webkit-scrollbar, .antiscroll-inner::scrollbar {...}
+    causes the width and height rules to be ignored by the browser resulting
+    in both native and antiscroll scrollbars appearing at the same time.
+ */
+
+.antiscroll-inner::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.antiscroll-inner::scrollbar {
+    width: 0;
+    height: 0;
+}
+
+/*ie8 fixed*/
+.ie8 {
+    .task-list .antiscroll-inner {
+        overflow: auto;
+        max-height: 100%;
+    }
+
+    .project-list-inner {
+        &.antiscroll-wrap {
+            overflow: auto;
+            max-height: 100%;
+        }
+
+        .antiscroll-inner {
+            overflow: hidden;
+        }
+    }
+
+    .body .antiscroll-inner {
+        overflow: auto;
+        max-height: 100%;
+    }
+}

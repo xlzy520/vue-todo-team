@@ -1,0 +1,68 @@
+@import "./scss/utils/variables";
+.monthlyCheckRateWrapper {
+    margin-bottom: rem-calc(40);
+    padding: 0 rem-calc(20);
+    .header {
+        font-size: rem-calc(16);
+        font-weight: 500;
+        line-height: rem-calc(24);
+    }
+
+    .progressWrapper {
+        margin-top: rem-calc(14);
+        margin-bottom: rem-calc(10);
+        width: 100%;
+        display: flex;
+        align-items: center;
+        .desc {
+            font-weight: 600;
+            font-size: rem-calc(26);
+            line-height: rem-calc(42);
+            min-width: rem-calc(82);
+        }
+        .goalLine {
+            flex: auto;
+            position: relative;
+            max-width: rem-calc(238);
+            height: rem-calc(10);
+            background-color: #ebebeb;
+            border-radius: rem-calc(7);
+            overflow: hidden;
+            .progressLine {
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                width: 50%;
+                background: #03cd8c;
+                border-radius: rem-calc(7);
+                transition: width 0.5s ease-in-out;
+            }
+        }
+    }
+
+    .detail {
+        p {
+            font-size: rem-calc(12);
+            color: $black36;
+            line-height: rem-calc(18);
+            margin-bottom: rem-calc(8);
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+[class*="-dark-theme"] .monthlyCheckRateWrapper {
+    .progressWrapper {
+        .goalLine {
+            background: $white08;
+        }
+    }
+    .detail {
+        p {
+            color: $white36;
+        }
+    }
+}

@@ -1,0 +1,89 @@
+@import "./scss/utils/variables";
+.segmentedControl {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    position: relative;
+    .highLight {
+        transition: 0.2s;
+        position: absolute;
+        top: 50%;
+        left: rem-calc(2);
+        height: calc(100% - 4px);
+        transform: translateY(-50%);
+        background-color: white;
+        box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.12);
+        border-radius: 4px;
+        z-index: 2;
+    }
+    .controls {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 0 rem-calc(2);
+        z-index: 3;
+        .control {
+            position: relative;
+            font-size: 14px;
+            font-weight: 600;
+            color: $black56;
+            cursor: pointer;
+            flex: 1 1 100px;
+            height: 100%;
+            line-height: rem-calc(36);
+            text-align: center;
+            &.active {
+                color: rgba(0, 0, 0, 0.36);
+                color: rgb(97, 127, 222);
+            }
+        }
+        &.splitLine {
+            z-index: 1;
+            .control {
+                &:not(:nth-of-type(1)) {
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        top: 50%;
+                        left: rem-calc(-1);
+                        background-color: #979797;
+                        width: rem-calc(2);
+                        height: rem-calc(22);
+                        transform: translateY(-50%) scale(0.5);
+                    }
+                }
+            }
+        }
+    }
+}
+
+[class*="-dark-theme"] {
+    .segmentedControl {
+        background-color: rgba(255, 255, 255, 0.08);
+        .highLight {
+            background-color: #38373a;
+            box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.12);
+        }
+        .controls {
+            .control {
+                color: rgba(255, 255, 255, 0.36);
+                &.active {
+                    color: rgb(97, 127, 222);
+                }
+            }
+            &.splitLine {
+                .control {
+                    &:not(:nth-of-type(1)) {
+                        &::before {
+                            background-color: #979797;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

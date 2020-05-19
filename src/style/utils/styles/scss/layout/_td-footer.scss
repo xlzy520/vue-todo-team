@@ -1,0 +1,199 @@
+@import "src/style/utils/var.scss";
+
+// task detail footer
+
+$td-f-p: rem-calc(10);
+
+.td-footer {
+    flex: none;
+    width: 100%;
+    border-top: 1px solid;
+  border-color: rgba(0, 0, 0, 0.06);
+    @include inlineblockfix();
+
+    .dropdown-menu {
+        font-size: $body-font-size;
+        li.dropdown-menu-item > a {
+            max-width: 100%;
+        }
+    }
+
+    .toolbar {
+        position: relative;
+        height: rem-calc(48);
+        line-height: rem-calc(48);
+        margin-right: rem-calc(20);
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .schedule-attendees {
+        width: 100%;
+        height: rem-calc(44);
+        padding: 0 rem-calc(20);
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        &[disabled] {
+            cursor: $cursor-disabled-value;
+        }
+
+        &.pending-info > * {
+            display: none;
+        }
+
+        &.no-permission {
+            cursor: default;
+            justify-content: center;
+
+            .tips {
+                font-size: rem-calc(14) !important;
+                color: rgba(0, 0, 0, 0.36);
+                margin-left: rem-calc(4);
+                white-space: nowrap;
+            }
+        }
+
+        .attendee-avatar {
+            width: rem-calc(24);
+            height: rem-calc(24);
+            margin-right: rem-calc(4);
+            border-radius: 50%;
+        }
+
+        .attendees-number {
+            font-size: rem-calc(14);
+            line-height: rem-calc(14);
+            color: rgba(0, 0, 0, 0.36);
+            letter-spacing: 0;
+            margin-left: rem-calc(2);
+        }
+
+        .fake-dom {
+            position: absolute;
+            visibility: hidden;
+            z-index: -1;
+        }
+    }
+
+    .td-item {
+        display: inline-block;
+        height: 100%;
+        // text-align: center;
+        padding-left: rem-calc(16);
+        .active .td-item-svg {
+            fill: $black54;
+        }
+
+        &.project-setting {
+            padding-left: rem-calc(20);
+        }
+
+        &:first-child {
+            position: absolute;
+            left: 0;
+            width: auto;
+            top: 0;
+        }
+
+        &.project-setting {
+            width: 32.5%;
+        }
+
+        &:last-child {
+            .dropdown-toggle {
+                &:before,
+                &:after {
+                    left: rem-calc(16);
+                }
+            }
+
+            .dropdown-menu {
+                right: rem-calc(-10);
+                bottom: rem-calc(32);
+            }
+        }
+
+        // &:first-child {
+        //   padding-right: 0;
+        //   text-align: right;
+        // }
+    }
+
+    // .tl-half {
+    //   width: 50%;
+
+    //   &.left {
+
+    //     .td-item {
+
+    //       &:first-child {
+    //         width: 100%;
+    //         text-align: left;
+    //         padding-left: rem-calc(16);
+    //         padding-right: 0;
+    //       }
+
+    //     }
+
+    //   }
+
+    //   &.right {
+    //     padding-right: rem-calc(16);
+
+    //     .td-item {
+    //       float: right;
+    //       margin-left: rem-calc(24);
+    //       padding: 0;
+    //     }
+    //   }
+    // }}
+
+    .tl-half.right {
+        .td-item:last-child {
+            .boult:before,
+            .boult:after {
+                left: auto;
+                right: 35px;
+            }
+        }
+    }
+
+    .project-settings-dropdown {
+        position: relative;
+    }
+
+    input[type="button"] {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        text-align: left;
+        @include ellipsis();
+        max-width: 74%;
+        min-width: 50%;
+        box-shadow: none;
+        border: 0;
+        @include liheight(rem-calc(24));
+        padding: 0;
+        padding-left: rem-calc(6);
+        vertical-align: middle;
+        user-select: none;
+        color: $black54;
+    }
+}
+
+.has-comments .td-footer {
+    border-color: transparent;
+}
+
+@media #{$small-only} {
+    .td-footer {
+        input[type="button"] {
+            max-width: 70%;
+        }
+
+        .td-item {
+            padding: 0 rem-calc(20);
+        }
+    }
+}

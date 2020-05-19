@@ -1,0 +1,161 @@
+// variables
+@import "../utils/variables";
+
+@media print {
+    body.print-kanban {
+        height: 100%;
+        overflow: auto;
+        margin: 0;
+        -webkit-print-color-adjust: exact;
+
+        #root {
+            overflow: visible;
+        }
+
+        .container-fluid {
+            background: white;
+        }
+
+        .g-left {
+            display: none;
+        }
+
+        .left-bg {
+            display: none;
+        }
+
+        .g-full-right {
+            left: 0;
+            right: 0;
+            top: 0;
+            // 辣鸡 QQ Browser fix
+            position: static;
+        }
+
+        .antiscroll-scrollbar,
+        .dropdown-menu,
+        .tl-quick,
+        .loading {
+            display: none !important;
+        }
+
+        .tl-bar {
+            position: relative;
+            .line-right {
+                display: none;
+            }
+        }
+
+        .antiscroll-wrap,
+        .antiscroll-inner,
+        .tasks {
+            // 打印不应该存在滚动条
+            height: 100% !important;
+            width: 100% !important;
+            & > div {
+                width: 100% !important;
+            }
+        }
+
+        .tasklist .tl-body > .antiscroll-wrap {
+            position: static;
+        }
+
+        .l-task {
+            box-shadow: transparent 0px 0px 0px inset !important;
+        }
+
+        .task .t-check {
+            padding-left: rem-calc(2);
+        }
+
+        .filter-advance {
+            .dropdown {
+                display: none;
+            }
+            .print-filter {
+                display: block;
+            }
+        }
+
+        .section,
+        .task {
+            position: static;
+        }
+
+        .task {
+            page-break-inside: avoid;
+            break-inside: avoid;
+
+            .t-inner {
+                position: relative;
+                height: auto !important;
+            }
+
+            .title-wrap {
+                height: auto;
+                .title {
+                    height: auto;
+                    white-space: normal;
+                    word-break: break-word;
+                }
+            }
+        }
+
+        .tl-bar-action-bar {
+            display: none;
+        }
+
+        .column-list-view {
+            .column-list {
+                .column-list-content {
+                    flex-wrap: wrap;
+                    align-content: flex-start;
+                }
+            }
+
+            .column {
+                height: auto;
+                margin-bottom: rem-calc(20);
+                .empty-list {
+                    padding-bottom: 0;
+                }
+
+                .tl-inner {
+                    section {
+                        padding-bottom: 0;
+                    }
+                    .task:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+                .column-inner {
+                    position: relative;
+                }
+
+                .column-main {
+                    background: transparent;
+                }
+            }
+
+            .column-header,
+            .column-tasklist {
+                position: relative;
+                overflow: hidden;
+                &:before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    border-top: 99999px solid rgba(0, 0, 0, 0.05);
+                }
+            }
+
+            .new-column {
+                display: none;
+            }
+        }
+    }
+}

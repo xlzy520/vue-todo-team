@@ -1,0 +1,505 @@
+/* DEFAULT THEME */
+.CodeMirror-link-modal {
+    position: absolute;
+    z-index: 11;
+    overflow: hidden;
+    background-color: $body-bg;
+    box-shadow: $medium-shadow;
+    border-radius: 3px;
+    display: flex;
+    width: rem-calc(234);
+    flex-direction: column;
+
+    .modal-header {
+        padding: 0 rem-calc(20);
+        display: flex;
+        align-items: center;
+        .modal-title {
+            line-height: rem-calc(40);
+            font-size: rem-calc(13);
+            flex: auto;
+        }
+        .modal-close {
+            flex: none;
+            > svg {
+                width: rem-calc(16);
+                height: rem-calc(16);
+                fill: rgba(0, 0, 0, 0.36);
+            }
+        }
+    }
+
+    .modal-body {
+        padding: 0 rem-calc(20);
+        input {
+            width: 100%;
+        }
+        input.link-url {
+            margin-top: rem-calc(12);
+        }
+    }
+
+    .modal-footer {
+        padding: rem-calc(16) rem-calc(20);
+        display: flex;
+        justify-content: flex-end;
+        button.btn {
+            font-size: rem-calc(13);
+            padding: rem-calc(7) 0 !important;
+            min-width: rem-calc(92);
+        }
+        button + button {
+            margin-left: rem-calc(10);
+        }
+    }
+}
+
+.md-tl {
+    background-color: $body-bg;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+    vertical-align: middle;
+    position: absolute;
+    bottom: rem-calc(59);
+    z-index: 10;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: rem-calc(6);
+    max-width: 95%;
+    .md-tl-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: rem-calc(558);
+        max-width: 100%;
+    }
+    .md-tl-btn {
+        display: inline-block;
+        &:hover {
+            background-color: $black08;
+            border-radius: rem-calc(4);
+        }
+    }
+    [class^="md-tl-divider"] {
+        border-left: 1px solid #212121;
+        height: rem-calc(16);
+        opacity: 0.12;
+    }
+}
+.detail-fullscreen {
+    .td-body {
+        .content-editor {
+            background-color: $body-bg;
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: auto;
+            z-index: 9;
+            .antiscroll-inner.show-style-bar {
+                padding-bottom: rem-calc(90);
+            }
+            .content.td-content {
+                width: rem-calc(611);
+                margin: auto;
+            }
+            .td-caption {
+                padding: rem-calc(16) rem-calc(24) rem-calc(4) rem-calc(24);
+                .switch-mode {
+                    display: none;
+                }
+            }
+
+            #td-container {
+                & > div {
+                    display: none;
+                }
+                div#td-editor {
+                    display: block;
+                    // min-height: auto !important;
+                    height: 100%;
+                }
+            }
+
+            .md-tl {
+                padding: rem-calc(8);
+                bottom: rem-calc(50) !important;
+                opacity: 0.25;
+                transition: 0.2s 1.3s ease-out opacity;
+                &:hover {
+                    opacity: 1;
+                    transition: 0.2s ease-in opacity;
+                }
+            }
+        }
+    }
+}
+
+$mark-icon-size: rem-calc(16);
+$check-item-margin: rem-calc(10);
+.out-detail {
+    .cm-s-markdown-default {
+        .markdown-icon {
+            width: 14px;
+            height: 14px;
+        }
+        .CodeMirror-widget {
+            .mark-header-heading {
+                margin-left: -14px;
+            }
+        }
+    }
+}
+
+.cm-s-markdown-default {
+    $formatting-color: $black24;
+    $list-identifier-color: $black56;
+    $line-padding: rem-calc(16);
+
+    &.CodeMirror-focused {
+        .ticktick-active-line {
+            [class^="icon-md-h"] {
+                opacity: 1;
+            }
+        }
+    }
+
+    %monospace {
+        font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    }
+
+    span {
+        &.cm-formatting-code,
+        &.cm-inline-code,
+        &.cm-formatting-list-ul,
+        &.cm-formatting-header,
+        &.cm-formatting-checklist,
+        &.cm-formatting-quote {
+            @extend %monospace;
+        }
+    }
+
+    pre.CodeMirror-line {
+        line-height: rem-calc(24);
+        min-height: rem-calc(24);
+        &.ticktick-header {
+            padding-bottom: rem-calc(6);
+        }
+    }
+
+    pre.ticktick-code-block {
+        @extend %monospace;
+        font-size: rem-calc(14);
+    }
+
+    pre.ticktick-hr {
+        @extend %monospace;
+    }
+
+    .cm-formatting {
+        color: $formatting-color;
+        &.cm-formatting-list-ol {
+            color: $list-identifier-color;
+            min-width: $line-padding + $mark-icon-size;
+            display: inline-block;
+            text-align: right;
+            white-space: pre;
+        }
+    }
+    .cm-formatting.cm-formatting-link.cm-link {
+        color: $formatting-color;
+    }
+
+    .mark-header {
+        vertical-align: baseline;
+        &.mark-header-item {
+            cursor: pointer;
+        }
+    }
+
+    .mark-header-hr {
+        display: inline-block;
+        width: 99.5%;
+        height: 1px;
+    }
+    span.mark-link {
+        cursor: pointer;
+        vertical-align: baseline;
+    }
+    .markdown-icon {
+        width: $mark-icon-size;
+        height: $mark-icon-size;
+    }
+
+    // markdown 标题
+    [class^="icon-md-h"] {
+        fill: $black24;
+        opacity: 0;
+    }
+    .icon-md-link,
+    .icon-md-task-link,
+    [class^="icon-md-item-"] {
+        fill: $black24;
+    }
+    .icon-md-list-1 {
+        fill: $list-identifier-color;
+    }
+
+    .cm-link {
+        cursor: pointer;
+    }
+    .cm-url:not(.cm-formatting) {
+        color: $black24;
+    }
+
+    .cm-header,
+    .cm-strong {
+        &:not(.cm-formatting) {
+            font-weight: bold;
+        }
+    }
+    .cm-header,
+    .cm-strong {
+        &:not(.cm-formatting):not(.cm-link):not(.cm-url) {
+            color: $base-font-color;
+        }
+    }
+    .cm-em:not(.cm-formatting) {
+        font-style: italic;
+    }
+
+    .cm-underline:not(.cm-formatting) {
+        border-bottom: 1px solid $base-font-color;
+    }
+    .cm-mark {
+        background-color: #dbff00;
+    }
+    pre.ticktick-header.ticktick-header-1 {
+        font-size: rem-calc(18);
+        line-height: rem-calc(36);
+        min-height: rem-calc(42);
+    }
+    pre.ticktick-header.ticktick-header-2 {
+        font-size: rem-calc(16);
+        line-height: rem-calc(28);
+        min-height: rem-calc(34);
+    }
+    pre.ticktick-header.ticktick-header-3 {
+        font-size: rem-calc(14);
+        min-height: rem-calc(30);
+    }
+    pre.ticktick-header.ticktick-header-4 {
+        font-size: rem-calc(14);
+    }
+    pre.ticktick-header.ticktick-header-5 {
+        font-size: rem-calc(14);
+    }
+    pre.ticktick-header.ticktick-header-6 {
+        font-size: rem-calc(14);
+    }
+    .cm-strikethrough:not(.cm-formatting),
+    .cm-checked {
+        color: $black24 !important;
+        text-decoration: line-through;
+    }
+
+    .icon-md-item-unchecked,
+    .icon-md-item-checked {
+        margin-bottom: 1px;
+    }
+
+    span.cm-inline-code {
+        font-size: 90%;
+        &:not(.cm-formatting) {
+            color: $black56;
+            background-color: $black05;
+            vertical-align: baseline;
+            padding: 1px 0.4em;
+        }
+    }
+    pre.ticktick-quote + pre.ticktick-quote {
+        &::before {
+            top: rem-calc(-10);
+        }
+    }
+    pre.ticktick-quote {
+        padding-left: $line-padding + $mark-icon-size !important;
+        &::before {
+            content: " ";
+            position: absolute;
+            left: rem-calc(5) + $line-padding;
+            top: rem-calc(4);
+            bottom: rem-calc(4);
+            border-left: rem-calc(2) solid #707070;
+        }
+        span.cm-formatting-quote {
+            transform: translateZ(0);
+            display: inline-block;
+            width: rem-calc(13);
+            letter-spacing: rem-calc(3);
+            white-space: nowrap;
+            color: transparent;
+            &:first-child {
+                margin-left: rem-calc(-13);
+            }
+        }
+    }
+
+    div.ticktick-code-block-bg {
+        background-color: $black05;
+        margin-left: $line-padding;
+    }
+    div.ticktick-hr-bg {
+        background-color: $black12;
+        height: 1px;
+        top: 50%;
+        left: $line-padding;
+        right: 0.5%;
+        transform: translateY(-50%);
+    }
+
+    .CodeMirror-placeholder,
+    .CodeMirror-line {
+        padding-left: $line-padding;
+    }
+    @for $i from 1 through 9 {
+        $indent_i: $mark-icon-size * $i;
+
+        .CodeMirror-line.ticktick-list-line-#{$i} {
+            padding-left: $line-padding + $indent_i;
+        }
+    }
+    @for $i from 1 through 9 {
+        $indent_i: $mark-icon-size * $i;
+
+        .CodeMirror-line.ticktick-checklist.ticktick-list-line-#{$i} {
+            padding-left: $line-padding + $indent_i + $check-item-margin;
+        }
+    }
+    .CodeMirror-line.ticktick-code-block {
+        padding-left: $line-padding + rem-calc(16);
+        padding-right: rem-calc(16);
+    }
+    .CodeMirror-widget {
+        .mark-header {
+            float: left;
+            margin-left: -$line-padding;
+            &.mark-header-item {
+                margin-left: -$line-padding - $check-item-margin;
+            }
+        }
+    }
+
+    span.cm-formatting-header,
+    span.cm-formatting-list-ul {
+        float: left;
+        font-size: rem-calc(14) !important;
+        margin-left: -$mark-icon-size;
+        letter-spacing: rem-calc(7.5);
+    }
+    span.cm-formatting-list-ol {
+        float: left;
+        margin-left: -$line-padding - $mark-icon-size;
+    }
+    span.cm-formatting-header,
+    span.cm-formatting-list-ul,
+    span.cm-formatting-list-ol {
+        color: transparent;
+    }
+    pre.ticktick-checklist {
+        span.cm-formatting-list-ul {
+            margin-left: -$mark-icon-size - $check-item-margin;
+            letter-spacing: rem-calc(17.5);
+        }
+        span.cm-ticktick-list-indent {
+            margin-left: -$mark-icon-size * 2 - $check-item-margin;
+        }
+    }
+    span.cm-ticktick-list-indent {
+        height: rem-calc(10); /*解决 safari 上， float height 会是个奇怪的值*/
+        width: $mark-icon-size;
+        margin-left: -$mark-icon-size;
+        text-align: right;
+        white-space: pre;
+        overflow: hidden;
+        float: left;
+    }
+
+    pre.ticktick-code-block {
+        .cm-comment {
+            color: #b8b8b8;
+        }
+        .cm-string {
+            color: #14c257;
+        }
+        .cm-atom {
+            color: #ef42b5;
+        }
+        .cm-keyword {
+            color: #ff871d;
+        }
+        .cm-variable {
+            color: #3867e4;
+        }
+        .cm-property {
+            color: null;
+        }
+        .cm-number {
+            color: #ef42b5;
+        }
+        .cm-operator {
+            color: #ff871d;
+        }
+    }
+}
+
+.dropdown-menu-md-heading.dropdown-menu,
+.dropdown-menu-md-heading.dropdown-menu-menu-submenu-popup {
+    max-height: none;
+    [class^="icon-"] {
+        width: rem-calc(18);
+        height: rem-calc(18);
+        margin-left: 0;
+        margin-right: rem-calc(10);
+    }
+    .direct {
+        width: rem-calc(14);
+        height: rem-calc(14);
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .dropdown-menu-menu {
+        max-height: none;
+    }
+    li.dropdown-menu-menu-item > a,
+    .dropdown-menu-menu-submenu-title {
+        display: flex;
+        align-items: center;
+        padding: 0 rem-calc(8);
+        max-width: none;
+        min-width: rem-calc(180);
+        line-height: rem-calc(14);
+        font-size: rem-calc(12);
+        height: rem-calc(28);
+    }
+    li.dropdown-menu-menu-item-disabled {
+        opacity: 0.3;
+        & > a {
+            cursor: not-allowed;
+        }
+    }
+    li.dropdown-menu-menu-item > a {
+        .md-tl-name {
+            flex: auto;
+        }
+        .md-tl-shortcut {
+            font-size: rem-calc(10);
+        }
+        .md-tl-shortcut,
+        .md-tl-formatting {
+            color: $black36;
+        }
+    }
+}

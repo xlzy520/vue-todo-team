@@ -1,0 +1,29 @@
+@import "./scss/utils/variables";
+.habitDetail {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .divider {
+        position: relative;
+        margin: rem-calc(24) 0;
+        height: 1px;
+        &:before {
+            content: "";
+            position: absolute;
+            height: 100%;
+            background: $black04;
+            left: rem-calc(20);
+            right: rem-calc(20);
+        }
+    }
+}
+
+[class*="-dark-theme"] .habitDetail {
+    .divider {
+        background: $black;
+        &.hideInDarkTheme {
+            background: transparent;
+        }
+    }
+}

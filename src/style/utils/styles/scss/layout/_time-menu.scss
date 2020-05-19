@@ -1,0 +1,65 @@
+.time-menu {
+    position: absolute;
+    left: rem-calc(4);
+    top: calc(100% + 8px);
+    z-index: 4;
+    transform: translate(-46%, 0);
+    padding: rem-calc(20);
+    background-color: $base-bg;
+    white-space: nowrap;
+
+    .item {
+        position: relative;
+        display: inline-block;
+        text-align: center;
+        min-width: rem-calc(40);
+        margin-right: rem-calc(20);
+
+        &:last-child {
+            min-width: rem-calc(40);
+            margin-right: 0;
+        }
+
+        .tooltip {
+            top: rem-calc(15);
+            margin-left: rem-calc(3);
+        }
+
+        &.active:hover,
+        &:hover {
+            .tooltip {
+                display: block;
+            }
+
+            .i-med.i-2-1 {
+                fill: $black85;
+            }
+        }
+
+        .i-med.i-2-1 {
+            fill: $black54;
+        }
+    }
+
+    .time-text {
+        padding-top: rem-calc(5);
+    }
+
+    .active,
+    .item:hover {
+        .time-text {
+            color: $indigo;
+        }
+    }
+}
+
+@media #{$small-only} {
+    .time-menu {
+        left: rem-calc(46);
+
+        &:before,
+        &:after {
+            left: calc(50% - 55px);
+        }
+    }
+}

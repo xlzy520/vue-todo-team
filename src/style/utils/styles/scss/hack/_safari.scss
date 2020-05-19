@@ -1,0 +1,41 @@
+// safari 下图标位置会不正常
+// iPhone, iPad和Mac表现不一致的..
+
+.safari {
+    .task {
+        .title {
+            line-height: rem-calc(15);
+            padding-top: rem-calc(10);
+        }
+    }
+
+    // task 详情页面
+    span.icons, 
+    // 修改task列表
+    span.drag, 
+    .tips, 
+    .checker {
+        font-size: 1px !important;
+    }
+
+    .dropdown-menu [class^="icon-"],
+    .dropdown-menu [class*=" icon-"],
+    .dropdown-menu-menu-submenu-popup [class^="icon-"],
+    .dropdown-menu-menu-submenu-popup [class*=" icon-"] {
+        // hover 上去的时候会抖动。我也不知道为什么。反正给他设置一下3d就好了。
+        transform: translate3d(0, 0, 0);
+    }
+
+    // &.ios {
+    //     // 修改侧边的
+    //     .lists .l-item .icons ,
+    //     // task 详情页面
+    //     span.icons,
+    //     // 修改task列表
+    //     span.drag,
+    //     .tips,
+    //     .checker {
+    //         font-size: 0 !important;
+    //     }
+    // }
+}

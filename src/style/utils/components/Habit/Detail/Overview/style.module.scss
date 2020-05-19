@@ -1,0 +1,27 @@
+@import "./scss/utils/variables";
+.overviewWrapper {
+    padding: 0 rem-calc(20);
+    display: flex;
+    justify-content: space-around;
+    .overviewItem {
+        text-align: left;
+        .itemCount {
+            line-height: rem-calc(42);
+            font-size: rem-calc(28);
+            font-weight: 500;
+        }
+
+        .itemName {
+            line-height: rem-calc(18);
+            font-size: rem-calc(12);
+            font-weight: 400;
+            color: $black36;
+        }
+    }
+}
+
+[class*="-dark-theme"] .overviewWrapper {
+    .itemName {
+        color: $white36;
+    }
+}

@@ -1,0 +1,180 @@
+$sd-base-divider: rem-calc(20);
+$filter-height: rem-calc(22);
+
+.schedule-tasks {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    .sd-tasks-header {
+        width: 100%;
+        padding: 0 $sd-base-divider;
+        padding-bottom: 0;
+        box-shadow: -1px 0 $whisper;
+
+        .multi-select-menu {
+            .menu {
+                max-width: 230px;
+            }
+            .select-list {
+                margin-top: 0;
+            }
+        }
+        .title {
+            color: $black85;
+            font-size: rem-calc(14);
+            height: rem-calc(36);
+            line-height: rem-calc(36);
+        }
+        .desc {
+            color: $black36;
+            font-size: rem-calc(12);
+            line-height: rem-calc(12);
+            margin-bottom: rem-calc(26);
+            line-height: 1.5;
+        }
+        .close {
+            position: absolute;
+            right: $sd-base-divider;
+            top: rem-calc(14);
+            display: flex;
+            svg {
+                width: rem-calc(12);
+                height: rem-calc(12);
+                fill: $black24;
+            }
+        }
+    }
+
+    .sd-tasks-list {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        flex: auto;
+        box-sizing: border-box;
+        position: relative;
+        .sd-tasks-scroll {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            .empty-list-info {
+                margin-top: rem-calc(135);
+                .empty-icon {
+                    width: rem-calc(114);
+                    height: rem-calc(114);
+                    > svg {
+                        width: rem-calc(158);
+                        height: rem-calc(158);
+                    }
+                }
+                .text-info {
+                    margin-top: rem-calc(33);
+                    font-size: rem-calc(12);
+                }
+            }
+        }
+    }
+    .filter-advance {
+        height: rem-calc(24);
+        line-height: rem-calc(32);
+        margin: rem-calc(9) rem-calc(20) rem-calc(24);
+        margin-left: rem-calc(22);
+        > .selected-title.direct {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            font-size: rem-calc(12);
+            > span {
+                display: inline-block;
+                width: 100%;
+                text-align: center;
+                margin: 0 auto;
+            }
+        }
+    }
+    .sd-tasks-content {
+        section {
+            padding: rem-calc(8) $sd-base-divider 0;
+            box-sizing: border-box;
+        }
+        .section-header {
+            position: relative;
+            font-size: rem-calc(12);
+            color: rgba(black, 0.38);
+            height: rem-calc(32);
+            line-height: rem-calc(32);
+            cursor: pointer;
+            @include ellipsis();
+            padding-right: rem-calc(20);
+
+            &.hide-section-header {
+                height: 0;
+                margin-top: 0;
+                padding-bottom: 0;
+            }
+        }
+        .c-task-title {
+            max-width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            font-size: rem-calc(12);
+        }
+        .c-tasks {
+            position: relative;
+            padding: 0;
+            > li {
+                position: absolute;
+                width: 100%;
+            }
+        }
+    }
+    .c-task-repeat {
+        display: none;
+    }
+    $tk-base-divider: rem-calc(6);
+    .c-task {
+        &.c-task-hide {
+            display: none !important;
+        }
+        display: block !important;
+        position: relative;
+        overflow: hidden;
+        @include liheight(rem-calc(24));
+        padding: 0 $tk-base-divider;
+        margin-bottom: rem-calc(4);
+        cursor: pointer;
+        border-radius: 2px;
+
+        // &:last-child {
+        //     margin-bottom: rem-calc(8);
+        // }
+
+        .c-task-wrapper {
+            overflow: hidden;
+            height: 100%;
+            .c-task-inner {
+                overflow: hidden;
+            }
+        }
+        .line-right {
+            z-index: 0;
+        }
+        &.pop-task {
+            color: $tk-task-active-color;
+            background-color: $tk-task-active-bg;
+        }
+        &.ui-draggable-dragging,
+        &.ui-dragging,
+        &.c-task-new {
+            color: $tk-task-active-color;
+            background-color: $tk-task-dragging-bg;
+        }
+        &.ui-draggable-dragging {
+            position: absolute !important;
+            width: 50%;
+        }
+    }
+}

@@ -1,0 +1,1095 @@
+$theme: $blue-theme;
+$theme-color: $blue-color;
+$theme-06: rgba($theme, 0.06);
+$theme-1: rgba($theme, 0.1);
+$theme-12: rgba($theme, 0.12);
+$theme-14: rgba($theme, 0.14);
+$theme-2: rgba($theme, 0.2);
+$theme-3: rgba($theme, 0.3);
+$theme-36: rgba($theme, 0.36);
+$theme-4: rgba($theme, 0.4);
+$theme-55: rgba($theme, 0.55);
+$theme-7: rgba($theme, 0.7);
+$theme-8: rgba($theme, 0.8);
+
+/* ========= 特殊值 ========= */
+$theme-c-task-bg: $blue-c-task-bg;
+$theme-input-bg: $blue-input-bg;
+$theme-input-active-border-color: $blue-input-active-border-color;
+$theme-dropdown-item-hover-bg: $blue-dropdown-item-hover-bg;
+$theme-task-active-bg: $blue-task-active-bg;
+$theme-task-hover-bg: $blue-task-hover-bg;
+$theme-column-task-active-bg: $blue-column-task-active-bg;
+$theme-column-task-hover-bg: $blue-column-task-hover-bg;
+$theme-sidebar-active-bg: $blue-sidebar-active-bg;
+$theme-sidebar-hover-bg: $blue-sidebar-hover-bg;
+$theme-mini-bg: $blue-mini-bg;
+$theme-mini-btn-color: $blue-mini-btn-color;
+$theme-mini-btn-bg: $blue-mini-btn-bg;
+$theme-mini-header-color: $blue-mini-header-color;
+$theme-mini-task-tip-bg: $blue-mini-task-tip-bg;
+$theme-mini-day-active-task-tip-bg: $blue-mini-day-active-task-tip-bg;
+$theme-mini-day-in-month-color: $blue-mini-day-in-month-color;
+$theme-mini-day-out-month-color: $blue-mini-day-out-month-color;
+$theme-mini-day-hover-bg: $blue-mini-day-hover-bg;
+$theme-mini-day-active-bg: $blue-mini-day-active-bg;
+$theme-mini-day-active-color: $blue-mini-day-active-color;
+$theme-mini-today-color: $blue-mini-today-color;
+$theme-mini-fake-bg: $blue-mini-fake-bg;
+$theme-mini-fake-color: $blue-mini-fake-color;
+$theme-pomotimer-bg: $blue-pomotimer-bg;
+$theme-pomotimer-time-color: $blue-pomotimer-time-color;
+$theme-pomotimer-title-color: $blue-pomotimer-title-color;
+$theme-pomotimer-setting-color: $blue-pomotimer-setting-color;
+$theme-pomotimer-border-top-color: $blue-pomotimer-border-top-color;
+$theme-pomotimer-progress-color: $blue-pomotimer-progress-color;
+$theme-column-bg: $blue-column-bg;
+$theme-button-primary-bg: $blue-button-primary-bg;
+$theme-button-primary-hover-bg: $blue-button-primary-hover-bg;
+$theme-button-primary-active-bg: $blue-button-primary-active-bg;
+$theme-button-disabled-bg: $blue-button-disabled-bg;
+
+.blue-theme {
+    // 新的直接这么写
+    .fill-theme {
+        fill: $theme;
+    }
+
+    .fill-highlight {
+        fill: $theme;
+    }
+
+    .fill-theme-force {
+        fill: $theme !important;
+    }
+
+    .active,
+    .single-selected-item,
+    .option-item-selected {
+        .i-active-theme {
+            fill: $theme;
+        }
+    }
+
+    .background-theme {
+        background-color: $theme;
+    }
+
+    .before-background-theme {
+        &:before {
+            background-color: $theme;
+        }
+    }
+
+    .after-background-theme {
+        &:after {
+            background-color: $theme;
+        }
+    }
+
+    .background-input {
+        background-color: $theme-input-bg;
+    }
+
+    .color-theme {
+        color: $theme;
+    }
+
+    .border-theme {
+        border-color: $theme;
+    }
+
+    /* ========= 主题色改动 ========= */
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: $theme;
+    }
+
+    a,
+    .link,
+    .cm-link {
+        color: $theme;
+
+        &:visited {
+            color: $theme;
+        }
+    }
+
+    .text-link {
+        color: $theme;
+    }
+
+    .g-left {
+        background-color: #667fdd;
+
+        .upgrade-button {
+            background-color: $blue-upgrade-button-bg;
+            color: white;
+            svg.icon-upgrade-button-bg,
+            svg.icon-chevron-right {
+                fill: $white54;
+            }
+        }
+    }
+
+    .settings {
+        .s-header {
+            .toggle-tabs {
+                .icon-left-menu {
+                    fill: $theme;
+                }
+            }
+        }
+
+        .theme-panel {
+            .jColorCheck + span {
+                color: $theme;
+            }
+        }
+
+        .personal-panel {
+            .settings-rank {
+                .hw-panel {
+                    .nickname:focus {
+                        border-bottom-color: $theme;
+                    }
+                }
+            }
+        }
+    }
+
+    .active {
+        .i-2,
+        .i-2-1 {
+            fill: $theme;
+            color: $theme;
+        }
+    }
+
+    .highlight {
+        .i-2 {
+            fill: $theme;
+        }
+    }
+
+    .active,
+    .single-selected-item,
+    .option-item-selected {
+        .i-3,
+        .i-3-1 {
+            fill: $theme;
+        }
+    }
+
+    .active .i-5 {
+        fill: $theme;
+        color: $theme;
+    }
+
+    div > a:hover .i-5,
+    li a:hover .i-5 {
+        fill: $theme;
+    }
+
+    .active > .i-6 {
+        fill: $theme;
+        color: $theme;
+    }
+
+    .i-8 {
+        fill: $theme;
+    }
+
+    .notification .notify-panel svg {
+        background-color: $theme;
+    }
+
+    .lists .empty-tag svg {
+        background-color: transparent;
+    }
+
+    .lists {
+        .ui-sortable-helper {
+            background-color: $theme-55;
+        }
+
+        .ui-sortable-helper a,
+        .active.ui-sortable-helper a {
+            background-color: transparent;
+        }
+    }
+
+    .tk-calendar {
+        .c-col-date-now {
+            .c-solar {
+                color: $theme;
+            }
+        }
+        .c-col-date-now {
+            .c-lunar {
+                color: $theme-36;
+            }
+        }
+
+        .wk-grid-container {
+            .wk-daynames {
+                .wk-dayname {
+                    .wk-daylink-today {
+                        color: $theme;
+                    }
+                }
+            }
+        }
+
+        &:not(.day) {
+            .c-col-date-now,
+            .tg-allday-today,
+            .tg-col-today {
+                background-color: $theme-1;
+            }
+        }
+
+        .c-nav {
+            .c-type-selected {
+                background-color: $theme;
+            }
+        }
+    }
+
+    .tkcalendar-view {
+        .c-task {
+            color: $theme-color;
+            background-color: rgba($theme-c-task-bg, 0.54);
+
+            &.checked,
+            &.c-task-remain {
+                color: rgba($theme-color, 0.54);
+                background-color: rgba($theme-c-task-bg, 0.16);
+            }
+
+            svg {
+                fill: $theme-color;
+            }
+
+            &.pop-task {
+                color: white;
+                background-color: rgba($theme-c-task-bg, 0.85);
+
+                &.checked {
+                    color: $theme-color;
+                    background-color: rgba($theme-c-task-bg, 0.36);
+                }
+            }
+
+            .c-task-footnote {
+                border-bottom-color: $theme;
+                border-right-color: $theme;
+            }
+        }
+    }
+
+    .tl-quick {
+        .task-title .CodeMirror-focused .cm-bold {
+            color: $theme;
+        }
+
+        .tl-q-preset {
+            .list-active {
+                .i-2-1 {
+                    fill: $theme;
+
+                    &:hover {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+
+    .advance-repeat-preview {
+        color: $theme;
+    }
+
+    .dropdown-menu,
+    .dropdown-menu-menu-submenu {
+        .dropdown-menu-menu-item-selected > span > a,
+        .dropdown-menu-menu-item-selected > a {
+            color: $theme;
+
+            .text-primary,
+            .text-secondary,
+            strong {
+                color: $theme;
+            }
+
+            &:hover,
+            &:focus {
+                .text-primary,
+                .text-secondary,
+                strong {
+                    color: $white;
+                    background-color: $theme;
+                }
+            }
+        }
+    }
+
+    .calendar-min-cal {
+        .k-calendar {
+            .k-task:after {
+                background-color: $theme;
+            }
+        }
+    }
+
+    .calendar-min-cal .kalendae,
+    .timecard .kalendae,
+    .kalendae.k-pop .k-calendar {
+        .k-today {
+            color: $theme;
+        }
+    }
+
+    .calendar-min-cal,
+    .timecard .kalendae,
+    .kalendae.k-pop {
+        .k-calendar {
+            .k-title {
+                .nav-selector {
+                    .nav-menu {
+                        .year {
+                            .active a {
+                                color: $theme;
+                            }
+                        }
+
+                        .month {
+                            li.active {
+                                a.month-change {
+                                    background-color: $theme;
+                                }
+                            }
+
+                            .month-current {
+                                color: $theme;
+                            }
+                        }
+                    }
+                }
+            }
+            .k-days span.k-selected {
+                &:before {
+                    background-color: $theme;
+                }
+            }
+
+            .k-days span.k-in-repeat:not(:hover) {
+                &:before {
+                    background-color: $theme-12;
+                }
+            }
+        }
+    }
+
+    .tc-inner {
+        .option-item {
+            &.option-item-selected {
+                color: $theme;
+            }
+        }
+
+        div[class*="has-"] .need-highlight {
+            border-color: $theme;
+            color: $theme;
+        }
+
+        .reminder-settings {
+            &.has-time {
+                .choose-time input {
+                    border-color: $theme;
+                    color: $theme;
+                }
+            }
+        }
+
+        .reminder-ahead-section {
+            &.has-reminder {
+                .select-title {
+                    border-color: $theme;
+                    color: $theme;
+                }
+            }
+        }
+
+        .choose-repeat {
+            &.has-repeat {
+                .select-title {
+                    border-color: $theme;
+                    color: $theme;
+                }
+            }
+        }
+    }
+
+    .tc-repeat-advance {
+        .select-squares {
+            .select-item.item-selected {
+                background-color: $theme;
+            }
+        }
+    }
+
+    .select-menu {
+        .option-item {
+            &.option-item-selected {
+                color: $theme;
+            }
+        }
+    }
+
+    .min-cal {
+        .k-calendar {
+            .k-title {
+                .nav-selector {
+                    .nav-menu {
+                        .month {
+                            li.active {
+                                a.month-change {
+                                    color: $theme;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .k-days {
+                span.k-selected {
+                    color: $theme;
+                }
+            }
+        }
+    }
+
+    .multi-select-menu {
+        .single-selected-item,
+        .option-item-selected {
+            color: $theme;
+        }
+    }
+
+    .settings {
+        .tabs {
+            li.active {
+                color: $theme;
+            }
+        }
+    }
+
+    .duedate-overdue .i-5,
+    .active.duedate-overdue .i-5 {
+        fill: $darkRed;
+        color: $darkRed;
+
+        &.selected-date {
+            color: $white85;
+        }
+    }
+
+    .premium-panel {
+        .header-inner {
+            .title {
+                color: $theme;
+            }
+        }
+    }
+
+    .switch input:checked + label {
+        background-color: $theme;
+    }
+
+    .labs-panel {
+        .vcard.active {
+            border-color: $theme;
+
+            .v-background:before {
+                background-color: $theme;
+            }
+        }
+    }
+
+    .mixed-input-btn:not(.disabled),
+    button.btn-primary,
+    .button.btn-primary,
+    .btn.btn-primary,
+    .btn.btn-confirm {
+        color: $white;
+        background-color: $theme;
+
+        &:hover,
+        &:focus {
+            background-color: scale-color($theme, $lightness: -10%);
+        }
+
+        &:active {
+            background-color: scale-color($theme, $lightness: -20%);
+        }
+    }
+
+    button.disabled,
+    button[disabled],
+    .button.disabled,
+    .button[disabled],
+    .btn.disabled,
+    .btn[disabled] {
+        background-color: $theme;
+        color: $white24;
+    }
+
+    .notification {
+        .btn-accept {
+            color: $theme;
+            border-color: $theme;
+
+            &:focus,
+            &:hover {
+                background-color: $theme-1;
+            }
+
+            &:active {
+                background-color: $theme-2;
+            }
+        }
+    }
+
+    &.ie {
+        .c-col-date-now {
+            .c-date {
+                background-color: transparent;
+            }
+        }
+    }
+
+    .column {
+        .task {
+            &:hover {
+                background-color: transparent;
+            }
+
+            &.active,
+            &.selected {
+                background-color: transparent;
+
+                .l-task {
+                    background-color: $theme-1 !important;
+                }
+            }
+
+            &.selected:hover {
+                background-color: transparent;
+            }
+        }
+    }
+
+    .task {
+        &:hover {
+            .l-task-bg {
+                background-color: $theme-task-hover-bg;
+            }
+        }
+
+        &.selected,
+        &.active {
+            .l-task-bg {
+                background-color: $theme-task-active-bg !important;
+            }
+        }
+    }
+
+    .column {
+        .task {
+            .l-task:hover {
+                background-color: $theme-column-task-hover-bg;
+            }
+
+            &.active,
+            &.selected {
+                .l-task {
+                    background-color: $theme-column-task-active-bg !important;
+                }
+            }
+        }
+    }
+
+    button.btn-primary,
+    .button.btn-primary,
+    .btn.btn-primary {
+        background-color: $theme-button-primary-bg;
+        border: 1px solid rgba(0, 0, 0, 0.12);
+
+        &:hover,
+        &:focus {
+            background-color: $theme-button-primary-hover-bg;
+        }
+
+        &:active {
+            background-color: $theme-button-primary-active-bg;
+        }
+    }
+
+    button[disabled].btn-primary,
+    .button[disabled].btn-primary,
+    .btn[disabled].btn-primary {
+        background-color: $theme-button-disabled-bg;
+    }
+
+    .tasks,
+    .subtasks {
+        .ui-sortable-placeholder {
+            background-color: $theme;
+        }
+    }
+
+    .sub-task {
+        &.opened {
+            &::before {
+                background-color: $theme-task-hover-bg;
+            }
+        }
+    }
+
+    .time-menu {
+        .item.active {
+            .i-med.i-2-1 {
+                fill: $theme;
+            }
+        }
+    }
+
+    .reminders {
+        .r-task {
+            .subtask-list > li.active {
+                background-color: $theme-1;
+                color: $theme;
+            }
+        }
+    }
+
+    .global-quick-add {
+        .preset-wrapper .tl-q-preset > div,
+        .popup-footer button {
+            &:focus {
+                &:before {
+                    border-color: $theme;
+                }
+            }
+        }
+    }
+
+    .global-quick-add.popup {
+        .tl-q-preset .list-name {
+            color: $theme-color;
+        }
+    }
+
+    .tag-item {
+        background-color: rgba($theme, 0.54);
+        color: #3e4c83;
+        .tag-name {
+            color: #3e4c83;
+        }
+    }
+
+    .tag-list {
+        .tag-item:not(.new):not(.disable):hover {
+            background-color: rgba($theme, 0.64);
+        }
+    }
+
+    .detail-tag-view {
+        .CodeMirror .CodeMirror-placeholder {
+            color: rgba($theme, 0.72);
+        }
+
+        .add-tag {
+            background-color: rgba($theme, 0.24);
+
+            &:hover {
+                background-color: rgba($theme, 0.36);
+            }
+        }
+    }
+
+    .task-drag-hovered {
+        background-color: rgba($theme, 0.04);
+    }
+
+    .column-list-view {
+        .column {
+            .column-main,
+            &.new-column {
+                background-color: $theme-column-bg;
+            }
+        }
+    }
+
+    textarea.input-fake,
+    input {
+        &:focus {
+            border-color: $theme;
+        }
+    }
+
+    .fill-input,
+    .task-input,
+    .search-input,
+    .title-edit {
+        background-color: $theme-input-bg;
+
+        &:focus,
+        &.focus {
+            border-color: $theme-input-active-border-color;
+        }
+    }
+
+    .repeat-digit,
+    .redeem-code {
+        &:focus,
+        &.focus {
+            border-color: $theme;
+        }
+    }
+
+    .comments-footer textarea {
+        background-color: $theme-input-bg !important;
+
+        &:focus,
+        &.focus {
+            border-color: $theme-input-active-border-color !important;
+        }
+    }
+
+    .CodeMirror-hints {
+        .CodeMirror-hint {
+            &:hover,
+            &:focus,
+            &.open {
+                background-color: $theme-dropdown-item-hover-bg;
+            }
+        }
+        .CodeMirror-hint-active {
+            background-color: $theme-dropdown-item-hover-bg;
+        }
+    }
+
+    .dropdown-menu-menu-submenu-open,
+    .dropdown-menu-item:hover,
+    .dropdown-menu-menu-item-active,
+    .multi-select-menu .option-item:hover {
+        background-color: $theme-dropdown-item-hover-bg;
+    }
+
+    .task-menu {
+        .move-to,
+        .assign-to,
+        .copy_task_link,
+        .duplicate-task,
+        .manage-tags,
+        .merge-tasks,
+        .delete-task,
+        .start-task-pomo {
+            &:hover {
+                background-color: $blue-dropdown-item-hover-bg;
+            }
+        }
+    }
+
+    #pomodoro-timer {
+        .wrapper {
+            background-color: $theme-pomotimer-bg;
+            border-color: $theme-pomotimer-border-top-color;
+            .detail {
+                .time {
+                    color: $theme-pomotimer-time-color;
+                }
+                .title {
+                    color: $theme-pomotimer-title-color;
+                }
+                .pomodoro-settings svg {
+                    fill: $theme-pomotimer-setting-color;
+                }
+            }
+
+            .icons {
+                svg {
+                    fill: $theme-pomotimer-progress-color;
+                }
+                .circle-bg {
+                    border-color: rgba($theme-pomotimer-progress-color, 0.36);
+                }
+                .right-circle {
+                    > div {
+                        border-right-color: $theme-pomotimer-progress-color;
+                        border-top-color: $theme-pomotimer-progress-color;
+                    }
+                }
+
+                .left-circle {
+                    > div {
+                        border-left-color: $theme-pomotimer-progress-color;
+                        border-bottom-color: $theme-pomotimer-progress-color;
+                    }
+                }
+                &:hover {
+                    .circle-bg {
+                        border-color: rgba($theme-pomotimer-progress-color, 0.48);
+                    }
+                }
+            }
+        }
+    }
+
+    // 小日历视图背景色
+    .min-cal {
+        background-color: $theme-mini-bg;
+
+        .fake-enlarge-mini-cal {
+            &::before {
+                background-color: $theme-mini-fake-bg;
+            }
+            &::after {
+                border-color: transparent transparent $theme-mini-fake-color transparent;
+            }
+        }
+
+        .fake-narrow-mini-cal {
+            &::before {
+                background-color: $theme-mini-fake-bg;
+            }
+            &::after {
+                border-color: $theme-mini-fake-color transparent transparent transparent;
+            }
+        }
+
+        .k-calendar {
+            .k-title {
+                .k-btn {
+                    fill: $theme-mini-btn-color;
+
+                    &:hover {
+                        background-color: $theme-mini-btn-bg;
+                    }
+                }
+                .nav-selector {
+                    .nav-toggle {
+                        color: $theme-mini-day-in-month-color;
+                    }
+
+                    .nav-menu {
+                        .year {
+                            color: $theme-mini-day-in-month-color;
+                            a {
+                                color: $theme-mini-day-in-month-color;
+                            }
+                            .active a {
+                                color: $theme-mini-today-color;
+                            }
+                        }
+
+                        .month {
+                            li.active a.month-change {
+                                background-color: $theme-mini-day-active-bg;
+                                color: $theme-mini-day-active-color;
+                            }
+                            a {
+                                color: $theme-mini-day-in-month-color;
+                            }
+
+                            a.month-current {
+                                color: $theme-mini-today-color;
+                            }
+
+                            a:not(.disable) {
+                                &:hover {
+                                    background-color: $theme-mini-day-hover-bg;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .k-header {
+                color: $theme-mini-header-color;
+            }
+            .k-task {
+                &:after {
+                    background-color: $theme-mini-task-tip-bg;
+                }
+            }
+
+            .k-days {
+                color: $theme-mini-day-in-month-color;
+
+                span {
+                    &.k-selected {
+                        color: $theme-mini-day-active-color;
+
+                        &:before {
+                            background-color: $theme-mini-day-active-bg;
+                        }
+
+                        &:after {
+                            background-color: $theme-mini-day-active-task-tip-bg;
+                        }
+                    }
+
+                    &:not(.k-selected):hover {
+                        &:before {
+                            background-color: $theme-mini-day-hover-bg;
+                        }
+                    }
+                }
+
+                .k-today {
+                    color: $theme-mini-today-color;
+                }
+
+                .k-selected {
+                    &:before {
+                        background-color: $theme-mini-day-active-bg;
+                    }
+                }
+            }
+            span,
+            a {
+                &.k-out-of-month,
+                &.disable {
+                    color: $theme-mini-day-out-month-color;
+                }
+            }
+        }
+    }
+
+    .lists {
+        li > a,
+        div.p-sort-help > a,
+        .f-header > a,
+        .fake-li > a,
+        .l-new > a {
+            color: rgba($blue-basestyle-font-color, 0.85);
+
+            svg {
+                fill: rgba($blue-basestyle-font-color, 0.54);
+            }
+
+            &:hover {
+                background-color: $theme-sidebar-hover-bg;
+            }
+
+            .count {
+                color: rgba($blue-basestyle-font-color, 0.85);
+            }
+        }
+
+        .team-project-empty {
+            color: rgba($blue-basestyle-font-color, 0.56);
+            background-color: $theme-sidebar-hover-bg;
+        }
+
+        .team-header-box {
+            .count {
+                color: rgba($blue-basestyle-font-color, 0.85);
+            }
+        }
+
+        .inner-date {
+            color: $blue-sidebar-inner-date-color;
+        }
+
+        .active > a {
+            background-color: $theme-sidebar-active-bg;
+            color: rgba($blue-basestyle-font-color, 0.85);
+
+            svg {
+                fill: rgba($blue-basestyle-font-color, 0.85);
+            }
+
+            .count {
+                color: rgba($blue-basestyle-font-color, 0.85);
+            }
+            &:hover {
+                background-color: $theme-sidebar-active-bg;
+            }
+        }
+
+        .l-l-t {
+            a.l-tab {
+                color: rgba($blue-basestyle-font-color, 0.54);
+                border-bottom-color: rgba($blue-basestyle-font-color, 0.12);
+                &.t-active {
+                    color: rgba($blue-basestyle-font-color, 0.85);
+                }
+            }
+        }
+    }
+
+    .l-divider {
+        background-color: rgba($blue-basestyle-font-color, 0.12);
+    }
+
+    .group-header-box .title-edit {
+        color: white;
+        background-color: $black24;
+        &:focus,
+        &.focus {
+            border-color: $white48;
+        }
+    }
+
+    /* ========= 因为结构问题特殊处理的地方 ========= */
+
+    .text-def {
+        color: $base-font-color;
+    }
+
+    .text-primary {
+        color: $base-font-color-primary;
+    }
+
+    .text-secondary {
+        color: $base-font-color-secondary;
+    }
+
+    .text-alert {
+        color: $base-font-color-alert;
+    }
+
+    .text-info {
+        color: $base-font-color-info;
+    }
+
+    .text-info.time {
+        color: $manatee;
+    }
+
+    .text-info-title {
+        color: $base-font-color-info-title;
+    }
+
+    .text-active {
+        color: $base-font-color-deepbg;
+    }
+
+    .text-title {
+        color: $base-font-color-title;
+    }
+
+    .text-pro {
+        color: $orangered;
+    }
+}

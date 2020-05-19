@@ -1,0 +1,113 @@
+.global-quick-add.popup {
+    width: rem-calc(694);
+    min-height: rem-calc(104);
+    top: rem-calc(56);
+    padding: rem-calc(16) rem-calc(20);
+    transform: scale(1);
+
+    #global-add-task {
+        margin: 0;
+    }
+
+    .task-input {
+        width: 100%;
+        padding: 0 rem-calc(16);
+        overflow: hidden;
+
+        .input-placeholder {
+            padding-left: rem-calc(16);
+            padding-right: rem-calc(16);
+        }
+    }
+
+    .tl-q-copy {
+        height: 0;
+        overflow: hidden;
+    }
+
+    .tl-q-preset {
+        display: block;
+        position: static;
+        margin-top: rem-calc(18);
+        float: left;
+
+        & > div:first-child {
+            margin-left: 0;
+        }
+
+        .list-name {
+            display: inline-block;
+            max-width: rem-calc(200);
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            margin-left: rem-calc(8);
+            color: $black54;
+        }
+
+        .list-active a .i-2-1 {
+            opacity: 1;
+        }
+    }
+
+    .popup-close {
+        right: 0;
+        top: 0;
+        line-height: rem-calc(16);
+    }
+
+    .popup-footer {
+        padding: rem-calc(16) 0 0;
+
+        button,
+        .btn {
+            position: relative;
+            min-width: rem-calc(70);
+            padding-top: rem-calc(5);
+            padding-bottom: rem-calc(5);
+        }
+    }
+
+    .preset-wrapper .tl-q-preset > div,
+    .popup-footer button {
+        &:focus {
+            &:before {
+                content: "";
+                position: absolute;
+                left: -1px;
+                top: -1px;
+                width: calc(100% + 2px);
+                height: calc(100% + 2px);
+                border-radius: rem-calc(4);
+                background-color: $black06;
+                z-index: -1;
+            }
+        }
+    }
+
+    .preset-wrapper .tl-q-preset .preset-list:focus:before {
+        width: rem-calc(26px);
+    }
+
+    .popup-footer button:focus:before {
+        left: -2px;
+        top: -2px;
+        width: calc(100% + 4px);
+        height: calc(100% + 4px);
+    }
+
+    .dropdown-menu li > a.focus {
+        text-decoration: none;
+        background-color: #eee;
+    }
+}
+
+#global-quick-add-wrapper {
+    display: block;
+    opacity: 1;
+    z-index: $zindex-modal-background;
+}
+
+.global-quick-add-timecard {
+    z-index: $zindex-modal-background-dropdown;
+}

@@ -1,0 +1,54 @@
+.task-detail-modal-cover {
+    z-index: 11;
+}
+.task-detail-modal {
+    max-height: none;
+    height: rem-calc(500);
+    top: 10%;
+    .popup-header {
+        min-height: auto;
+        height: rem-calc(48);
+        display: flex;
+        padding: 0 rem-calc(24);
+        align-items: center;
+        .popup-close {
+            position: static;
+            flex: none;
+        }
+        .popup-title {
+            font-size: rem-calc(16);
+            flex: auto;
+        }
+    }
+    .popup-body {
+        padding: 0;
+        // qq浏览器
+        height: rem-calc(452);
+    }
+
+    .task-modal-navigate-back {
+        fill: $manatee;
+        position: absolute;
+        left: rem-calc(24);
+        top: rem-calc(13);
+        .icon-back-settings {
+            width: rem-calc(16);
+            height: rem-calc(16);
+        }
+    }
+
+    .can-navigate {
+        .td-bar {
+            padding-left: rem-calc(30);
+        }
+    }
+
+    .td-header {
+        padding: rem-calc(12) rem-calc(20) rem-calc(12) rem-calc(24);
+        border-bottom: none;
+    }
+
+    .td-item-delete {
+        display: none;
+    }
+}

@@ -10,5 +10,7 @@ export default {
   getTodos: state => state.todos,
   getUserData: state => state.userData,
   getAllTags: state => state.allTags,
+  todoNav: state => state.todoNav,
+  routeQuery: state => state.routeQuery,
 
 }

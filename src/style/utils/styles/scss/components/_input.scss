@@ -1,0 +1,227 @@
+@import "src/style/utils/var.scss";
+
+$form-spacing: rem-calc(16) !default;
+$input-padding-rl: rem-calc(12) !default;
+$input-padding-tb: rem-calc(8) !default;
+$input-placeholder-font-color: $base-font-color-holder !default;
+$input-border-color: $input-base-border-color;
+$input-focus-border-color: $base-focus-border-color !default;
+$input-border-radius: $base-border-radius !default;
+$input-disabled-bg: $base-disabled-bg !default;
+$input-disabled-cursor: $cursor-default-value !default;
+$input-box-shadow: $base-input-box-shadow !default;
+$input-height: $li-line-height;
+
+$input-tny: rem-calc(5) !default;
+$input-sml: rem-calc(7) !default;
+$input-med: rem-calc(8) !default;
+$input-lrg: rem-calc(11) !default;
+
+$input-size-tny: rem-calc(28);
+$input-size-sml: rem-calc(30);
+$input-size-med: rem-calc(32);
+$input-size-lrg: rem-calc(36);
+
+$alert-input-border-color: $red;
+$alert-input-focus-border-color: $red !default;
+
+@mixin input-placeholder($color) {
+    // style placeholder text cross browser
+    ::-webkit-input-placeholder {
+        color: $color;
+    }
+
+    :-moz-placeholder {
+        /* Firefox 18- */
+        color: $color;
+    }
+
+    ::-moz-placeholder {
+        /* Firefox 19+ */
+        color: $color;
+    }
+
+    :-ms-input-placeholder {
+        color: $color;
+    }
+}
+
+@include input-placeholder($input-placeholder-font-color);
+
+@mixin input-base() {
+    padding-left: $input-padding-rl;
+    padding-right: $input-padding-rl;
+    border: $base-border-style;
+    outline: 0;
+    border-radius: $input-border-radius;
+    font-size: $body-font-size;
+}
+
+@mixin input-size($size: $input-size-med) {
+    height: $size;
+    // line-height: $size;
+}
+
+@mixin input-style(
+    $bd-color: $input-border-color,
+    $focus-bd-color: $input-focus-border-color,
+    $disabled: false
+) {
+    border-color: $bd-color;
+
+    &.focus,
+    &:focus {
+        outline: 0;
+        border-color: $focus-bd-color;
+    }
+
+    @if $disabled {
+        cursor: $input-disabled-cursor;
+
+        &:focus {
+            border-color: $bd-color;
+        }
+    }
+}
+
+input {
+    @include input-base;
+    @include input-size;
+    @include input-style;
+
+    &.input-tny {
+        @include input-size($size: $input-size-tny);
+    }
+
+    &.input-sml {
+        @include input-size($size: $input-size-sml);
+    }
+
+    &.input-med {
+        @include input-size($size: $input-size-med);
+    }
+
+    &.input-lrg {
+        @include input-size($size: $input-size-lrg);
+    }
+
+    &.input-alert,
+    &.input-error {
+        @include input-style(
+            $bd-color: $alert-input-border-color,
+            $focus-bd-color: $alert-input-focus-border-color
+        );
+    }
+}
+
+input[type="submit"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 0;
+}
+
+/* Respect enforced amount of rows for textarea */
+textarea[rows] {
+    height: auto;
+}
+
+/* Not allow resize out of parent */
+// textarea {
+//     max-width: 100%;
+// }
+
+// ba ga
+textarea.input-fake {
+    @include input-base;
+    @include input-style;
+    padding-top: $input-sml;
+    padding-bottom: $input-sml;
+}
+
+/* Adjust margin for form elements below */
+input[type="checkbox"],
+input[type="radio"],
+select {
+    margin: 0 0 $form-spacing 0;
+    height: auto;
+}
+
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+    display: inline-block;
+    margin-#{$default-float}: $form-spacing * 0.5;
+    margin-bottom: 0;
+    line-height: 1;
+}
+
+/* Normalize file input */
+input[type="file"] {
+    width: 1000px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: -400px;
+    opacity: 0;
+    padding: 0;
+    cursor: pointer;
+    -ms-filter: "alpha(opacity=0)";
+}
+
+.ios {
+    input,
+    textarea,
+    select {
+        -webkit-appearance: none;
+    }
+}
+
+.task-input {
+    @include input-base;
+    @include input-size;
+    @include input-style;
+    border-color: transparent;
+}
+
+.input-w100 {
+    width: 100%;
+}
+
+.editor-container {
+    position: relative;
+    min-height: inherit;
+    z-index: 0;
+}
+
+.inline-editor {
+    position: relative;
+}
+.input-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100% - 125px);
+    overflow: hidden;
+    white-space: nowrap;
+    color: $base-font-color-holder;
+    z-index: -1;
+}
+
+.mixed-input {
+    display: inline-table;
+
+    input {
+        display: table-cell;
+        width: 100%;
+    }
+
+    .mixed-input-btn {
+        display: table-cell;
+        border-radius: $input-border-radius;
+        border: $base-border-style;
+        border-color: $input-border-color;
+        line-height: normal;
+        white-space: nowrap;
+        vertical-align: initial;
+        padding: 0 rem-calc(7);
+    }
+}

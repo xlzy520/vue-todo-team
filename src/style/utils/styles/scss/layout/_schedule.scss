@@ -1,0 +1,80 @@
+.participant-view {
+    .participant-list {
+        width: 100%;
+        max-height: rem-calc(260);
+
+        .participant-item {
+            $item-height: rem-calc(56);
+            $content-height: rem-calc(36);
+            $padding-height: ($item-height - $content-height) / 2;
+            $pending-height: rem-calc(24);
+            overflow: hidden;
+
+
+            .avatar {
+                margin:$padding-height rem-calc(14);
+                margin-left: 0;
+                float: left;
+            }
+
+            .display-name {
+                // @include clearfix;
+                position: relative;
+                margin-left: rem-calc(50);
+                height: $item-height;
+                padding: $padding-height 0;
+                border-bottom: 1px solid $ashgrey;
+
+                .display {
+                    max-width: 100%;
+                    white-space: nowrap;
+                    position: relative;
+                    display: flex;
+                    height: 100%;
+                    flex-direction: column;
+                    justify-content: center;
+
+                    span {
+                        line-height: 1;
+                    }
+
+                    .v-center {
+                        line-height: $content-height;
+                    }
+
+                    p {
+                        max-width: 80%;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                }
+
+                .action {
+                    float: right;
+                    position: relative;
+                    z-index: 1;
+
+                    .right {
+                        line-height: $content-height;
+                    }
+
+                    .waiting {
+                        display: inline-block;
+                        line-height: $pending-height;
+                        margin-top: ($content-height - $pending-height) / 2;
+                        margin-right: rem-calc(12);
+                        padding: 0 rem-calc(10);
+                        border-radius: $base-border-radius;
+                        background-color: $whitelilac;
+                        color: $darkgrey;
+                    }
+                }
+
+            }
+            &:last-child .display-name {
+                border-bottom: none;
+            }
+        }
+    }
+}

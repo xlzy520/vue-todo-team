@@ -1,0 +1,239 @@
+.settings {
+    .task-template-tab-content {
+        padding: 0;
+    }
+}
+.task-template-panel {
+    padding: 0 rem-calc(8);
+    margin-left: rem-calc(-8);
+    padding-top: rem-calc(14);
+    .task-template-control {
+        margin-left: rem-calc(30);
+        margin-right: rem-calc(30);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        padding-bottom: rem-calc(26);
+    }
+    .task-template-grid-section {
+        .row {
+            margin: 0 rem-calc(30);
+        }
+        .task-template-container {
+            margin-left: rem-calc(14);
+        }
+    }
+    .section {
+        .text-info-title {
+            margin-top: rem-calc(10);
+        }
+
+        .row-title {
+            padding-top: rem-calc(30);
+            line-height: inherit;
+        }
+    }
+
+    .task-template-container {
+        margin-top: rem-calc(18);
+    }
+
+    p.text-info-title {
+        line-height: rem-calc(21);
+        max-width: rem-calc(445);
+    }
+}
+
+.task-template-container {
+    display: flex;
+    flex-flow: row wrap;
+    // margin-left: rem-calc(-16);
+    // width: rem-calc(709);
+}
+.task-template-thumbnail {
+    position: relative;
+    cursor: pointer;
+    width: rem-calc(215);
+    height: rem-calc(124);
+    overflow: hidden;
+    margin-bottom: rem-calc(16);
+    background: rgba(0, 0, 0, 0.01);
+    box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.08), 0 0 2px 0 rgba(0, 0, 0, 0.08),
+        0 2px 4px 0 rgba(0, 0, 0, 0.06);
+    border-radius: 4px;
+    padding: rem-calc(12) rem-calc(12) 0 rem-calc(12);
+    margin-left: rem-calc(16);
+    &:hover,
+    &.active {
+        background: rgba(0, 0, 0, 0.06);
+    }
+
+    .more {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: rem-calc(24);
+        height: rem-calc(24);
+    }
+    .title {
+        line-height: rem-calc(24);
+        color: $base-font-color-primary;
+        font-weight: bold;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow-wrap: break-word;
+    }
+
+    .desc,
+    .content {
+        margin-top: rem-calc(7);
+        line-height: rem-calc(16);
+        color: $base-font-color-secondary;
+        font-size: rem-calc(11);
+        overflow: hidden;
+        overflow-wrap: break-word;
+    }
+    .desc {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .content {
+        white-space: pre-line;
+    }
+    .item {
+        display: flex;
+        align-items: center;
+        margin-top: rem-calc(7);
+        line-height: rem-calc(16);
+        color: $base-font-color-primary;
+        font-size: rem-calc(11);
+        .i-tny {
+            flex: none;
+            height: rem-calc(10);
+            width: rem-calc(10);
+        }
+        .item-title {
+            margin-left: rem-calc(6);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+}
+
+.task-template-grid {
+    width: auto;
+    max-width: rem-calc(717);
+    height: $popup-max-height;
+    .popup-body {
+        display: flex;
+        flex-direction: column;
+        padding: 0 0 0 0;
+
+        .antiscroll-wrap {
+            display: flex;
+            flex-direction: column;
+            flex: auto;
+            padding: 0 rem-calc(12);
+            .antiscroll-inner {
+                flex: auto;
+            }
+        }
+        .task-template-container {
+            padding-top: rem-calc(16);
+            margin: 0 rem-calc(-8);
+        }
+    }
+}
+
+.task-template-preview-modal {
+    height: $popup-max-height;
+    .popup-body {
+        display: flex;
+        flex-direction: column;
+        padding: rem-calc(16) 0 0 0;
+
+        .antiscroll-wrap {
+            display: flex;
+            flex-direction: column;
+            flex: auto;
+            padding: 0 rem-calc(24);
+            overflow: hidden;
+            .antiscroll-inner {
+                flex: auto;
+            }
+        }
+    }
+    .header {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        .title {
+            flex-grow: 1;
+            line-height: rem-calc(24);
+            color: $base-font-color-primary;
+            font-weight: bold;
+            font-size: rem-calc(16);
+            overflow: hidden;
+            overflow-wrap: break-word;
+        }
+    }
+
+    .desc,
+    .content {
+        margin-top: rem-calc(8);
+        line-height: rem-calc(22);
+        color: $base-font-color-secondary;
+        font-size: rem-calc(14);
+        white-space: pre-line;
+        overflow: hidden;
+        overflow-wrap: break-word;
+    }
+    .item {
+        display: flex;
+        align-items: top;
+        margin-top: rem-calc(8);
+        line-height: rem-calc(18);
+        color: $base-font-color-primary;
+        font-size: rem-calc(14);
+        padding: rem-calc(11) 0;
+        & + .item {
+            margin-top: 0;
+        }
+        .i-tny {
+            margin-top: rem-calc(2);
+            flex: none;
+        }
+        .item-title {
+            margin-left: rem-calc(8);
+            word-break: break-word;
+        }
+    }
+    > p {
+        white-space: pre-line;
+    }
+
+    .tag-list {
+        display: flex;
+        flex-flow: row wrap;
+        height: rem-calc(36);
+        align-items: center;
+        .tag-item {
+            margin: rem-calc(8) rem-calc(8) rem-calc(8) 0;
+            max-width: 100%;
+            padding: 0 rem-calc(5);
+            height: rem-calc(20);
+            .tag-name {
+                height: 100%;
+                max-width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-size: rem-calc(12);
+                display: inline-block;
+                vertical-align: baseline;
+                line-height: rem-calc(20);
+            }
+        }
+    }
+}

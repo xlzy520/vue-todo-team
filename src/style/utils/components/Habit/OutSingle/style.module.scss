@@ -1,0 +1,44 @@
+@import "./scss/utils/variables";
+.habitOutSingle {
+    position: absolute;
+    z-index: 11;
+    border-radius: 4px;
+    max-width: rem-calc(330);
+    width: 100%;
+    min-height: auto;
+    padding: 0 rem-calc(18) rem-calc(18);
+    background-color: $white;
+    box-shadow: 0 rem-calc(2) rem-calc(11) 0 rgba(0, 0, 0, 0.16);
+
+    :global(.popup-body) {
+        padding: 0;
+    }
+
+    .header {
+        position: relative;
+        height: rem-calc(34);
+        .close {
+            position: absolute;
+            right: rem-calc(-2);
+            bottom: rem-calc(6);
+            width: rem-calc(12);
+            height: rem-calc(12);
+            svg {
+                width: rem-calc(12);
+                height: rem-calc(12);
+                fill: #37363b;
+            }
+        }
+    }
+}
+
+[class*="-dark-theme"] .habitOutSingle {
+    background-color: #212121;
+    .header {
+        .close {
+            svg {
+                fill: #d3d2d5;
+            }
+        }
+    }
+}

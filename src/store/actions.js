@@ -8,6 +8,11 @@ export default {
   }, payload) {
     commit("SAVE_USER_DATA", payload)
   },
+  updateQuery({
+                       commit
+                     }, payload) {
+    commit("updateQuery", payload)
+  },
   async createNewTodo({
     commit
   }, payload) {

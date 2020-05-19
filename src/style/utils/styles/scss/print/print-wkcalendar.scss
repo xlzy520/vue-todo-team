@@ -1,0 +1,160 @@
+// variables
+@import "../utils/variables";
+
+@media print {
+    body.print-wkcalendar {
+        height: auto;
+        -webkit-print-color-adjust: exact;
+        margin: 0;
+        overflow: auto;
+
+        * {
+            border-color: $black54 !important;
+        }
+
+        #root {
+            overflow: visible;
+        }
+
+        .pop-tip {
+            display: none !important;
+        }
+
+        .left-bg,
+        .g-left {
+            display: none;
+        }
+
+        .g-full-right {
+            left: 0;
+            right: 0;
+            top: auto;
+            bottom: auto;
+            height: auto;
+            // 辣鸡 QQ Browser fix
+            position: static;
+        }
+
+        .antiscroll-scrollbar,
+        .wk-scroll-label,
+        .c-controller,
+        button,
+        .dropdown-menu {
+            display: none !important;
+        }
+
+        .antiscroll-wrap,
+        .antiscroll-inner {
+            // 打印不应该存在滚动条
+            height: auto !important;
+            width: 100% !important;
+            & > div {
+                width: 100% !important;
+            }
+        }
+
+        .wk-allday,
+        .tg-mainwrapper {
+            padding-right: 0 !important;
+            border-right-width: 0 !important;
+        }
+
+        .wk-allday {
+            .dragArea {
+                display: none;
+            }
+        }
+
+        .wk-allday .tg-allday-wrapper .tg-allday .content-wrapper {
+            margin-right: 0;
+            padding-right: 0;
+        }
+
+        .wk-allday .tg-allday-wrapper .tg-allday .content-skeleton {
+            padding-bottom: 0;
+        }
+
+        .wk-grid-container {
+            display: block;
+        }
+
+        &.firefox {
+            .wk-grid-container .wk-allday .tg-allday-wrapper .tg-allday .content-skeleton {
+                padding-right: 0;
+            }
+        }
+
+        .tk-calendar-right-view {
+            display: none;
+        }
+
+        .tk-calendar {
+            display: block;
+            height: auto;
+            border-bottom: 1px solid;
+
+            .tip,
+            .tk-calendar-right-view {
+                display: none !important;
+            }
+
+            .tk-calendar-main {
+                position: relative;
+                height: auto;
+            }
+
+            .tk-calendar-content {
+                display: block;
+                overflow: visible;
+            }
+
+            .c-range-wrap {
+                float: none !important;
+                text-align: center;
+            }
+
+            .tg-dualmarker {
+                border-bottom: 1px solid $black36 !important;
+            }
+
+            .tg-now-ptr {
+                border-top-color: transparent !important;
+                border-right-color: transparent !important;
+                border-bottom-color: transparent !important;
+            }
+
+            .c-task {
+                box-shadow: none !important;
+            }
+
+            .c-task-wrapper {
+                padding-left: rem-calc(3) !important;
+                padding-right: rem-calc(3) !important;
+
+                .c-task-title {
+                    text-overflow: clip;
+                }
+            }
+
+            .tg-allday-item {
+                overflow-y: hidden !important;
+            }
+        }
+
+        .cgd-gutter-bg-top {
+            .tg-dualmarker {
+                height: 43px !important;
+            }
+        }
+
+        .cgd-gutter-bg-bottom {
+            .tg-dualmarker {
+                border-bottom-width: 0 !important;
+            }
+        }
+
+        .crd-bottom {
+            border-bottom-width: 0 !important;
+        }
+    }
+}

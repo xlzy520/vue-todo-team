@@ -1,0 +1,83 @@
+[class*="city-pro-theme"] {
+    .g-left {
+        .upgrade-button {
+            background-color: #4e515b;
+            color: white;
+            svg.icon-upgrade-button-bg,
+            svg.icon-chevron-right {
+                fill: $white54;
+            }
+        }
+        .tool-bar {
+            .t-notify,
+            .t-search {
+                .i-1 {
+                    opacity: 0.54;
+
+                    &:hover {
+                        opacity: 0.85;
+                    }
+                }
+            }
+        }
+    }
+    .left-bg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: rem-calc(372);
+        background-image: linear-gradient(
+            270deg,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0.2) 100%
+        );
+    }
+
+    .group-header-box .title-edit {
+        color: white;
+        background-color: $black24;
+        &:focus,
+        &.focus {
+            border-color: $white48;
+        }
+    }
+
+    .lists .l-l-t a.l-tab {
+        color: $white54;
+        border-bottom-color: $white12;
+
+        span {
+            color: inherit;
+        }
+
+        &:hover {
+            color: $white85;
+        }
+
+        &.t-active {
+            color: $white85;
+        }
+    }
+}
+
+@media #{$large-low} {
+    [class*="city-pro-theme"] {
+        .g-left {
+            background-size: auto 100%;
+            background-repeat: no-repeat;
+            background-position: left bottom;
+        }
+        .g-left::before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-image: linear-gradient(
+                270deg,
+                rgba(0, 0, 0, 0) 0%,
+                rgba(0, 0, 0, 0.2) 100%
+            );
+        }
+    }
+}

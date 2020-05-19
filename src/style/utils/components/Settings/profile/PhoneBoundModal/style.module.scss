@@ -1,0 +1,40 @@
+@import "./scss/utils/variables";
+.modal {
+    :global(.popup-body) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: rem-calc(24);
+    }
+    .desc {
+        margin-top: rem-calc(16);
+    }
+    .primaryFont {
+        font-size: rem-calc(14);
+        color: rgba(0, 0, 0, 0.85);
+        line-height: rem-calc(20);
+    }
+
+    .steps {
+        margin-top: rem-calc(36);
+        color: rgba(0, 0, 0, 0.36) !important;
+    }
+
+    .stepsContainer {
+        width: rem-calc(480);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .step1,
+    .step2 {
+        margin-top: rem-calc(24);
+    }
+    .stepDesc2 {
+        margin-top: rem-calc(8);
+        font-size: rem-calc(12);
+        color: rgba(0, 0, 0, 0.36);
+        line-height: rem-calc(18);
+        white-space: pre-wrap;
+    }
+}

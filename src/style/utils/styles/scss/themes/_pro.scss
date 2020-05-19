@@ -1,0 +1,573 @@
+@import "src/style/utils/var.scss";
+
+$base-bg-distance: rem-calc(10);
+
+[class*="-pro-theme"] {
+    .g-left {
+        bottom: 0;
+        background-color: transparent;
+    }
+
+    .g-center {
+        background-color: rgba(white, 0.93);
+    }
+
+    .g-full-right {
+        background-color: rgba(white, 0.93);
+    }
+
+    .tk-calendar-right-view {
+        background-color: transparent;
+    }
+
+    .g-right {
+        transition-duration: 0.15s;
+        background-color: rgba(white, 0.93);
+
+        &.has-detail {
+            // @maoq 由于transform会影响z-index的表现，不能使用。而直接移动right值会有动画阻塞的情况，因此暂时没法加入移动动画，需要等待调整任务列表与详情页中各种覆盖来覆盖去的菜单、弹窗
+            opacity: 1;
+        }
+
+        .comments-footer {
+            textarea {
+                background-color: transparent;
+            }
+        }
+
+        .td-body {
+            background-color: transparent;
+            .content-editor {
+                background-color: transparent;
+            }
+        }
+
+        .detail-fullscreen {
+            .td-body {
+                .content-editor {
+                    background-color: #fff;
+                }
+            }
+        }
+
+        .project-activity-view {
+            .td-header {
+                background-color: transparent;
+            }
+
+            .td-body {
+                background-clip: border-box;
+            }
+        }
+
+        .td-body textarea {
+            background-color: transparent;
+        }
+    }
+
+    .lists {
+        .l-tabs .l-tab {
+            border-bottom-color: $white08;
+        }
+
+        li,
+        .fake-li,
+        .l-new,
+        .f-header {
+            & > a:hover {
+                background-color: $white1;
+            }
+        }
+
+        .active > a {
+            &,
+            &:hover {
+                background-color: $white2;
+            }
+        }
+    }
+
+    .comments-footer {
+        .count-warning {
+            color: #fd5d5f;
+        }
+    }
+
+    .l-divider {
+        background-color: $white08;
+    }
+
+    // &.hide-list {
+    //     .g-center,
+    //     .g-right {
+    //         display: none;
+    //     }
+    // }
+
+    .tk-calendar {
+        overflow: hidden;
+
+        .c-col-date-weekend,
+        .wk-grid-container .tg-allday-weekend:not(.tg-allday-today),
+        .wk-grid-container .tg-col-weekend,
+        .wk-grid-container .tg-col-weekend .cgd-col {
+            background-color: $black02;
+        }
+    }
+
+    .schedule-tasks {
+        .sd-tasks-header {
+            box-shadow: none;
+        }
+    }
+
+    .day-grid-container {
+        & ~ .tk-calendar-right-view {
+            opacity: 1;
+        }
+    }
+    &.open-schedule {
+        .tk-calendar-right-view {
+            opacity: 1;
+        }
+
+        .wk-grid-container,
+        .month-grid-container {
+            margin-right: $grid-left-width;
+        }
+    }
+
+    .summary {
+        background-color: rgba(white, 0.93);
+
+        textarea {
+            background-color: transparent;
+        }
+    }
+
+    /* ========= 因为结构问题特殊处理的地方 ========= */
+
+    .text-def {
+        color: $base-font-color;
+    }
+
+    .text-primary {
+        color: $base-font-color-primary;
+    }
+
+    .text-secondary {
+        color: $base-font-color-secondary;
+    }
+
+    .text-alert {
+        color: $base-font-color-alert;
+    }
+
+    .text-info {
+        color: $base-font-color-info;
+    }
+
+    .text-info.time {
+        color: $manatee;
+    }
+
+    .text-info-title {
+        color: $base-font-color-info-title;
+    }
+
+    .text-active {
+        color: $base-font-color-deepbg;
+    }
+
+    .text-title {
+        color: $base-font-color-title;
+    }
+
+    .text-pro {
+        color: $orangered;
+    }
+
+    .duedate-overdue .i-5,
+    .active.duedate-overdue .i-5 {
+        fill: $darkRed;
+        color: $darkRed;
+
+        &.selected-date {
+            color: $white85;
+        }
+    }
+
+    .lists {
+        li > a,
+        div.p-sort-help > a,
+        .f-header > a,
+        .fake-li > a,
+        .l-c > a,
+        .l-new > a {
+            color: $base-font-color-deepbg;
+        }
+
+        .l-l-t {
+            a.l-tab {
+                color: $black36;
+
+                &:hover {
+                    color: $black54;
+                }
+
+                &.t-active {
+                    color: $white;
+                }
+            }
+        }
+    }
+
+    .dropdown-menu,
+    .dropdown-menu-menu-submenu {
+        li > a {
+            color: $black85;
+        }
+    }
+
+    .task-menu {
+        &.dropright > .boult {
+            left: auto;
+            right: rem-calc(33);
+        }
+    }
+
+    // @maoq 坑爹的透明啊啊啊
+    .project-activity-view {
+        .td-body {
+            overflow: hidden;
+            padding-bottom: 0;
+
+            .right-section {
+                overflow: auto;
+                width: 100%;
+                height: 100%;
+                margin-right: rem-calc(-15);
+            }
+        }
+    }
+
+    .tkcalendar-view {
+        .c-task {
+            &.pop-task {
+                &,
+                a {
+                    color: $white;
+                }
+
+                svg {
+                    fill: $white;
+                }
+            }
+        }
+    }
+
+    .calendar-min-cal {
+        .k-calendar {
+            .k-days span {
+                &.k-selected,
+                &:hover {
+                    color: $white;
+                }
+            }
+        }
+    }
+
+    /* ========= 布局上的调整 ========= */
+
+    /* ========= 侧边栏在窄屏下换成灰色主题效果 ========= */
+    // &.list-show .g-left {
+    //     left: $base-bg-distance;
+    //     bottom: $base-bg-distance;
+    //     background-color: $grey-color;
+
+    //     .tool-bar {
+    //         .t-name {
+    //             color: $base-font-color-lightbg;
+    //             opacity: 1;
+    //         }
+    //     }
+
+    //     #pomodoro-timer {
+    //         .wrapper {
+    //             color: $black85;
+
+    //             svg {
+    //                 fill: black;
+    //             }
+
+    //             .progress-bar {
+    //                 background-color: $black06;
+    //             }
+    //         }
+    //     }
+
+    //     .inner-date {
+    //         color: $black;
+    //     }
+
+    //     .i-1 {
+    //         fill: $black;
+    //     }
+
+    //     .tool-bar {
+    //         .t-notify,
+    //         .t-search {
+    //             .i-1 {
+    //                 opacity: 0.54;
+
+    //                 &:hover {
+    //                     opacity: 0.85;
+    //                 }
+    //             }
+    //         }
+    //     }
+
+    //     .lists {
+    //         li > a,
+    //         .f-header > a,
+    //         .fake-li > a,
+    //         .l-c > a,
+    //         .l-new > a {
+    //             color: $base-font-color-lightbg;
+
+    //             &:hover {
+    //                 background-color: $black02;
+    //             }
+    //         }
+
+    //         .group-header-box {
+    //             .count {
+    //                 svg {
+    //                     fill: $black36;
+    //                 }
+    //             }
+    //         }
+    //     }
+
+    //     .min-cal,
+    //     #pomodoro-timer .wrapper {
+    //         background-color: $whitegray;
+    //         border: 1px solid $black06;
+    //     }
+
+    //     // 小日历视图背景色
+    //     .min-cal {
+    //         .month,
+    //         .year {
+    //             a {
+    //                 color: $black;
+    //             }
+    //         }
+
+    //         .year {
+    //             .active a {
+    //                 color: $vanilla;
+    //             }
+    //         }
+
+    //         .k-calendar {
+    //             .k-header {
+    //                 color: $black36;
+    //             }
+
+    //             .k-task {
+    //                 &:after {
+    //                     background-color: $black14;
+    //                 }
+    //             }
+
+    //             .year,
+    //             .nav-toggle {
+    //                 color: $black85;
+    //             }
+
+    //             .month {
+    //                 a:not(.disable) {
+    //                     &:hover {
+    //                         background-color: $black1;
+    //                     }
+    //                 }
+
+    //                 li.active {
+    //                     a.month-change {
+    //                         color: $white;
+    //                         background-color: $indigo;
+    //                     }
+    //                 }
+    //             }
+
+    //             .k-title {
+    //                 .nav-menu {
+    //                     .k-btn {
+    //                         fill: $black36;
+
+    //                         &:hover {
+    //                             fill: $black54;
+    //                         }
+    //                     }
+    //                 }
+
+    //                 &.k-disable-year-nav {
+    //                     .k-btn-previous-month,
+    //                     .k-btn-next-month {
+    //                         fill: $black36;
+
+    //                         &:hover {
+    //                             fill: $black54;
+    //                         }
+    //                     }
+    //                 }
+    //             }
+
+    //             .k-days {
+    //                 color: $black85;
+
+    //                 span {
+    //                     &.k-selected,
+    //                     &:hover {
+    //                         color: $white;
+
+    //                         &:before {
+    //                             background-color: $indigo;
+    //                             border-color: $indigo;
+    //                         }
+
+    //                         &:after {
+    //                             background-color: $white36;
+    //                         }
+
+    //                         &:hover {
+    //                             &:before {
+    //                                 background-color: $indigo;
+    //                             }
+    //                         }
+    //                     }
+
+    //                     &:hover {
+    //                         &:before {
+    //                             background-color: $black1;
+    //                         }
+    //                     }
+    //                 }
+    //             }
+    //         }
+
+    //         span,
+    //         a {
+    //             opacity: 1;
+
+    //             &.k-task {
+    //                 opacity: 1;
+    //             }
+
+    //             &.k-out-of-month,
+    //             &.disable {
+    //                 color: $black24;
+    //             }
+    //         }
+
+    //         // 切换月份icon
+    //         .k-calendar {
+    //             .k-prev:before,
+    //             .k-next:before {
+    //                 opacity: 0.8;
+    //             }
+    //         }
+    //     }
+
+    //     .fake-enlarge-mini-cal {
+    //         &:before {
+    //             background-color: $black1;
+    //         }
+
+    //         &:after {
+    //             border-color: transparent transparent $black5 transparent;
+    //         }
+    //     }
+
+    //     .fake-narrow-mini-cal {
+    //         &:before {
+    //             background-color: $black1;
+    //         }
+
+    //         &:after {
+    //             border-color: $black5 transparent transparent transparent;
+    //         }
+    //     }
+
+    //     // 侧边栏正常状态下字体和icon透明度
+    //     .lists {
+    //         .l-close-title,
+    //         .l-title {
+    //             opacity: 1;
+    //         }
+
+    //         .l-tabs .l-tab {
+    //             border-bottom-color: $black06;
+    //         }
+
+    //         .l-l-t {
+    //             .l-tab-slide {
+    //                 background-color: $black85;
+    //             }
+    //         }
+
+    //         a.active {
+    //             background-color: $black06;
+
+    //             &:hover {
+    //                 background-color: $black06;
+    //             }
+    //         }
+
+    //         .ui-sortable-helper,
+    //         .ui-sortable-helper a,
+    //         .active.ui-sortable-helper a {
+    //             background-color: $whitegray;
+    //         }
+
+    //         .empty-tag {
+    //             svg {
+    //                 fill: $black;
+    //             }
+
+    //             span {
+    //                 color: $black;
+    //             }
+    //         }
+    //     }
+    // }
+
+    /* ========= 详情页在窄屏下换成默认效果 ========= */
+    &.detail-show .g-right {
+        background-color: $white;
+
+        .td-body,
+        .td-body textarea {
+            background-color: $lightwhite;
+        }
+    }
+}
+
+@media #{$medium-only} {
+    [class*="-pro-theme"] {
+        .g-right {
+            width: 70%;
+        }
+    }
+}
+
+@media #{$large-low} {
+    [class*="-pro-theme"] {
+        &.windows {
+            .statistics {
+                left: 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,323 @@
+// comments
+$comments-padding: rem-calc(24);
+$comments-base-divider: rem-calc(6);
+
+// comment
+$comment-avatar-size: rem-calc(34);
+$comment-avatar-m-r: rem-calc(10);
+
+$close-btn-width: rem-calc(20);
+
+// footer
+$c-f-margin-bottom: rem-calc(48);
+$schedule-height: rem-calc(44);
+
+.comments {
+    position: relative;
+    padding: 0 $comments-padding 0;
+    user-select: none;
+
+    .comments-header {
+        line-height: rem-calc(17);
+        padding: rem-calc(18) 0 rem-calc(8) 0;
+        border-top: rem-calc(1) solid rgba(0, 0, 0, 0.06);
+
+        .title {
+            font-size: rem-calc(14);
+            margin-right: rem-calc(8);
+        }
+
+        .count {
+            font-size: rem-calc(12);
+            color: $black36;
+        }
+    }
+
+    ul {
+        * {
+            user-select: text;
+        }
+
+        li {
+            padding: rem-calc(16) 0;
+
+            &:last-child {
+                .comment-content {
+                    border-bottom: none;
+                }
+            }
+        }
+    }
+}
+
+// show last 5 comments
+
+// .comments {
+//   li {
+//     display: block;
+//   }
+// }
+
+// .show-last {
+//   li {
+//     display: none;
+
+//     @for $i from 1 through 5 {
+//       &:nth-last-child(#{$i}) {
+//         display: block;
+//       }
+//     }
+
+//   }
+// }
+
+// comment
+.comment {
+    .avatar {
+        float: left;
+        width: $comment-avatar-size;
+        height: $comment-avatar-size;
+        margin-right: $comment-avatar-m-r;
+    }
+
+    .comment-content {
+        position: relative;
+        margin-left: $comment-avatar-size + $comment-avatar-m-r;
+        line-height: 1;
+    }
+
+    .action-btns {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 0;
+        .del-btn,
+        .reply-btn {
+            display: block;
+            svg {
+                width: rem-calc(20);
+                height: rem-calc(20);
+            }
+        }
+        svg {
+            fill: $black24;
+        }
+    }
+
+    &:hover {
+        .action-btns {
+            display: block;
+        }
+    }
+
+    .timeline-text {
+        @include ellipsis;
+        max-width: 80%;
+        height: rem-calc(20);
+    }
+
+    .comment-time {
+        overflow: hidden;
+        font-size: rem-calc(12);
+        line-height: rem-calc(20);
+    }
+
+    .comment-creator {
+        @include ellipsis;
+        max-width: rem-calc(140);
+        padding-right: rem-calc(20);
+        line-height: rem-calc(20);
+    }
+
+    .comment-text {
+        margin-top: rem-calc(4);
+    }
+
+    .detail {
+        overflow: hidden;
+        word-break: break-word;
+        line-height: 1.4;
+
+        .c-text {
+            display: block;
+            white-space: pre-wrap;
+        }
+    }
+
+    .draft-tip {
+        display: none;
+    }
+
+    .draft {
+        .draft-tip {
+            display: inline;
+        }
+    }
+
+    .reply-tip span,
+    .mention {
+        vertical-align: baseline;
+    }
+
+    .collapse-toggle {
+        font-size: rem-calc(12);
+        color: rgba(0, 0, 0, 0.36);
+        fill: rgba(0, 0, 0, 0.36);
+        margin-top: rem-calc(8);
+        display: block;
+        svg {
+            width: rem-calc(14);
+            height: rem-calc(14);
+        }
+
+        &.collapse {
+            svg {
+                transform: rotate(180deg);
+            }
+        }
+    }
+}
+
+.comments-hint.show-editor,
+.comments-hint.show-holder {
+    .comments-footer {
+        border-top: 1px solid $base-border-color;
+    }
+}
+
+.schedule-body {
+    .comments-footer {
+        bottom: $c-f-margin-bottom + $schedule-height;
+    }
+}
+
+.comments-footer {
+    position: absolute;
+    bottom: $c-f-margin-bottom;
+    z-index: 2;
+    width: 100%;
+    padding: 0 rem-calc(24);
+
+    .comment {
+        padding-top: $col-padding;
+        // padding-left: rem-calc(14);
+        margin-bottom: $row-padding;
+
+        .comment-content {
+            border-bottom: none;
+            padding-bottom: 0;
+
+            .comment-text {
+                padding-right: 0;
+            }
+        }
+
+        .action-btns {
+            display: none;
+        }
+    }
+
+    .comment-holder {
+        position: relative;
+
+        .co-action {
+            float: right;
+            cursor: pointer;
+            > svg {
+                width: rem-calc(18);
+                height: rem-calc(18);
+                fill: $black24;
+            }
+            > span {
+                font-size: rem-calc(12);
+                margin-left: rem-calc(4);
+            }
+        }
+        .c-text {
+            display: block;
+            white-space: pre-wrap;
+        }
+    }
+
+    .n-bottom {
+        margin-top: $col-padding;
+        margin-bottom: rem-calc(10);
+        position: relative;
+        width: 100%;
+        line-height: 1;
+        min-height: rem-calc(39);
+    }
+
+    textarea {
+        width: 100%;
+        max-height: rem-calc(121);
+        min-height: rem-calc(21);
+        height: rem-calc(37);
+        line-height: rem-calc(21);
+        padding-right: 8%;
+        background-color: rgba(44, 66, 118, 0.06) !important;
+        border: rem-calc(1) solid transparent;
+        border-radius: rem-calc(4);
+
+        &:focus {
+            border-color: $opacityindigo-36;
+        }
+    }
+
+    .c-count {
+        position: absolute;
+        right: rem-calc(10);
+        bottom: rem-calc(13);
+    }
+
+    .count-warning {
+        color: #fd5d5f;
+    }
+}
+
+.cm-handle {
+    padding-left: rem-calc(70);
+    padding-right: rem-calc(39);
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+.toggle-btn {
+    // text-align: center;
+    padding: rem-calc(9) 0;
+    padding-left: $comment-avatar-size + $comment-avatar-m-r;
+    width: 100%;
+    color: rgba(0, 0, 0, 0.54);
+    cursor: pointer;
+    display: none;
+
+    span {
+        line-height: rem-calc(14);
+        font-size: rem-calc(12);
+        display: inline-block;
+    }
+
+    svg {
+        fill: rgba(0, 0, 0, 0.36);
+        width: rem-calc(14);
+        height: rem-calc(14);
+        margin-left: rem-calc(4);
+    }
+
+    &.open {
+        svg {
+            transform: rotateX(180deg);
+        }
+    }
+
+    &.toggle {
+        display: flex;
+    }
+}
+
+.last-comment {
+    &,
+    & > .antiscroll-inner {
+        max-height: rem-calc(200);
+    }
+}

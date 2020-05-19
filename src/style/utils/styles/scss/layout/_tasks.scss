@@ -1,0 +1,41 @@
+.empty-list-info {
+    margin-top: rem-calc(100);
+    opacity: 0;
+    display: none;
+    transition-delay: .5s;
+    transition: opacity .2s ease-in-out .4s;
+    .empty-icon {
+      position: relative;
+      width: rem-calc(146);
+      height: rem-calc(146);
+      margin: 0 auto;
+      border-radius: 50%;
+      background: rgba(0,0,0,.04);
+    }
+    svg {
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .icon_home {
+        opacity: 0.5;
+    }
+    span {
+        display: block;
+        text-align: center;
+        margin-top: rem-calc(10);
+
+        &.text-lrg {
+            margin-top: rem-calc(37);
+        }
+    }
+}
+
+.empty-list .empty-list-info {
+  display: block;
+  opacity: 1;
+}
+
+

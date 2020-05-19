@@ -1,0 +1,82 @@
+
+$labs-vcard-width: rem-calc(180);
+$labs-vcard-height: rem-calc(220);
+$labs-vcard-margin: rem-calc(37);
+
+$labs-v-content-p-top: rem-calc(104);
+$labs-v-content-divider: rem-calc(10);
+
+$labs-switch-p-b: rem-calc(16);
+
+.labs-panel {
+
+  margin-right: -$labs-vcard-margin;
+  padding-top: rem-calc(30) - $s-base-p-t;
+
+  .vcard {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    border: $base-border-style;
+    width: $labs-vcard-width;
+    height: $labs-vcard-height;
+    margin-right: $labs-vcard-margin;
+    margin-bottom: $labs-vcard-margin;
+    border-radius: $base-border-radius;
+
+    &.active {
+      .v-background {
+        &:before {
+          transform: scaleX(1);
+        }
+      }
+    }
+
+    .v-background {
+      position: absolute;
+      height: $labs-v-content-p-top;
+      width: 100%;
+      overflow: hidden;
+      border-top-left-radius: rem-calc(3); // fix chip
+      border-top-right-radius: rem-calc(3);
+
+      &:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        transition: transform .2s ease-in-out;
+        transform: scaleX(0);
+        transform-origin: left;
+      }
+
+    }
+
+    .v-header {
+      position: relative;
+      background-repeat: no-repeat;
+      height: $labs-v-content-p-top;
+      overflow: hidden;
+    }
+
+    .v-title {
+      position: relative;
+      line-height: 1;
+      margin-top: $labs-v-content-divider * 2;
+      margin-bottom: $labs-v-content-divider;
+    }
+
+    .v-info {
+      line-height: 1.2;
+      margin-bottom: $labs-v-content-divider * 2;
+    }
+
+    .switch {
+      @include centerX;
+      bottom: $labs-switch-p-b;
+    }
+
+  }
+}

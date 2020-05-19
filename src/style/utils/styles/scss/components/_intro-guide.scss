@@ -1,0 +1,151 @@
+.intro-step-1,
+.intro-step-2 {
+    // 设定清单项显示
+    .first-hide > section:nth-child(n + 3) {
+        opacity: 0;
+    }
+}
+
+.intro-step-3 {
+    .first-hide > section:nth-child(n + 4) {
+        opacity: 0;
+    }
+}
+
+.intro-guide-box {
+    position: absolute;
+    opacity: 0;
+    transition: 0.2s ease-in-out;
+    .intro-point {
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        border-radius: rem-calc(4);
+    }
+
+    .intro-msg-box {
+        position: relative;
+        top: 10px;
+        width: rem-calc(236);
+        margin: 0 auto;
+
+        &.down {
+            &:before,
+            &:after {
+                top: 100%;
+                transform: rotate(180deg);
+            }
+
+            &:before {
+                top: calc(100% + 1px);
+            }
+        }
+    }
+
+    .boult:before {
+        top: -10px;
+    }
+
+    .boult:after {
+        top: -9px;
+    }
+
+    .intro-msg {
+        background: $white;
+        padding: 0 rem-calc(12);
+        padding-bottom: rem-calc(12);
+        text-align: center;
+
+        .header {
+            * {
+                line-height: rem-calc(50);
+            }
+            h1 {
+                font-weight: bold;
+                font-size: rem-calc(16);
+                color: $black85;
+                float: left;
+            }
+            .stop-btn {
+                float: right;
+                font-size: rem-calc(12);
+                color: $black24;
+            }
+            &::after {
+                content: "";
+                clear: both;
+                display: block;
+                overflow: hidden;
+                visibility: hidden;
+                width: 0;
+            }
+        }
+        .content {
+            text-align: left;
+            font-size: rem-calc(13);
+            line-height: rem-calc(20);
+            color: $black54;
+            p + p {
+                margin-top: rem-calc(12);
+            }
+        }
+
+        .states {
+            margin-top: rem-calc(16);
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            line-height: 0;
+            label {
+                width: rem-calc(6);
+                height: rem-calc(6);
+                border-radius: 50%;
+                background: $opacityindigo-36;
+                display: inline-block;
+                margin-right: rem-calc(6);
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+            label.active {
+                background: $indigo;
+            }
+        }
+
+        .body {
+            padding-bottom: rem-calc(16);
+        }
+
+        .footer {
+            button {
+                width: 100%;
+            }
+            p {
+                padding-top: rem-calc(10);
+                a {
+                    font-size: rem-calc(12);
+                    color: $black24;
+                    &:hover {
+                        color: $black36;
+                    }
+                }
+            }
+        }
+    }
+
+    &.no-point {
+        .intro-point {
+            border: none;
+        }
+        .intro-msg-box {
+            margin: 0;
+        }
+    }
+
+    @for $i from 0 to 5 {
+        #control#{$i}:checked ~ .actives label:nth-child(#{$i + 1}) {
+            background: $indigo;
+        }
+        #control#{$i}:checked ~ .overflow-wrapper .inner {
+            margin-left: -#{$i * 100%};
+        }
+    }
+}

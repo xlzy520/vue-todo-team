@@ -1,0 +1,407 @@
+@import "src/style/utils/var.scss";
+
+// task detail bar
+$td-padding: rem-calc(14);
+$ruler-height: rem-calc(10);
+$ruler-bottom: rem-calc(10);
+
+.multi-lines-duedate-preview .td-header {
+    padding-bottom: rem-calc(26);
+}
+
+.td-header {
+    position: relative;
+    flex: none;
+    width: 100%;
+    padding: rem-calc(24) rem-calc(20) rem-calc(25) rem-calc(24);
+    border-bottom: 1px solid;
+
+    &.checked .task-progress-wrapper {
+        opacity: 0;
+    }
+
+    .task-progress-wrapper {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        top: 0;
+        right: 0;
+        transition: opacity 0.5s ease;
+        overflow: hidden;
+
+        .task-progress {
+            height: rem-calc(2);
+            opacity: 0.85;
+            width: 100%;
+            transform-origin: left;
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+            position: absolute;
+            bottom: 0;
+        }
+
+        .task-progress-ruler-wrapper {
+            position: absolute;
+            bottom: -$ruler-bottom;
+            left: 0;
+            right: 0;
+            height: rem-calc(25);
+        }
+
+        &.progress-disabled {
+            .task-progress-ruler-wrapper {
+                opacity: 0;
+            }
+
+            .task-progress-ruler {
+                cursor: default;
+            }
+        }
+
+        .task-progress-ruler {
+            display: none;
+            height: 100%;
+            cursor: pointer;
+
+            &.read-only {
+                cursor: default;
+            }
+
+            .tip-line {
+                width: 0%;
+                position: absolute;
+                top: rem-calc(13);
+                height: rem-calc(2);
+                opacity: 0.36;
+            }
+
+            .task-progress-item {
+                position: relative;
+                height: 100%;
+                // background-color: $black;
+                flex: 1;
+
+                &.half-flex {
+                    flex: 0.5;
+                }
+
+                span {
+                    position: absolute;
+                    top: rem-calc(-15);
+                    display: none;
+                    width: rem-calc(40);
+                    height: rem-calc(20);
+                    text-align: center;
+                    font-size: rem-calc(12);
+                    padding: rem-calc(4) rem-calc(7);
+                    line-height: 1;
+                    color: $white85;
+                    background-color: rgba(5, 8, 15, 0.85);
+                    border-radius: rem-calc(4);
+                    opacity: 1;
+                    display: none;
+                    z-index: 13;
+                }
+
+                &.extra-progress {
+                    // @nanhai 无extra的时候会处于0位置，extra-progress元素其实会处于可视区域，这么设置是为了让这个元素完整的藏起来，有extra的时候行内样式会覆盖这个样式
+                    left: -100%;
+                }
+
+                &.task-progress-end {
+                    span {
+                        right: 0;
+                    }
+                }
+
+                &:hover {
+                    span {
+                        display: inline-block;
+                    }
+                }
+            }
+
+            .task-progress-item.extra-progress {
+                position: absolute;
+                flex: none;
+                width: rem-calc(24);
+                transform: translateX(-50%);
+
+                span {
+                    // width: auto;
+                }
+            }
+
+            &.show {
+                display: flex;
+
+                .task-progress-item:not(.task-progress-start) {
+                    &.selected {
+                        span {
+                            display: inline-block;
+                            opacity: 0.5;
+                        }
+
+                        &:hover {
+                            span {
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.td-header.n-b {
+    border-bottom: none;
+    background-color: $verylightgray;
+    line-height: rem-calc(36);
+    z-index: 2;
+}
+
+.scrolling {
+    .td-header.n-b {
+        border-bottom: 3px solid rgba(0, 0, 0, 0.05);
+    }
+}
+
+.td-bar {
+    // padding: 0 $td-padding;
+}
+
+.td-btns {
+    @include inlineblockfix();
+    @include liheight(rem-calc(24));
+
+    .btn-item {
+        position: relative;
+        z-index: 9;
+        float: left;
+
+        &.td-assign,
+        &.td-priority,
+        &.td-close {
+            float: right;
+        }
+    }
+
+    .td-timecard {
+        width: calc(100% - 76px);
+    }
+
+    .td-check {
+        padding-right: $td-padding;
+
+        &:after {
+            content: "";
+            position: absolute;
+            top: rem-calc(5);
+            right: 0;
+            width: 1px;
+            height: $small-icon-size;
+        }
+
+        i {
+            width: $small-icon-size;
+            height: $small-icon-size;
+        }
+    }
+
+    .td-assign {
+        .dropdown-menu {
+            font-size: $body-font-size;
+        }
+    }
+
+    .td-reminder {
+        @include ellipsis();
+        @include inlineblockfix();
+        padding-left: rem-calc(10);
+
+        span {
+            padding-left: rem-calc(6);
+            font-size: $body-font-size;
+        }
+
+        .preview-time {
+            padding-left: 0;
+        }
+
+        .preview-snooze {
+            display: block;
+            font-size: rem-calc(12);
+            line-height: 1.4;
+            margin-left: rem-calc(34);
+            color: $manatee;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            max-width: 90%;
+            &:last-child {
+                position: absolute;
+            }
+        }
+
+        .preview-duedate {
+            max-width: 85%;
+            text-overflow: ellipsis;
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        .td-time {
+            position: relative;
+            display: inline-block;
+            text-align: center;
+
+            .icons,
+            .selected-date,
+            .quick-time {
+                padding-left: 0;
+                font-size: 0;
+            }
+
+            .selected-date {
+                width: 100%;
+                position: absolute;
+                top: 1px;
+                left: 0;
+                font-size: $base-font-size-tny;
+                font-weight: bold;
+                transform: scale(0.8);
+                transform-origin: center center;
+                color: $white;
+            }
+
+            // 快速设置时间的尖头
+            &.boult:before {
+                top: rem-calc(24);
+            }
+
+            &.boult:after {
+                top: rem-calc(25);
+            }
+
+            // 设置时间的尖头
+            .boult:before {
+                top: rem-calc(-10);
+            }
+
+            .boult:after {
+                top: rem-calc(-9);
+            }
+
+            .set-date-tooltip {
+                position: relative;
+
+                &.boult {
+                    &:after {
+                        border-bottom-color: $black;
+                        top: rem-calc(-3);
+                    }
+
+                    &:before {
+                        top: rem-calc(-3);
+                    }
+                }
+
+                .inner {
+                    position: absolute;
+                    left: rem-calc(-25);
+                    top: calc(100% + 5px);
+                    padding: rem-calc(16) rem-calc(12);
+                    z-index: 1;
+                    background-color: $black;
+                    width: rem-calc(206);
+                    font-size: rem-calc(14);
+                    line-height: rem-calc(18);
+                    text-align: justify;
+                    color: $white;
+                    white-space: pre-wrap;
+                }
+            }
+        }
+    }
+
+    .td-priority {
+        padding-left: rem-calc(10);
+
+        .boult ~ .priority-menu.dropdown-menu {
+            right: rem-calc(-10);
+        }
+    }
+
+    .preview-repeat {
+        position: relative;
+        display: none;
+
+        &.is-repeat {
+            display: inline;
+        }
+
+        .i-4 {
+            width: rem-calc(16);
+            height: rem-calc(16);
+            margin-left: rem-calc(6);
+
+            &:hover + .tooltip {
+                display: inline-block;
+            }
+        }
+    }
+
+    .timecard {
+        top: calc(100% + 4px);
+    }
+}
+
+.has-assignment {
+    .td-timecard {
+        width: 60%;
+        width: calc(100% - 100px);
+
+        .preview-duedate {
+            max-width: 75%;
+        }
+    }
+}
+
+// @media #{$small-col-only} {
+//   .td-btns .td-timecard {
+//     width: calc(75% - 38px);
+//   }
+
+//   .has-assignment .td-timecard {
+//     width: calc(75% - 62px);
+//   }
+// }
+
+@media #{$small-only} {
+    // .td-btns .td-timecard {
+    //   width: calc(70% - 38px);
+    // }
+    .preview-time {
+        display: none;
+    }
+}
+
+.mac {
+    .td-header {
+        .task-progress-wrapper {
+            display: none;
+        }
+    }
+}
+
+.ie {
+    .td-btns {
+        .td-reminder {
+            .td-time {
+                .selected-date {
+                    // top: rem-calc(2);
+                }
+            }
+        }
+    }
+}

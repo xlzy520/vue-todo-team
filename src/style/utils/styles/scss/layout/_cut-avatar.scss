@@ -1,0 +1,134 @@
+#cut-avatar {
+    $imgae-view-width: 280px;
+    $image-cut-width: 240px;
+    .popup-body {
+        padding: 0;
+    }
+    .on-image {
+        position: absolute;
+        width: $image-cut-width;
+        height: $image-cut-width;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .btn {
+        min-width: 68px;
+    }
+
+    .change-size {
+        background: rgba(255, 255, 255, 0);
+        height: 8px;
+        width: 8px;
+        right: 0px;
+        bottom: 0px;
+        position: absolute;
+        cursor: nwse-resize;
+    }
+
+    .image-view {
+        margin: 0 auto;
+        width: $imgae-view-width;
+        height: $imgae-view-width;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .image-place {
+        position: absolute;
+        max-width: none;
+        width: $image-cut-width;
+        height: $image-cut-width;
+        cursor: move;
+    }
+
+    .change-size-view {
+        position: relative;
+        height: 4px;
+        width: 4px;
+        background: rgba(0, 0, 0, 0.61);
+        margin-top: 4px;
+        margin-left: 4px;
+    }
+
+    .image-handle {
+        $track-width: 240px;
+        $track-height: 6px;
+        $thumb-size: 12px;
+        margin: 10px auto;
+        width: $track-width;
+
+        @mixin thumb {
+            height: $thumb-size;
+            width: $thumb-size;
+            background: #ccc;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+        }
+
+        @mixin track {
+            width: $track-width;
+            height: $track-height;
+            cursor: pointer;
+            animate: 0.2s;
+        }
+
+        input[type=range] {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: $track-width;
+            vertical-align: middle;
+            padding: 0;
+            margin: 0;
+            border: none;
+            vertical-align: middle;
+
+            &:focus {
+                outline: none;
+                border: none;
+            }
+
+            &::-webkit-slider-runnable-track {
+                @include track();
+                background: rgba(240, 241, 242, 1);
+                border: 1px solid rgba(240, 241, 242, 1);
+                border-radius: 3px;
+            }
+
+            &::-webkit-slider-thumb {
+                appearance: none;
+                @include thumb();
+                margin-top: $track-height / 2 - $thumb-size / 2 - 1;
+            }
+
+            &::-moz-range-thumb {
+                @include thumb();
+            }
+
+            &::-moz-range-track {
+                @include track();
+                background: rgba(240, 241, 242, 1);
+                border: 1px solid rgba(240, 241, 242, 1);
+                border-radius: 3px;
+            }
+
+            &::-moz-focus-outer {
+                border: 0;
+            }
+
+            &::-ms-thumb {
+                @include thumb();
+            }
+
+            &::-ms-track {
+                @include track();
+                background: rgba(240, 241, 242, 1);
+                border: 1px solid rgba(240, 241, 242, 1);
+                margin-top: $track-height / 2 - $thumb-size / 2 - 1;
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 200" id="empty-task-detail">
+  <style type="text/css">
+    #empty-task-detail .st0{fill-rule:evenodd;clip-rule:evenodd;fill:;}
+    #empty-task-detail .st1{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
+  </style>
+  <g id="empty-task-detail_empty-nodetails-selected-1">
+    <g transform="translate(82.500000, 88.000000) scale(-1, 1) translate(-82.500000, -88.000000) translate(28.000000, 28.000000)">
+      <g id="empty-task-detail_Group-2">
+        <g id="empty-task-detail_Rectangle-2" transform="translate(6.000000, 0.000000)">
+          <path id="empty-task-detail_形状结合" class="st0" d="M0,6.7C9.3,2.4,19.6,0,30.5,0c40,0,72.5,32.5,72.5,72.5c0,15.4-4.8,29.7-13,41.5H30.8H0      V79.3V6.7z"></path>
+          <path class="st1" d="M10,2.9C16.5,1,23.4,0,30.5,0c40,0,72.5,32.5,72.5,72.5c0,5.3-0.6,10.5-1.7,15.5H10V2.9z"></path>
+          <path class="st0" d="M30,61h32v8H30V61z"></path>
+          <path class="st0" d="M93.7,37c1.4,2.6,2.7,5.2,3.9,8H30v-8L93.7,37L93.7,37z"></path>
+          <path class="st0" d="M71.9,13c3.4,2.4,6.6,5.1,9.6,8H30v-8H71.9z"></path>
+        </g>
+        <g transform="translate(27.722432, 88.016660) scale(-1, 1) rotate(-30.000000) translate(-27.722432, -88.016660) ">
+          <g>
+            <path id="empty-task-detail_path-1" class="st2" d="M32.7,90l0,24h-10l0-24h-12l17-28l17,28H32.7z"></path>
+          </g>
+          <g>
+            <path class="st1" d="M32.7,90l0,24h-10l0-24h-12l17-28l17,28H32.7z"></path>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

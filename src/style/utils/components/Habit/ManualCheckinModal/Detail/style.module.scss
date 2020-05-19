@@ -1,0 +1,17 @@
+@import "./scss/utils/variables";
+.container {
+    position: absolute;
+    z-index: 1200;
+}
+
+.header {
+    h1 {
+        font-size: rem-calc(14);
+        font-weight: 500;
+        line-height: rem-calc(22);
+        margin: rem-calc(-2) 0 rem-calc(10);
+    }
+    p {
+        margin-bottom: rem-calc(10);
+    }
+}

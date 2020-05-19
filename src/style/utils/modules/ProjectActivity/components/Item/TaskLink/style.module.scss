@@ -1,0 +1,20 @@
+@import "./scss/utils/variables";
+.tooltip {
+    font-size: 12px;
+    max-width: 228px;
+    color: rgba(255, 255, 255, 0.85);
+    border-radius: 4px;
+    position: absolute;
+    line-height: 13px;
+    z-index: 1;
+    background-color: black;
+    padding: 9px;
+    margin-top: 24px;
+    line-height: 14px;
+    top: 0;
+    left: 50%;
+    user-select: none;
+    transform: translate(-50%, 0);
+    transition: all 0.2s ease;
+    word-break: break-word;
+}

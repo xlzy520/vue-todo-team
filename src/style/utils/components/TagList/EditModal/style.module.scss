@@ -1,0 +1,11 @@
+@import "./scss/utils/variables";
+.row {
+    .label {
+        float: left;
+        line-height: rem-calc(30);
+    }
+    :global(.select-menu) {
+        width: rem-calc(220);
+        margin-left: rem-calc(96);
+    }
+}

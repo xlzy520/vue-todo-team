@@ -1,0 +1,223 @@
+@import "src/style/utils/var.scss";
+
+$main-padding: rem-calc(6) rem-calc(12);
+
+.task-menu {
+    position: absolute;
+    font-size: rem-calc(13);
+    max-height: none;
+    padding: 0;
+    overflow: visible;
+    background-color: white;
+    z-index: 999;
+
+    & > .boult {
+        left: rem-calc(83);
+        top: rem-calc(-9);
+    }
+
+    &.dropup > .boult {
+        top: 100%;
+
+        &:before {
+            top: 1px;
+        }
+    }
+
+    &.dropright > .boult {
+        left: auto;
+        right: rem-calc(22);
+    }
+
+    p {
+        color: $black85;
+        display: inline-block;
+        @include ellipsis();
+        max-width: rem-calc(200);
+    }
+
+    .item > svg {
+        margin-right: 0;
+        margin-bottom: 0;
+    }
+
+    .menu-section {
+        padding: $main-padding;
+
+        &.pure-text {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        &:not(:last-child) {
+            border-bottom: rem-calc(1) solid $whitelilac;
+        }
+    }
+
+    .set-duedate,
+    .set-priority {
+        padding-top: rem-calc(12);
+
+        p {
+            color: $black54;
+            font-size: rem-calc(12);
+            line-height: rem-calc(12);
+        }
+
+        .quick-set {
+            display: flex;
+            margin-top: rem-calc(10);
+        }
+
+        .item {
+            display: inline-block;
+            position: relative;
+
+            &:not(:last-child) {
+                margin-right: rem-calc(12);
+            }
+
+            &.active {
+                background-color: $gallery;
+                border-radius: rem-calc(2);
+
+                .i-2-1 {
+                    fill: $black54;
+                }
+
+                &:hover {
+                    .i-2-1 {
+                        fill: $black85;
+                    }
+                }
+            }
+        }
+    }
+
+    .set-duedate {
+        .item:hover {
+            .tooltip {
+                display: block;
+                top: rem-calc(5);
+            }
+        }
+    }
+
+    .set-priority {
+        .item {
+            padding: rem-calc(3);
+
+            &:hover {
+                .priority-none {
+                    fill: $priority-none-hover;
+                }
+
+                .priority-low {
+                    fill: $priority-low-hover;
+                }
+
+                .priority-medium {
+                    fill: $priority-medium-hover;
+                }
+
+                .priority-high {
+                    fill: $priority-high-hover;
+                }
+            }
+        }
+    }
+
+    .copy_task_link,
+    .move-to,
+    .assign-to,
+    .duplicate-task,
+    .manage-tags,
+    .merge-tasks,
+    .delete-task,
+    .start-task-pomo,
+    .add-to-project,
+    .add-from-template {
+        > a {
+            display: inline-block;
+            width: 100%;
+            padding: $main-padding;
+        }
+
+        &:hover {
+            background-color: $gallery;
+        }
+    }
+
+    .move-to,
+    .manage-tags,
+    .assign-to {
+        position: relative;
+
+        .boult ~ .menu-ul {
+            left: rem-calc(32);
+        }
+
+        &.dropdown .boult {
+            &:before {
+                top: calc(100% - 17px);
+            }
+
+            &:after {
+                top: calc(100% - 16px);
+            }
+
+            & ~ .menu-ul {
+                top: calc(100% - 8px);
+            }
+        }
+
+        &.dropup .boult {
+            &:before,
+            &:after {
+                left: calc(50% - 9px);
+            }
+
+            &:before {
+                top: 0;
+            }
+
+            &:after {
+                top: rem-calc(-1);
+            }
+
+            & ~ .menu-ul {
+                bottom: calc(100% - 8px);
+            }
+        }
+    }
+
+    .assign-to {
+        .dropdown-menu {
+            overflow-y: auto;
+        }
+
+        &.menu-cache {
+            .boult:before,
+            .boult:after,
+            .menu-ul {
+                visibility: hidden;
+            }
+        }
+    }
+
+    .timecard {
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1002;
+    }
+}
+
+.dropdown-menu {
+    &.more {
+        padding: 0 0;
+    }
+    .task-menu {
+        position: static;
+    }
+}

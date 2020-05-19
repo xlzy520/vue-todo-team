@@ -1,0 +1,170 @@
+// 这个是用来给Dropdown二级菜单定位用的，提供显示区域范围
+// 具体内容详见dom-align/es/getVisibleRectForElement.js
+@import "src/style/utils/var.scss";
+
+#app {
+    position: relative;
+    overflow: hidden;
+    & > div {
+        height: 100%;
+    }
+}
+
+.container-fill {
+    height: 100%;
+}
+
+.container-fluid-dida {
+    height: 100%;
+}
+
+.g-left,
+.g-right,
+.g-center,
+.g-full-right {
+    position: absolute;
+    top: 0;
+    height: 100%;
+}
+
+.g-left {
+    transition: all 0.2s ease-in-out;
+    left: 0;
+    width: $grid-left-width;
+    z-index: 5;
+
+    .upgrade-button {
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        padding: rem-calc(2) rem-calc(30) rem-calc(2) rem-calc(20);
+        line-height: rem-calc(18);
+        color: $black;
+        font-size: rem-calc(13);
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        cursor: pointer;
+
+        svg.icon-chevron-right {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: rem-calc(10);
+            fill: $black36;
+            width: rem-calc(16);
+            height: rem-calc(16);
+        }
+
+        svg.icon-upgrade-button-bg {
+            width: rem-calc(24);
+            height: rem-calc(24);
+            fill: $black36;
+            margin-right: rem-calc(8);
+        }
+    }
+
+    &.upgrade-button-limited {
+        .upgrade-button {
+            padding: rem-calc(5) rem-calc(30) rem-calc(5) rem-calc(20);
+        }
+        .upgrade-button:first-child {
+            display: flex;
+        }
+
+        .upgrade-button:last-child {
+            display: none;
+        }
+    }
+
+    .upgrade-button:first-child {
+        display: none;
+    }
+
+    .upgrade-button:last-child {
+        display: flex;
+    }
+
+    &.pro {
+        .upgrade-button {
+            display: none;
+        }
+    }
+}
+
+.g-right {
+    right: 0;
+    width: $grid-right-width;
+    border-left: 1px solid rgba(black, 0.06);
+    background-color: $white;
+
+    .empty-detail-wrapper {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: rem-calc(100);
+
+        &.empty-task-list {
+            display: none;
+        }
+
+        .empty-icon {
+            position: relative;
+            &::before {
+                content: "";
+                width: 72.5%;
+                height: 72.5%;
+                background-color: $black04;
+                border-radius: 50%;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+            }
+            .empty-task-detail {
+                position: relative;
+                width: rem-calc(200);
+                height: rem-calc(200);
+            }
+            .icon-empty-task-detail-pointer {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        .empty-detail-view {
+            display: inline-block;
+            margin-top: rem-calc(33);
+            width: 100%;
+            text-align: center;
+            font-size: rem-calc(22);
+            color: $lavendergray;
+        }
+    }
+}
+
+.g-center {
+    left: $grid-left-width;
+    right: $grid-right-width;
+}
+
+.g-full-right {
+    left: $grid-left-width;
+    right: 0;
+}
+
+#left-bottom-view {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}

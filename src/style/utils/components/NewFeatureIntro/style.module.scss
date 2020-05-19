@@ -1,0 +1,48 @@
+@import "./scss/utils/variables";
+.popup {
+    overflow: hidden;
+    width: rem-calc(570);
+    .screen {
+        height: 100%;
+        width: 100%;
+        img {
+            width: 100%;
+        }
+        .title {
+            font-size: rem-calc(20);
+            font-weight: 600;
+            text-align: center;
+            line-height: rem-calc(24);
+            padding-bottom: rem-calc(16);
+        }
+        .content {
+            text-align: center;
+            font-size: rem-calc(14);
+            line-height: rem-calc(24);
+            ul {
+                display: inline-block;
+                text-align: left;
+                li {
+                    position: relative;
+                    &:before {
+                        content: "";
+                        position: absolute;
+                        transform: translate(-100%, -50%);
+                        left: rem-calc(-5);
+                        top: 50%;
+                        width: rem-calc(6);
+                        height: rem-calc(6);
+                        border-radius: 50%;
+                        opacity: 0.36;
+                    }
+                }
+            }
+        }
+    }
+    :global(.popup-header) {
+        padding: 0;
+    }
+    :global(.popup-footer) {
+        justify-content: center;
+    }
+}

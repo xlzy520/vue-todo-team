@@ -1,0 +1,104 @@
+@import "./scss/utils/variables";
+.body {
+    .titleWrapper {
+        height: rem-calc(36);
+        display: flex;
+        .icon {
+            display: inline-block;
+            border-radius: 50%;
+            width: rem-calc(36);
+            height: rem-calc(36);
+        }
+        .title {
+            flex: auto;
+            color: $black;
+            margin-left: rem-calc(18);
+            font-weight: 500;
+            line-height: rem-calc(30);
+            font-size: rem-calc(20);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+    .progressWrapper {
+        margin-top: rem-calc(26);
+        width: 100%;
+        .desc {
+            color: $black56;
+            font-size: rem-calc(14);
+            line-height: rem-calc(22);
+        }
+        .goalLine {
+            position: relative;
+            margin-top: rem-calc(6);
+            width: 100%;
+            height: rem-calc(10);
+            background-color: $black08;
+            border-radius: rem-calc(7);
+            overflow: hidden;
+            .progressLine {
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                width: 50%;
+            }
+        }
+    }
+}
+
+.footer {
+    margin-top: rem-calc(32);
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    .btnWrapper {
+        flex: auto;
+        flex-basis: 0;
+        display: inline-block;
+        &:not(:nth-of-type(1)) {
+            padding-left: rem-calc(12);
+        }
+        .btn {
+            width: 100%;
+            border: none;
+            padding: 0 rem-calc(10) !important;
+            height: rem-calc(32);
+            border-radius: rem-calc(3);
+            font-weight: 500;
+            &:global(.cancel) {
+                color: $black;
+                background-color: $black08;
+            }
+            font-size: rem-calc(13);
+            min-width: auto;
+        }
+    }
+}
+
+[class*="-dark-theme"] {
+    .body {
+        .titleWrapper {
+            .title {
+                color: $white;
+            }
+        }
+        .progressWrapper {
+            .desc {
+                color: $white56;
+            }
+            .goalLine {
+                background-color: $white08;
+            }
+        }
+    }
+    .footer {
+        .btn {
+            &:global(.cancel) {
+                color: $white;
+                background-color: $white08;
+            }
+        }
+    }
+}

@@ -1,0 +1,105 @@
+@import "src/style/utils/var.scss";
+
+.tl-quick {
+    .task-input {
+        height: rem-calc(40);
+        padding-left: rem-calc(12);
+        padding-right: rem-calc(12);
+        font-size: rem-calc(14);
+        overflow: hidden;
+
+        &.focus ~ .tl-q-preset {
+            display: block;
+        }
+        &.focus {
+            padding-right: rem-calc(74);
+        }
+    }
+    .task-title {
+        .CodeMirror {
+            @include liheight(rem-calc(20));
+            padding: rem-calc(9) 0;
+            box-sizing: content-box;
+            .cm-remove {
+                display: none;
+            }
+        }
+        .CodeMirror-placeholder {
+            color: $black36;
+        }
+        .CodeMirror-focused {
+            [class*="cm-bold"] {
+                font-weight: normal;
+                color: $indigo;
+                cursor: pointer;
+            }
+        }
+    }
+    .tl-q-preset {
+        //display: none;
+        position: absolute;
+        right: rem-calc(6);
+        top: rem-calc(7);
+        z-index: 2;
+        > div {
+            display: inline-block;
+            margin-left: rem-calc(13);
+            & > a {
+                &:hover .i-2-1 {
+                    opacity: 0.5;
+                }
+                .i-2-1 {
+                    fill: $bistre;
+                    opacity: 0.3;
+                }
+            }
+            &:not(:last-child):after {
+                content: "";
+                position: absolute;
+                right: rem-calc(-7);
+                top: 50%;
+                transform: translateY(-50%);
+                width: rem-calc(1);
+                height: rem-calc(12);
+                background-color: $black12;
+            }
+        }
+        .selected-title {
+            position: absolute;
+            top: rem-calc(4);
+            right: 0;
+            transform: scale(0.8);
+            text-align: center;
+            width: 100%;
+            color: white !important;
+        }
+    }
+    .preset-time {
+        position: relative;
+
+        .timecard {
+            left: rem-calc(-105);
+            top: rem-calc(32);
+        }
+
+        .icons {
+            display: inline-block;
+        }
+    }
+    .preset-list {
+        position: relative;
+        &.list-active {
+            .icon-move-list {
+                opacity: 1;
+            }
+        }
+    }
+    .tag-item {
+        margin-top: rem-calc(-2);
+    }
+}
+.inline-editor {
+    .tag-item {
+        margin-left: rem-calc(1);
+    }
+}

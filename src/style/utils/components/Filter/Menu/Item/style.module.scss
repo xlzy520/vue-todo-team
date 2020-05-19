@@ -1,0 +1,16 @@
+@import "./scss/utils/variables";
+.handleBar {
+    position: relative;
+    .foldHandler {
+        position: absolute;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        svg {
+            width: rem-calc(12);
+            height: rem-calc(12);
+        }
+        [class^="icon-"] {
+            margin-right: 0;
+        }
+    }
+}

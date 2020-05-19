@@ -10,9 +10,10 @@ export default {
   CREATE_NEW_TODO(state, payload) {
     state.todos.unshift(payload)
   },
+  updateQuery(state, payload){
+    state.routeQuery = payload
+  },
   MARK_AS_COMPLETE(state, key = payload) {
-    
-
     if (state.todos[key].completed) {
       state.todos[key].completed = false;
     } else {

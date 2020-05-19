@@ -1,0 +1,64 @@
+$location-margin-r-l: rem-calc(14);
+$location-margin-t-b: rem-calc(16);
+
+$location-hint-size: rem-calc(40);
+$location-base-divider: rem-calc(10);
+
+$location-bg-color: $whitegray;
+
+.location {
+    position: relative;
+    margin: 0 $location-margin-r-l $location-margin-t-b;
+    overflow: hidden;
+    cursor: pointer;
+
+    .m-content {
+        height: $location-hint-size;
+        position: relative;
+    }
+
+    .hint {
+        position: absolute;
+        width: $location-hint-size;
+        height: 100%;
+        text-align: center;
+
+        .icon-location-at {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            fill: $indigo;
+        }
+    }
+
+    .info {
+        position: relative;
+        width: 100%;
+        padding-left: $location-hint-size;
+        padding-right: rem-calc(16);
+        top: 50%;
+        transform: translateY(-50%);
+
+        .name {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: $indigo;
+            font-size: rem-calc(12);
+        }
+
+        .address {
+            color: $black36;
+            font-size: rem-calc(10);
+        }
+    }
+
+    // map
+    #map_canvas img {
+        max-width: none;
+    }
+
+    .map {
+        height: rem-calc(236);
+    }
+}

@@ -1,0 +1,92 @@
+$checker-border: rem-calc(30) solid  $base-focus-border-color;
+$checker-width: rem-calc(70);
+$checker-height: rem-calc(110);
+
+$qr-size: rem-calc(200);
+
+$loading-size: rem-calc(80);
+$loading-border: 6px solid $base-focus-border-color;
+$loading-duration: 2.5s;
+
+
+p.binding-msg {
+  margin: 5px 0 0;
+  a {
+    cursor: pointer;
+  }
+}
+
+.wechat-qrcode-container {
+  img {
+    width: $qr-size;
+    height: $qr-size;
+    margin: 0 auto;
+  }
+
+  .popup-title {
+    margin-bottom: rem-calc(10);
+  }
+
+  /* qrcode loading */
+  .wechat-qrcode-loading {
+    display: none;
+    margin: rem-calc(20) auto;
+
+    .loading-circle {
+      @include loading-circle($loading-size, $loading-border, $loading-duration);
+      margin: rem-calc(20) auto;
+    }
+
+  }
+
+  .verified p {
+    margin-top: 20px;
+    animation: fadein 1.8s;
+    animation-delay: .4s;
+  }
+
+  .checkmark {
+    display: block;
+    position: relative;
+    width: rem-calc(150);
+    margin: auto;
+    margin-top: rem-calc(50);
+  }
+
+  .checkmark:after {
+    animation: check .8s;
+  }
+
+  .checkmark:after {
+    content: '';
+    display: block;
+    transform: scaleX(-1) rotate(135deg);
+    transform-origin: left top;
+    border-right: $checker-border;
+    border-top: $checker-border;
+    height: $checker-height;
+    width: $checker-width;
+  }
+
+}
+
+
+// animate
+
+@keyframes check {
+  0% {
+    height: 0;
+    width: 0;
+  }
+
+  33.3333% {
+    width: $checker-width;
+    height: 0;
+  }
+}
+
+
+@keyframes fadein {
+  0% { opacity: 0; }
+  100%  { opacity: 1; }
+}

@@ -1,0 +1,39 @@
+$tabs-height: rem-calc(30);
+$tabs-bd-bottom: 1px;
+$tab-width: rem-calc(100);
+.tabs-container {
+    .tabs {
+        padding: 0;
+        border-bottom: $tabs-bd-bottom solid $black06;
+        text-align: center;
+        position: relative;
+
+        .tab {
+            width: $tab-width;
+            height: $tabs-height;
+            line-height: $tabs-height;
+
+            a {
+                display: inline-block;
+                width: 100%;
+                height: 100%;
+                user-select: none;
+                color: $black36;
+            }
+
+            &.active {
+                a {
+                    color: $black85;
+                }
+            }
+        }
+
+        .slide {
+            position: absolute;
+            width: $tab-width;
+            height: 1px;
+            background-color: $black85;
+            bottom: rem-calc(-1);
+        }
+    }
+}

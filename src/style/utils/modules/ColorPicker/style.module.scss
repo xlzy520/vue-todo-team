@@ -1,0 +1,18 @@
+@import "./scss/utils/variables";
+.noColor {
+    background: $whitelilac;
+    border-radius: 50%;
+    width: rem-calc(24);
+    height: rem-calc(24);
+    position: relative;
+    svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        fill: $black36;
+    }
+}
+
+.moreColor {
+    position: relative;
+}

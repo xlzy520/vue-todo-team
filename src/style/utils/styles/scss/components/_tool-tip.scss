@@ -1,0 +1,83 @@
+$tool-tip-base-bg: black;
+$short-tip-base-bg: #ffc817;
+$tip-border-radius: rem-calc(4);
+@mixin baseTip {
+    font-size: rem-calc(12);
+    max-width: rem-calc(228);
+    color: $white85;
+    border-radius: $tip-border-radius;
+    position: absolute;
+    line-height: rem-calc(13);
+    z-index: 1;
+}
+
+.tooltip {
+    @include baseTip();
+    background-color: $tool-tip-base-bg;
+    padding: rem-calc(9);
+    display: none; // none by default, but block on "open" of the menu
+    margin-top: rem-calc(24);
+    line-height: rem-calc(14);
+    top: 0;
+    user-select: none;
+    &.open {
+        display: block;
+    }
+    &.line {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+.short-tip {
+    @include baseTip();
+    padding: 0 rem-calc(10);
+    background-color: $short-tip-base-bg;
+    top: calc(100% - 3px);
+    line-height: rem-calc(28);
+    opacity: 0;
+    visibility: hidden;
+    &.open {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    &.after-animation {
+        opacity: 0;
+        top: calc(100% + 23px);
+    }
+}
+
+.large-tip {
+    min-width: rem-calc(110);
+    line-height: rem-calc(36);
+}
+
+.tip-center {
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.tip-right {
+    right: rem-calc(-15);
+}
+
+$boult-size: rem-calc(9);
+$boult-color: $short-tip-base-bg;
+$boult-bg-color: $short-tip-base-bg;
+.warning-tooltip {
+    padding: 9px;
+    z-index: 5999;
+    background-color: black;
+    max-width: rem-calc(260);
+    font-size: 12px;
+    line-height: 18px;
+    color: $white85;
+    display: block;
+    .boult {
+        position: absolute;
+        top: -8px;
+        left: 9px;
+    }
+}

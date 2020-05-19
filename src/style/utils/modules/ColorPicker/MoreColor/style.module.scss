@@ -1,0 +1,44 @@
+@import "./scss/utils/variables";
+.container {
+    position: absolute;
+    z-index: 1051;
+    background: $white;
+    border: rem-calc(1) solid $black12;
+    box-shadow: 0 rem-calc(2) rem-calc(11) 0 rgba(0, 0, 0, 0.16);
+    padding: 0 rem-calc(16) rem-calc(12);
+    .colorGrid {
+        width: rem-calc(272);
+        .color {
+            display: inline-block;
+            margin-top: rem-calc(12);
+            margin-right: rem-calc(8);
+            position: relative;
+            height: rem-calc(20);
+            width: rem-calc(20);
+            border-radius: 50%;
+            cursor: pointer;
+            &:nth-of-type(10n) {
+                margin-right: 0;
+            }
+            &.checked {
+                &::after {
+                    content: "";
+                    position: absolute;
+                    left: rem-calc(-3);
+                    top: rem-calc(-3);
+                    height: rem-calc(26);
+                    width: rem-calc(26);
+                    border-radius: 50%;
+                    background-color: inherit;
+                    opacity: 0.36;
+                }
+            }
+        }
+    }
+}
+
+[class*="-dark-theme"] {
+    .container {
+        background: $night-black;
+    }
+}

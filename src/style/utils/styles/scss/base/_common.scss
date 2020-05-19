@@ -1,0 +1,41 @@
+body {
+    overflow: hidden;
+}
+
+i {
+    display: inline-block;
+}
+
+// icon
+[class^="icon-"],
+[class*=" icon-"] {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+}
+
+textarea {
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    resize: none;
+    border: none;
+    box-sizing: border-box;
+}
+
+[contenteditable] > a {
+    vertical-align: baseline;
+}
+
+.word-wrap {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    word-break: normal;
+}
+
+.word-nowrap {
+    white-space: nowrap;
+    word-break: keep-all;
+    overflow: hidden;
+}

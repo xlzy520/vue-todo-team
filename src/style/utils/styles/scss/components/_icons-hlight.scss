@@ -1,0 +1,61 @@
+// 图片高亮切换
+// svg 是 inline 元素
+.icons {
+    [class^="icon-"],
+    [class*=" icon-"] {
+        display: none;
+    }
+    .normal-icon {
+        display: inline;
+    }
+}
+
+.open .toggle.icons .normal-icon,
+.active .icons:not(.toggle) .normal-icon,
+.shared .icons .normal-icon,
+.custom-smart-project .icons .normal-icon,
+.highlight .normal-icon {
+    display: none;
+}
+
+.open .toggle.icons .open-icon,
+.shared .icons .share-icon,
+.active .icons:not(.toggle) .active-icon,
+.highlight .highlight-icon {
+    display: inline;
+}
+
+.open.active .toggle.icons {
+    .open-icon,
+    .active-icon {
+        display: none;
+    }
+}
+
+.active .shared,
+.active.custom-smart-project {
+    .active-icon {
+        display: none;
+    }
+}
+
+.open.active .toggle.icons .open-active-icon,
+.active .shared .icons .share-active-icon,
+.custom-smart-list .csl-icon {
+    display: inline;
+}
+
+// 图片
+.icons {
+    i.normal-icon {
+        display: inline-block;
+    }
+}
+
+.active .icons i.normal-icon {
+    display: none;
+}
+
+.active .icons i.active-icon {
+    display: inline-block;
+}

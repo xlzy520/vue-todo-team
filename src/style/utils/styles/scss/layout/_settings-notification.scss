@@ -1,0 +1,14 @@
+.notification-panel {
+    input[type="checkbox"] {
+        margin: 0;
+    }
+    .set-shared-project-menu {
+        & > .desc {
+            max-width: rem-calc(445);
+            margin-bottom: rem-calc(12);
+        }
+        & > div {
+            line-height: rem-calc(30);
+        }
+    }
+}

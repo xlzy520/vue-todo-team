@@ -11,6 +11,7 @@
     "ant-design-vue": "^1.5.6",
     "axios": "^0.19.0",
     "core-js": "^3.6.4",
+    "echarts": "^4.7.0",
     "moment": "^2.24.0",
     "nprogress": "^0.2.0",
     "uuid": "^3.3.2",
@@ -20,6 +21,7 @@
     "vue-perfect-scrollbar": "^0.1.0",
     "vue-router": "^3.1.6",
     "vuedraggable": "^2.21.0",
+    "vuetify": "^2.2.11",
     "vuex": "^3.1.3"
   },
   "devDependencies": {
@@ -36,8 +38,11 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^6.2.2",
-    "node-sass": "^4.12.0",
-    "sass-loader": "^8.0.2",
-    "vue-template-compiler": "^2.6.11"
+    "sass": "^1.19.0",
+    "sass-loader": "^8.0.0",
+    "svg-sprite-loader": "4.1.3",
+    "vue-template-compiler": "^2.6.11",
+    "vue-cli-plugin-vuetify": "^2.0.5",
+    "vuetify-loader": "^1.3.0"
   }
 }

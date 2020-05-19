@@ -1,0 +1,908 @@
+$sprite: (
+  habit_beat_phone_addiction: (
+  offset-x: 0px,
+  offset-y: 0px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_brush_teeth: (
+  offset-x: -36px,
+  offset-y: 0px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_cat_keeper: (
+  offset-x: 0px,
+  offset-y: -36px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_cleaning: (
+  offset-x: -36px,
+  offset-y: -36px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_contact: (
+  offset-x: -72px,
+  offset-y: 0px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_control_temper: (
+  offset-x: -72px,
+  offset-y: -36px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_cycling: (
+  offset-x: 0px,
+  offset-y: -72px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_daily_check_in: (
+  offset-x: -36px,
+  offset-y: -72px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_deep_breath: (
+  offset-x: -72px,
+  offset-y: -72px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_do_homework: (
+  offset-x: -108px,
+  offset-y: 0px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_drink_water: (
+  offset-x: -108px,
+  offset-y: -36px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_early_to_bed: (
+  offset-x: -108px,
+  offset-y: -72px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_early_to_rise: (
+  offset-x: 0px,
+  offset-y: -108px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_eat_breakfast: (
+  offset-x: -36px,
+  offset-y: -108px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_eat_dinner: (
+  offset-x: -72px,
+  offset-y: -108px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_eat_fruits: (
+  offset-x: -108px,
+  offset-y: -108px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_eat_veggies: (
+  offset-x: -144px,
+  offset-y: 0px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_exercising: (
+  offset-x: -144px,
+  offset-y: -36px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_eye_protection: (
+  offset-x: -144px,
+  offset-y: -72px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_help_others: (
+  offset-x: -144px,
+  offset-y: -108px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_housework: (
+  offset-x: 0px,
+  offset-y: -144px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_introspect: (
+  offset-x: -36px,
+  offset-y: -144px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_jogging: (
+  offset-x: -72px,
+  offset-y: -144px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_keep_calm: (
+  offset-x: -108px,
+  offset-y: -144px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_keep_diary: (
+  offset-x: -144px,
+  offset-y: -144px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_keep_fit: (
+  offset-x: -180px,
+  offset-y: 0px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_learn_instrument: (
+  offset-x: -180px,
+  offset-y: -36px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_learn_language: (
+  offset-x: -180px,
+  offset-y: -72px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_learn_words: (
+  offset-x: -180px,
+  offset-y: -108px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_listen_music: (
+  offset-x: -180px,
+  offset-y: -144px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_meditating: (
+  offset-x: 0px,
+  offset-y: -180px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_no_video_games: (
+  offset-x: -36px,
+  offset-y: -180px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_not_swear: (
+  offset-x: -72px,
+  offset-y: -180px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_plan: (
+  offset-x: -108px,
+  offset-y: -180px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_praise_others: (
+  offset-x: -144px,
+  offset-y: -180px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_push_ups: (
+  offset-x: -180px,
+  offset-y: -180px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_quit_drinking: (
+  offset-x: -216px,
+  offset-y: 0px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_quit_smoking: (
+  offset-x: -216px,
+  offset-y: -36px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_quit_snacks: (
+  offset-x: -216px,
+  offset-y: -72px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_quit_sugar: (
+  offset-x: -216px,
+  offset-y: -108px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_reading: (
+  offset-x: -216px,
+  offset-y: -144px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_save_money: (
+  offset-x: -216px,
+  offset-y: -180px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_self_reflection: (
+  offset-x: 0px,
+  offset-y: -216px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_skincare: (
+  offset-x: -36px,
+  offset-y: -216px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_stay_positive: (
+  offset-x: -72px,
+  offset-y: -216px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_stop_overthinking: (
+  offset-x: -108px,
+  offset-y: -216px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_stretch: (
+  offset-x: -144px,
+  offset-y: -216px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_swimming: (
+  offset-x: -180px,
+  offset-y: -216px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_take_medicine: (
+  offset-x: -216px,
+  offset-y: -216px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_take_photos: (
+  offset-x: -252px,
+  offset-y: 0px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_take_shower: (
+  offset-x: -252px,
+  offset-y: -36px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_take_walk: (
+  offset-x: -252px,
+  offset-y: -72px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_walk_the_dog: (
+  offset-x: -252px,
+  offset-y: -108px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_watch_documentary: (
+  offset-x: -252px,
+  offset-y: -144px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_watch_movie: (
+  offset-x: -252px,
+  offset-y: -180px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_watch_news: (
+  offset-x: -252px,
+  offset-y: -216px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_watch_soap_opera: (
+  offset-x: 0px,
+  offset-y: -252px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_watch_tv_show: (
+  offset-x: -36px,
+  offset-y: -252px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_water_flowers: (
+  offset-x: -72px,
+  offset-y: -252px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_yoga: (
+  offset-x: -108px,
+  offset-y: -252px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+  habit_your_apprearance: (
+  offset-x: -144px,
+  offset-y: -252px,
+  width: 36px,
+  height: 36px,
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  ),
+parts: (
+  total-width: 288px,
+  total-height: 288px,
+  image: '~habit.png'
+  )
+);
+
+
+  @mixin sprite-size($image) {
+  background-size: map-get(map-get($sprite, $image), 'total-width') map-get(map-get($sprite, $image), 'total-height');
+  }
+
+  @mixin sprite-width($image) {
+  width: map-get(map-get($sprite, $image), 'width');
+  }
+
+  @mixin sprite-height($image) {
+  height: map-get(map-get($sprite, $image), 'height');
+  }
+
+  @mixin sprite-position($image) {
+  background-position: map-get(map-get($sprite, $image), 'offset-x') map-get(map-get($sprite, $image), 'offset-y');
+  }
+
+  @mixin sprite-image($image) {
+  background-image: url(map-get(map-get($sprite, $image), 'image') + '.png');
+  }
+
+  @mixin sprite-image-retina($image) {
+  background-image: url(map-get(map-get($sprite, $image), 'image') + '@2.png');
+  }
+
+
+
+
+  .icon-habit_beat_phone_addiction {
+  @include sprite-width("habit_beat_phone_addiction");
+  @include sprite-height("habit_beat_phone_addiction");
+  @include sprite-position("habit_beat_phone_addiction");
+  }
+  .icon-habit_brush_teeth {
+  @include sprite-width("habit_brush_teeth");
+  @include sprite-height("habit_brush_teeth");
+  @include sprite-position("habit_brush_teeth");
+  }
+  .icon-habit_cat_keeper {
+  @include sprite-width("habit_cat_keeper");
+  @include sprite-height("habit_cat_keeper");
+  @include sprite-position("habit_cat_keeper");
+  }
+  .icon-habit_cleaning {
+  @include sprite-width("habit_cleaning");
+  @include sprite-height("habit_cleaning");
+  @include sprite-position("habit_cleaning");
+  }
+  .icon-habit_contact {
+  @include sprite-width("habit_contact");
+  @include sprite-height("habit_contact");
+  @include sprite-position("habit_contact");
+  }
+  .icon-habit_control_temper {
+  @include sprite-width("habit_control_temper");
+  @include sprite-height("habit_control_temper");
+  @include sprite-position("habit_control_temper");
+  }
+  .icon-habit_cycling {
+  @include sprite-width("habit_cycling");
+  @include sprite-height("habit_cycling");
+  @include sprite-position("habit_cycling");
+  }
+  .icon-habit_daily_check_in {
+  @include sprite-width("habit_daily_check_in");
+  @include sprite-height("habit_daily_check_in");
+  @include sprite-position("habit_daily_check_in");
+  }
+  .icon-habit_deep_breath {
+  @include sprite-width("habit_deep_breath");
+  @include sprite-height("habit_deep_breath");
+  @include sprite-position("habit_deep_breath");
+  }
+  .icon-habit_do_homework {
+  @include sprite-width("habit_do_homework");
+  @include sprite-height("habit_do_homework");
+  @include sprite-position("habit_do_homework");
+  }
+  .icon-habit_drink_water {
+  @include sprite-width("habit_drink_water");
+  @include sprite-height("habit_drink_water");
+  @include sprite-position("habit_drink_water");
+  }
+  .icon-habit_early_to_bed {
+  @include sprite-width("habit_early_to_bed");
+  @include sprite-height("habit_early_to_bed");
+  @include sprite-position("habit_early_to_bed");
+  }
+  .icon-habit_early_to_rise {
+  @include sprite-width("habit_early_to_rise");
+  @include sprite-height("habit_early_to_rise");
+  @include sprite-position("habit_early_to_rise");
+  }
+  .icon-habit_eat_breakfast {
+  @include sprite-width("habit_eat_breakfast");
+  @include sprite-height("habit_eat_breakfast");
+  @include sprite-position("habit_eat_breakfast");
+  }
+  .icon-habit_eat_dinner {
+  @include sprite-width("habit_eat_dinner");
+  @include sprite-height("habit_eat_dinner");
+  @include sprite-position("habit_eat_dinner");
+  }
+  .icon-habit_eat_fruits {
+  @include sprite-width("habit_eat_fruits");
+  @include sprite-height("habit_eat_fruits");
+  @include sprite-position("habit_eat_fruits");
+  }
+  .icon-habit_eat_veggies {
+  @include sprite-width("habit_eat_veggies");
+  @include sprite-height("habit_eat_veggies");
+  @include sprite-position("habit_eat_veggies");
+  }
+  .icon-habit_exercising {
+  @include sprite-width("habit_exercising");
+  @include sprite-height("habit_exercising");
+  @include sprite-position("habit_exercising");
+  }
+  .icon-habit_eye_protection {
+  @include sprite-width("habit_eye_protection");
+  @include sprite-height("habit_eye_protection");
+  @include sprite-position("habit_eye_protection");
+  }
+  .icon-habit_help_others {
+  @include sprite-width("habit_help_others");
+  @include sprite-height("habit_help_others");
+  @include sprite-position("habit_help_others");
+  }
+  .icon-habit_housework {
+  @include sprite-width("habit_housework");
+  @include sprite-height("habit_housework");
+  @include sprite-position("habit_housework");
+  }
+  .icon-habit_introspect {
+  @include sprite-width("habit_introspect");
+  @include sprite-height("habit_introspect");
+  @include sprite-position("habit_introspect");
+  }
+  .icon-habit_jogging {
+  @include sprite-width("habit_jogging");
+  @include sprite-height("habit_jogging");
+  @include sprite-position("habit_jogging");
+  }
+  .icon-habit_keep_calm {
+  @include sprite-width("habit_keep_calm");
+  @include sprite-height("habit_keep_calm");
+  @include sprite-position("habit_keep_calm");
+  }
+  .icon-habit_keep_diary {
+  @include sprite-width("habit_keep_diary");
+  @include sprite-height("habit_keep_diary");
+  @include sprite-position("habit_keep_diary");
+  }
+  .icon-habit_keep_fit {
+  @include sprite-width("habit_keep_fit");
+  @include sprite-height("habit_keep_fit");
+  @include sprite-position("habit_keep_fit");
+  }
+  .icon-habit_learn_instrument {
+  @include sprite-width("habit_learn_instrument");
+  @include sprite-height("habit_learn_instrument");
+  @include sprite-position("habit_learn_instrument");
+  }
+  .icon-habit_learn_language {
+  @include sprite-width("habit_learn_language");
+  @include sprite-height("habit_learn_language");
+  @include sprite-position("habit_learn_language");
+  }
+  .icon-habit_learn_words {
+  @include sprite-width("habit_learn_words");
+  @include sprite-height("habit_learn_words");
+  @include sprite-position("habit_learn_words");
+  }
+  .icon-habit_listen_music {
+  @include sprite-width("habit_listen_music");
+  @include sprite-height("habit_listen_music");
+  @include sprite-position("habit_listen_music");
+  }
+  .icon-habit_meditating {
+  @include sprite-width("habit_meditating");
+  @include sprite-height("habit_meditating");
+  @include sprite-position("habit_meditating");
+  }
+  .icon-habit_no_video_games {
+  @include sprite-width("habit_no_video_games");
+  @include sprite-height("habit_no_video_games");
+  @include sprite-position("habit_no_video_games");
+  }
+  .icon-habit_not_swear {
+  @include sprite-width("habit_not_swear");
+  @include sprite-height("habit_not_swear");
+  @include sprite-position("habit_not_swear");
+  }
+  .icon-habit_plan {
+  @include sprite-width("habit_plan");
+  @include sprite-height("habit_plan");
+  @include sprite-position("habit_plan");
+  }
+  .icon-habit_praise_others {
+  @include sprite-width("habit_praise_others");
+  @include sprite-height("habit_praise_others");
+  @include sprite-position("habit_praise_others");
+  }
+  .icon-habit_push_ups {
+  @include sprite-width("habit_push_ups");
+  @include sprite-height("habit_push_ups");
+  @include sprite-position("habit_push_ups");
+  }
+  .icon-habit_quit_drinking {
+  @include sprite-width("habit_quit_drinking");
+  @include sprite-height("habit_quit_drinking");
+  @include sprite-position("habit_quit_drinking");
+  }
+  .icon-habit_quit_smoking {
+  @include sprite-width("habit_quit_smoking");
+  @include sprite-height("habit_quit_smoking");
+  @include sprite-position("habit_quit_smoking");
+  }
+  .icon-habit_quit_snacks {
+  @include sprite-width("habit_quit_snacks");
+  @include sprite-height("habit_quit_snacks");
+  @include sprite-position("habit_quit_snacks");
+  }
+  .icon-habit_quit_sugar {
+  @include sprite-width("habit_quit_sugar");
+  @include sprite-height("habit_quit_sugar");
+  @include sprite-position("habit_quit_sugar");
+  }
+  .icon-habit_reading {
+  @include sprite-width("habit_reading");
+  @include sprite-height("habit_reading");
+  @include sprite-position("habit_reading");
+  }
+  .icon-habit_save_money {
+  @include sprite-width("habit_save_money");
+  @include sprite-height("habit_save_money");
+  @include sprite-position("habit_save_money");
+  }
+  .icon-habit_self_reflection {
+  @include sprite-width("habit_self_reflection");
+  @include sprite-height("habit_self_reflection");
+  @include sprite-position("habit_self_reflection");
+  }
+  .icon-habit_skincare {
+  @include sprite-width("habit_skincare");
+  @include sprite-height("habit_skincare");
+  @include sprite-position("habit_skincare");
+  }
+  .icon-habit_stay_positive {
+  @include sprite-width("habit_stay_positive");
+  @include sprite-height("habit_stay_positive");
+  @include sprite-position("habit_stay_positive");
+  }
+  .icon-habit_stop_overthinking {
+  @include sprite-width("habit_stop_overthinking");
+  @include sprite-height("habit_stop_overthinking");
+  @include sprite-position("habit_stop_overthinking");
+  }
+  .icon-habit_stretch {
+  @include sprite-width("habit_stretch");
+  @include sprite-height("habit_stretch");
+  @include sprite-position("habit_stretch");
+  }
+  .icon-habit_swimming {
+  @include sprite-width("habit_swimming");
+  @include sprite-height("habit_swimming");
+  @include sprite-position("habit_swimming");
+  }
+  .icon-habit_take_medicine {
+  @include sprite-width("habit_take_medicine");
+  @include sprite-height("habit_take_medicine");
+  @include sprite-position("habit_take_medicine");
+  }
+  .icon-habit_take_photos {
+  @include sprite-width("habit_take_photos");
+  @include sprite-height("habit_take_photos");
+  @include sprite-position("habit_take_photos");
+  }
+  .icon-habit_take_shower {
+  @include sprite-width("habit_take_shower");
+  @include sprite-height("habit_take_shower");
+  @include sprite-position("habit_take_shower");
+  }
+  .icon-habit_take_walk {
+  @include sprite-width("habit_take_walk");
+  @include sprite-height("habit_take_walk");
+  @include sprite-position("habit_take_walk");
+  }
+  .icon-habit_walk_the_dog {
+  @include sprite-width("habit_walk_the_dog");
+  @include sprite-height("habit_walk_the_dog");
+  @include sprite-position("habit_walk_the_dog");
+  }
+  .icon-habit_watch_documentary {
+  @include sprite-width("habit_watch_documentary");
+  @include sprite-height("habit_watch_documentary");
+  @include sprite-position("habit_watch_documentary");
+  }
+  .icon-habit_watch_movie {
+  @include sprite-width("habit_watch_movie");
+  @include sprite-height("habit_watch_movie");
+  @include sprite-position("habit_watch_movie");
+  }
+  .icon-habit_watch_news {
+  @include sprite-width("habit_watch_news");
+  @include sprite-height("habit_watch_news");
+  @include sprite-position("habit_watch_news");
+  }
+  .icon-habit_watch_soap_opera {
+  @include sprite-width("habit_watch_soap_opera");
+  @include sprite-height("habit_watch_soap_opera");
+  @include sprite-position("habit_watch_soap_opera");
+  }
+  .icon-habit_watch_tv_show {
+  @include sprite-width("habit_watch_tv_show");
+  @include sprite-height("habit_watch_tv_show");
+  @include sprite-position("habit_watch_tv_show");
+  }
+  .icon-habit_water_flowers {
+  @include sprite-width("habit_water_flowers");
+  @include sprite-height("habit_water_flowers");
+  @include sprite-position("habit_water_flowers");
+  }
+  .icon-habit_yoga {
+  @include sprite-width("habit_yoga");
+  @include sprite-height("habit_yoga");
+  @include sprite-position("habit_yoga");
+  }
+  .icon-habit_your_apprearance {
+  @include sprite-width("habit_your_apprearance");
+  @include sprite-height("habit_your_apprearance");
+  @include sprite-position("habit_your_apprearance");
+  }
+
+
+.icon_habit {
+  @include sprite-size('parts');
+  background-repeat: no-repeat;
+  display: inline-block;
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (   min--moz-device-pixel-ratio: 2),
+  only screen and (     -o-min-device-pixel-ratio: 2/1),
+  only screen and (        min-device-pixel-ratio: 2),
+  only screen and (                min-resolution: 192dpi),
+  only screen and (                min-resolution: 2dppx) {
+
+    @include sprite-size('parts');
+
+  }
+}

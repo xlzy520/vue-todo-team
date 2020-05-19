@@ -1,0 +1,242 @@
+// @import 'components/kalendae';
+@import "src/style/utils/var.scss";
+
+$min-cal-padding: rem-calc(14) rem-calc(16) rem-calc(16);
+$min-cal-bg: $ballblue;
+$min-cal-base-font-color: $base-font-color-deepbg;
+$min-cal-today-font-color: $vanilla;
+$min-cal-disabled-font-color: $cobalt;
+$min-cal-hover-font-color: $indigo;
+$min-cal-hover-bg: $base-bg;
+$min-cal-active-bg: $min-cal-bg;
+$min-cal-active-border-color: $white;
+$min-cal-task-font-color: $vanilla;
+$min-today-bg-color: $opacitywhite;
+
+.min-cal {
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    width: 100%;
+    background-color: $min-cal-bg;
+}
+
+.min-cal,
+.calendar-min-cal {
+    .k-calendar .k-days.k-info-days {
+        span {
+            &:before {
+                min-width: rem-calc(28);
+                min-height: rem-calc(28);
+                top: rem-calc(6);
+            }
+        }
+        .k-date-info {
+            &.k-task:after {
+                bottom: rem-calc(-1);
+            }
+        }
+    }
+
+    .k-title {
+        .nav-selector {
+            .nav-toggle {
+                color: $black;
+            }
+            .nav-menu {
+                .month,
+                .year {
+                    a {
+                        color: $black;
+                    }
+                }
+            }
+        }
+    }
+
+    .direct {
+        @include centerX;
+        color: $black2;
+
+        &:before {
+            right: rem-calc(-2);
+        }
+    }
+
+    .kalendae {
+        padding: $min-cal-padding;
+    }
+
+    .k-calendar,
+    a {
+        color: $min-cal-base-font-color;
+    }
+
+    .k-calendar {
+        .k-header {
+            color: $black36;
+        }
+
+        .k-out-of-month,
+        .disable {
+            color: $white5;
+        }
+
+        .k-today {
+            color: $min-cal-today-font-color;
+        }
+
+        .k-title {
+            .k-prev {
+                right: rem-calc(28);
+                left: unset;
+            }
+            .k-next {
+                right: rem-calc(-4);
+                left: unset;
+            }
+            .k-btn {
+                border-radius: rem-calc(4);
+                svg {
+                    width: rem-calc(20);
+                    height: rem-calc(20);
+                }
+            }
+            .k-prev,
+            .k-next {
+                background-color: inherit;
+            }
+
+            .nav-selector {
+                .nav-toggle {
+                    justify-content: flex-start;
+                    margin: 0 0 0 rem-calc(8);
+                }
+                .nav-menu {
+                    .month {
+                        li.active {
+                            a.month-change {
+                                background-color: $grey-mini-day-active-bg;
+                                color: $grey-mini-day-active-color;
+                            }
+                        }
+
+                        a.month-current {
+                            color: $grey-mini-today-color;
+                            font-weight: bold;
+                            line-height: 35px;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.nav-open {
+            .k-title {
+                .k-prev {
+                    right: unset;
+                    left: 0;
+                }
+                .k-next {
+                    right: rem-calc(5);
+                    left: unset;
+                }
+            }
+        }
+
+        .k-task {
+            position: relative;
+
+            &:after {
+                content: "";
+                display: inline-block;
+                position: absolute;
+                left: 50%;
+                bottom: rem-calc(5);
+                transform: translateX(-50%);
+                width: rem-calc(4);
+                height: rem-calc(4);
+                border-radius: 50%;
+                background-color: $white36;
+            }
+        }
+
+        .k-days {
+            color: $black85;
+            span {
+                &.kalendae-day-drag-hovered,
+                &:hover {
+                    &:before {
+                        background-color: $white24;
+                    }
+                }
+
+                &.k-selected {
+                    &:before {
+                        border-width: 0;
+                    }
+                }
+
+                i {
+                    position: absolute;
+                    top: rem-calc(9);
+                    left: 50%;
+                    transform: translateX(-50%) scale(0.58);
+                    min-width: rem-calc(40);
+                    font-size: rem-calc(12);
+                    white-space: nowrap;
+
+                    &.highlight {
+                        color: $lightorange;
+                    }
+                }
+            }
+        }
+        span,
+        a {
+            opacity: 1;
+
+            &.k-task {
+                opacity: 1;
+            }
+        }
+    }
+
+    .k-top {
+        cursor: pointer;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+    }
+
+    &:hover {
+        .k-top {
+            opacity: 1;
+        }
+    }
+
+    .collpase {
+        .k-days {
+            .k-days-row {
+                display: none;
+            }
+
+            .k-days-row-in-week {
+                display: flex;
+            }
+        }
+
+        .fake-enlarge-mini-cal {
+            display: block;
+        }
+
+        .fake-narrow-mini-cal {
+            display: none;
+        }
+
+        .k-title {
+            display: none;
+        }
+    }
+}

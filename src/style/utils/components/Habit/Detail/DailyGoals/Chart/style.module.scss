@@ -1,0 +1,65 @@
+@import "./scss/utils/variables";
+.chartWrapper {
+    display: flex;
+
+    .chartYAxis {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding-right: rem-calc(4);
+        text-align: right;
+        .label {
+            line-height: 1;
+        }
+    }
+
+    .chartGrid {
+        position: relative;
+        overflow: hidden;
+        &:hover {
+            .prevButton,
+            .nextButton {
+                opacity: 1;
+            }
+        }
+
+        .prevButton,
+        .nextButton {
+            opacity: 0;
+            z-index: 1000;
+            border-radius: 50%;
+            background: $white;
+            box-shadow: 0px 3px 6px 0px $black12;
+            transition: opacity 0.5s ease;
+            cursor: pointer;
+            svg {
+                fill: $black56;
+            }
+        }
+        .prevButton {
+            position: absolute;
+            top: 50%;
+            left: rem-calc(4);
+            transform: translateY(-50%);
+        }
+        .nextButton {
+            position: absolute;
+            top: 50%;
+            right: rem-calc(20);
+            transform: translateY(-50%);
+        }
+    }
+}
+
+[class*="-dark-theme"] .chartWrapper {
+    .chartGrid {
+        .prevButton,
+        .nextButton {
+            background: rgba(#363636, 0.85);
+            box-shadow: 0px 3px 6px 0px $black24;
+            svg {
+                fill: $white56;
+            }
+        }
+    }
+}

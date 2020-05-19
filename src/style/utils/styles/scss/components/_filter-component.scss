@@ -1,0 +1,154 @@
+$search-base-m: rem-calc(12);
+.filter-component {
+    min-height: rem-calc(22);
+    margin-left: $search-base-m * 2;
+    margin-right: $search-base-m;
+    margin-bottom: rem-calc(22);
+    overflow: hidden;
+
+    .direct {
+        position: static;
+        padding-right: rem-calc(24);
+        font-size: rem-calc(12);
+        &:before {
+            right: 0;
+            top: rem-calc(7);
+            height: rem-calc(6);
+            width: rem-calc(6);
+        }
+    }
+
+    svg[class^="icon-chevron"] {
+        width: rem-calc(12);
+        height: rem-calc(12);
+    }
+
+    .filter-duedate {
+        .custom {
+            position: absolute;
+            background-color: $white;
+            width: rem-calc(227);
+            padding: rem-calc(10);
+            z-index: 2000;
+            input {
+                display: block;
+                margin-bottom: rem-calc(8);
+            }
+            input.btn {
+                margin-bottom: 0;
+                padding: 0;
+            }
+            input.btn-confirm {
+                float: right;
+            }
+            .s-time,
+            .e-time {
+                width: 100%;
+            }
+            .btn {
+                display: inline-block;
+            }
+            .custom-name {
+                display: block;
+                margin-bottom: rem-calc(3);
+            }
+        }
+
+        .kalendae {
+            top: auto;
+            left: rem-calc(5);
+
+            svg[class^="icon-"] {
+                width: rem-calc(24);
+                height: rem-calc(24);
+            }
+        }
+    }
+}
+
+.filter-component-dropdown {
+    &.filter-project {
+        padding: 0;
+        min-width: rem-calc(216);
+        max-width: rem-calc(260);
+        background-color: $white;
+        overflow: hidden;
+
+        .select-list {
+            position: relative;
+            width: 100%;
+            box-shadow: none;
+            border: none;
+            margin-top: 0;
+
+            .list-divider {
+                width: 100%;
+                height: rem-calc(1);
+                margin: rem-calc(6) 0;
+                background-color: $black08;
+            }
+        }
+
+        .control {
+            border-top: $base-border;
+            position: relative;
+            z-index: 1;
+            background: $white;
+            padding: rem-calc(12);
+
+            .btn {
+                width: 48%;
+                min-width: auto;
+                min-width: initial;
+
+                &:last-child {
+                    float: right;
+                }
+            }
+        }
+    }
+
+    &.filter-tag {
+        padding: 0;
+        min-width: rem-calc(180);
+
+        .control {
+            border-top: $base-border;
+            position: relative;
+            z-index: 1;
+            background: $white;
+            padding: rem-calc(12);
+
+            .btn {
+                width: 48%;
+                min-width: auto;
+                min-width: initial;
+
+                &:last-child {
+                    float: right;
+                }
+            }
+        }
+    }
+
+    &.filter-assigeed {
+        padding: 0;
+    }
+
+    .options-item {
+        padding-right: rem-calc(30);
+        [class^="icon-"],
+        .emoji {
+            margin-right: rem-calc(6);
+        }
+    }
+    .group-project-item {
+        padding-left: rem-calc(38);
+    }
+
+    .list-wrapper {
+        .antiscroll-inner {
+            max-height: rem-calc(250);
+        }
+    }
+}

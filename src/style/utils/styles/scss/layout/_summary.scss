@@ -1,0 +1,281 @@
+$summary-head-h: rem-calc(131);
+$summary-footer-h: rem-calc(60);
+
+.summary {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: $grid-left-width;
+    bottom: 0;
+    background-color: $white;
+    z-index: 1;
+    padding: rem-calc(12) rem-calc(24) rem-calc(24);
+
+    .summary-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .summary-head {
+        position: relative;
+        width: 100%;
+        // height: $summary-head-h;
+    }
+
+    .summary-control {
+        @include liheight(rem-calc(36));
+        margin-bottom: rem-calc(6);
+
+        .filter-advance {
+            float: left;
+        }
+
+        .detail-control {
+            float: right;
+            text-align: right;
+        }
+    }
+
+    .summary-desc {
+        line-height: rem-calc(38);
+        color: $black54;
+    }
+
+    .summary-title {
+        font-size: rem-calc(20);
+        line-height: rem-calc(36);
+    }
+
+    .filter-advance {
+        margin-left: rem-calc(2);
+        margin-bottom: 0;
+        .selected-title {
+            display: block;
+        }
+    }
+
+    .filter-duedate {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: rem-calc(36);
+        line-height: rem-calc(36);
+        padding: 0 rem-calc(12);
+        border: 1px solid $black06;
+        border-radius: 2px;
+        cursor: pointer;
+        background-color: white;
+
+        .selected-title {
+            padding-right: 0;
+            vertical-align: top;
+        }
+
+        .dropdown-menu,
+        .custom {
+            right: 0;
+            left: auto;
+            top: calc(100% + 8px);
+        }
+
+        .dropdown-menu li > a {
+            max-width: 100%;
+        }
+
+        .direct {
+            font-size: rem-calc(14);
+            margin: 0;
+        }
+
+        span {
+            color: $black85;
+        }
+
+        svg {
+            fill: $black85;
+        }
+    }
+
+    .summary-body {
+        // 辣鸡360极速、UC、遨游fix
+        display: flex;
+        flex-direction: column;
+        // padding-top: $summary-head-h;
+        padding-bottom: $summary-footer-h;
+        flex: 1;
+        // height: 100%;
+
+        textarea {
+            width: 100%;
+            flex: 1;
+            // height: 100%;
+            border: 1px solid $black08;
+            padding: rem-calc(24);
+            font-size: rem-calc(14);
+            line-height: 1.5;
+            color: $black85;
+            border-radius: rem-calc(2);
+        }
+    }
+
+    .summary-footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: rem-calc(36);
+
+        .btn {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            z-index: 2;
+        }
+
+        .short-tip {
+            right: rem-calc(50);
+            top: rem-calc(-70);
+            transform: translateX(50%);
+
+            &.after-animation {
+                top: rem-calc(-32);
+            }
+        }
+    }
+
+    .btn-group {
+        float: right;
+        display: inline-block;
+        white-space: nowrap;
+        vertical-align: middle;
+
+        .group-btn {
+            float: left;
+            display: inline-block;
+            height: rem-calc(28);
+            margin-top: rem-calc(4);
+            padding: rem-calc(1);
+            background: white;
+            border: 1px solid $mercury;
+
+            & + .group-btn {
+                margin-left: -1px;
+            }
+        }
+
+        .dropdown-toggle,
+        .menu-toggle {
+            display: inline-block;
+            height: rem-calc(24);
+
+            svg {
+                vertical-align: baseline;
+            }
+        }
+
+        svg {
+            display: block;
+        }
+
+        .dropdown-menu {
+            right: 0;
+            left: auto;
+        }
+    }
+
+    .multi-select-menu .select-list {
+        margin-top: 0;
+    }
+
+    .filter-duedate {
+        .custom {
+            .k-pop {
+                top: auto;
+                left: 5px;
+            }
+        }
+    }
+
+    .filter-advance > .dropdown:not(.filter-duedate) .direct {
+        height: rem-calc(36);
+        line-height: rem-calc(50);
+    }
+}
+
+.mac {
+    .summary-title {
+        visibility: hidden;
+    }
+}
+
+.windows {
+    .summary-title {
+        display: none;
+    }
+    .summary-control {
+        position: relative;
+    }
+
+    .filter-advance {
+        .dropdown {
+            margin-top: rem-calc(10);
+        }
+        .filter-duedate {
+            margin-top: 0;
+            right: rem-calc(62);
+        }
+    }
+}
+
+.summary-detail-dropdown {
+    .multi-select-menu {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        width: rem-calc(180);
+        text-align: left;
+
+        .select-list {
+            margin-top: 0;
+        }
+    }
+
+    .list-wrapper {
+        max-height: rem-calc(400);
+        padding-bottom: rem-calc(5);
+    }
+
+    .control {
+        padding: rem-calc(12) rem-calc(12) rem-calc(7);
+        border-top: 1px solid $black06;
+
+        .btns {
+            display: flex;
+            width: 100%;
+
+            button {
+                flex: 1;
+                min-width: auto;
+
+                &:first-child {
+                    margin-right: rem-calc(8);
+                }
+            }
+        }
+    }
+}
+.summary-sort-dropMenu,
+.summary-detail-dropdown {
+    position: absolute !important;
+}
+
+@media #{$large-low} {
+    .summary {
+        left: 0;
+        .summary-title {
+            padding-left: rem-calc(36);
+        }
+    }
+}

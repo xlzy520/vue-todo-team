@@ -1,0 +1,251 @@
+$re-padding: $base-modal-padding;
+$re-width: rem-calc(392);
+$re-title-width: 100%;
+
+$re-last-top: rem-calc(40);
+$re-last-top-2: $re-last-top - rem-calc(14);
+$re-last-top-3: $re-last-top-2 - rem-calc(14);
+$re-icon-size: rem-calc(16);
+$re-icon-margin: rem-calc(10);
+$re-action-width: 100%;
+
+.reminders {
+    i:not(.icon_habit) {
+        width: $re-icon-size;
+        height: $re-icon-size;
+
+        margin-right: $re-icon-margin;
+    }
+
+    .r-inner {
+        height: 100%;
+        position: relative;
+        padding-top: rem-calc(24);
+        padding-bottom: rem-calc(100);
+    }
+
+    .checker {
+        margin-top: rem-calc(-1);
+    }
+
+    .r-task {
+        position: absolute;
+        left: 50%;
+        width: $re-width;
+        // height: 100%;
+        max-height: 80%;
+        z-index: $zindex-top;
+        margin-left: -$re-width / 2;
+        padding: $re-padding - 4 $re-padding;
+        background-color: $base-bg;
+        border: $base-border;
+        border-radius: $base-border-radius;
+
+        transition-property: opacity, transform, top;
+        transition-timing-function: ease;
+        opacity: 0;
+
+        &:last-child {
+            top: $re-last-top;
+            transform: scale(1);
+            transition-duration: 0.2s, 0.2s, 0.25s;
+            transition-delay: 0s;
+            box-shadow: $base-box-shadow;
+            opacity: 1;
+        }
+
+        &:nth-last-child(2) {
+            top: $re-last-top-2;
+            transform: scale(0.95);
+            transition-duration: 0.2s;
+            transition-delay: 0.25s;
+            opacity: 1;
+        }
+
+        &:nth-last-child(3) {
+            transition-duration: 0.2s;
+            transition-delay: 0.25s;
+
+            top: $re-last-top-3;
+            transform: scale(0.9);
+        }
+
+        &.before-animation {
+            top: rem-calc(-130);
+        }
+
+        &.close-animation {
+            transform: scale(1.1);
+            opacity: 0;
+        }
+
+        .header {
+            height: rem-calc(12);
+            line-height: rem-calc(12);
+            color: $black54;
+            position: absolute;
+            top: 0;
+            width: 100%;
+
+            .icon-close {
+                position: absolute;
+                right: rem-calc(-4);
+                top: rem-calc(-4);
+                width: rem-calc(16);
+                height: rem-calc(16);
+                fill: $black85;
+            }
+        }
+
+        .body {
+            height: 100%;
+            max-height: rem-calc(300);
+            overflow-y: auto;
+        }
+
+        .title {
+            width: $re-title-width;
+            cursor: pointer;
+            // margin-left: rem-calc(10);
+            word-break: break-all;
+            font-size: rem-calc(16);
+            user-select: text;
+        }
+
+        .content,
+        .desc {
+            white-space: pre-wrap;
+            margin: rem-calc(10) 0;
+            user-select: text;
+            word-break: break-word;
+        }
+
+        .subtask-list {
+            & > li {
+                min-height: rem-calc(24);
+                line-height: rem-calc(24);
+                user-select: text;
+                word-break: break-word;
+                max-width: 100%;
+
+                &.active {
+                    border-radius: rem-calc(2);
+                    margin: 0 rem-calc(-4);
+                    padding: 0 rem-calc(4);
+                }
+
+                &.checked {
+                    color: $black24;
+                }
+            }
+        }
+
+        .action {
+            position: absolute;
+            bottom: 0;
+            display: flex;
+            // float: right;
+            width: $re-action-width;
+            justify-content: space-around;
+            // margin-top: rem-calc(34);
+
+            .item {
+                cursor: pointer;
+                text-align: center;
+                min-width: rem-calc(101);
+
+                .svg-wrapper {
+                    width: rem-calc(34);
+                    height: rem-calc(34);
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin: 0 auto;
+                    padding: 0;
+                    min-width: rem-calc(34);
+                    max-width: rem-calc(34);
+                    border-width: 0;
+                }
+
+                svg {
+                    width: rem-calc(16);
+                    height: rem-calc(16);
+                    fill: #ffffff;
+                }
+
+                p {
+                    color: $black54;
+                    margin-top: rem-calc(11);
+                }
+            }
+
+            .icon-reminder-start-pomo {
+                padding-left: rem-calc(2);
+            }
+
+            .icon-reminder-snooze {
+                margin-right: rem-calc(1);
+            }
+        }
+
+        .btn {
+            &.close {
+                margin-top: rem-calc(8);
+            }
+        }
+    }
+
+    .r-task.subcalendar {
+        .action .item:not(.view) {
+            cursor: not-allowed;
+
+            .i-3,
+            .active i-3 {
+                fill: $black18;
+            }
+
+            p {
+                color: $black18;
+            }
+        }
+    }
+
+    .r-task.sub-schedule-participant {
+        .action .item:not(.view):not(.pomo) {
+            cursor: not-allowed;
+
+            .i-3,
+            .active i-3 {
+                fill: $black18;
+            }
+
+            p {
+                color: $black18;
+            }
+        }
+    }
+
+    .r-task.habit {
+        .r-inner {
+            padding-bottom: rem-calc(0);
+        }
+    }
+
+    .dropdown-menu {
+        top: rem-calc(42) !important;
+        // width: auto;
+    }
+
+    .next-period {
+        height: rem-calc(51) !important;
+        line-height: rem-calc(23) !important;
+        padding-top: rem-calc(6) !important;
+
+        & > p {
+            font-size: rem-calc(13);
+            line-height: rem-calc(11);
+            color: $black54;
+        }
+    }
+}

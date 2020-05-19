@@ -13,17 +13,21 @@ module.exports = {
    * In most cases please use '/' !!!
    * Detail: https://cli.vuejs.org/config/#publicpath
    */
+  "transpileDependencies": [
+    "vuetify"
+  ],
   publicPath: './',
   outputDir: 'dist',
   assetsDir: 'static',
   lintOnSave: process.env.NODE_ENV === 'development',
   productionSourceMap: false,
   devServer: {
+    hot: true,
     port: '8888',
     open: false,
     overlay: {
-      warnings: false,
-      errors: false
+      // warnings: false,
+      // errors: false
     },
     proxy: {
       '/': {

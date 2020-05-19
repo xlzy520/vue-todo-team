@@ -1,0 +1,11 @@
+.save-as-task-template-modal {
+    .modal-desc {
+        font-size: rem-calc(13);
+        letter-spacing: 0;
+        line-height: 20px;
+        color: $base-font-color-primary;
+    }
+    .warning-input {
+        margin-top: rem-calc(20);
+    }
+}

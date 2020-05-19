@@ -1,0 +1,26 @@
+@import "./scss/utils/variables";
+.recordWrapper {
+    margin-bottom: rem-calc(80);
+    padding: 0 rem-calc(20);
+    .header {
+        font-size: rem-calc(16);
+        font-weight: 500;
+        line-height: rem-calc(24);
+        margin-bottom: rem-calc(20);
+    }
+    .recordList {
+        padding-left: rem-calc(6);
+    }
+    .empty {
+        text-align: left;
+        font-size: rem-calc(14);
+        color: $black36;
+        line-height: rem-calc(18);
+    }
+}
+
+[class*="-dark-theme"] .recordWrapper {
+    .empty {
+        color: $white36;
+    }
+}

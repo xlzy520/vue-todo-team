@@ -1,0 +1,138 @@
+$premium-header-m-b: rem-calc(40);
+$premium-header-p: rem-calc(40);
+$premium-divider: rem-calc(20);
+$premium-body-m-t: rem-calc(40);
+$premium-item-p-l: rem-calc(70);
+$premium-item-m-b: rem-calc(40);
+$btn-month: #05ce90;
+$btn-year: #f9c112;
+
+.premium-panel {
+    .header-inner {
+        position: relative;
+        margin-bottom: $premium-header-m-b;
+        margin-top: rem-calc(-18);
+        padding: $premium-header-p 0;
+        border-bottom: $base-border;
+
+        .title {
+            font-size: rem-calc(48);
+            color: $indigo;
+            padding-bottom: rem-calc(20);
+        }
+        .icon-sup {
+            margin-top: rem-calc(-15);
+            //   margin-left: rem-calc(-15);
+        }
+    }
+
+    .header-inner.team-user {
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding-top: rem-calc(40);
+        padding-bottom: rem-calc(40);
+
+        .team-info {
+            margin-left: rem-calc(43);
+        }
+
+        .team-title > p {
+            font-size: rem-calc(28);
+        }
+
+        .team-pro-info {
+            position: absolute;
+            bottom: rem-calc(24);
+            left: rem-calc(149);
+            opacity: 0.54;
+        }
+    }
+
+    .header-pro {
+        text-align: center;
+
+        .pro-info {
+            margin-left: rem-calc(60);
+            display: inline-block;
+            text-align: left;
+        }
+        .title {
+            font-size: rem-calc(30);
+        }
+        .info .renew {
+            vertical-align: middle;
+        }
+    }
+
+    .btn {
+        color: $white;
+        width: rem-calc(130);
+        height: rem-calc(34);
+        margin-right: rem-calc(30);
+
+        &.month {
+            background-color: $btn-month;
+        }
+
+        &.year {
+            background-color: $btn-year;
+        }
+    }
+
+    .premium-body {
+        margin-top: $premium-body-m-t;
+
+        .premium-item {
+            margin-bottom: $premium-item-m-b;
+            vertical-align: middle;
+            font-size: 0;
+
+            .title {
+                line-height: 1.3;
+                font-size: rem-calc(24);
+                margin-bottom: $premium-divider;
+            }
+
+            .p-icon {
+                margin-right: rem-calc(30);
+                width: rem-calc(202);
+                height: rem-calc(122);
+                display: inline-block;
+                border: 1px solid rgba(4, 24, 53, 0.1);
+            }
+        }
+        .desc {
+            display: inline-block;
+            max-width: rem-calc(442);
+        }
+    }
+}
+
+@media #{$medium-low} {
+    .premium-panel {
+        .premium-item {
+            .desc {
+                width: 40%;
+                max-width: rem-calc(420);
+            }
+        }
+    }
+}
+
+@media #{$small-only} {
+    .premium-panel {
+        text-align: center;
+
+        .premium-item {
+            .desc {
+                margin-top: rem-calc(10);
+                width: 100%;
+            }
+        }
+
+        button.month {
+            margin-bottom: rem-calc(10);
+        }
+    }
+}

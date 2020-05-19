@@ -1,0 +1,81 @@
+$calMenuWidth: rem-calc(220);
+
+.calMenuItem {
+    width: $calMenuWidth;
+    position: relative;
+    &.active {
+        > a > span {
+            color: $base-font-color-primary !important;
+        }
+    }
+    .icon {
+        width: rem-calc(20);
+        height: rem-calc(20);
+        margin-top: -3px;
+    }
+    .dropDownIcon {
+        position: absolute;
+        right: rem-calc(-4);
+        top: rem-calc(5);
+    }
+    > a {
+        max-width: 100% !important;
+    }
+}
+
+.calConfigDropDown {
+    width: $calMenuWidth;
+    padding: rem-calc(5) 0;
+    max-height: none;
+    > p {
+        margin-top: 6px;
+        padding: 0 rem-calc(16);
+    }
+    .title {
+        font-size: rem-calc(12);
+    }
+    .desc {
+        font-size: rem-calc(9);
+    }
+    .calConfigMenu {
+        cursor: pointer;
+        width: $calMenuWidth;
+
+        li {
+            position: relative;
+            padding: 0 rem-calc(24) 0 rem-calc(16);
+            height: 36px;
+            line-height: 36px;
+            &:hover {
+                background-color: $multi-hovered-color;
+            }
+
+            > a {
+                color: $black85;
+            }
+            .selected {
+                display: none;
+                position: absolute;
+                right: 0;
+                top: rem-calc(5);
+                width: rem-calc(12);
+            }
+        }
+
+        .active {
+            .selected {
+                display: block;
+            }
+        }
+    }
+}
+
+[class*="-dark-theme"] .calConfigDropDown {
+    .calConfigMenu {
+        li {
+            > a {
+                color: $white85;
+            }
+        }
+    }
+}

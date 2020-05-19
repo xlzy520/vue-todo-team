@@ -1,0 +1,143 @@
+@import "./utils/var";
+
+// header font styles
+$header-font-family: $body-font-family !default;
+$header-font-weight: $font-weight-normal !default;
+$header-font-style: normal !default;
+$header-font-color: $bistre !default;
+$header-line-height: $base-line-height !default;
+$header-text-rendering: optimizeLegibility !default;
+
+// header font sizes
+$h1-font-size: rem-calc(30) !default;
+$h2-font-size: rem-calc(25) !default;
+$h3-font-size: $base-font-size-lrg !default;
+$h4-font-size: $base-font-size-lrg !default;
+$h5-font-size: $base-font-size-lrg !default;
+$h6-font-size: $base-font-size-tny !default;
+
+// style paragraphs
+$paragraph-font-family: $body-font-family !default;
+$paragraph-font-weight: $font-weight-normal !default;
+$paragraph-font-size: $body-font-size !default;
+$paragraph-line-height: $base-line-height !default;
+$paragraph-text-rendering: optimizeLegibility !default;
+
+// A general <small> styling
+$small-font-size: $base-font-size-tny !default;
+$small-font-color: $ashgrey !default;
+
+
+// Must be 100% for off canvas to work
+html, body { height: 100%; }
+
+// Set box-sizing globally to handle padding and border widths
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html { font-size: $base-font-size; }
+
+// Default body styles
+body {
+  font-family: $body-font-family;
+  font-size: $body-font-size;
+  font-style: $body-font-style;
+  font-weight: $body-font-weight;
+  line-height: $base-line-height; // Set to $base-line-height to take on browser default of 150%
+  -webkit-font-smoothing: $font-smoothing-webkit;
+  -moz-osx-font-smoothing: $font-smoothing-moz;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  height: 100%;
+
+  &.ja {
+    font-family: $body-font-family-ja;
+  }
+}
+
+a,
+.link,
+.cm-link {
+  text-decoration: none;
+  &:hover {
+    cursor: $cursor-pointer-value;
+    text-decoration: none;
+  }
+
+  &:hover, &:active {
+    outline: 0;
+  }
+
+}
+
+// Grid Defaults to get images and embeds to work properly
+img { max-width: 100%; height: auto; }
+
+img { -ms-interpolation-mode: bicubic; }
+
+// Get rid of gap under images by making them display: inline-block; by default
+img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+
+//
+// Typography Placeholders
+//
+
+/* Default header styles */
+h1, h2, h3, h4, h5, h6 {
+  font-style: $header-font-style;
+  font-weight: $header-font-weight;
+  line-height: $header-line-height;
+  text-rendering: $header-text-rendering;
+
+  small {
+    color: $small-font-color;
+    font-size: $small-font-size;
+  }
+}
+
+h1 { font-size: $h1-font-size; }
+h2 { font-size: $h2-font-size; }
+h3 { font-size: $h3-font-size; }
+h4 { font-size: $h4-font-size; }
+h5 { font-size: $h5-font-size; }
+h6 { font-size: $h6-font-size; }
+
+/* Default paragraph styles */
+p {
+  font-family: $paragraph-font-family;
+  font-size: $paragraph-font-size;
+  font-weight: $paragraph-font-weight;
+  // line-height: $paragraph-line-height;
+  text-rendering: $paragraph-text-rendering;
+}
+
+strong {
+  color: $base-font-color-primary;
+  font-weight: $font-weight-bold;
+  line-height: inherit;
+}
+
+small {
+  font-size: $small-font-size;
+  line-height: inherit;
+}
+
+// Make sure textarea takes on height automatically
+// textarea { min-height: 30px; }
+
+// Make select elements 100% width by default
+select { width: 100%; }
+
+input,
+textarea {
+  font-family: $body-font-family;
+}

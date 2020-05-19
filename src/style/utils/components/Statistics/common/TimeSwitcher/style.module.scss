@@ -1,0 +1,65 @@
+@import "./scss/utils/variables";
+.timeSwitcher {
+    .typeSelector {
+        display: inline-block;
+        vertical-align: baseline;
+        height: rem-calc(40);
+        background-color: white;
+        border-radius: 4px;
+        min-width: auto;
+        min-height: auto;
+        margin-right: rem-calc(12);
+        padding: 0 rem-calc(16);
+        p {
+            display: inline-block;
+            font-size: rem-calc(15);
+            font-weight: 400;
+            color: rgba(0, 0, 0, 0.56);
+        }
+        .icon {
+            transform: rotate(-90deg);
+        }
+    }
+    .buttonGroup {
+        display: inline-block;
+        vertical-align: baseline;
+        .button {
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            min-width: auto;
+            padding: 0;
+        }
+        .dateWrapper {
+            display: inline-block;
+            padding: 0 rem-calc(40);
+            height: rem-calc(40);
+            font-size: rem-calc(16);
+            font-weight: 400;
+            color: rgba(0, 0, 0, 0.56);
+            line-height: rem-calc(40);
+            text-align: center;
+        }
+    }
+}
+
+[class*="-dark-theme"] {
+    .timeSwitcher {
+        .typeSelector {
+            background-color: #131415;
+            p {
+                color: rgba(255, 255, 255, 0.56);
+            }
+            .icon {
+            }
+        }
+        .buttonGroup {
+            .button {
+                background-color: #131415;
+            }
+            .dateWrapper {
+                color: rgba(255, 255, 255, 0.56);
+            }
+        }
+    }
+}

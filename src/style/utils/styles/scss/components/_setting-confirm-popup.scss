@@ -1,0 +1,22 @@
+.setting-confirm-popup {
+    .control {
+        position: relative;
+        z-index: 1;
+        background: $white;
+        padding: rem-calc(12);
+        overflow: hidden;
+        border-top: $base-border;
+        .btns {
+            .btn {
+                width: 48%;
+                min-width: auto;
+            }
+            .btn:first-child {
+                float: left;
+            }
+            .btn:last-child {
+                float: right;
+            }
+        }
+    }
+}

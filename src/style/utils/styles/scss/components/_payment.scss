@@ -1,0 +1,73 @@
+.payment-popup {
+    .title {
+        font-size: rem-calc(22);
+        text-align: center;
+        line-height: rem-calc(30);
+    }
+
+    .desc {
+        text-align: center;
+        margin: rem-calc(40) 0 rem-calc(60);
+    }
+
+    .control {
+        text-align: center;
+        margin-bottom: rem-calc(20);
+    }
+}
+
+.payment-popup {
+    width: rem-calc(400);
+    .popup-header-center {
+        padding-bottom: 0;
+        text-align: center;
+    }
+
+    .popup-body {
+        padding: 0 rem-calc(65);
+        float: none;
+        text-align: center;
+    }
+
+    .popup-content {
+        padding-top: rem-calc(30);
+        .popup-title {
+            font-size: rem-calc(30);
+            line-height: rem-calc(30);
+            font-weight: 600;
+            margin-bottom: rem-calc(16);
+        }
+    }
+
+    .popup-footer {
+        display: flex;
+        justify-content: space-between;
+        padding: rem-calc(50) rem-calc(35) rem-calc(60);
+        text-align: left;
+
+        .btn {
+            height: rem-calc(40);
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: rem-calc(15);
+            line-height: rem-calc(20);
+            font-weight: 600;
+            border-width: 0;
+            flex: 1;
+            box-sizing: border-box;
+
+            svg {
+                width: rem-calc(24);
+                height: rem-calc(24);
+                vertical-align: text-bottom;
+                fill: white;
+            }
+        }
+
+        .btn + .btn {
+            margin-left: rem-calc(20);
+        }
+    }
+}

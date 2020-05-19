@@ -1,0 +1,443 @@
+// @import 'components/timecard';
+
+$r-select-smart-menu-top: rem-calc(65);
+
+$time-input-zindex: 500;
+$time-dropdown-zindex: 600;
+$reminder-dropdown-zindex: 600;
+$reminder-select-custom: 700;
+
+%button {
+    @include ellipsis;
+    min-width: $tc-pop-menu-width;
+    max-width: $tc-pop-menu-width;
+}
+
+.choose-time {
+    position: relative;
+
+    .timepicker {
+        .time-editor {
+            position: relative;
+            z-index: $time-input-zindex;
+        }
+
+        .timepicker-widget {
+            z-index: $time-dropdown-zindex;
+        }
+    }
+
+    &:hover {
+        .select .dropdown-toggle {
+            display: block;
+        }
+    }
+
+    .select.open .dropdown-toggle {
+        display: block;
+    }
+
+    .dropdown {
+        height: 100%;
+    }
+
+    @include input-placeholder($tc-menu-active-font-color);
+
+    input {
+        cursor: $cursor-default-value;
+        border-radius: $base-border-radius;
+    }
+
+    input {
+        @include selectstyle;
+    }
+
+    .i-select {
+        transform: rotate(90deg);
+    }
+
+    .select {
+        position: absolute;
+        left: 6px;
+        line-height: rem-calc(30);
+
+        .dropdown-toggle {
+            display: none;
+            font-size: 0;
+        }
+    }
+
+    .delete {
+        display: none;
+        position: absolute;
+        right: rem-calc(2);
+        top: rem-calc(7);
+
+        &:before,
+        &:after {
+            background-color: $base-font-color-deepbg;
+        }
+
+        &:hover {
+            &:before,
+            &:after {
+                background-color: $base-font-color-deepbg;
+            }
+
+            & + input {
+                background-color: $base-active-bg;
+                color: $base-font-color-deepbg;
+            }
+        }
+    }
+
+    .time-stamp {
+        .timepicker-widget {
+            width: 100%;
+            text-align: center;
+
+            li > a {
+                white-space: pre-wrap;
+                max-width: 100%;
+            }
+        }
+    }
+
+    .time-range {
+        display: none;
+
+        .time-editor {
+            padding: 0;
+        }
+
+        $time-picker-width: rem-calc(78);
+        text-align: center;
+        line-height: rem-calc(30);
+
+        .start-time {
+            float: left;
+            width: $time-picker-width;
+        }
+
+        .to {
+            color: $black54;
+        }
+
+        .end-time {
+            float: right;
+            width: $time-picker-width;
+        }
+    }
+
+    &:hover {
+        @include input-placeholder($base-font-color-deepbg);
+    }
+}
+
+.choose-repeat-until {
+    position: relative;
+
+    .delete {
+        display: none;
+        position: absolute;
+        right: rem-calc(2);
+        top: rem-calc(7);
+        cursor: pointer;
+    }
+}
+
+.has-time .choose-time,
+.has-repeat-until.choose-repeat-until {
+    &:hover {
+        .delete {
+            display: block;
+        }
+    }
+}
+
+.reminder-ahead-section {
+    &.has-reminder {
+        .r-custom-unit {
+            .select-title {
+                border-color: #ddd !important;
+                color: rgba(0, 0, 0, 0.85) !important;
+            }
+        }
+    }
+
+    position: relative;
+
+    &.has-reminder {
+        .r-custom-unit,
+        .r-ahead-type {
+            .select-title {
+                border-color: #ddd !important;
+                color: rgba(0, 0, 0, 0.85) !important;
+            }
+        }
+    }
+
+    .hint-icon,
+    .add-reminder {
+        display: none;
+    }
+
+    .r-select-smart {
+        .select-list {
+            top: -$r-select-smart-menu-top;
+            left: $tc-smart-menu-left;
+            width: $tc-smart-menu-width;
+            z-index: $reminder-dropdown-zindex;
+        }
+
+        .select-title {
+            @include selectstyle;
+        }
+    }
+
+    .smart-btns {
+        padding: $tc-pop-padding;
+
+        button {
+            @extend %button;
+
+            &:last-child {
+                float: right;
+            }
+        }
+    }
+
+    // repeat custom
+    .r-select-custom {
+        position: absolute;
+        top: $tc-menu-height + $tc-line-divider;
+        left: -$tc-smart-menu-left;
+        z-index: $reminder-select-custom;
+        width: $tc-smart-menu-width;
+        padding: rem-calc(10);
+        background-color: $base-bg;
+
+        &:before {
+            bottom: rem-calc(119);
+        }
+
+        button {
+            @extend %button;
+        }
+
+        input,
+        .select-title {
+            color: $black85;
+        }
+
+        .r-custom-unit,
+        .r-ahead-type {
+            .select-title {
+                text-align: left;
+            }
+        }
+
+        .r-ahead-type {
+            .select-menu {
+                width: 100%;
+            }
+        }
+
+        .ahead-tip {
+            padding-bottom: rem-calc(12);
+            line-height: 1.3;
+        }
+
+        .confirm-container {
+            margin-top: $tc-pop-padding;
+        }
+    }
+}
+
+.reminder-ahead-select.advance {
+    min-width: rem-calc(214);
+    z-index: 999;
+    .list-wrapper .antiscroll-inner {
+        max-height: rem-calc(320);
+    }
+}
+
+.repeat-container {
+    .choose-repeat {
+        .select-list {
+            z-index: $reminder-select-custom;
+        }
+    }
+}
+
+.tc-repeat-advance,
+.tc-repeat-count {
+    z-index: $reminder-select-custom;
+}
+
+.pref-panel {
+    .default-reminder {
+        $btn-margin: rem-calc(10);
+
+        .btns {
+            display: flex;
+
+            button {
+                flex: 1;
+            }
+
+            button + button {
+                margin-left: $btn-margin;
+            }
+        }
+
+        .ahead-tip {
+            color: $base-font-color-secondary;
+            padding-top: $btn-margin;
+            padding-bottom: rem-calc(12);
+            line-height: 1.3;
+        }
+
+        .r-select-custom {
+            padding: $tc-pop-padding;
+            width: rem-calc(288);
+
+            .r-custom-container {
+                display: flex;
+            }
+
+            .r-custom-unit {
+                flex: 1;
+                margin-left: $btn-margin;
+            }
+
+            .select-menu {
+                width: 100%;
+            }
+
+            .btns {
+                margin-top: $tc-pop-padding;
+            }
+        }
+
+        .r-custom-container {
+            flex-direction: column;
+            .row {
+                display: flex;
+                padding: 0;
+                margin-bottom: rem-calc(10);
+                align-items: center;
+
+                &::before,
+                &::after {
+                    content: unset;
+                }
+
+                span {
+                    line-height: 1.3;
+                }
+            }
+        }
+
+        .all-day {
+            .row {
+                span {
+                    line-height: 1.3;
+                    flex: 4;
+                    overflow: hidden;
+                    margin-right: rem-calc(5);
+                }
+
+                input {
+                    flex: 5;
+                    min-width: 0;
+                    overflow: hidden;
+                }
+            }
+        }
+
+        .take-time {
+            input {
+                width: 100%;
+            }
+            span {
+                text-align: center;
+            }
+            .days-row {
+                input {
+                    flex: 9;
+                    min-width: 0;
+                    overflow: hidden;
+                }
+                span {
+                    flex: 3;
+                    overflow: hidden;
+                }
+            }
+            .hrs-mins-row {
+                input {
+                    flex: 4;
+                    min-width: 0;
+                    overflow: hidden;
+                }
+                span {
+                    flex: 5;
+                    overflow: hidden;
+                }
+            }
+        }
+    }
+}
+
+.pref-panel-select-list {
+    $btn-margin: rem-calc(10);
+    width: rem-calc(288);
+
+    .hint-icon {
+        display: none;
+    }
+
+    .btns {
+        display: flex;
+
+        button {
+            flex: 1;
+        }
+
+        button + button {
+            margin-left: $btn-margin;
+        }
+    }
+
+    .smart-btns {
+        padding: $tc-pop-padding;
+    }
+
+    .ahead-tip {
+        color: $base-font-color-secondary;
+        padding-top: $btn-margin;
+        padding-bottom: rem-calc(12);
+        line-height: 1.3;
+    }
+
+    .r-select-custom {
+        padding: $tc-pop-padding;
+
+        .r-custom-container {
+            display: flex;
+        }
+
+        .r-custom-unit {
+            flex: 1;
+            margin-left: $btn-margin;
+        }
+
+        .select-menu {
+            width: 100%;
+        }
+
+        .btns {
+            margin-top: $tc-pop-padding;
+        }
+    }
+}

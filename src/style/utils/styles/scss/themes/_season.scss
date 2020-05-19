@@ -1,0 +1,287 @@
+[class*="season-pro-theme"] {
+    // toolbar
+    .tool-bar {
+        .t-name {
+            color: $base-font-color-lightbg;
+            opacity: 1;
+        }
+    }
+
+    .i-1 {
+        fill: $black;
+    }
+
+    .tool-bar {
+        .t-notify,
+        .t-search {
+            .i-1 {
+                opacity: 0.36;
+
+                &:hover {
+                    opacity: 0.54;
+                }
+            }
+        }
+    }
+
+    .lists {
+        li > a,
+        div.p-sort-help > a,
+        .f-header > a,
+        .fake-li > a,
+        .l-c > a,
+        .l-new > a {
+            color: rgba($season-basestyle-font-color, 0.85);
+
+            svg {
+                fill: rgba($black, 0.36);
+            }
+
+            &:hover {
+                background-color: $black02;
+            }
+        }
+
+        .team-project-empty {
+            background-color: black02;
+            color: rgba($season-basestyle-font-color, 0.56);
+        }
+
+        .team-header-box {
+            color: rgba($season-basestyle-font-color, 0.56);
+            .count {
+                color: rgba($season-basestyle-font-color, 0.85);
+            }
+        }
+
+        li.active > a {
+            color: rgba($season-basestyle-font-color, 0.85);
+
+            svg {
+                fill: rgba($black, 0.54);
+            }
+        }
+
+        .l-l-t {
+            a.l-tab {
+                color: rgba($season-basestyle-font-color, 0.36);
+                border-bottom-color: rgba($season-basestyle-font-color, 0.04);
+                &.t-active {
+                    color: rgba($season-basestyle-font-color, 0.85);
+                }
+            }
+        }
+    }
+
+    // 侧边栏
+    .g-left {
+        .l-divider {
+            background-color: rgba($season-basestyle-font-color, 0.04);
+        }
+    }
+
+    // 小日历视图背景色
+    .min-cal {
+        background-color: $whitegray;
+        // border-top: 1px solid $black06;
+
+        .month,
+        .year {
+            a {
+                color: $black;
+            }
+        }
+
+        .year {
+            .active a {
+                color: $vanilla;
+            }
+        }
+
+        .k-calendar {
+            .k-title {
+                .k-btn {
+                    fill: $black36;
+
+                    &:hover {
+                        fill: $black54;
+                    }
+                }
+
+                &.k-disable-year-nav {
+                    .k-btn-previous-month,
+                    .k-btn-next-month {
+                        fill: $black36;
+
+                        &:hover {
+                            fill: $black54;
+                        }
+                    }
+                }
+
+                .nav-toggle {
+                    color: $black85;
+                }
+
+                .nav-menu {
+                    .year {
+                        color: $black85;
+                    }
+
+                    .month {
+                        a:not(.disable) {
+                            &:hover {
+                                background-color: $black1;
+                            }
+                        }
+
+                        li.active {
+                            a.month-change {
+                                color: $white;
+                            }
+                        }
+                    }
+                }
+            }
+            .k-header {
+                color: $black36;
+            }
+
+            .k-task {
+                &:after {
+                    background-color: $black14;
+                }
+            }
+
+            .k-days {
+                color: $black85;
+
+                span {
+                    &.k-selected,
+                    &:hover {
+                        color: $white;
+
+                        &:after {
+                            background-color: $white36;
+                        }
+                    }
+
+                    &:hover {
+                        &:before {
+                            background-color: $black1;
+                        }
+                    }
+                }
+            }
+        }
+
+        span,
+        a {
+            opacity: 1;
+
+            &.k-task {
+                opacity: 1;
+            }
+
+            &.k-out-of-month,
+            &.disable {
+                color: $black24;
+            }
+        }
+
+        // 切换月份icon
+        .k-calendar {
+            .k-title {
+                .k-prev:before,
+                .k-next:before {
+                    opacity: 0.8;
+                }
+            }
+        }
+    }
+
+    .fake-enlarge-mini-cal {
+        &:before {
+            background-color: $black1;
+        }
+
+        &:after {
+            border-color: transparent transparent $black5 transparent;
+        }
+    }
+
+    .fake-narrow-mini-cal {
+        &:before {
+            background-color: $black1;
+        }
+
+        &:after {
+            border-color: $black5 transparent transparent transparent;
+        }
+    }
+
+    // 侧边栏正常状态下字体和icon透明度
+    .lists {
+        .l-tabs .l-tab {
+            border-bottom-color: $black06;
+        }
+
+        .l-l-t {
+            .l-tab-slide {
+                background-color: $black85;
+            }
+
+            a.l-tab.t-active {
+                color: $black85;
+            }
+        }
+
+        .active > a {
+            background-color: $black06;
+
+            &:hover {
+                background-color: $black06;
+            }
+        }
+
+        .ui-sortable-helper,
+        .ui-sortable-helper a,
+        .active.ui-sortable-helper a {
+            background-color: $whitegray;
+        }
+
+        .empty-tag {
+            svg {
+                fill: $black;
+            }
+
+            span {
+                color: $black;
+            }
+        }
+    }
+
+    #pomodoro-timer {
+        .wrapper {
+            color: $black85;
+
+            svg {
+                fill: black;
+            }
+
+            .progress-bar {
+                background-color: $black06;
+            }
+        }
+    }
+}
+
+@media #{$large-low} {
+    [class*="season-pro-theme"] {
+        .g-left {
+            background-size: auto 100%;
+            background-repeat: no-repeat;
+            background-position: left bottom;
+        }
+    }
+}

@@ -1,0 +1,664 @@
+$theme: $yellow-theme;
+$theme-color: $yellow-color;
+$theme-06: rgba($theme, 0.06);
+$theme-1: rgba($theme, 0.1);
+$theme-12: rgba($theme, 0.12);
+$theme-14: rgba($theme, 0.14);
+$theme-2: rgba($theme, 0.2);
+$theme-3: rgba($theme, 0.3);
+$theme-36: rgba($theme, 0.36);
+$theme-4: rgba($theme, 0.4);
+$theme-55: rgba($theme, 0.55);
+$theme-7: rgba($theme, 0.7);
+$theme-8: rgba($theme, 0.8);
+
+/* ========= 特殊值 ========= */
+$theme-c-task-bg: $theme-4;
+
+.yellow-theme {
+    // 新的直接这么写
+    .fill-theme {
+        fill: $theme;
+    }
+
+    .fill-highlight {
+        fill: $theme;
+    }
+
+    .fill-theme-force {
+        fill: $theme !important;
+    }
+
+    .active,
+    .single-selected-item,
+    .option-item-selected {
+        .i-active-theme {
+            fill: $theme;
+        }
+    }
+
+    .background-theme {
+        background-color: $theme;
+    }
+
+    .before-background-theme {
+        &:before {
+            background-color: $theme;
+        }
+    }
+
+    .after-background-theme {
+        &:after {
+            background-color: $theme;
+        }
+    }
+
+    .background-input {
+        background-color: $theme-input-bg;
+    }
+
+    .color-theme {
+        color: $theme;
+    }
+
+    .border-theme {
+        border-color: $theme;
+    }
+
+    /* ========= 主题色改动 ========= */
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: $theme;
+    }
+
+    a,
+    .link,
+    .cm-link {
+        color: $theme;
+
+        &:visited {
+            color: $theme;
+        }
+    }
+
+    .text-link {
+        color: $theme;
+    }
+
+    .settings {
+        .s-header {
+            .toggle-tabs {
+                .icon-left-menu {
+                    fill: $theme;
+                }
+            }
+        }
+
+        .theme-panel {
+            .jColorCheck + span {
+                color: $theme;
+            }
+        }
+
+        .personal-panel {
+            .settings-rank {
+                .hw-panel {
+                    .nickname:focus {
+                        border-bottom-color: $theme;
+                    }
+                }
+            }
+        }
+    }
+
+    .active {
+        .i-2,
+        .i-2-1 {
+            fill: $theme;
+            color: $theme;
+        }
+    }
+
+    .highlight {
+        .i-2 {
+            fill: $theme;
+        }
+    }
+
+    .active,
+    .single-selected-item,
+    .option-item-selected {
+        .i-3,
+        .i-3-1 {
+            fill: $theme;
+        }
+    }
+
+    .active .i-5 {
+        fill: $theme;
+        color: $theme;
+    }
+
+    div > a:hover .i-5,
+    li a:hover .i-5 {
+        fill: $theme;
+    }
+
+    .active > .i-6 {
+        fill: $theme;
+        color: $theme;
+    }
+
+    .i-8 {
+        fill: $theme;
+    }
+
+    .notification .notify-panel svg {
+        background-color: $theme;
+    }
+
+    .lists .empty-tag svg {
+        background-color: transparent;
+    }
+
+    .lists {
+        .ui-sortable-helper {
+            background-color: $theme-55;
+        }
+
+        .ui-sortable-helper a,
+        .active.ui-sortable-helper a {
+            background-color: transparent;
+        }
+    }
+
+    .tk-calendar {
+        .c-col-date-now {
+            .c-solar {
+                color: $theme;
+            }
+        }
+        .c-col-date-now {
+            .c-lunar {
+                color: $theme-36;
+            }
+        }
+
+        .wk-grid-container {
+            .wk-daynames {
+                .wk-dayname {
+                    .wk-daylink-today {
+                        color: $theme;
+                    }
+                }
+            }
+        }
+
+        &:not(.day) {
+            .c-col-date-now,
+            .tg-allday-today,
+            .tg-col-today {
+                background-color: $theme-1;
+            }
+        }
+
+        .c-nav {
+            .c-type-selected {
+                background-color: $theme;
+            }
+        }
+    }
+
+    .tkcalendar-view {
+        .c-task {
+            color: $theme-color;
+            background-color: rgba($theme-c-task-bg, 0.54);
+
+            &.checked,
+            &.c-task-remain {
+                color: rgba($theme-color, 0.54);
+                background-color: rgba($theme-c-task-bg, 0.16);
+            }
+
+            svg {
+                fill: $theme-color;
+            }
+
+            &.pop-task {
+                background-color: rgba($theme-c-task-bg, 0.85);
+
+                &.checked {
+                    color: $theme-color;
+                    background-color: rgba($theme-c-task-bg, 0.36);
+                }
+            }
+
+            .c-task-footnote {
+                border-bottom-color: $theme;
+                border-right-color: $theme;
+            }
+        }
+    }
+
+    .tl-quick {
+        .task-title .CodeMirror-focused [class*="cm-bold"] {
+            color: $theme;
+        }
+
+        .tl-q-preset {
+            .list-active {
+                .i-2-1 {
+                    fill: $theme;
+
+                    &:hover {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+
+    .advance-repeat-preview {
+        color: $theme;
+    }
+
+    .dropdown-menu,
+    .dropdown-menu-menu-submenu {
+        .dropdown-menu-menu-item-selected > span > a,
+        .dropdown-menu-menu-item-selected > a {
+            color: $theme;
+
+            .text-primary,
+            .text-secondary,
+            strong {
+                color: $theme;
+            }
+
+            &:hover,
+            &:focus {
+                .text-primary,
+                .text-secondary,
+                strong {
+                    color: $white;
+                    background-color: $theme;
+                }
+            }
+        }
+    }
+
+    .calendar-min-cal {
+        .k-calendar {
+            .k-days span {
+                &.k-selected,
+                &:hover {
+                    color: $white;
+                }
+            }
+        }
+    }
+
+    .calendar-min-cal .kalendae,
+    .timecard .kalendae,
+    .kalendae.k-pop .k-calendar {
+        .k-today {
+            color: $theme;
+        }
+    }
+
+    .calendar-min-cal .kalendae,
+    .timecard .kalendae,
+    .kalendae.k-pop {
+        .k-calendar {
+            .k-title {
+                .nav-selector {
+                    .nav-menu {
+                        .year {
+                            .active a {
+                                color: $theme;
+                            }
+                        }
+
+                        .month {
+                            li.active {
+                                a.month-change {
+                                    background-color: $theme;
+                                }
+                            }
+
+                            .month-current {
+                                color: $theme;
+                            }
+                        }
+                    }
+                }
+            }
+            .k-days span.k-selected {
+                &:before {
+                    background-color: $theme;
+                }
+            }
+
+            .k-days span.k-in-repeat:not(:hover) {
+                &:before {
+                    background-color: $theme-12;
+                }
+            }
+        }
+    }
+
+    .tc-inner {
+        .option-item {
+            &.option-item-selected {
+                color: $theme;
+            }
+        }
+
+        div[class*="has-"] .need-highlight {
+            border-color: $theme;
+            color: $theme;
+        }
+
+        .reminder-settings {
+            &.has-time {
+                .choose-time input {
+                    border-color: $theme;
+                    color: $theme;
+                }
+            }
+        }
+
+        .reminder-ahead-section {
+            &.has-reminder {
+                .select-title {
+                    border-color: $theme;
+                    color: $theme;
+                }
+            }
+        }
+
+        .choose-repeat {
+            &.has-repeat {
+                .select-title {
+                    border-color: $theme;
+                    color: $theme;
+                }
+            }
+        }
+    }
+
+    .tc-repeat-advance {
+        .select-squares {
+            .select-item.item-selected {
+                background-color: $theme;
+            }
+        }
+    }
+
+    .select-menu {
+        .option-item {
+            &.option-item-selected {
+                color: $theme;
+            }
+        }
+    }
+
+    .min-cal {
+        .k-calendar {
+            .k-title {
+                .nav-selector {
+                    .nav-menu {
+                        .month {
+                            li.active {
+                                a.month-change {
+                                    color: $theme;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .k-days {
+                span.k-selected {
+                    color: $theme;
+                }
+            }
+        }
+    }
+
+    .multi-select-menu {
+        .single-selected-item,
+        .option-item-selected {
+            color: $theme;
+        }
+    }
+
+    .settings {
+        .tabs {
+            li.active {
+                color: $theme;
+            }
+        }
+    }
+
+    .premium-panel {
+        .header-inner {
+            .title {
+                color: $theme;
+            }
+        }
+    }
+
+    .switch input:checked + label {
+        background-color: $theme;
+    }
+
+    .labs-panel {
+        .vcard.active {
+            border-color: $theme;
+
+            .v-background:before {
+                background-color: $theme;
+            }
+        }
+    }
+
+    .mixed-input-btn:not(.disabled),
+    button.btn-primary,
+    .button.btn-primary,
+    .btn.btn-primary,
+    .btn.btn-confirm {
+        color: $white;
+        background-color: $theme;
+
+        &:hover,
+        &:focus {
+            background-color: scale-color($theme, $lightness: -10%);
+        }
+
+        &:active {
+            background-color: scale-color($theme, $lightness: -20%);
+        }
+    }
+
+    button.disabled,
+    button[disabled],
+    .button.disabled,
+    .button[disabled],
+    .btn.disabled,
+    .btn[disabled] {
+        background-color: $theme;
+        color: $white24;
+    }
+
+    .notification {
+        .btn-accept {
+            color: $theme;
+            border-color: $theme;
+
+            &:focus,
+            &:hover {
+                background-color: $theme-1;
+            }
+
+            &:active {
+                background-color: $theme-2;
+            }
+        }
+    }
+
+    &.ie {
+        .c-col-date-now {
+            .c-date {
+                background-color: transparent;
+            }
+        }
+    }
+
+    .column {
+        .task {
+            &:hover {
+                background-color: transparent;
+            }
+
+            &.active,
+            &.selected {
+                background-color: transparent;
+
+                .l-task {
+                    background-color: $theme-1 !important;
+                }
+            }
+
+            &.selected:hover {
+                background-color: transparent;
+            }
+        }
+    }
+
+    .task {
+        &.selected:hover,
+        &:hover {
+            .l-task-bg {
+                background-color: $theme-06;
+            }
+        }
+
+        &.selected,
+        &.active {
+            .l-task-bg {
+                background-color: $theme-12 !important;
+            }
+        }
+    }
+
+    .tasks,
+    .subtasks {
+        .ui-sortable-placeholder {
+            background-color: $theme;
+        }
+    }
+
+    .time-menu {
+        .item.active {
+            .i-med.i-2-1 {
+                fill: $theme;
+            }
+        }
+    }
+
+    .reminders {
+        .r-task {
+            .subtask-list > li.active {
+                background-color: $theme-1;
+                color: $theme;
+            }
+        }
+    }
+
+    .global-quick-add {
+        .preset-wrapper .tl-q-preset > div,
+        .popup-footer button {
+            &:focus {
+                &:before {
+                    border-color: $theme;
+                }
+            }
+        }
+    }
+
+    .global-quick-add.popup {
+        .tl-q-preset .list-name {
+            color: $theme-color;
+        }
+    }
+
+    .tag-item {
+        background-color: rgba($theme, 0.24);
+    }
+
+    .tag-list {
+        .tag-item:not(.new):not(.disable):hover {
+            background-color: rgba($theme, 0.36);
+        }
+    }
+
+    .detail-tag-view {
+        .CodeMirror .CodeMirror-placeholder {
+            color: rgba($theme, 0.72);
+        }
+
+        .add-tag {
+            background-color: rgba($theme, 0.24);
+
+            &:hover {
+                background-color: rgba($theme, 0.36);
+            }
+        }
+    }
+
+    .task-drag-hovered {
+        background-color: rgba($theme, 0.04);
+    }
+
+    textarea.input-fake,
+    input {
+        &:focus {
+            border-color: $theme;
+        }
+    }
+
+    .fill-input,
+    .task-input,
+    .search-input,
+    .title-edit {
+        background-color: $theme-input-bg;
+
+        &:focus,
+        &.focus {
+            border-color: $theme-input-active-border-color;
+        }
+    }
+
+    .repeat-digit,
+    .redeem-code {
+        &:focus,
+        &.focus {
+            border-color: $theme;
+        }
+    }
+
+    .comments-footer textarea {
+        background-color: $theme-input-bg !important;
+
+        &:focus,
+        &.focus {
+            border-color: $theme-input-active-border-color !important;
+        }
+    }
+}

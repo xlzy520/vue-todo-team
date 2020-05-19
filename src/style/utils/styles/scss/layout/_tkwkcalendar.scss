@@ -1,0 +1,831 @@
+$base-border: rem-calc(1) solid $whisper;
+$allday-scroll-margin-fix: rem-calc(-14);
+$allday-scroll-padding-fix: rem-calc(14);
+$allday-dragger-height: rem-calc(12);
+$allday-weektop-height: rem-calc(72);
+
+.wk-grid-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    // position: absolute;
+    // z-index: 1;
+
+    .top-container-week {
+        display: table; // @maoq Safari fix
+        // background-color: $white;
+    }
+
+    .wk-allday-container {
+        overflow: hidden;
+        max-height: 66%;
+        display: flex;
+        flex-direction: column;
+        &.default {
+            // 六个半任务高度
+            max-height: rem-calc(208.5);
+        }
+    }
+
+    .wk-weektop {
+        table-layout: fixed;
+        width: 100%;
+        height: $allday-weektop-height;
+        overflow: hidden;
+        color: $manatee;
+        border-top: $base-border;
+        border-right: $base-border;
+
+        .wk-daynames {
+            font-size: rem-calc(13);
+
+            .wk-tzlabel {
+                width: rem-calc(62);
+                vertical-align: middle;
+                text-align: center;
+                overflow: hidden;
+            }
+
+            .wk-scroll-label {
+                border-left: $base-border;
+                width: rem-calc(15);
+            }
+
+            // .wk-dummyth {
+            //     width: 15px;
+            //     vertical-align: top;
+            //     background-color: #fff;
+            // }
+
+            .c-day-label {
+                border: $base-border;
+                border-right-width: 0;
+                border-top-width: 0;
+                border-bottom: 0;
+                box-sizing: content-box;
+                &:last-child {
+                    border-right: $base-border;
+                }
+            }
+
+            .wk-dayname {
+                position: relative;
+                // Safari & Firefox fix
+                height: $allday-weektop-height;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                padding: rem-calc(8) rem-calc(12) rem-calc(10);
+
+                .wk-daylink-name {
+                    line-height: rem-calc(14);
+                    font-size: rem-calc(13);
+                    padding-right: rem-calc(26);
+                    color: $black54;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    transform-origin: left;
+
+                    @media (max-width: 1280px) and (min-width: 1181px) {
+                        transform: scale(0.9);
+                    }
+                    @media (max-width: 1180px) and (min-width: 1120px) {
+                        transform: scale(0.7);
+                    }
+
+                    &.wk-daylink-holiday {
+                        padding-right: 0;
+                    }
+
+                    & > span:first-child {
+                        margin-right: rem-calc(6);
+                    }
+                    & > span:last-child {
+                        margin-top: rem-calc(-1);
+                    }
+                }
+
+                .wk-daylink-number {
+                    font-size: rem-calc(32);
+                    line-height: rem-calc(32);
+                    font-weight: bold;
+                    color: $black85;
+
+                    .c-solar {
+                        position: relative;
+                        z-index: 0;
+                        &:before {
+                            width: rem-calc(44);
+                            height: rem-calc(44);
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                        }
+                    }
+                }
+
+                .wk-daylink-weekend {
+                    color: $black36;
+                }
+
+                .wk-hw-info {
+                    position: absolute;
+                    display: flex;
+                    right: rem-calc(12);
+                    top: rem-calc(10);
+                }
+            }
+        }
+    }
+
+    .wk-allday {
+        flex: auto;
+        max-height: calc(100% - 72px);
+        // 减去 $allday-weektop-height
+        min-height: rem-calc(22);
+        // 一个半任务高度
+        border: $base-border;
+        border-top-width: 0;
+        border-left-width: 0;
+        box-sizing: content-box;
+        padding-right: rem-calc(14);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+
+        .dragArea {
+            position: absolute;
+            bottom: rem-calc(-3);
+            left: 0;
+            z-index: 10;
+            width: 100%;
+            height: rem-calc(9);
+            cursor: ns-resize;
+            .dragger {
+                margin-top: rem-calc(3);
+                height: rem-calc(3);
+                background-color: $mercury;
+            }
+        }
+
+        .tg-time-all {
+            position: absolute;
+            top: rem-calc(-73);
+            bottom: 0;
+            width: rem-calc(62);
+            float: left;
+            color: $manatee;
+            padding-right: 2px;
+            font-size: rem-calc(12);
+            overflow: hidden;
+            flex: 1;
+
+            & > span {
+                display: block;
+                position: absolute;
+                top: rem-calc(12);
+                left: 50%;
+                transform: translateX(-50%);
+                width: 100%;
+                min-width: rem-calc(40);
+                text-align: center;
+            }
+
+            .collapse {
+                position: absolute;
+                top: rem-calc(2);
+                right: 0;
+                width: rem-calc(14);
+                height: rem-calc(14);
+                cursor: pointer;
+
+                i {
+                    display: none;
+                }
+
+                &.down {
+                    .fake-icon-triangle-right {
+                        display: inline;
+                    }
+                }
+
+                &.up {
+                    .fake-icon-triangle-down {
+                        display: inline;
+                    }
+                }
+            }
+        }
+
+        .tg-allday-wrapper {
+            display: flex;
+            height: 100%;
+            margin-left: rem-calc(62);
+            border-right: $base-border;
+
+            .tg-allday,
+            .tg-allday table {
+                width: 100%;
+            }
+
+            .tg-allday {
+                position: relative;
+
+                table {
+                    table-layout: fixed;
+                    border-collapse: collapse;
+                }
+
+                td {
+                    vertical-align: top;
+                    &:empty {
+                        height: rem-calc(22);
+                    }
+                }
+
+                .bg {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    /* 小数点fix */
+                    /* ？？？不懂之前为什么是-1 先改回0了 */
+                    /* @nanhai 日历周视图下全天区域背景部分显示一条分割线，所以需要-1 */
+                    bottom: -1px;
+                    z-index: 1;
+
+                    table {
+                        height: 100%;
+
+                        td {
+                            border: $base-border;
+                            border-top-width: 0;
+                            border-bottom-width: 0;
+
+                            &:last-child {
+                                border-right-width: 0;
+                            }
+
+                            &.highlight {
+                                background-color: $black04;
+                            }
+                        }
+                    }
+                }
+
+                .content-wrapper {
+                    margin-right: $allday-scroll-margin-fix;
+                    padding-right: $allday-scroll-padding-fix;
+                }
+                .content-skeleton {
+                    position: relative;
+                    padding: rem-calc(1) 0 rem-calc(2);
+                    z-index: 2;
+
+                    .c-task {
+                        margin-left: rem-calc(3);
+                        margin-right: rem-calc(2);
+                    }
+                }
+
+                & > .highlight-mask {
+                    position: absolute;
+                    top: 0;
+                    background-color: $black04;
+                    z-index: 10;
+                }
+            }
+
+            .tg-allday-item {
+                flex: 1;
+                width: 0.001%; // @maoq 这是为了避免其被内容物撑大
+                border-left: $base-border;
+                padding: rem-calc(2) rem-calc(1) rem-calc(20);
+
+                &:last-child {
+                    // border-right: $base-border;
+                }
+            }
+        }
+
+        &.collapse-allday {
+            .tg-allday-wrapper {
+                .tg-allday {
+                    .content-skeleton {
+                        padding-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .wk-scrolltimedevents-wrapper {
+        flex: 1;
+
+        .antiscroll-scrollbar-vertical {
+            right: rem-calc(4);
+        }
+    }
+
+    .wk-scrolltimedevents {
+        font-size: rem-calc(12);
+        position: relative;
+        height: 100%;
+
+        .tg-mainwrapper {
+            position: relative;
+            border: $base-border;
+            border-top: 0;
+            border-bottom: 0;
+            border-left: 0;
+            padding-right: rem-calc(14);
+
+            .tg-timedevents {
+                height: rem-calc(1010);
+                // background-color: #fff;
+                table-layout: fixed;
+                max-width: none;
+                width: auto;
+                min-width: 100%;
+                margin-top: -2px;
+                border-right: $base-border;
+
+                .tg-spanningwrapper {
+                    position: relative;
+                    margin: 1px 0 0 1px;
+
+                    .tg-hourmarkers {
+                        position: absolute;
+                        width: 100%;
+
+                        .tg-markercell {
+                            .tg-dualmarker {
+                                border-bottom: rem-calc(1) dotted $whisper;
+                                border-top: $base-border;
+                                font-size: 1px;
+                            }
+
+                            &.uncommon .tg-dualmarker {
+                                border-top-style: dotted;
+                            }
+
+                            &.cgd-gutter-bg-top,
+                            &.cgd-gutter-bg-bottom {
+                                position: relative;
+                                height: rem-calc(42);
+                                margin-bottom: rem-calc(-42);
+                                top: rem-calc(-42);
+
+                                .tg-dualmarker {
+                                    height: rem-calc(42);
+                                    margin-bottom: 0;
+                                    margin-right: -1px;
+                                    border-right: $base-border;
+                                    border-bottom-width: 0;
+                                }
+                            }
+
+                            &.cgd-gutter-bg-bottom {
+                                top: auto;
+                            }
+                        }
+                    }
+                }
+
+                .tg-times-pri {
+                    position: relative;
+                    width: rem-calc(62);
+                    color: $manatee;
+                    padding: 1px 0 0;
+                    text-align: right;
+                    vertical-align: top;
+
+                    .tg-times-pri-wrapper {
+                        // padding-bottom: rem-calc(9);
+                    }
+
+                    .tip {
+                        position: absolute;
+                        left: calc(100% + 10px);
+                        padding: 0 rem-calc(8);
+                        height: rem-calc(30);
+                        line-height: rem-calc(30);
+                        text-align: center;
+                        background-color: black;
+                        color: $white85;
+                        min-width: rem-calc(100);
+                        z-index: 1;
+                        white-space: nowrap;
+                        border-radius: rem-calc(4);
+                        box-shadow: 0 rem-calc(2) rem-calc(11) 0 $black12;
+
+                        .icon-pointer-left {
+                            position: absolute;
+                            left: rem-calc(-11);
+                            top: rem-calc(7);
+                            width: rem-calc(16);
+                            height: rem-calc(16);
+                            fill: $black;
+                        }
+                    }
+
+                    .hide-tip {
+                        display: none;
+                    }
+
+                    .feature-tip {
+                        display: none;
+
+                        &.keep-alive {
+                            display: block;
+                        }
+                    }
+
+                    .feature-tip.hide-before {
+                        top: rem-calc(5);
+                    }
+
+                    .feature-tip.hide-after {
+                        bottom: rem-calc(5);
+                    }
+
+                    .tg-times-pri-wrapper > div {
+                        &:first-child {
+                            &.crd-top {
+                                margin-top: 0;
+                            }
+                        }
+
+                        &.crd-top,
+                        &.crd-bottom {
+                            position: relative;
+                            width: calc(100% + 1px);
+                            cursor: pointer;
+                            line-height: rem-calc(20);
+                            background-color: $black06;
+
+                            &:hover {
+                                .feature-tip {
+                                    display: block;
+                                }
+                            }
+                        }
+
+                        &.crd-top {
+                            margin-left: -1px;
+                        }
+
+                        &.crd-bottom {
+                            margin: rem-calc(1) 0 rem-calc(-9) rem-calc(-1);
+
+                            .tg-time-pri {
+                                position: relative;
+                            }
+                        }
+                    }
+
+                    .tg-time-pri {
+                        padding-right: 2px;
+                        text-align: right;
+                        // white-space: nowrap;
+                    }
+
+                    .last-tg-time-pri {
+                        margin-bottom: rem-calc(9);
+
+                        .tg-time-pri {
+                            border-bottom: 0;
+                        }
+                    }
+
+                    .rrd-range-group {
+                        position: absolute;
+                        width: 100%;
+                        cursor: pointer;
+
+                        .resizer {
+                            text-align: center;
+                            line-height: 1;
+                            height: rem-calc(7);
+                            left: 50%;
+                            transform: translateX(-50%);
+                        }
+
+                        &.rrd-top {
+                            .resizer {
+                                bottom: rem-calc(-4);
+                            }
+
+                            .range-tip {
+                                bottom: rem-calc(-15);
+                            }
+                        }
+
+                        &.rrd-bottom {
+                            .resizer {
+                                top: rem-calc(-4);
+                            }
+
+                            .range-tip {
+                                top: rem-calc(-15);
+                            }
+                        }
+
+                        &:hover {
+                            .hide-tip {
+                                display: block;
+                            }
+                        }
+                    }
+
+                    &:hover .rrd-range-group {
+                        background-color: rgba(0, 0, 0, 0.06);
+                    }
+
+                    .tg-now-ptr {
+                        position: absolute;
+                        width: 0;
+                        height: 0;
+                        border-width: rem-calc(4) rem-calc(6);
+                        border-style: solid;
+                        border-color: transparent transparent transparent $red;
+                    }
+                }
+
+                .tg-col {
+                    border-left: $base-border;
+                    vertical-align: top;
+
+                    &:last-child {
+                        border-right: $base-border;
+                    }
+
+                    &:last-child .cgd-col {
+                        width: calc(100% + 2px);
+                        border-right: $base-border;
+                    }
+
+                    .cgd-col {
+                        position: relative;
+                        top: rem-calc(-42);
+                        left: -1px;
+                        margin-right: -1px;
+                        height: rem-calc(42);
+                        margin-bottom: rem-calc(-42);
+                        border-top: $base-border;
+                        border-bottom-width: 0;
+
+                        .cgd-event {
+                            position: absolute;
+                            left: rem-calc(6);
+                            width: calc(100% - 12px);
+                            height: rem-calc(18);
+                            line-height: rem-calc(18);
+                            white-space: nowrap;
+
+                            .cgd-title,
+                            a {
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                            }
+
+                            &:first-child {
+                                top: 1px;
+                            }
+
+                            & + .cgd-event {
+                                top: rem-calc(21);
+                            }
+
+                            a:hover {
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+
+                    // .cgd-col-last {
+                    //     top: calc(-100% - 42px);
+                    // }
+
+                    .tg-col-eventwrapper {
+                        height: rem-calc(1968);
+                        margin-bottom: rem-calc(-1968);
+                        position: relative;
+
+                        .tg-gutter {
+                            position: relative;
+                            height: 0;
+                            margin-right: rem-calc(10);
+
+                            .c-task {
+                                .c-task-repeat, .c-task-habit {
+                                    line-height: rem-calc(16);
+                                }
+
+                                .c-task-wrapper {
+                                    padding: rem-calc(5) rem-calc(4);
+
+                                    .c-task-inner {
+                                        height: 100%;
+                                        // display: flex;
+                                        // flex-direction: column;
+
+                                        .c-task-time {
+                                            transform-origin: top left;
+                                            white-space: nowrap;
+                                            text-overflow: clip;
+                                            height: rem-calc(15);
+                                        }
+
+                                        .c-task-title {
+                                            white-space: normal;
+                                            text-overflow: clip;
+                                            word-break: break-all;
+                                            font-weight: 500;
+                                        }
+
+                                        .c-task-content {
+                                            white-space: normal;
+                                            text-overflow: clip;
+                                            word-break: break-all;
+                                        }
+
+                                        .c-task-time,
+                                        .c-task-title,
+                                        .c-task-content {
+                                            line-height: rem-calc(15);
+                                        }
+                                    }
+                                }
+
+                                &.subcalendar {
+                                    .c-task-inner {
+                                        .c-task-title {
+                                            white-space: normal;
+                                        }
+                                    }
+                                }
+
+                                .subscribe {
+                                    color: $bistre;
+                                    cursor: default;
+                                }
+                            }
+                        }
+                    }
+
+                    .tg-col-overlaywrapper {
+                        position: relative;
+                        height: 0;
+                        z-index: 1;
+
+                        .tg-now-marker {
+                            position: absolute;
+                            width: 100%;
+                            height: 0;
+                            border-top: 1px solid #ed6655;
+                            z-index: 100;
+
+                            &:before {
+                                content: "";
+                                width: 5px;
+                                height: 5px;
+                                display: inline-block;
+                                background: #ed6655;
+                                border-radius: 50%;
+                                position: absolute;
+                                top: -3px;
+                                left: -1px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .tg-mainwrapper.hide-range {
+        margin-top: rem-calc(41);
+        margin-bottom: rem-calc(41);
+        .tg-times-pri-wrapper {
+            position: relative;
+            padding-bottom: 0;
+            top: rem-calc(-41);
+            margin-bottom: rem-calc(-82);
+        }
+    }
+
+    .bg .c-col-date-now:after {
+        bottom: -1px;
+        border: none;
+    }
+
+    .c-task {
+        display: block;
+        overflow: visible;
+        padding: 0;
+        opacity: 1;
+
+        .resizer {
+            bottom: 0;
+            font-size: 12px;
+            text-align: center;
+            line-height: 1;
+            opacity: 0;
+        }
+
+        .c-task-wrapper {
+            overflow: hidden;
+            padding: 0 rem-calc(4);
+            height: 100%;
+
+            .c-task-inner {
+                overflow: hidden;
+
+                .c-task-title {
+                    font-size: rem-calc(13);
+                }
+            }
+        }
+
+        .c-task-time {
+            font-size: rem-calc(12);
+            // transform: scale(.83);
+            line-height: rem-calc(37);
+            transform-origin: bottom;
+        }
+
+        &.c-task-allday .c-task-time {
+            line-height: rem-calc(24);
+        }
+
+        &.ui-resizable-resizing {
+            z-index: 9999;
+        }
+    }
+
+    .c-task:not(.ui-draggable-dragging) {
+        display: block;
+    }
+}
+
+.ie {
+    .wk-grid-container {
+        .wk-weektop {
+            .wk-daynames {
+                .wk-dayname {
+                    line-height: rem-calc(22);
+                }
+            }
+        }
+    }
+}
+
+.firefox {
+    .wk-grid-container .wk-allday .tg-allday-wrapper .tg-allday .content-skeleton {
+        padding-right: $allday-scroll-padding-fix;
+    }
+}
+
+.ui-resizable-handle {
+    position: absolute;
+    font-size: 0.1px;
+    display: block;
+    touch-action: none;
+}
+
+.ui-resizable-s {
+    cursor: ns-resize;
+    height: rem-calc(12);
+    max-height: 33%;
+    width: 100%;
+    bottom: rem-calc(-5);
+    left: 0;
+}
+
+.ui-resizable-n {
+    cursor: ns-resize;
+    height: rem-calc(7);
+    width: 100%;
+    left: 0;
+}
+
+.tk-calendar.week,
+.tk-calendar.day {
+    .c-task.ui-draggable-dragging {
+        &.wk-task {
+            height: rem-calc(40);
+            line-height: rem-calc(15);
+        }
+        &.day-task {
+            height: rem-calc(19) !important;
+            line-height: rem-calc(19) !important;
+            .c-task-wrapper {
+                padding-top: 0 !important;
+                padding-bottom: 0 !important;
+            }
+        }
+    }
+    .c-hw-info {
+        top: rem-calc(4);
+    }
+}

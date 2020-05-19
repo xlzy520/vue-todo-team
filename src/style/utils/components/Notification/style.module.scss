@@ -1,0 +1,21 @@
+@import "./scss/utils/variables";
+.ticket {
+    p {
+        display: inline;
+        font-size: inherit;
+        vertical-align: baseline;
+        &:nth-of-type(1) {
+            color: #4b6fde;
+        }
+    }
+}
+
+[class*="-dark-theme"] {
+    .ticket {
+        p {
+            &:nth-of-type(1) {
+                color: #4b6fde;
+            }
+        }
+    }
+}

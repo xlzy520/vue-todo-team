@@ -1,0 +1,278 @@
+$select-w: rem-calc(288);
+$select-h: rem-calc(30);
+$select-max-h: rem-calc(400);
+$select-padding: 0 rem-calc(12);
+$select-font-color: $base-font-color-link;
+$select-right: rem-calc(12);
+$select-border: 1px solid $timberwolf;
+
+.csl-filter {
+    height: rem-calc(36);
+    line-height: rem-calc(36);
+
+    & > span {
+        display: inline-block;
+        float: left;
+        width: rem-calc(90);
+        color: $darkgrey;
+    }
+
+    .csl-filter-warning {
+        position: relative;
+        display: inline-block;
+
+        .i-12 {
+            width: 18px;
+            height: 18px;
+        }
+
+        .warning-tooltip {
+            position: absolute;
+            left: 33px;
+            top: 3px;
+            padding: 12px;
+            z-index: 1;
+            min-width: rem-calc(260);
+            font-size: 12px;
+            line-height: 18px;
+            text-align: justify;
+        }
+
+        &:before,
+        &:after {
+            top: 14px;
+            transform: rotateZ(-90deg);
+        }
+
+        &:before {
+            left: 20px;
+        }
+
+        &:after {
+            left: 22px;
+        }
+    }
+
+    .select-menu {
+        display: inline-block;
+        width: 288px;
+
+        .select-title {
+            padding-right: rem-calc(30);
+        }
+    }
+
+    .wrapper {
+        // display: flex;
+        width: $select-w;
+        margin-left: rem-calc(90);
+        text-align: justify;
+        text-align-last: justify;
+
+        &:after {
+            display: inline-block;
+            content: "";
+            overflow: hidden;
+            width: 100%;
+            height: 0;
+        }
+
+        .flex-item {
+            display: inline-block;
+
+            input[type="radio"] + label,
+            input[type="checkbox"] + label {
+                margin-left: 0;
+            }
+
+            input {
+                margin-bottom: 0;
+                vertical-align: middle;
+            }
+
+            label {
+                vertical-align: middle;
+            }
+        }
+    }
+}
+
+.csl-filter-multi-select-menu {
+    width: 288px;
+
+    .section-title,
+    .option-item {
+        @include liheight(rem-calc(32));
+    }
+    .option-item {
+        &.option-item-ndays {
+            overflow: visible;
+        }
+    }
+
+    .group-project-item {
+        padding-left: rem-calc(38);
+    }
+
+    .control {
+        position: relative;
+        z-index: 1;
+        background: $white;
+        padding: rem-calc(12);
+        overflow: hidden;
+        border-top: $select-border;
+        // margin-top: rem-calc(8);
+
+        .btns {
+            width: 100%;
+            display: flex;
+        }
+        button {
+            flex: 1;
+            min-width: auto;
+
+            &:first-child {
+                float: left;
+                margin-right: rem-calc(10);
+            }
+
+            &:last-child {
+                float: right;
+            }
+        }
+    }
+
+    &.filter-duedate {
+        z-index: 1100;
+        padding: 0;
+
+        .select-list {
+            [data-key="today"] {
+                .outer-date {
+                    position: absolute;
+                    width: rem-calc(24);
+                    height: rem-calc(24);
+                    top: rem-calc(4);
+                    left: rem-calc(12);
+                    line-height: rem-calc(24);
+                    text-align: center;
+                    padding: 0;
+                    min-width: auto;
+
+                    .inner-date {
+                        display: inline-block;
+                        font-size: rem-calc(12);
+                        transform: scale(0.8);
+                    }
+                }
+            }
+        }
+
+        .filter-duedate-ndays {
+            &.ndays-menu {
+                display: inline-block;
+                position: relative;
+                width: rem-calc(80);
+                border: 1px solid $timberwolf;
+                margin: 0 rem-calc(4);
+                height: auto;
+                max-width: auto;
+                min-width: auto;
+                padding: 0;
+                overflow: visible;
+
+                .selected-title {
+                    padding-left: rem-calc(25);
+                    line-height: rem-calc(25);
+                }
+
+                .selected-arrow {
+                    color: $base-font-color-info;
+                    @include liheight(rem-calc(25));
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: $select-h;
+                    text-align: center;
+                    cursor: pointer;
+                }
+
+                .dropdown-menu {
+                    &.ndays-menu,
+                    &.ndays-dropdown-menu {
+                        min-height: rem-calc(250);
+                    }
+
+                    li > a {
+                        height: rem-calc(30);
+                        line-height: rem-calc(30);
+                        min-width: rem-calc(80);
+                        padding: 0 rem-calc(25);
+                    }
+                }
+            }
+
+            &.filter-duedate-ndays-later {
+                margin-left: 0;
+            }
+        }
+    }
+
+    &.filter-tag {
+        z-index: 1100;
+        padding: 0;
+
+        .list-wrapper {
+            .antiscroll-inner {
+                max-height: rem-calc(242);
+            }
+        }
+    }
+
+    &.filter-list {
+        padding: 0;
+
+        .menu {
+            background-color: $white;
+        }
+
+        .list-wrapper {
+            width: 100%;
+        }
+
+        .antiscroll-inner {
+            max-height: rem-calc(245);
+        }
+
+        .list-divider {
+            width: 100%;
+            height: rem-calc(1);
+            margin: rem-calc(6) 0;
+            background-color: $black08;
+        }
+
+        .subscribe {
+            .icon-subcalendar-list {
+                margin-top: rem-calc(-2);
+            }
+        }
+    }
+}
+
+@media (max-height: 800px) {
+    .csl-filter-multi-select-menu.filter-duedate {
+        .list-wrapper {
+            .antiscroll-inner {
+                max-height: rem-calc(178);
+            }
+
+            .ndays-menu {
+                .antiscroll-inner {
+                    max-height: none;
+                }
+            }
+
+            width: 100%;
+        }
+    }
+}

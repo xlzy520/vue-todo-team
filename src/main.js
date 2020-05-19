@@ -8,6 +8,12 @@ import Notifications from 'vue-notification'
 import 'ant-design-vue/dist/antd.css';
 import './style/index.scss'
 import Antd, { message } from 'ant-design-vue'
+import Vuetify from 'vuetify';
+// import 'vuetify/dist/vuetify.min.css'
+import 'vuetify/dist/vuetify.css'
+Vue.use(Vuetify);
+
+import './icons' // icon
 import './permission' // permission control
 
 const firebaseConfig = {
@@ -37,5 +43,6 @@ Vue.config.productionTip = false
 new Vue({
   router,
   store,
+  vuetify: new Vuetify({}),
   render: h => h(App)
 }).$mount('#app')

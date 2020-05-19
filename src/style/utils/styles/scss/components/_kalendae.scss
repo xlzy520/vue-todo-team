@@ -1,0 +1,184 @@
+$k-span-border-width: rem-calc(1);
+$k-span-border: $k-span-border-width solid transparent;
+$k-mon-size: rem-calc(36);
+$k-calendar-inner-width: rem-calc(224);
+$k-span-size: floor($k-calendar-inner-width / 7);
+$k-span-inner-size: rem-calc(26);
+$k-span-inner-p: floor(($k-span-size - $k-span-inner-size) / 2);
+$k-mon-margin-right: ($k-calendar-inner-width - $k-mon-size * 4) / 3;
+$k-mon-line-margin-bottom: rem-calc(10);
+$k-days-margin-right: ($k-calendar-inner-width - $k-span-size * 7) / 7;
+$k-weeks-margin-right: $k-days-margin-right;
+$k-days-line-margin-bottom: 0;
+$k-nav-size: rem-calc(28);
+$k-nav-margin-bottom: rem-calc(11);
+.kalendae {
+    @include clearfix;
+    &.k-floating {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: $zindex-modal;
+    }
+    &.k-pop {
+        border-radius: $large-border-radius;
+        box-shadow: $large-shadow;
+    }
+}
+
+.k-calendar {
+    position: relative;
+    line-height: 1;
+    width: $k-calendar-inner-width;
+    margin: 0 auto;
+    font-size: $base-font-size-tny;
+    .disable {
+        cursor: $cursor-default-value;
+    }
+
+    .k-title {
+        margin-top: 2px;
+        .k-prev,
+        .k-next {
+            position: absolute;
+            z-index: 2;
+            background-color: #fff;
+            fill: $white9;
+        }
+
+        .k-prev {
+            left: 0;
+        }
+        .k-next {
+            right: 0;
+        }
+
+        .nav-selector {
+            &.open {
+                .nav-toggle {
+                    display: none;
+                }
+                .nav-menu {
+                    display: block;
+                }
+            }
+
+            .nav-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 70%;
+                margin: 0 auto;
+                height: $k-nav-size;
+                min-height: $k-nav-size;
+                line-height: $k-nav-size;
+                font-size: rem-calc(12);
+                color: $white9;
+                cursor: default;
+
+                span {
+                    display: inline-block;
+                    &:first-child {
+                        padding-right: rem-calc(10);
+                    }
+                }
+            }
+
+            .nav-menu {
+                display: none;
+                a {
+                    display: block;
+                }
+
+                .month,
+                .year {
+                    li {
+                        list-style: none;
+                    }
+                    a {
+                        text-align: center;
+                    }
+                }
+                .year {
+                    position: relative;
+                    display: flex;
+                    margin: 0 $k-nav-size;
+                    height: $k-nav-size;
+                    line-height: $k-nav-size;
+                    font-size: rem-calc(12);
+                    color: $white9;
+                    cursor: default;
+                    .active a {
+                        color: $vanilla;
+                    }
+                    li {
+                        flex: 1;
+                        float: none;
+                        display: inline-block;
+                    }
+                }
+                .month {
+                    margin-right: -$k-mon-margin-right / 2;
+                    li {
+                        float: left;
+                        width: 25%;
+                        margin-bottom: $k-mon-line-margin-bottom;
+                        a {
+                            border: $k-span-border;
+                            width: $k-mon-size;
+                            border-radius: 50%;
+                            @include liheight($k-mon-size);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .k-header {
+        display: flex;
+        span {
+            flex: 1;
+            text-align: center;
+            min-width: $k-span-size;
+            line-height: $k-span-size;
+            cursor: $cursor-default-value;
+        }
+    }
+
+    .k-days {
+        .k-days-row {
+            display: flex;
+            span {
+                flex: 1;
+            }
+            .k-day {
+                position: relative;
+                display: block;
+                cursor: $cursor-pointer-value;
+                min-width: $k-span-size;
+                line-height: $k-span-size;
+                text-align: center;
+                &:before {
+                    z-index: -1;
+                    content: "";
+                    position: absolute;
+                    top: $k-span-inner-p;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    border: $k-span-border;
+                    min-width: $k-span-inner-size;
+                    min-height: $k-span-inner-size;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+
+    &.nav-open {
+        .k-header,
+        .k-days {
+            display: none;
+        }
+    }
+}

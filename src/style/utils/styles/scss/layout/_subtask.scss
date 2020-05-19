@@ -1,0 +1,178 @@
+$st-divider: rem-calc(10);
+$st-padding: $st-divider + rem-calc(1);
+$st-h: rem-calc(34);
+$st-drag-left: rem-calc(4);
+$st-t-p-r: $st-divider + $small-icon-size;
+
+.sub-task {
+    position: relative;
+    @include inlineblockfix();
+
+    // @todo delete
+    i {
+        width: $small-icon-size;
+        height: $small-icon-size;
+    }
+
+    span i {
+        font-size: $small-icon-size;
+    }
+
+    .drag {
+        top: rem-calc(13);
+        left: $st-drag-left;
+    }
+
+    .checker {
+        position: absolute;
+        top: rem-calc(12);
+        // left: $small-icon-size;
+    }
+
+    .editor-container {
+        margin-right: rem-calc(48);
+        margin-left: $st-t-p-r;
+        overflow: hidden;
+    }
+
+    .title.editor-with-link,
+    .title > .input-placeholder {
+        line-height: rem-calc(18);
+        min-height: rem-calc(39);
+        padding: $st-padding 0;
+        font-size: $body-font-size;
+        word-wrap: break-word;
+        overflow: hidden;
+        width: 100%;
+
+        [contenteditable] {
+            min-height: rem-calc(18);
+        }
+    }
+
+    &::before {
+        content: "";
+        transition: background-color 1s ease-in-out;
+        background-color: transparent;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        z-index: 0;
+        border-radius: rem-calc(4);
+    }
+
+    &.opened {
+        &::before {
+            background-color: $opacityindigo-12;
+        }
+    }
+
+    &.checked {
+        .tips > .tip.date-hint {
+            &,
+            &.duedate-overdue {
+                color: $black18;
+            }
+        }
+    }
+
+    .reminder-setting {
+        position: relative;
+        height: rem-calc(40);
+        line-height: rem-calc(40);
+        margin-right: rem-calc(20);
+        display: flex;
+        z-index: auto;
+
+        a.cr-disabled:hover {
+            cursor: not-allowed;
+        }
+    }
+
+    .remove {
+        position: absolute;
+        right: rem-calc(21);
+        height: rem-calc(40);
+        line-height: rem-calc(40);
+        visibility: hidden;
+
+        .i-4 {
+            width: rem-calc(16);
+            height: rem-calc(16);
+        }
+    }
+
+    .tips > .tip {
+        svg {
+            height: rem-calc(16);
+            width: rem-calc(16);
+        }
+
+        &.date-hint {
+            font-size: rem-calc(13);
+
+            &.duedate-overdue {
+                color: $darkRed;
+            }
+        }
+    }
+
+    & > .line {
+        height: 1px;
+        margin-left: rem-calc(24);
+        background-color: $black06;
+    }
+
+    .more-action {
+        position: absolute;
+        top: rem-calc(13);
+        right: rem-calc(12);
+        visibility: hidden;
+    }
+
+    .reminder-hint {
+        visibility: hidden;
+
+        &.show {
+            visibility: visible;
+            margin-right: rem-calc(3);
+        }
+    }
+
+    &:hover,
+    &.more-open {
+        .drag,
+        .more-action,
+        .reminder-hint,
+        .remove {
+            visibility: visible;
+        }
+    }
+
+    &.checked:hover {
+        .drag {
+            visibility: hidden;
+        }
+    }
+}
+
+// sort
+.subtasks {
+    position: relative;
+
+    .ui-sortable-helper {
+        z-index: 2;
+        border: 1px solid;
+    }
+
+    .ui-sortable-placeholder {
+        width: calc(100% - 3.3125rem); // @todo
+        margin-left: rem-calc(38);
+    }
+}
+
+.more-one .sub-task {
+    .input-placeholder {
+        display: none;
+    }
+}

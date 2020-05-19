@@ -1,0 +1,87 @@
+@import "src/style/utils/var";
+.monthlyTable {
+    position: relative;
+    padding: 0 rem-calc(20);
+    :global {
+        .k-calendar {
+            width: 100%;
+            .k-title {
+                .k-btn {
+                    width: (1/7) * 100%;
+                    text-align: center;
+                    background: transparent;
+                    svg {
+                        width: rem-calc(30);
+                        height: rem-calc(30);
+                        fill: $black;
+                        opacity: 0.64;
+                    }
+                }
+                .k-btn-disable {
+                    cursor: not-allowed;
+                    svg {
+                        opacity: 0.24;
+                    }
+                }
+                .k-caption {
+                    .nav-toggle {
+                        color: $black85;
+                        font-size: rem-calc(20);
+                        font-weight: 500;
+                        line-height: rem-calc(30);
+                        .current-month,
+                        .current-year {
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+            .k-header {
+                margin-top: rem-calc(18);
+                margin-bottom: rem-calc(14);
+
+                span {
+                    color: $black36;
+                    line-height: rem-calc(18);
+                    &.k-weekend {
+                        color: #ffb000;
+                    }
+                }
+            }
+            .k-days {
+                span {
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+}
+
+[class*="-dark-theme"] .monthlyTable {
+    :global {
+        .k-calendar {
+            .k-title {
+                .k-btn {
+                    svg {
+                        fill: $white;
+                    }
+                }
+            }
+            .k-title {
+                .k-caption {
+                    .nav-toggle {
+                        color: $white85;
+                    }
+                }
+            }
+            .k-header {
+                span {
+                    color: $white36;
+                    &.k-weekend {
+                        color: #ffb000;
+                    }
+                }
+            }
+        }
+    }
+}

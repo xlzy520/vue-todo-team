@@ -1,0 +1,14 @@
+@import "src/style/utils/var.scss";
+
+.task-detail {
+    display: flex;
+    flex-direction: column;
+    .td-body {
+        flex: auto;
+        overflow: hidden;
+    }
+    .td-header {
+        //border-top: 1px solid $base-border-color;
+      border-color: rgba(0, 0, 0, 0.06);
+    }
+}

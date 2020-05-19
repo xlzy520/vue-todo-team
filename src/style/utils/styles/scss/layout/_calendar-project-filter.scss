@@ -1,0 +1,46 @@
+$select-border: 1px solid $timberwolf;
+$part-divider: rem-calc(6) 0;
+$bottom-h: rem-calc(48);
+
+.calendar_project_filter.dropdown-menu {
+    width: rem-calc(234);
+    z-index: 999;
+
+    .list-wrapper {
+        .antiscroll-inner {
+            max-height: rem-calc(235);
+        }
+    }
+
+    .select-list {
+        position: relative;
+        display: block;
+        padding: 0;
+        box-shadow: none;
+    }
+
+    .menu > .antiscroll-wrap {
+        & > .antiscroll-inner {
+            max-height: rem-calc(205);
+            margin: $part-divider;
+        }
+    }
+
+    .control {
+        border-top: $select-border;
+        padding: rem-calc(16) rem-calc(12);
+
+        .btns {
+            text-align: center;
+
+            button + button {
+                margin-left: rem-calc(8);
+            }
+        }
+    }
+
+    .section-title,
+    .option-item {
+        @include liheight(rem-calc(36));
+    }
+}

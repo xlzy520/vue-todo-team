@@ -1,0 +1,49 @@
+
+
+.shortcuts-panel {
+    padding-right: rem-calc(4);
+
+  .col {
+    position: relative;
+
+    .col-left {
+      line-height: $li-line-height;
+      position: absolute;
+    }
+
+    .col-right {
+      margin-left: rem-calc(174);
+    }
+
+    .line {
+      line-height: $li-line-height;
+      border-bottom: $base-border;
+    }
+
+    .key {
+      border: 1px solid $lavendergray;
+      box-shadow: 0 1px 1px $lavendergray;
+      padding: rem-calc(3) rem-calc(6);
+      border-radius: $base-border-radius;
+    }
+  }
+
+}
+
+@media #{$small-only} {
+  .shortcuts-panel {
+    .left {
+      min-width: rem-calc(100);
+    }
+
+    .line-right {
+      float: left;
+    }
+
+    .col .col-right {
+      margin-left: rem-calc(100);
+    }
+    
+  }
+
+}

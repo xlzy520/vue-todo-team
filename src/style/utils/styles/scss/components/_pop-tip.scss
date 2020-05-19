@@ -1,0 +1,52 @@
+$pop-tip-base-bg: rgba(5, 8, 15, 0.85);
+.outer-tip {
+    z-index: $zindex-tooltip;
+    bottom: rem-calc(32);
+    @include centerX;
+    max-width: rem-calc(612);
+}
+
+.pop-tip {
+    position: relative;
+    padding: rem-calc(11) rem-calc(12);
+    background-color: $pop-tip-base-bg;
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.2);
+    color: $base-font-color-deepbg;
+    border-radius: 4px;
+    transform: translateY(0);
+
+    .text {
+        position: relative;
+        display: block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        font-size: rem-calc(13);
+    }
+
+    .action {
+        position: relative;
+        float: right;
+        margin-left: rem-calc(48);
+        color: $base-font-color-warning;
+        display: flex;
+    }
+
+    &.alert,
+    &.error {
+        color: $base-font-color-alert;
+    }
+
+    &.before-animation {
+        transform: translateY(100px);
+    }
+
+    &.fast-close-animation {
+        transform: translateY(17px) scale(0.9);
+        opacity: 0.5;
+    }
+
+    .close {
+        padding-left: 10px;
+    }
+}

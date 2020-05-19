@@ -1,0 +1,53 @@
+.btn-group {
+	& > button {
+		float: left;
+		position: relative;
+        background-color: $lightwhite;
+        border-color: $mercury;
+
+        &:hover {
+            background-color: $f2;
+        }
+
+        &.active {
+            background-color: $mercury;
+
+            &:hover {
+                background-color: $mercury;
+            }
+        }
+
+		&:first-child {
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+		}
+
+		&:last-child {
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+		}
+
+		&:not(:first-child):not(:last-child) {
+			border-radius: 0;
+		}
+
+		& + button {
+			margin-left: -1px;
+		}
+
+		&.active,
+		&:hover,
+		&:active,
+		&:focus {
+			z-index: 2;
+		}
+
+		&:not(.active) {
+			&:hover,
+			&:active,
+			&:focus {
+				z-index: 3;
+			}
+		}
+	}
+}

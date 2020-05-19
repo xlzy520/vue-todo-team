@@ -1,0 +1,110 @@
+@mixin loading-circle($size, $border, $duration) {
+    height: $size;
+    width: $size;
+    border: $border;
+    border-radius: 50%;
+    border-right-color: transparent;
+    animation: rotate $duration linear 0.2s infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+$color: #4b6fde;
+$size: 10px;
+
+.loading-logo {
+    background-size: 180px 180px;
+    width: 180px;
+    height: 180px;
+}
+
+.dida .loading-logo {
+    background-image: url("../assets/img/dida-logo/logo.png");
+}
+
+.tick .loading-logo {
+    background-image: url("../assets/img/tick-logo/logo.png");
+}
+
+@media (min--moz-device-pixel-ratio: 1.5),
+    (-o-min-device-pixel-ratio: 3/2),
+    (-webkit-min-device-pixel-ratio: 1.5),
+    (min-device-pixel-ratio: 1.5),
+    (min-resolution: 1.5dppx) {
+    .dida .loading-logo {
+        background-image: url("../assets/img/dida-logo@2/logo.png");
+    }
+
+    .tick .loading-logo {
+        background-image: url("../assets/img/tick-logo@2/logo.png");
+    }
+}
+
+.css-loading {
+    position: relative;
+
+    li {
+        display: inline-block;
+        height: $size;
+        width: $size;
+        border-radius: 100%;
+        animation: LOADING 2s infinite;
+
+        &:nth-child(1n) {
+            left: -20px;
+            animation-delay: 0s;
+        }
+
+        &:nth-child(2n) {
+            left: 0;
+            animation-delay: 0.2s;
+        }
+
+        &:nth-child(3n) {
+            left: 20px;
+            animation-delay: 0.4s;
+        }
+    }
+}
+
+@keyframes LOADING {
+    0% {
+        transform: scale(0.5);
+        background: $color;
+    }
+
+    50% {
+        transform: scale(0.8);
+        background: $white;
+    }
+
+    100% {
+        transform: scale(0.5);
+        background: $color;
+    }
+}
+
+@keyframes LOADING_DARK {
+    0% {
+        transform: scale(0.5);
+        background: $dark-blue;
+    }
+
+    50% {
+        transform: scale(0.8);
+        background: transparent;
+    }
+
+    100% {
+        transform: scale(0.5);
+        background: $dark-blue;
+    }
+}

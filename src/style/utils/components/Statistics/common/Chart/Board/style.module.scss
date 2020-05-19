@@ -1,0 +1,109 @@
+@import "./scss/utils/variables";
+.board {
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+    .row {
+        flex: auto;
+        display: flex;
+        align-items: center;
+        &.single {
+            position: relative;
+            .item {
+                flex-direction: row;
+                text-align: left;
+                justify-content: left;
+                align-items: center;
+                .title {
+                    margin-left: rem-calc(12);
+                }
+            }
+            & + .row {
+                &:before {
+                    content: "";
+                    position: absolute;
+                    height: rem-calc(1);
+                    width: 100%;
+                    background-color: rgba(#979797, 0.24);
+                    left: 0;
+                    top: 0;
+                    right: 0;
+                }
+            }
+        }
+        .item {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex: 1 1;
+            text-align: center;
+            padding: rem-calc(18) rem-calc(10);
+            overflow: hidden;
+            white-space: nowrap;
+
+            & + .item {
+                &:before {
+                    content: "";
+                    position: absolute;
+                    width: rem-calc(1);
+                    background-color: rgba(#979797, 0.24);
+                    left: 0;
+                    top: 0;
+                    bottom: 0;
+                    margin: rem-calc(18) 0;
+                }
+            }
+
+            .data {
+                font-size: rem-calc(28);
+                font-weight: 600;
+                color: black;
+                line-height: 1;
+                margin-bottom: rem-calc(2);
+                overflow: hidden;
+                text-overflow: ellipsis;
+                word-wrap: nowrap;
+                > span {
+                    vertical-align: auto;
+                    font-size: rem-calc(16);
+                    font-weight: 400;
+                    color: rgba(35, 35, 35, 0.6);
+                    line-height: rem-calc(16);
+                    margin: 0 rem-calc(2);
+                }
+            }
+
+            .title {
+                line-height: 1;
+                font-size: rem-calc(12);
+                font-weight: 400;
+                color: rgba(0, 0, 0, 0.24);
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+
+            .compareWrapper {
+                margin-top: rem-calc(12);
+            }
+        }
+    }
+}
+
+[class*="-dark-theme"] {
+    .board {
+        .row {
+            .item {
+                .data {
+                    color: rgba(255, 255, 255, 0.85);
+                    > span {
+                        color: rgba(255, 255, 255, 0.6);
+                    }
+                }
+                .title {
+                    color: rgba(255, 255, 255, 0.24);
+                }
+            }
+        }
+    }
+}

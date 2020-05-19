@@ -1,0 +1,13 @@
+@import "./scss/utils/variables";
+.level {
+    .value {
+        font-size: rem-calc(18);
+        font-weight: 600;
+        color: rgb(6, 206, 144);
+        margin-right: rem-calc(8);
+    }
+    .icon {
+        width: rem-calc(32);
+        height: rem-calc(32);
+    }
+}

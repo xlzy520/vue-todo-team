@@ -1,0 +1,42 @@
+.team-members-settings {
+    .s-content {
+        padding: 0;
+        > .antiscroll-scrollbar-vertical {
+            right: 2px;
+        }
+    }
+}
+
+.team-table {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    .team-table-body {
+        flex: 1;
+    }
+
+    table {
+        width: 100%;
+        table-layout: fixed;
+    }
+    tr {
+        border-bottom: 1px solid;
+        th {
+            vertical-align: bottom;
+            height: rem-calc(64);
+            padding-bottom: rem-calc(12);
+            max-width: 0;
+        }
+        td {
+            @include liheight(rem-calc(48));
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            max-width: 0;
+        }
+        td.empty {
+            width: 100% !important;
+            padding-right: 0 !important;
+        }
+    }
+}

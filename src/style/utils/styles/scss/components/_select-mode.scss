@@ -1,0 +1,33 @@
+.select-kanban-mode-view {
+    .popup-header {
+        padding-bottom: 0;
+    }
+
+    .desc {
+        color: $black54;
+    }
+
+    .list {
+        .mode {
+            display: flex;
+            cursor: pointer;
+            margin: rem-calc(20) rem-calc(-12) 0;
+            padding: rem-calc(5) rem-calc(12);
+            align-items: center;
+
+            &:hover {
+                background-color: #eee;
+            }
+
+            svg {
+                width: rem-calc(36);
+                height: rem-calc(36);
+                margin-right: rem-calc(12);
+            }
+
+            .desc {
+                font-size: rem-calc(13);
+            }
+        }
+    }
+}

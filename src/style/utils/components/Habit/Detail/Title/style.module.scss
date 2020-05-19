@@ -1,0 +1,72 @@
+@import "./scss/utils/variables";
+.titleWrapper {
+    height: rem-calc(88);
+    padding: 0 rem-calc(20);
+    display: flex;
+    align-items: center;
+    .icon {
+        flex-shrink: 0;
+        display: inline-block;
+        border-radius: 50%;
+        width: rem-calc(36);
+        height: rem-calc(36);
+    }
+    .title {
+        flex: auto;
+        margin-left: rem-calc(12);
+        font-weight: 500;
+        line-height: rem-calc(36);
+        font-size: rem-calc(24);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .toolTip {
+        cursor: pointer;
+        svg {
+            width: rem-calc(20);
+            height: rem-calc(20);
+            fill: $black12;
+            vertical-align: baseline;
+        }
+    }
+}
+
+.toolTipOverlay {
+    padding: rem-calc(8) rem-calc(12);
+    background: rgba($black, 0.65);
+    border-radius: rem-calc(4);
+    max-width: rem-calc(140);
+    text-align: center;
+    color: $white;
+    font-size: rem-calc(10);
+    z-index: $zindex-tooltip;
+    .boult {
+        &:before {
+            content: "";
+            position: absolute;
+            left: calc(50% - 9px);
+            top: 100%;
+            border-top: solid 3px transparent;
+            border-right: solid 9px transparent;
+            border-left: solid 9px transparent;
+            border-bottom: solid 6px rgba($black, 0.65);
+            z-index: 1001;
+            top: calc(100% - 1px);
+        }
+    }
+}
+
+[class*="-dark-theme"] .titleWrapper {
+    .toolTip {
+        svg {
+            fill: $white12;
+        }
+    }
+}
+
+@media only screen and (max-width: 920px) {
+    .titleWrapper {
+        padding-left: rem-calc(54);
+    }
+}

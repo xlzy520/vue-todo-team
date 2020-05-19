@@ -1,0 +1,103 @@
+@import "src/style/utils/var.scss";
+
+.tasklist {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    > .tl-bar {
+        height: $toolbar-height;
+        padding-right: rem-calc(24);
+        padding-left: rem-calc(28);
+        .tl-bar-action-bar {
+            flex: 1;
+        }
+        .tl-bar-project-name {
+            max-width: calc(100% - 104px);
+        }
+    }
+
+    > .filter-advance {
+        margin-top: rem-calc(9);
+        margin-bottom: rem-calc(20);
+        line-height: rem-calc(20);
+    }
+
+    .tl-quick {
+        position: relative;
+        margin: 0 rem-calc(28) rem-calc(20);
+    }
+
+    .tl-body {
+        position: relative;
+        flex: 1;
+        overflow: hidden;
+
+        & > .antiscroll-wrap {
+            position: absolute;
+            width: 100% !important;
+        }
+
+        #task-ul-list-print {
+            position: static;
+        }
+    }
+
+    .tl-inner > .content {
+        position: relative;
+    }
+
+    .section {
+        position: absolute;
+        width: 100%;
+        transition: top 0.2s ease;
+
+        & > ul {
+            position: relative;
+            transition: height 0.2s ease;
+        }
+
+        i {
+            width: rem-calc(14);
+            height: rem-calc(14);
+            margin: rem-calc(5);
+        }
+
+        svg {
+            font-size: rem-calc(14);
+        }
+    }
+
+    .section-header {
+        @include liheight(rem-calc(36));
+        cursor: pointer;
+        overflow: hidden;
+        position: relative;
+        padding: 0 rem-calc(28) 0 rem-calc(26);
+
+        & > svg {
+            margin-right: rem-calc(8);
+        }
+
+        .s-line {
+            height: rem-calc(1);
+            margin: rem-calc(-1) 0 0 rem-calc(20);
+        }
+    }
+
+    .section-title {
+        display: inline-block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        max-width: 90%;
+        font-weight: bold;
+
+        .count {
+            position: absolute;
+            right: rem-calc(28);
+            color: $black36;
+            font-weight: normal;
+        }
+    }
+}

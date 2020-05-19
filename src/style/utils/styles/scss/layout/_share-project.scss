@@ -1,0 +1,470 @@
+.project-share-view {
+    width: $popup-med;
+    padding-bottom: 0;
+    overflow: hidden;
+    min-height: auto;
+    height: $popup-max-height;
+    &.team-member {
+        max-height: $popup-max-height + rem-calc(26);
+        height: $popup-max-height + rem-calc(26);
+        .share-input-component {
+            & > ul {
+                max-height: rem-calc(200);
+            }
+        }
+    }
+    &.readonly-team-project {
+        height: rem-calc(420);
+    }
+    .popup-body {
+        padding-top: 0;
+        padding-bottom: 0;
+        display: flex;
+        flex-direction: column;
+    }
+    .popup-body-inner {
+        height: 100%;
+        flex: auto;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+    .popup-footer {
+        display: none;
+        float: none;
+        padding-top: rem-calc(8);
+        padding-bottom: rem-calc(18);
+        justify-content: start;
+    }
+    .panel {
+        flex: 1;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+    &.project-share-member-panel {
+        .popup-footer {
+            display: block;
+        }
+    }
+    .wrap {
+        overflow: hidden;
+        flex: auto;
+        display: flex;
+        flex-direction: column;
+        .antiscroll-inner {
+            flex: auto;
+        }
+    }
+}
+
+.share-project-members-panel {
+    font-size: 0;
+
+    .project-private-warning {
+        // @curly 为了居中...
+        z-index: -1;
+        margin-top: rem-calc(-68);
+        margin-bottom: rem-calc(-68);
+    }
+}
+
+.share-input-component {
+    position: relative;
+    input {
+        width: 100%;
+        padding-right: rem-calc(24);
+    }
+
+    // 自动补全提示view
+    & > ul {
+        top: auto;
+        margin-top: rem-calc(4);
+        width: 100%;
+        height: auto;
+        overflow: hidden !important;
+        padding: 0;
+        max-height: rem-calc(180);
+
+        .antiscroll-inner {
+            max-height: rem-calc(300);
+            padding: rem-calc(5) 0;
+        }
+
+        .share-item {
+            > a {
+                max-width: none;
+                display: flex;
+                align-items: center;
+            }
+
+            .display {
+                display: inline-block;
+                line-height: 1.2;
+                margin-left: rem-calc(10);
+                flex: 1;
+                overflow: hidden;
+                p,
+                span {
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+
+            .avatar {
+                display: inline-block;
+            }
+        }
+    }
+
+    .share-invite-menu-toggle {
+        position: absolute;
+        right: rem-calc(6);
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+.share_project_permission_row {
+    @include user-select(none);
+    line-height: rem-calc(20);
+    padding-top: rem-calc(16);
+    padding-bottom: rem-calc(16);
+    a[disabled] {
+        opacity: 0.48;
+    }
+}
+
+.share-user-list {
+    .share-item {
+        $item-height: rem-calc(60);
+        $content-height: rem-calc(40);
+        $avatar-size: rem-calc(40);
+        $padding-height: ($item-height - $content-height) / 2;
+        $pending-height: rem-calc(24);
+        overflow: hidden;
+        box-shadow: 0px 1px $black04;
+
+        .avatar {
+            margin: $padding-height rem-calc(16);
+            margin-left: 0;
+            float: left;
+            width: $avatar-size;
+            height: $avatar-size;
+        }
+
+        .display-name {
+            @include clearfix;
+            position: relative;
+            margin-left: $avatar-size + rem-calc(16);
+            height: $item-height;
+            padding: $padding-height 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            .display {
+                white-space: nowrap;
+                position: relative;
+                flex: 1;
+                overflow: hidden;
+                padding-right: rem-calc(8);
+
+                .v-center {
+                    line-height: $content-height;
+                }
+
+                p {
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+
+            .mark-block {
+                @include user-select(none);
+
+                & + .project-member-action {
+                    margin-left: rem-calc(10);
+                }
+            }
+        }
+
+        &:last-child .display-name {
+            border-bottom: none;
+        }
+    }
+}
+
+.share-user-list {
+    position: relative;
+
+    .divider {
+        width: 100%;
+        max-width: none;
+        position: relative;
+        border-top: rem-calc(1) solid;
+    }
+
+    .share-item {
+        &:last-child .divider {
+            opacity: 0;
+        }
+    }
+}
+
+.share-input-container {
+    display: flex;
+    margin-top: rem-calc(16);
+    margin-bottom: rem-calc(16);
+    .share-input-component {
+        flex: 1;
+    }
+    .warn {
+        position: relative;
+        top: rem-calc(-6);
+    }
+    li.dropdown-menu-item a {
+        height: rem-calc(40);
+    }
+    .css-loading {
+        text-align: center;
+        position: absolute;
+        right: rem-calc(7);
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+.project-notif-settings-content {
+    margin-top: rem-calc(24);
+    margin-bottom: rem-calc(30);
+    & > div {
+        input[type="checkbox"] {
+            margin: 0;
+        }
+        line-height: rem-calc(30);
+    }
+    & > p {
+        margin-bottom: rem-calc(12);
+    }
+}
+
+.project-private-warning {
+    position: relative;
+    flex: 1;
+    .project-private-warning-inner {
+        text-align: center;
+        @include centerY();
+    }
+    h5 {
+        font-size: $base-font-size-mid;
+        margin-bottom: rem-calc(16);
+        & > [class^="icon-"] {
+            margin-right: rem-calc(8);
+            fill: $black85;
+        }
+    }
+    p {
+        padding: 0 rem-calc(18);
+    }
+}
+
+.share-transfer-view {
+    .share-project-owner-select {
+        margin-top: rem-calc(24);
+        margin-bottom: rem-calc(12);
+        width: rem-calc(220);
+        .select-title {
+            border-color: $black18;
+        }
+        .dropdown-menu {
+            .dropdown-menu-menu-item {
+                & > a {
+                    max-width: rem-calc(220);
+                }
+            }
+        }
+    }
+}
+
+.share-invite-user-dropdown {
+    width: rem-calc(214);
+    padding-top: 0;
+    padding-bottom: 0;
+    overflow: visible;
+    z-index: $zindex-modal-dropdown;
+
+    .tabs-container .tabs {
+        .tab {
+            @include liheight(rem-calc(41));
+        }
+        .tab,
+        .slide {
+            width: 50%;
+        }
+    }
+
+    .select-list {
+        padding-top: 0 !important;
+        .list-wrapper {
+            height: rem-calc(211);
+        }
+        .option-item {
+            @include liheight(rem-calc(36));
+        }
+    }
+
+    .section-member-item {
+        padding-left: rem-calc(36);
+    }
+
+    .dropdown-section-title {
+        border-top: none;
+        margin-top: 0;
+        .text-primary {
+            width: calc(100% - 60px);
+        }
+    }
+}
+
+.share-invite-recent-empty {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: rem-calc(150);
+
+    [class^="icon-"] {
+        width: rem-calc(72);
+        height: rem-calc(72);
+        margin: 0;
+        margin-bottom: rem-calc(16);
+    }
+
+    h5 {
+        margin-bottom: rem-calc(4);
+    }
+}
+
+.share-link-wrap {
+    border-top: 1px solid $black06;
+}
+
+.share-link-enable-seciton {
+    padding: rem-calc(10) 0;
+    label[for="share-link-enable-switch"] {
+        margin-left: 0;
+        margin-right: rem-calc(20);
+    }
+}
+
+.share-link-section {
+    margin-top: rem-calc(12);
+    table {
+        width: 100%;
+        border: 1px solid $black12;
+        border-radius: rem-calc(4);
+        border-collapse: initial;
+    }
+
+    tr {
+        width: 100%;
+
+        &.share-link-control {
+            height: rem-calc(36);
+            line-height: initial;
+            td {
+                border-bottom: 1px solid $black12;
+            }
+        }
+        &:last-child {
+            input {
+                border: none;
+                border-radius: 0;
+                padding: 0;
+                line-height: rem-calc(12);
+                width: 100%;
+                height: auto;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+
+    td {
+        padding: rem-calc(8) rem-calc(10);
+        white-space: nowrap;
+        &.copy {
+            cursor: pointer;
+            text-align: center;
+            border-left: 1px solid $black12;
+            font-weight: bold;
+            width: rem-calc(80);
+        }
+        &.invite-url {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+    .project-permission-select-trigger {
+        border: none;
+        display: inline-block;
+        font-weight: bold;
+        span {
+            margin-right: rem-calc(4);
+            vertical-align: baseline;
+        }
+        svg {
+            opacity: 1;
+        }
+    }
+}
+
+.team-member .project-member-action,
+.project-permission-select-trigger {
+    border-radius: rem-calc(4);
+    min-width: rem-calc(36);
+    margin-left: rem-calc(5);
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+        border-color: $black14;
+    }
+}
+
+.project-member-action,
+.project-permission-select-trigger {
+    cursor: pointer;
+    svg {
+        opacity: 0.36;
+    }
+    &:hover {
+        svg {
+            opacity: 0.54;
+        }
+    }
+}
+
+.project-permission-select-menu {
+    min-width: rem-calc(140);
+    .dropdown-menu-menu-item:not(.active) {
+        svg {
+            opacity: 0.54;
+        }
+    }
+    .dropdown-menu-menu-item-disabled:not(.active) {
+        svg {
+            opacity: 0.18;
+        }
+    }
+
+    li.dropdown-menu-menu-item-disabled > a {
+        color: $disabled !important;
+        svg {
+            opacity: 0.18;
+        }
+    }
+}

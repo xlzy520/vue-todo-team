@@ -1,0 +1,11 @@
+$drop-item-min-width: rem-calc(135);
+
+.chrome-lower .dropdown-menu li > a {
+    min-width: $drop-item-min-width;
+}
+
+.chrome-lower .dropdown-menu.dropdown-tny {
+   li > a {
+      min-width: rem-calc(44);
+  }
+}

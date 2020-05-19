@@ -1,0 +1,14 @@
+.mobile {
+    #settings, 
+    #left-bottom-view, 
+    .project .p-caret, 
+    .tkcalendar, 
+    .l-folder .p-caret, 
+    #add-task .tl-q-preset {
+        display: none !important;
+    }
+
+    .lists{
+        padding-bottom: 0 !important;
+    }
+}

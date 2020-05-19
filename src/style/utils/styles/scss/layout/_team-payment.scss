@@ -1,0 +1,132 @@
+.popup-team-payment {
+    width: $popup-med;
+    .popup-body {
+        padding-top: rem-calc(8);
+        padding-bottom: rem-calc(16);
+    }
+    .popup-footer {
+        justify-content: flex-start;
+        border-top-width: 1px;
+        border-top-style: solid;
+    }
+    .row {
+        margin-bottom: rem-calc(20);
+        .title {
+            margin-bottom: rem-calc(8);
+        }
+        .inline-title {
+            margin-right: rem-calc(8);
+        }
+    }
+    .plan {
+        margin-bottom: rem-calc(20);
+        ul {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            li {
+                @include user-select(none);
+                position: relative;
+                width: rem-calc(146);
+                height: rem-calc(65);
+                padding: rem-calc(10) rem-calc(20);
+                border: 1px solid $black12;
+                border-radius: 2px;
+                overflow: hidden;
+                cursor: pointer;
+                &.checked {
+                    border-color: $pro !important;
+                    background-color: rgba($pro, 0.08) !important;
+                    .checked-tip {
+                        display: block;
+                    }
+                }
+            }
+            .checked-tip {
+                position: absolute;
+                border-top: rem-calc(24) solid $pro;
+                border-left: rem-calc(24) solid transparent;
+                right: 0;
+                top: 0;
+                display: none;
+                [class^="icon-"] {
+                    position: absolute;
+                    width: rem-calc(8);
+                    height: rem-calc(8);
+                    top: rem-calc(-20);
+                    left: rem-calc(-10);
+                }
+            }
+        }
+        .freq {
+            font-size: rem-calc(12);
+            line-height: 1;
+            margin-bottom: rem-calc(8);
+        }
+        .price {
+            font-size: rem-calc(20);
+            font-weight: 500;
+            line-height: 1;
+        }
+    }
+    .count {
+        .content {
+            font-size: rem-calc(18);
+        }
+        .purchase-number {
+            width: rem-calc(302);
+            padding-left: rem-calc(10);
+            padding-right: rem-calc(10);
+            border-radius: rem-calc(2);
+            border-color: $black12;
+        }
+        .warning {
+            position: absolute;
+            color: $red;
+            font-size: rem-calc(12);
+        }
+        &.disabled {
+            height: rem-calc(14);
+            line-height: rem-calc(14);
+            margin-bottom: rem-calc(20);
+            margin-top: rem-calc(4);
+        }
+    }
+    .total {
+        @include liheight(rem-calc(24));
+        margin-bottom: rem-calc(24);
+        .price {
+            font-size: rem-calc(28);
+            font-weight: 500;
+            position: relative;
+        }
+        .tip-handle {
+            position: absolute;
+            cursor: pointer;
+            margin-left: 1px;
+        }
+    }
+    .desc {
+        margin-bottom: 0;
+        p {
+            font-size: rem-calc(12);
+            line-height: 1;
+        }
+        .warning {
+            color: $pro;
+            margin-bottom: rem-calc(10);
+        }
+    }
+    .purchase {
+        .btn {
+            padding-top: rem-calc(8);
+            padding-bottom: rem-calc(8);
+            min-width: rem-calc(143);
+            margin-left: 0;
+            margin-right: rem-calc(12);
+            [class^="icon-"] {
+                margin-right: rem-calc(8);
+            }
+        }
+    }
+}

@@ -1,0 +1,108 @@
+$del-bg: $darkgrey;
+
+.fake-icon-checkbox:after {
+    content: "";
+    border: 1px solid;
+    height: rem-calc(14);
+    width: rem-calc(14);
+    display: block;
+    border-radius: rem-calc(2);
+}
+
+@mixin fake-icon-triangle {
+    content: "";
+    border-top: rem-calc(5) solid;
+    border-left: rem-calc(5) solid transparent;
+    border-right: rem-calc(5) solid transparent;
+    display: block;
+    width: rem-calc(8);
+    top: rem-calc(4);
+    left: rem-calc(1);
+    position: relative;
+}
+
+.fake-icon-triangle-down:after {
+    @include fake-icon-triangle;
+}
+
+.fake-icon-triangle-right:after {
+    @include fake-icon-triangle;
+    transform: rotate(-90deg);
+}
+.fake-icon-triangle-up:after {
+    @include fake-icon-triangle;
+    transform: rotate(180deg);
+}
+
+.fake-del {
+    width: $small-icon-size;
+    height: $small-icon-size;
+    position: absolute;
+
+    &:before,
+    &:after {
+        content: "";
+        position: absolute;
+        top: rem-calc(7);
+        width: rem-calc(10);
+        height: 1px;
+        background-color: $del-bg;
+        transform: rotate(45deg);
+    }
+
+    &:after {
+        transform: rotate(-45deg);
+    }
+}
+
+@mixin fake-scaling {
+    &:before {
+        content: "";
+        display: block;
+        box-sizing: content-box;
+        width: rem-calc(36);
+        height: rem-calc(12);
+        background-color: $white1;
+        background-clip: content-box;
+        border-radius: 0 0 rem-calc(4) rem-calc(4);
+    }
+    &:after {
+        content: "";
+        display: block;
+        border-width: 0 rem-calc(5.75) rem-calc(5);
+        border-style: solid;
+        position: absolute;
+        top: rem-calc(3);
+        right: rem-calc(11.85);
+        border-color: transparent transparent $white5 transparent;
+    }
+}
+
+// 放大mini日历图标
+.fake-enlarge-mini-cal {
+    @include fake-scaling;
+}
+
+// 缩小迷你日历图标
+.fake-narrow-mini-cal {
+    &:before {
+        content: "";
+        display: block;
+        box-sizing: content-box;
+        width: rem-calc(36);
+        height: rem-calc(12);
+        background-color: $white1;
+        background-clip: content-box;
+        border-radius: 0 0 rem-calc(4) rem-calc(4);
+    }
+    &:after {
+        content: "";
+        display: block;
+        border-width: rem-calc(5) rem-calc(5.75) 0;
+        border-style: solid;
+        position: absolute;
+        top: rem-calc(3.5);
+        right: rem-calc(11.85);
+        border-color: $white5 transparent transparent transparent;
+    }
+}

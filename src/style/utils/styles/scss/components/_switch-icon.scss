@@ -1,0 +1,130 @@
+@import "src/style/utils/var.scss";
+
+// svg 是 inline 元素
+
+// change icon
+// 总共有四种状态
+// 1. 正常
+// 2. 完成 checked
+// 3. checklist subtask
+// 4. 日历订阅 subcalendar
+//
+// 其中1/2 两种状态根据优先级不同，显示颜色不同。
+.td-header,
+.c-task,
+.r-task,
+.sub-task {
+    .icon-completed,
+    .icon-subtask,
+    .icon-schedule,
+    .icon-subcalendar,
+    .icon-completed-detail,
+    .icon-schedule-detail,
+    .icon-subtask-detail,
+    .icon-real-subtask,
+    .icon-subcalendar-detail {
+        display: none;
+    }
+}
+
+.td-header,
+.c-task,
+.r-task,
+.sub-task {
+    &.checked {
+        .icon-completed,
+        .icon-completed-detail {
+            display: inline;
+        }
+    }
+
+    &.subtask {
+        .icon-subtask,
+        .icon-subtask-detail {
+            display: inline;
+        }
+    }
+
+    &.subcalendar {
+        .icon-subcalendar,
+        .icon-subcalendar-detail {
+            display: inline;
+        }
+    }
+
+    &.real-subtask {
+        .icon-real-subtask {
+            display: inline;
+        }
+    }
+
+    &.schedule {
+        .icon-schedule,
+        .icon-schedule-detail {
+            display: inline;
+        }
+    }
+
+    &.checked,
+    &.subtask,
+    &.real-subtask,
+    &.schedule,
+    &.subcalendar {
+        .icon-checkbox,
+        .icon-checkbox-detail {
+            display: none;
+        }
+    }
+}
+
+// 优先级
+.task,
+.td-header,
+.r-task,
+.c-task {
+    &.priority-low {
+        .icon-checkbox,
+        .icon-subtask,
+        .icon-schedule,
+        .icon-real-subtask {
+            color: $priority-low;
+            fill: $priority-low;
+        }
+    }
+
+    &.priority-medium {
+        .icon-checkbox,
+        .icon-subtask,
+        .icon-schedule,
+        .icon-real-subtask {
+            color: $priority-medium;
+            fill: $priority-medium;
+        }
+    }
+
+    &.priority-high {
+        .icon-checkbox,
+        .icon-subtask,
+        .icon-schedule,
+        .icon-real-subtask {
+            color: $priority-high;
+            fill: $priority-high;
+        }
+    }
+}
+
+// 任务详情页 模式切换
+.td-caption {
+    .avoid-event {
+        &[disabled] {
+            cursor: not-allowed;
+        }
+
+        .task-mode-menu {
+            left: rem-calc(-14);
+            .avoid-event > [class^="icon-"] {
+                display: inline;
+            }
+        }
+    }
+}

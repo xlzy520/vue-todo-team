@@ -1,0 +1,125 @@
+$pure-color-w: rem-calc(60);
+$pure-color-h: rem-calc(60);
+$city-color-w: rem-calc(140);
+$city-color-h: rem-calc(70);
+
+.theme-panel {
+    & > .row {
+        padding: rem-calc(16) 0;
+    }
+
+    .row:first-child {
+        padding-top: 0;
+    }
+
+    .row {
+        .icon-setting-pro-mid {
+            transform: scale(.5);
+            margin-left: rem-calc(-4);
+            margin-top: rem-calc(-4);
+        }
+
+        .row.text-secondary {
+            padding-bottom: rem-calc(16);
+        }
+    }
+
+    .row + .row {
+        border-top: 1px solid $black06;
+    }
+
+    .color-wrapper {
+        display: inline-block;
+        text-align: center;
+        margin-right: rem-calc(20);
+        font-size: rem-calc(12);
+        position: relative;
+
+        &[data-id='grey'] {
+            .color {
+                border: 1px solid $black06;
+            }
+        }
+    }
+
+    .color {
+        position: relative;
+        border-radius: rem-calc(2);
+        display: inline-block;
+        cursor: pointer;
+        overflow: hidden;
+
+        & > svg {
+            border-radius: rem-calc(2);
+        }
+
+        .pro-tip-bg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-top: rem-calc(30) solid #f9814a;
+            border-right: rem-calc(30) solid transparent;
+            width: 0;
+            height: 0;
+            
+            > i {
+                position: absolute;
+            }
+        }
+
+        .pro-tip-icon {
+            position: absolute;
+            left: 2px;
+            top: 2px;
+        }
+    }
+
+    .jColorSelect {
+        .jColorCheck {
+            &[data-id='grey'] {
+                .select-tip {
+                    background-color: $indigo !important;
+                }
+            }
+            .select-tip {
+                width: rem-calc(20);
+                height: rem-calc(20);
+                border: rem-calc(2) solid $white;
+                border-radius: 50%;
+                right: rem-calc(-10);
+                top: rem-calc(-10);
+                position: absolute;
+
+                .icon-theme-selected {
+                    fill: $white;
+                    width: rem-calc(16);
+                    height: rem-calc(16);
+                    display: block;
+                }
+            }
+        }
+    }
+
+    .pure {
+        .color-wrapper {
+            width: $pure-color-w;
+        }
+
+        .color {
+            width: $pure-color-w;
+            height: $pure-color-h;
+        }
+    }
+
+    .city,
+    .season {
+        .color-wrapper {
+            width: $city-color-w;
+        }
+
+        .color {
+            width: $city-color-w;
+            height: $city-color-h;
+        }
+    }
+}

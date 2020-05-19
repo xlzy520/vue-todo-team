@@ -1,0 +1,135 @@
+// variables
+@import "../utils/variables";
+
+@media print {
+    body.print-calendar {
+        height: auto;
+        -webkit-print-color-adjust: exact;
+        margin: 0;
+
+        * {
+            border-color: $black54 !important;
+        }
+
+        #root {
+            overflow: visible;
+        }
+
+        .pop-tip {
+            display: none !important;
+        }
+
+        .left-bg,
+        .g-left {
+            display: none;
+        }
+
+        .g-full-right {
+            left: 0;
+            right: 0;
+            top: auto;
+            bottom: auto;
+            height: auto;
+            // 辣鸡 QQ Browser fix
+            position: static;
+        }
+
+        .antiscroll-scrollbar,
+        .c-controller,
+        button,
+        .dropdown-menu {
+            display: none !important;
+        }
+
+        .antiscroll-wrap,
+        .antiscroll-inner {
+            // 打印不应该存在滚动条
+            height: auto !important;
+        }
+
+        &.safari {
+            .tk-calendar {
+                .c-row {
+                    display: block;
+                }
+            }
+        }
+
+        .tk-calendar {
+            display: block;
+            height: auto;
+
+            .tip,
+            .tk-calendar-right-view {
+                display: none !important;
+            }
+
+            .tk-calendar-main {
+                position: relative;
+                height: auto;
+            }
+
+            .tk-calendar-content {
+                display: block;
+                overflow: visible;
+            }
+
+            .c-range-wrap {
+                float: none !important;
+                text-align: center;
+            }
+
+            .c-day-labels {
+                border-top-width: 0;
+            }
+
+            .c-scroll-container {
+                height: auto !important;
+                overflow-y: hidden;
+                border: 1px solid;
+                border-width: 0 1px 1px;
+            }
+
+            .c-row {
+                display: none;
+                height: rem-calc(108);
+
+                &.display-in-print {
+                    display: block;
+                }
+            }
+
+            .c-titlebar {
+                padding-top: rem-calc(3);
+                padding-bottom: rem-calc(3);
+            }
+
+            .c-more,
+            .c-task {
+                padding: 0 rem-calc(3);
+            }
+
+            .c-more {
+                @include liheight(rem-calc(18));
+            }
+
+            .c-task {
+                @include liheight(rem-calc(16));
+                box-shadow: none !important;
+
+                .c-task-title {
+                    text-overflow: clip;
+                }
+
+                .c-task-repeat,
+                .c-task-habit {
+                    svg {
+                        width: rem-calc(12);
+                        height: rem-calc(12);
+                        margin-top: rem-calc(2);
+                    }
+                }
+            }
+        }
+    }
+}

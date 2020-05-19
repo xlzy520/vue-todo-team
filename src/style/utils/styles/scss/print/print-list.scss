@@ -1,0 +1,212 @@
+// variables
+@import "../utils/variables";
+@media print {
+    body.print-list,
+    body.print-list-content {
+        height: auto;
+        overflow: auto;
+        margin: 0;
+
+        #root {
+            overflow: visible;
+        }
+
+        .container-fluid {
+            background: white;
+        }
+
+        .g-left {
+            display: none;
+        }
+
+        .g-right {
+            display: none;
+        }
+
+        .left-bg {
+            display: none;
+        }
+
+        .g-center {
+            left: 0;
+            right: 0;
+            top: 0;
+            // 辣鸡 QQ Browser fix
+            position: static;
+        }
+
+        .antiscroll-scrollbar,
+        .dropdown-menu,
+        .tl-quick,
+        .loading {
+            display: none !important;
+        }
+
+        .tl-bar {
+            position: relative;
+        }
+
+        .tl-body {
+            padding-top: 0;
+        }
+
+        .antiscroll-wrap,
+        .antiscroll-inner,
+        .tasks,
+        .tl-body {
+            // 打印不应该存在滚动条
+            height: auto !important;
+            width: 100% !important;
+
+            & > div {
+                width: 100% !important;
+            }
+        }
+
+        .tasklist .tl-body > .antiscroll-wrap {
+            position: static;
+        }
+
+        .task .t-check {
+            // top: rem-calc(12);
+            padding-left: rem-calc(2);
+        }
+
+        .filter-advance {
+            .dropdown {
+                display: none;
+            }
+
+            .print-filter {
+                display: block;
+            }
+        }
+
+        .section,
+        .task {
+            position: static;
+        }
+        .tasklist {
+            display: block;
+        }
+        .task {
+            page-break-inside: avoid;
+            break-inside: avoid;
+            height: auto !important;
+            margin-bottom: rem-calc(15);
+            box-shadow: transparent 0px 0px 0px inset !important;
+            .drag {
+                visibility: hidden;
+            }
+        }
+
+        .t-inner {
+            position: relative;
+            height: auto;
+            line-height: rem-calc(21);
+        }
+
+        &.checked {
+            .title {
+                color: $black56;
+            }
+            .text-tny {
+                color: $black56;
+            }
+        }
+
+        .title {
+            padding: 0 !important;
+            line-height: inherit !important;
+            white-space: normal !important;
+            word-break: break-word !important;
+        }
+
+        #task-list-content,
+        .section > ul {
+            height: auto !important;
+        }
+
+        .tl-bar-action-bar {
+            display: none;
+        }
+    }
+}
+
+@media print {
+    body.print-list-content {
+        .task {
+            height: auto !important;
+            page-break-inside: auto;
+        }
+
+        .content-print {
+            display: block;
+            margin-left: rem-calc(24);
+            font-size: rem-calc(14);
+
+            &.has-text {
+                margin-bottom: rem-calc(8);
+            }
+
+            .t-content,
+            .t-desc {
+                color: $black54;
+            }
+
+            .t-subtask {
+                & > div {
+                    position: relative;
+                    min-height: rem-calc(38);
+                    line-height: rem-calc(38);
+                    padding-left: rem-calc(22);
+
+                    .icon-completed {
+                        display: none;
+                    }
+
+                    .icon-checkbox {
+                        display: inline;
+                    }
+
+                    &.completed {
+                        .icon-completed {
+                            display: inline;
+                        }
+
+                        .icon-checkbox {
+                            display: none;
+                        }
+
+                        color: $black18;
+                    }
+
+                    .checker {
+                        position: absolute;
+                        top: -1px;
+                        left: 0;
+                    }
+                }
+            }
+
+            .t-content,
+            .t-desc,
+            .t-subtask > div {
+                white-space: normal !important;
+                word-break: break-word !important;
+            }
+        }
+
+        .task.checked {
+            .title,
+            .t-content,
+            .t-desc,
+            .t-subtask {
+                color: $black56;
+                .completed {
+                    color: $black56;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,488 @@
+$sprite: (
+  achieve-1: (
+  offset-x: -128px,
+  offset-y: -136px,
+  width: 32px,
+  height: 32px,
+  total-width: 224px,
+  total-height: 224px,
+  image: '~app.png'
+  ),
+  achieve-10: (
+  offset-x: -160px,
+  offset-y: -136px,
+  width: 32px,
+  height: 32px,
+  total-width: 224px,
+  total-height: 224px,
+  image: '~app.png'
+  ),
+  achieve-2: (
+  offset-x: -192px,
+  offset-y: 0px,
+  width: 32px,
+  height: 32px,
+  total-width: 224px,
+  total-height: 224px,
+  image: '~app.png'
+  ),
+  achieve-3: (
+  offset-x: -192px,
+  offset-y: -32px,
+  width: 32px,
+  height: 32px,
+  total-width: 224px,
+  total-height: 224px,
+  image: '~app.png'
+  ),
+  achieve-4: (
+  offset-x: -192px,
+  offset-y: -64px,
+  width: 32px,
+  height: 32px,
+  total-width: 224px,
+  total-height: 224px,
+  image: '~app.png'
+  ),
+  achieve-5: (
+  offset-x: -192px,
+  offset-y: -96px,
+  width: 32px,
+  height: 32px,
+  total-width: 224px,
+  total-height: 224px,
+  image: '~app.png'
+  ),
+  achieve-6: (
+  offset-x: -192px,
+  offset-y: -128px,
+  width: 32px,
+  height: 32px,
+  total-width: 224px,
+  total-height: 224px,
+  image: '~app.png'
+  ),
+  achieve-7: (
+  offset-x: -192px,
+  offset-y: -160px,
+  width: 32px,
+  height: 32px,
+  total-width: 224px,
+  total-height: 224px,
+  image: '~app.png'
+  ),
+  achieve-8: (
+  offset-x: 0px,
+  offset-y: -192px,
+  width: 32px,
+  height: 32px,
+  total-width: 224px,
+  total-height: 224px,
+  image: '~app.png'
+  ),
+  achieve-9: (
+  offset-x: -32px,
+  offset-y: -192px,
+  width: 32px,
+  height: 32px,
+  total-width: 224px,
+  total-height: 224px,
+  image: '~app.png'
+  ),
+  browser-modern: (
+  offset-x: -100px,
+  offset-y: 0px,
+  width: 92px,
+  height: 92px,
+  total-width: 224px,
+  total-height: 224px,
+  image: '~app.png'
+  ),
+  browser-update: (
+  offset-x: 0px,
+  offset-y: -100px,
+  width: 92px,
+  height: 92px,
+  total-width: 224px,
+  total-height: 224px,
+  image: '~app.png'
+  ),
+  location: (
+  offset-x: -164px,
+  offset-y: -100px,
+  width: 24px,
+  height: 24px,
+  total-width: 224px,
+  total-height: 224px,
+  image: '~app.png'
+  ),
+  other: (
+  offset-x: -64px,
+  offset-y: -192px,
+  width: 24px,
+  height: 24px,
+  total-width: 224px,
+  total-height: 224px,
+  image: '~app.png'
+  ),
+  paying: (
+  offset-x: 0px,
+  offset-y: 0px,
+  width: 100px,
+  height: 100px,
+  total-width: 224px,
+  total-height: 224px,
+  image: '~app.png'
+  ),
+  pointer-black-down: (
+  offset-x: -164px,
+  offset-y: -124px,
+  width: 12px,
+  height: 6px,
+  total-width: 224px,
+  total-height: 224px,
+  image: '~app.png'
+  ),
+  pointer-black-left: (
+  offset-x: -112px,
+  offset-y: -192px,
+  width: 6px,
+  height: 12px,
+  total-width: 224px,
+  total-height: 224px,
+  image: '~app.png'
+  ),
+  pointer-black-right: (
+  offset-x: -118px,
+  offset-y: -192px,
+  width: 6px,
+  height: 12px,
+  total-width: 224px,
+  total-height: 224px,
+  image: '~app.png'
+  ),
+  pointer-black-up: (
+  offset-x: -176px,
+  offset-y: -124px,
+  width: 12px,
+  height: 6px,
+  total-width: 224px,
+  total-height: 224px,
+  image: '~app.png'
+  ),
+  question: (
+  offset-x: -146px,
+  offset-y: -172px,
+  width: 14px,
+  height: 14px,
+  total-width: 224px,
+  total-height: 224px,
+  image: '~app.png'
+  ),
+  range-drag-handle-dark: (
+  offset-x: -100px,
+  offset-y: -92px,
+  width: 42px,
+  height: 7px,
+  total-width: 224px,
+  total-height: 224px,
+  image: '~app.png'
+  ),
+  range-drag-handle: (
+  offset-x: -142px,
+  offset-y: -92px,
+  width: 42px,
+  height: 7px,
+  total-width: 224px,
+  total-height: 224px,
+  image: '~app.png'
+  ),
+  s-normal-tny: (
+  offset-x: -160px,
+  offset-y: -172px,
+  width: 14px,
+  height: 14px,
+  total-width: 224px,
+  total-height: 224px,
+  image: '~app.png'
+  ),
+  s-pro-med: (
+  offset-x: -88px,
+  offset-y: -192px,
+  width: 24px,
+  height: 24px,
+  total-width: 224px,
+  total-height: 224px,
+  image: '~app.png'
+  ),
+  s-pro-sml: (
+  offset-x: -112px,
+  offset-y: -172px,
+  width: 18px,
+  height: 18px,
+  total-width: 224px,
+  total-height: 224px,
+  image: '~app.png'
+  ),
+  s-pro-tny: (
+  offset-x: -174px,
+  offset-y: -172px,
+  width: 14px,
+  height: 14px,
+  total-width: 224px,
+  total-height: 224px,
+  image: '~app.png'
+  ),
+  sml-logo: (
+  offset-x: -92px,
+  offset-y: -100px,
+  width: 36px,
+  height: 36px,
+  total-width: 224px,
+  total-height: 224px,
+  image: '~app.png'
+  ),
+  subscribe-google: (
+  offset-x: -128px,
+  offset-y: -100px,
+  width: 36px,
+  height: 36px,
+  total-width: 224px,
+  total-height: 224px,
+  image: '~app.png'
+  ),
+  subscribe-outlook: (
+  offset-x: -92px,
+  offset-y: -136px,
+  width: 36px,
+  height: 36px,
+  total-width: 224px,
+  total-height: 224px,
+  image: '~app.png'
+  ),
+  try-new-version: (
+  offset-x: -92px,
+  offset-y: -172px,
+  width: 20px,
+  height: 20px,
+  total-width: 224px,
+  total-height: 224px,
+  image: '~app.png'
+  ),
+  warning: (
+  offset-x: -130px,
+  offset-y: -172px,
+  width: 16px,
+  height: 16px,
+  total-width: 224px,
+  total-height: 224px,
+  image: '~app.png'
+  ),
+parts: (
+  total-width: 224px,
+  total-height: 224px,
+  image: '~app.png'
+  )
+);
+
+
+  @mixin sprite-size($image) {
+  background-size: map-get(map-get($sprite, $image), 'total-width') map-get(map-get($sprite, $image), 'total-height');
+  }
+
+  @mixin sprite-width($image) {
+  width: map-get(map-get($sprite, $image), 'width');
+  }
+
+  @mixin sprite-height($image) {
+  height: map-get(map-get($sprite, $image), 'height');
+  }
+
+  @mixin sprite-position($image) {
+  background-position: map-get(map-get($sprite, $image), 'offset-x') map-get(map-get($sprite, $image), 'offset-y');
+  }
+
+  @mixin sprite-image($image) {
+  background-image: url(map-get(map-get($sprite, $image), 'image') + '.png');
+  }
+
+  @mixin sprite-image-retina($image) {
+  background-image: url(map-get(map-get($sprite, $image), 'image') + '@2.png');
+  }
+
+
+
+
+  .icon-achieve-1 {
+  @include sprite-width("achieve-1");
+  @include sprite-height("achieve-1");
+  @include sprite-position("achieve-1");
+  }
+  .icon-achieve-10 {
+  @include sprite-width("achieve-10");
+  @include sprite-height("achieve-10");
+  @include sprite-position("achieve-10");
+  }
+  .icon-achieve-2 {
+  @include sprite-width("achieve-2");
+  @include sprite-height("achieve-2");
+  @include sprite-position("achieve-2");
+  }
+  .icon-achieve-3 {
+  @include sprite-width("achieve-3");
+  @include sprite-height("achieve-3");
+  @include sprite-position("achieve-3");
+  }
+  .icon-achieve-4 {
+  @include sprite-width("achieve-4");
+  @include sprite-height("achieve-4");
+  @include sprite-position("achieve-4");
+  }
+  .icon-achieve-5 {
+  @include sprite-width("achieve-5");
+  @include sprite-height("achieve-5");
+  @include sprite-position("achieve-5");
+  }
+  .icon-achieve-6 {
+  @include sprite-width("achieve-6");
+  @include sprite-height("achieve-6");
+  @include sprite-position("achieve-6");
+  }
+  .icon-achieve-7 {
+  @include sprite-width("achieve-7");
+  @include sprite-height("achieve-7");
+  @include sprite-position("achieve-7");
+  }
+  .icon-achieve-8 {
+  @include sprite-width("achieve-8");
+  @include sprite-height("achieve-8");
+  @include sprite-position("achieve-8");
+  }
+  .icon-achieve-9 {
+  @include sprite-width("achieve-9");
+  @include sprite-height("achieve-9");
+  @include sprite-position("achieve-9");
+  }
+  .icon-browser-modern {
+  @include sprite-width("browser-modern");
+  @include sprite-height("browser-modern");
+  @include sprite-position("browser-modern");
+  }
+  .icon-browser-update {
+  @include sprite-width("browser-update");
+  @include sprite-height("browser-update");
+  @include sprite-position("browser-update");
+  }
+  .icon-location {
+  @include sprite-width("location");
+  @include sprite-height("location");
+  @include sprite-position("location");
+  }
+  .icon-other {
+  @include sprite-width("other");
+  @include sprite-height("other");
+  @include sprite-position("other");
+  }
+  .icon-paying {
+  @include sprite-width("paying");
+  @include sprite-height("paying");
+  @include sprite-position("paying");
+  }
+  .icon-pointer-black-down {
+  @include sprite-width("pointer-black-down");
+  @include sprite-height("pointer-black-down");
+  @include sprite-position("pointer-black-down");
+  }
+  .icon-pointer-black-left {
+  @include sprite-width("pointer-black-left");
+  @include sprite-height("pointer-black-left");
+  @include sprite-position("pointer-black-left");
+  }
+  .icon-pointer-black-right {
+  @include sprite-width("pointer-black-right");
+  @include sprite-height("pointer-black-right");
+  @include sprite-position("pointer-black-right");
+  }
+  .icon-pointer-black-up {
+  @include sprite-width("pointer-black-up");
+  @include sprite-height("pointer-black-up");
+  @include sprite-position("pointer-black-up");
+  }
+  .icon-question {
+  @include sprite-width("question");
+  @include sprite-height("question");
+  @include sprite-position("question");
+  }
+  .icon-range-drag-handle-dark {
+  @include sprite-width("range-drag-handle-dark");
+  @include sprite-height("range-drag-handle-dark");
+  @include sprite-position("range-drag-handle-dark");
+  }
+  .icon-range-drag-handle {
+  @include sprite-width("range-drag-handle");
+  @include sprite-height("range-drag-handle");
+  @include sprite-position("range-drag-handle");
+  }
+  .icon-s-normal-tny {
+  @include sprite-width("s-normal-tny");
+  @include sprite-height("s-normal-tny");
+  @include sprite-position("s-normal-tny");
+  }
+  .icon-s-pro-med {
+  @include sprite-width("s-pro-med");
+  @include sprite-height("s-pro-med");
+  @include sprite-position("s-pro-med");
+  }
+  .icon-s-pro-sml {
+  @include sprite-width("s-pro-sml");
+  @include sprite-height("s-pro-sml");
+  @include sprite-position("s-pro-sml");
+  }
+  .icon-s-pro-tny {
+  @include sprite-width("s-pro-tny");
+  @include sprite-height("s-pro-tny");
+  @include sprite-position("s-pro-tny");
+  }
+  .icon-sml-logo {
+  @include sprite-width("sml-logo");
+  @include sprite-height("sml-logo");
+  @include sprite-position("sml-logo");
+  }
+  .icon-subscribe-google {
+  @include sprite-width("subscribe-google");
+  @include sprite-height("subscribe-google");
+  @include sprite-position("subscribe-google");
+  }
+  .icon-subscribe-outlook {
+  @include sprite-width("subscribe-outlook");
+  @include sprite-height("subscribe-outlook");
+  @include sprite-position("subscribe-outlook");
+  }
+  .icon-try-new-version {
+  @include sprite-width("try-new-version");
+  @include sprite-height("try-new-version");
+  @include sprite-position("try-new-version");
+  }
+  .icon-warning {
+  @include sprite-width("warning");
+  @include sprite-height("warning");
+  @include sprite-position("warning");
+  }
+
+
+.icon_home {
+  @include sprite-size('parts');
+  background-repeat: no-repeat;
+  display: inline-block;
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (   min--moz-device-pixel-ratio: 2),
+  only screen and (     -o-min-device-pixel-ratio: 2/1),
+  only screen and (        min-device-pixel-ratio: 2),
+  only screen and (                min-resolution: 192dpi),
+  only screen and (                min-resolution: 2dppx) {
+
+    @include sprite-size('parts');
+
+  }
+}

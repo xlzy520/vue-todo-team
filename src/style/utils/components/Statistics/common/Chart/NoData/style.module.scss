@@ -1,0 +1,23 @@
+@import "./scss/utils/variables";
+.chartNoData {
+    position: relative;
+    .desc {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        padding: 0 rem-calc(20);
+        text-align: center;
+        color: rgba(0, 0, 0, 0.85);
+        font-size: rem-calc(16);
+        transform: translateY(-50%);
+    }
+}
+
+[class*="-dark-theme"] {
+    .chartNoData {
+        .desc {
+            color: rgba(255, 255, 255, 0.85);
+        }
+    }
+}

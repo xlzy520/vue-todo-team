@@ -14,13 +14,9 @@
                 <img
                     src="https://cdn.jsdelivr.net/gh/xlzy520/nav@gh-pages/favicon.png"
                     id="dropdownMenuButton"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                    class="dropdown-toggle img-fluid"
+                    class="img-fluid"
                 />
                 <a-menu slot="overlay">
-
                   <a-menu-item @click="toggleFullScreen">
                     <a-icon :type="isFullScreen?'fullscreen': 'fullscreen-exit'" />
                     <span>{{ isFullScreen ? '退出全屏' : '进入全屏'}}</span>
@@ -77,7 +73,7 @@
               <transition-group>
                 <li
                   class="todo-item"
-                  :class="todo.completed ? 'done': 'undone'"
+                  :class="todo.status ? 'done': 'undone'"
                   v-for="(todo,key) in todos"
                   :key="key"
                   @click="showDetail(todo, $event)"
@@ -153,14 +149,14 @@
                     <button
                       type="button"
                       class="btn-picto"
-                      @click.stop="completeTodo(key)"
-                      :aria-label="todo.completed ? 'Undone' : 'Done'"
-                      :title="todo.completed ? 'Undone' : 'Done'"
+                      @click.stop="completeTodo(todo)"
+                      :aria-label="todo.status ? '未完成' : '已完成'"
+                      :title="todo.status ? '未完成' : '已完成'"
                     >
                       <i
                         aria-hidden="true"
                         class="material-icons"
-                      >{{ todo.completed ? 'check_box' : 'check_box_outline_blank' }}</i>
+                      >{{ todo.status ? 'check_box' : 'check_box_outline_blank' }}</i>
                     </button>
                     <button
                       @click.stop="removeTodo(todo)"
@@ -196,7 +192,7 @@
       </main>
     </section>
     <notifications group="foo" position="top right" class="my-style" width="400" />
-    <todoDetailModal />
+    <todoDetailModal @fetchTodoList="fetchTodoList" />
   </div>
 </template>
 
@@ -211,6 +207,7 @@ import todoDetailModal from "./TodoDetailModal";
 import taskApi from "../api/task";
 import axios from 'axios'
 import { Bus } from "./utils/bus";
+import {removeFetchDefaultHeader} from "../utils/baseRequest";
 import vueStore from "../store";
 import { mapActions, mapGetters } from "vuex";
 const uuidv4 = require("uuid/v4");
@@ -327,7 +324,8 @@ export default {
       }
     },
     logout() {
-      localStorage.removeItem('token')
+      // localStorage.removeItem('token')
+      removeFetchDefaultHeader()
       this.$router.push(`/login?redirect=${this.$route.fullPath}`)
       // let that = this;
       // var provider = new firebase.auth.GoogleAuthProvider();
@@ -373,21 +371,26 @@ export default {
       this.updateTodos();
     },
     updateTodos() {
-      this.completedTodos = this.todos.filter(item => item.completed);
-      this.pendingTodos = this.todos.filter(item => !item.completed);
+      this.completedTodos = this.todos.filter(item => item.status);
+      this.pendingTodos = this.todos.filter(item => !item.status);
     },
     removeTodo(todo) {
       // console.log(key);
       taskApi.delete({
         id: todo.id
       }).then(res=>{
-
+        this.$msg('删除成功')
+        this.fetchTodoList()
       })
       // this.deleteTodo(key);
       this.updateTodos();
     },
-    completeTodo(key) {
-      this.markAsComplete(key);
+    completeTodo(todo) {
+      // this.markAsComplete(key);
+      todo.status = 1
+      taskApi.update(todo).then(res => {
+        this.fetchTodoList()
+      })
       this.updateTodos();
     },
     addnewTodo(e) {
@@ -403,7 +406,7 @@ export default {
           priorityColor: "#11cdef"
         };
         taskApi.add(newTodo).then(res=>{
-          this.$msg('新增成功')
+          this.$msg('新增待办事项成功')
           this.fetchTodoList()
         })
         // this.createNewTodo(newTodo);

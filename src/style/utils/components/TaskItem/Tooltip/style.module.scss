@@ -1,0 +1,28 @@
+@import "./scss/utils/variables";
+.body {
+    position: absolute;
+    top: rem-calc(-25);
+    left: rem-calc(-11);
+    white-space: nowrap;
+    z-index: 5;
+    min-width: 32px;
+    padding: rem-calc(2.5) rem-calc(4);
+    height: rem-calc(20);
+    background: #617fde;
+    border-radius: rem-calc(4);
+    .content {
+        font-size: rem-calc(10);
+        font-weight: 400;
+        color: $white;
+        line-height: rem-calc(15);
+    }
+    .arrow {
+        border-color: #617fde transparent #617fde transparent;
+        border-style: solid;
+        border-width: 6px 6px 0 6px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 100%;
+    }
+}

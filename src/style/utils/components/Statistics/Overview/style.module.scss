@@ -1,0 +1,24 @@
+@import "./scss/utils/variables";
+.overview {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    .cardWrapper {
+        flex: auto;
+        margin-bottom: 16px;
+        &:nth-of-type(2n) {
+            margin-left: 16px;
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .overview {
+        display: block;
+        .cardWrapper {
+            &:nth-of-type(2n) {
+                margin-left: 0;
+            }
+        }
+    }
+}

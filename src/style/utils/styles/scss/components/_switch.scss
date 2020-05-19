@@ -1,0 +1,224 @@
+
+
+// background color for the switch container
+$switch-bg: $lavendergray !default;
+
+// the switch heights for our default classes
+$switch-height-tny: rem-calc(15) !default;
+$switch-height-sml: rem-calc(20) !default;
+$switch-height-med: rem-calc(30) !default;
+$switch-height-lrg: rem-calc(35) !default;
+
+// the switch-paddle
+$switch-paddle-bg: $base-bg !default;
+$switch-paddle-transition-speed: .15s !default;
+$switch-paddle-transition-ease: ease-out !default;
+$switch-active-color: $base-active-bg !default;
+
+$switch-paddle-offset: rem-calc(4);
+
+
+//
+// @mixins
+//
+
+// $transition-speed - Time in ms for switch to toggle. Default: $switch-paddle-transition-speed.
+// $transition-ease - Easing function to use for animation (i.e. ease-out). Default: $switch-paddle-transition-ease.
+@mixin switch-base(
+  $transition-speed:$switch-paddle-transition-speed,
+  $transition-ease:$switch-paddle-transition-ease) {
+
+  border: none;
+  outline: 0;
+  padding: 0;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  // Default label styles for type and transition
+  label {
+    background-color: $switch-bg;
+    color: transparent;
+    cursor: pointer;
+    display: block;
+    // margin-bottom: ($switch-height-med / 2);
+    position: relative;
+    text-indent: 100%;
+    width: $switch-height-med * 2;
+    height: $switch-height-med;
+    vertical-align: middle;
+
+    // Transition for the switch label to follow paddle
+    @include single-transition(left, $transition-speed, $transition-ease);
+  }
+
+  // So that we don't need to recreate the form with any JS, we use the
+  // existing checkbox or radio button, but we cleverly position and hide it.
+  input {
+    position: absolute;
+    top: rem-calc(9);
+    left: rem-calc(10);
+    opacity: 0;
+    padding:0;
+
+    & + label { margin-left: 0; margin-right: 0; }
+  }
+
+  // The paddle for the switch is created from an after psuedoclass
+  // content element. This is sized and positioned, and reacts to
+  // the state of the input.
+
+  label:after {
+    background-color: $switch-paddle-bg;
+    content: "";
+    display: block;
+    position: absolute;
+    top: $switch-paddle-offset / 2;
+    transform: translateX($switch-paddle-offset / 2);
+    height: $switch-height-med - $switch-paddle-offset;
+    width: $switch-height-med - $switch-paddle-offset;
+
+    transition: transform $transition-speed $transition-ease;
+
+    // transform: translate3d(0,0,0);
+  }
+
+  input:checked + label {
+    background-color: $switch-active-color;
+  }
+
+  input:checked + label:after {
+    transform: translateX($switch-height-med + $switch-paddle-offset / 2);
+  }
+}
+
+// create the size styles for switches.
+//
+// $height - Height (in px) of the switch. Default: $switch-height-med.
+// $line-height - Line height of switch. Default: 2.3rem.
+@mixin switch-size($height: $switch-height-med) {
+
+  label {
+    height: $height;
+    width: $height * 1.8;
+  }
+
+  label:after {
+    height: $height - $switch-paddle-offset;
+    width: $height - $switch-paddle-offset;
+  }
+
+  input:checked + label:after {
+    transform: translateX($height - $switch-paddle-offset / 2);
+  }
+
+}
+
+// add color and other fanciness to the switches.
+//
+// $paddle-bg - Background of switch paddle. Default: $switch-paddle-bg.
+// $active-color - Background color of positive side of switch. Default: $switch-positive-color.
+// $negative-color - Background color of negative side of switch. Default: $switch-negative-color.
+// $radius - Radius to apply to switch. Default: false.
+// $base-style - Apply base styles? Default: true.
+@mixin switch-style(
+  $paddle-bg:$switch-paddle-bg,
+  $active-color:$switch-active-color,
+  $radius:false,
+  $base-style:true) {
+
+  @if $base-style {
+
+    label {
+      color: transparent;
+      background-color: $switch-bg;
+    }
+
+    label:after {
+      background-color: $paddle-bg;
+    }
+
+    input:checked + label {
+      background-color: $active-color;
+    }
+  }
+
+  // Setting up the radius for switches
+  @if $radius == true {
+    label {
+      border-radius: rem-calc(32);
+    }
+    label:after {
+      border-radius: rem-calc(32);
+    }
+  }
+  @else if $radius {
+    label {
+      border-radius: $radius;
+    }
+    label:after {
+      border-radius: $radius;
+    }
+  }
+
+}
+
+// create switches with a single mixin
+//
+// $transition-speed - Time in ms for switch to toggle. Default: $switch-paddle-transition-speed.
+// $transition-ease - Easing function to use for animation (i.e. ease-out). Default: $switch-paddle-transition-ease.
+// $height - Height (in px) of the switch. Default: $switch-height-med.
+// $paddle-bg - Background of switch paddle. Default: $switch-paddle-bg.
+// $active-color - Background color of an active switch. Default: $switch-active-color.
+// $radius - Radius to apply to switch. Default: false.
+// $base-style - Apply base styles? Default: true.
+@mixin switch(
+  $transition-speed: $switch-paddle-transition-speed,
+  $transition-ease: $switch-paddle-transition-ease,
+  $height: $switch-height-med,
+  $paddle-bg: $switch-paddle-bg,
+  $active-color: $switch-active-color,
+  $radius:false,
+  $base-style:true) {
+    @include switch-base($transition-speed, $transition-ease);
+    @include switch-size($height);
+    @include switch-style($paddle-bg, $active-color, $radius, $base-style);
+}
+
+.switch {
+  @include switch;
+
+  // Large radio switches
+  &.large { @include switch-size($switch-height-lrg); }
+
+  // Small radio switches
+  &.small { @include switch-size($switch-height-sml); }
+
+  // Tiny radio switches
+  &.tiny { @include switch-size($switch-height-tny); }
+
+  // Add a radius to the switch
+  &.radius {
+    label {
+      border-radius: $switch-paddle-offset;
+    }
+    label:after {
+      border-radius: $switch-paddle-offset;
+    }
+  }
+
+  // Make the switch completely round, like a pill
+  &.round {
+    border-radius: 50%;
+
+    label {
+      border-radius: rem-calc(32);
+    }
+    label:after {
+      border-radius: rem-calc(32);
+    }
+  }
+
+}

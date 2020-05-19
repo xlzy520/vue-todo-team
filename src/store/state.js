@@ -45,4 +45,13 @@ export default {
     "#808080",
     "#333333"
   ],
+  todoNav: [
+    {name: '所有', icon: 'all-list', key: 'all'},
+    {name: '已完成', icon: 'completed-list', key: 'completed'},
+    {name: '垃圾桶', icon: 'delete-list', key: 'delete'},
+  ],
+  routeQuery: {
+    filter: 'all',
+    isTag: 0
+  }
 }

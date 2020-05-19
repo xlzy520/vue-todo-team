@@ -1,1 +1,38 @@
 @import url(antd.scss);
+@import url(./utils/var.scss);
+
+@import url(common.scss);
+@import url(global.scss);
+@import url(reset.scss);
+@import url(type.scss);
+@import url(loading.scss);
+@import url(utils/styles/scss/themes/_default.scss);
+@import url(utils/styles/scss/themes/_pro.scss);
+@import url(./utils/styles/scss/layout/_grid.scss);
+@import url(./utils/styles/scss/layout/_toolbar.scss);
+@import url(./utils/styles/scss/layout/_projectlist.scss);
+@import url(./utils/styles/scss/layout/_lists.scss);
+@import url(./utils/styles/scss/layout/_min-cal.scss);
+@import url(./utils/styles/scss/layout/_tasklist.scss);
+@import url(./utils/styles/scss/layout/_subscribe-event-detail.scss);
+@import url(./utils/styles/scss/layout/_tl-bar.scss);
+@import url(./utils/styles/scss/layout/_tl-quick.scss);
+@import url(./utils/styles/scss/layout/_task-menu.scss);
+@import url(./utils/styles/scss/layout/_taskdetail.scss);
+@import url(./utils/styles/scss/layout/_task.scss);
+@import url(./utils/styles/scss/layout/_td-footer.scss);
+@import url(./utils/styles/scss/layout/_td-body.scss);
+@import url(./utils/styles/scss/layout/_td-header.scss);
+@import url(./utils/styles/scss/components/_avatar.scss);
+@import url(./utils/styles/scss/components/_antiscroll.scss);
+@import url(./utils/styles/scss/components/_animation.scss);
+@import url(./utils/styles/scss/components/_input.scss);
+@import url(./utils/styles/scss/components/_switch-icon.scss);
+@import "src/style/utils/styles/scss/themes/grey";
+
+//@import url();
+
+
+
+// theme
+//@import url(./utils/styles/scss/themes/_London.scss);

@@ -1,0 +1,58 @@
+@import "./scss/utils/variables";
+.taskGroupingMenu {
+    position: relative;
+    .slider {
+        transition: transform 0.2s ease;
+        width: rem-calc(73);
+        height: rem-calc(1);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: $black85;
+    }
+    > ul {
+        display: flex;
+        flex-direction: row;
+        padding: 0 0 rem-calc(6);
+        border-bottom: 1px solid $black04;
+        justify-content: space-between;
+
+        > li {
+            height: rem-calc(20);
+            padding: 0 rem-calc(12);
+            width: rem-calc(76);
+            text-align: center;
+            cursor: pointer;
+            > span {
+                color: $black36;
+                font-size: rem-calc(12);
+                letter-spacing: 0;
+                line-height: rem-calc(12);
+            }
+            &:hover {
+                > span {
+                    color: $black56;
+                }
+            }
+            &:global(.active) {
+                > span {
+                    color: $black85;
+                }
+            }
+        }
+    }
+}
+
+[class*="-dark-theme"] .taskGroupingMenu {
+    .slider {
+        background-color: #989899;
+    }
+    > ul {
+        border-bottom: 1px solid $white04;
+        li {
+            > span {
+                color: $white56;
+            }
+        }
+    }
+}

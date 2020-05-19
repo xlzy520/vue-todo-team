@@ -1,0 +1,1413 @@
+@import "src/style/utils/var.scss";
+
+@mixin list-shadow($color) {
+    box-shadow: inset $list-border-width 0 0 $color;
+}
+
+// 新的直接这么写
+.fill-theme {
+    fill: $indigo;
+}
+
+.fill-highlight {
+    fill: $base-font-color-link;
+}
+
+.background-theme {
+    background-color: $indigo;
+}
+
+.before-background-theme {
+    &:before {
+        background-color: $indigo;
+    }
+}
+
+.background-input {
+    background-color: $grey-input-bg;
+}
+
+.color-theme {
+    color: $indigo;
+}
+
+.border-theme {
+    border-color: $indigo;
+}
+
+::selection {
+    background: $default-selection-color;
+    /* WebKit/Blink Browsers */
+}
+
+::-moz-selection {
+    background: $default-selection-color;
+    /* Gecko Browsers */
+}
+
+body {
+    background: $body-bg;
+    color: $body-font-color;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: $base-font-color-title;
+}
+
+a,
+.link,
+.cm-link {
+    color: $base-font-color-link;
+
+    &:visited {
+        color: $base-font-color-link;
+    }
+}
+
+// @for $i from 0 through 9 {
+
+//   [l-color="#{$i}"] {
+//     @include list-shadow($l-color-#{$i})
+//   }
+// }
+
+// font-color class
+.text-def {
+    color: $base-font-color;
+}
+
+.text-primary {
+    color: $base-font-color-primary;
+}
+
+.text-secondary {
+    color: $base-font-color-secondary;
+}
+
+.text-alert {
+    color: $base-font-color-alert;
+}
+
+.text-info {
+    color: $base-font-color-info;
+}
+
+.text-info.time {
+    color: $manatee;
+}
+
+.text-info-title {
+    color: $base-font-color-info-title;
+}
+
+.text-link {
+    color: $base-font-color-link;
+}
+
+.text-active {
+    color: $base-font-color-deepbg;
+}
+
+.text-title {
+    color: $base-font-color-title;
+}
+
+.text-pro {
+    color: $orangered;
+}
+
+.text-root {
+    color: $body-font-color;
+}
+
+// background-color
+.bg-alert {
+    background-color: $base-alert-bg;
+}
+
+.bg-primary {
+    background-color: $base-active-bg;
+}
+
+.bg-active {
+    background-color: $base-active-bg;
+}
+
+.bg-light {
+    background-color: $base-active-light-bg;
+}
+
+// border
+.bd-divider {
+    border-color: $ashgrey !important;
+}
+
+.team-bd-divider {
+    border-color: $black06 !important;
+}
+
+.avatar-bd-divider {
+    border: 1px solid $black08;
+}
+
+.g-left {
+    background-color: $bluesky;
+
+    .upgrade-button {
+        background-color: #e5e8ee;
+    }
+}
+
+.g-center,
+.g-full-right {
+    background-color: $base-bg;
+}
+
+// change taskdetail background-color
+.td-body,
+.td-body textarea {
+    background-color: $white;
+}
+
+.l-divider {
+    background-color: $black08;
+}
+
+// toolbar
+.tool-bar {
+    .t-name {
+        color: $white;
+        opacity: 0.8;
+    }
+}
+
+// project-list
+.lists {
+    li > a,
+    div.p-sort-help > a,
+    .f-header > a,
+    .fake-li > a,
+    .l-c > a,
+    .l-new > a {
+        color: $base-font-color-deepbg;
+
+        .count {
+            color: rgba(black, 0.36);
+        }
+    }
+
+    li > a,
+    div.p-sort-help > a,
+    .f-header > a,
+    .fake-li > a,
+    .l-new > a {
+        &:hover {
+            background-color: $grey-sidebar-hover-bg;
+        }
+    }
+
+    .active > a {
+        background-color: $grey-sidebar-active-bg;
+
+        .l-title {
+            font-weight: bold;
+        }
+
+        .count {
+            color: rgba(black, 0.85);
+        }
+
+        &:hover {
+            background-color: $grey-sidebar-active-bg;
+        }
+    }
+
+    .team-project-empty {
+        background-color: $grey-sidebar-hover-bg;
+        color: rgba($base-font-color-deepbg, 0.56);
+    }
+
+    .list-closed {
+        & > a {
+            .count {
+                svg {
+                    position: absolute;
+                    top: rem-calc(10);
+                    right: rem-calc(-10);
+                    display: inline-block;
+                    width: rem-calc(12);
+                    height: rem-calc(12);
+                    fill: $white;
+
+                    &.icon-chevron-folder-open {
+                        display: none;
+                    }
+                }
+
+                .icon-more {
+                    display: none;
+                    position: absolute;
+                    right: rem-calc(-11);
+                    top: rem-calc(6);
+                }
+            }
+        }
+
+        .open {
+            .count {
+                svg {
+                    &.icon-chevron-folder-open {
+                        display: block;
+                    }
+
+                    &.icon-chevron-folder-close {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        .open,
+        .open + .l-closed-ul {
+            background-color: $black05;
+        }
+
+        // .open:hover {
+        //     background-color: $black1;
+        // }
+
+        .l-close-title {
+            font-size: rem-calc(14);
+        }
+    }
+
+    // sort
+    .ui-sortable-helper {
+        background-color: $grid-left-bg;
+
+        a {
+            color: $base-font-color-deepbg;
+            background-color: $grid-left-bg;
+        }
+    }
+
+    .ui-sortable-placeholder {
+        border-color: $white6;
+    }
+
+    .l-tabs .l-tab {
+        border-bottom: 1px solid $black08;
+    }
+}
+
+// 小日历视图背景色
+.min-cal {
+    background-color: $grey-mini-bg;
+}
+.min-cal,
+.calendar-min-cal {
+    .fake-enlarge-mini-cal {
+        &::before {
+            background-color: $grey-mini-fake-bg;
+        }
+        &::after {
+            border-color: transparent transparent $grey-mini-fake-color transparent;
+        }
+    }
+
+    .fake-narrow-mini-cal {
+        &::before {
+            background-color: $grey-mini-fake-bg;
+        }
+        &::after {
+            border-color: $grey-mini-fake-color transparent transparent transparent;
+        }
+    }
+
+    .k-calendar {
+        .k-title {
+            .k-btn {
+                fill: $grey-mini-btn-color;
+
+                &:hover {
+                    background-color: $grey-mini-btn-bg;
+                }
+            }
+
+            .nav-selector {
+                .nav-toggle {
+                    color: $grey-mini-day-in-month-color;
+                }
+
+                .nav-menu {
+                    .year {
+                        color: $grey-mini-day-in-month-color;
+                        a {
+                            color: $grey-mini-day-in-month-color;
+                        }
+
+                        .active a {
+                            color: $grey-mini-today-color;
+                        }
+                    }
+
+                    .month {
+                        a {
+                            color: $grey-mini-day-in-month-color;
+                        }
+
+                        a.month-current {
+                            color: $grey-mini-today-color;
+                        }
+
+                        a:not(.disable) {
+                            &:hover {
+                                background-color: $grey-mini-day-hover-bg;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .k-header {
+            color: $grey-mini-header-color;
+        }
+        .k-task {
+            &:after {
+                background-color: $grey-mini-task-tip-bg;
+            }
+        }
+
+        .k-days {
+            color: $grey-mini-day-in-month-color;
+
+            span {
+                &.k-selected {
+                    color: $grey-mini-day-active-color;
+
+                    &:before {
+                        background-color: $grey-mini-day-active-bg;
+                    }
+
+                    &:after {
+                        background-color: $grey-mini-day-active-task-tip-bg;
+                    }
+                }
+
+                &.kalendae-day-drag-hovered,
+                &:not(.k-selected):hover {
+                    &:before {
+                        background-color: $grey-mini-day-hover-bg;
+                    }
+                }
+            }
+
+            .k-today {
+                color: $grey-mini-today-color;
+            }
+
+            .k-selected {
+                &:before {
+                    background-color: $grey-mini-day-active-bg;
+                }
+            }
+        }
+        span,
+        a {
+            &.k-out-of-month,
+            &.disable {
+                color: $grey-mini-day-out-month-color;
+            }
+        }
+    }
+}
+
+#pomodoro-timer {
+    .wrapper {
+        background-color: $grey-pomotimer-bg;
+        border-color: $grey-pomotimer-border-top-color;
+        .detail {
+            .time {
+                color: $grey-pomotimer-time-color;
+            }
+            .title {
+                color: $grey-pomotimer-title-color;
+            }
+            .pomodoro-settings svg {
+                fill: $grey-pomotimer-setting-color;
+            }
+        }
+
+        .icons {
+            svg {
+                fill: $grey-pomotimer-progress-color;
+            }
+            .circle-bg {
+                border-color: rgba($grey-pomotimer-progress-color, 0.36);
+            }
+            .right-circle {
+                > div {
+                    border-right-color: $grey-pomotimer-progress-color;
+                    border-top-color: $grey-pomotimer-progress-color;
+                }
+            }
+
+            .left-circle {
+                > div {
+                    border-left-color: $grey-pomotimer-progress-color;
+                    border-bottom-color: $grey-pomotimer-progress-color;
+                }
+            }
+            &:hover {
+                .circle-bg {
+                    border-color: rgba($grey-pomotimer-progress-color, 0.48);
+                }
+            }
+        }
+    }
+}
+
+// section
+.s-line,
+.t-line.top {
+    background-color: $timberwolf;
+}
+
+.sub-task {
+    .title {
+        border-color: $black06;
+    }
+
+    &.checked {
+        .title {
+            color: $black24;
+        }
+    }
+}
+
+// task
+li.task {
+    // background-color: $white;
+
+    &:last-child {
+        .t-line.bottom {
+            background-color: $black08;
+        }
+    }
+
+    &.selected {
+        .l-task-bg {
+            background-color: $grey-task-active-bg !important;
+        }
+    }
+
+    &.active {
+        .l-task-bg {
+            background-color: $grey-task-active-bg !important;
+        }
+    }
+
+    &:hover {
+        .l-task-bg {
+            background-color: $grey-task-hover-bg;
+        }
+    }
+
+    .t-date {
+        color: $black54;
+    }
+
+    .project-hint {
+        color: $base-font-color-info;
+    }
+
+    // 完成之后
+    &.checked {
+        .title {
+            color: $black36;
+        }
+
+        .tip {
+            .text-tny {
+                color: $black12;
+            }
+        }
+
+        .assignment {
+            opacity: 0.5;
+        }
+    }
+}
+
+.sub-task {
+    &.opened {
+        &::before {
+            background-color: $grey-task-hover-bg;
+        }
+    }
+}
+
+.column {
+    .task {
+        .l-task:hover {
+            background-color: $grey-column-task-hover-bg;
+        }
+
+        &.active,
+        &.selected {
+            .l-task {
+                background-color: $grey-column-task-active-bg !important;
+            }
+        }
+    }
+}
+
+.duedate-overdue {
+    color: $darkRed;
+}
+
+.td-header {
+    border-color: $base-border-color;
+}
+
+// task detail
+.td-bar {
+    .td-check:after {
+        background-color: $timberwolf;
+    }
+}
+
+.td-footer {
+    border-color: $base-border-color;
+
+    input {
+        background-color: inherit;
+    }
+
+    div > a:hover {
+        .i-2-1 {
+            fill: $black54;
+        }
+
+        input[type="button"] {
+            color: $black54;
+        }
+    }
+
+    .td-item-svg {
+        fill: $black36;
+    }
+}
+
+// 客户端目前只用蓝色
+.mac,
+.windows {
+    .td-footer {
+        input {
+            background-color: transparent;
+        }
+    }
+}
+
+textarea {
+    background-color: $base-bg;
+}
+
+// sub task
+// .sub-task,
+// .subtasks {
+//   background-color: $base-bg;
+// }
+
+.task-drag-hovered {
+    background-color: rgba($indigo, 0.04);
+}
+
+.group-drag-hovered,
+.project-drag-hovered,
+.tag-drag-hovered,
+.csl_drag-hovered {
+    > .f-header > .l-item,
+    > .l-item {
+        box-shadow: inset 0 0 0 1px $base-bg;
+    }
+}
+
+// settings
+.settings {
+    background: $lightwhite;
+
+    .s-header {
+        .toggle-tabs {
+            .icon-left-menu {
+                fill: $indigo;
+            }
+        }
+    }
+
+    .tabs {
+        border-color: $black08;
+
+        li.active {
+            color: $indigo;
+        }
+    }
+
+    // 个人设置
+    .personal-panel {
+        .settings-rank {
+            .hw-panel {
+                .nickname:focus {
+                    border-bottom-color: $indigo;
+                }
+
+                .hw-item {
+                    .number {
+                        color: $bistre;
+                    }
+                }
+
+                // 排名颜色
+                #ranking {
+                    color: $vanilla;
+                }
+            }
+        }
+    }
+
+    .theme-panel {
+        .jColorCheck + span {
+            color: $indigo;
+        }
+    }
+
+    .members-panel {
+        .team-name-editor:focus {
+            border-bottom-color: $indigo;
+        }
+    }
+}
+
+// popup 弹出层
+.popup {
+    background: $white;
+}
+
+// 放在icon中的字
+.inner-date {
+    color: $white;
+}
+
+// 原来那些 i-x 的不行，以后新的按照下面这样的来
+
+// Icon size
+
+// icon-size-8
+.i-s-8 {
+    width: rem-calc(8);
+    height: rem-calc(8);
+}
+
+// icon-size-12
+.i-s-12 {
+    width: rem-calc(12);
+    height: rem-calc(12);
+}
+
+// icon-size-16
+.i-s-16 {
+    width: rem-calc(16);
+    height: rem-calc(16);
+}
+
+// icon-size-18
+.i-s-18 {
+    width: rem-calc(18);
+    height: rem-calc(18);
+}
+
+// icon-size-20
+.i-s-20 {
+    width: rem-calc(20);
+    height: rem-calc(20);
+}
+
+// icon-size-24
+.i-s-24 {
+    width: rem-calc(24);
+    height: rem-calc(24);
+}
+
+// Icon Opacity
+
+// icon-opacity-8
+.i-o-8 {
+    opacity: 0.08;
+}
+
+.i-o-10 {
+    opacity: 0.1;
+}
+
+// icon-opacity-12
+.i-o-12 {
+    opacity: 0.12;
+}
+
+// icon-opacity-20
+.i-o-20 {
+    opacity: 0.2;
+}
+
+// icon-opacity-24
+.i-o-24 {
+    opacity: 0.24;
+}
+
+// icon-opacity-36
+.i-o-36 {
+    opacity: 0.36;
+}
+
+// icon-opacity-54
+.i-o-54 {
+    opacity: 0.54;
+}
+
+.i-o-36-54-85 {
+    opacity: 0.36;
+    &:hover {
+        opacity: 0.54;
+    }
+}
+
+// icon-opacity-85
+.i-o-85 {
+    opacity: 0.85;
+}
+
+// icon-opacity-100
+.i-o-100-force {
+    opacity: 1 !important;
+}
+
+// Icon Hover Opacity
+
+// icon-hover-opacity-54
+.i-h-o-54 {
+    &:hover {
+        opacity: 0.54;
+    }
+}
+
+// icon-hover-opacity-85
+.i-h-o-85 {
+    &:hover {
+        opacity: 0.85;
+    }
+}
+
+div.option-item:hover,
+div > a:hover,
+li a:hover {
+    .i-h-o-54 {
+        opacity: 0.54;
+    }
+    .i-h-o-85 {
+        opacity: 0.85;
+    }
+}
+
+// Icon Color
+.i-black {
+    fill: black;
+    color: black;
+}
+
+.active,
+.single-selected-item,
+.option-item-selected {
+    .i-active-theme {
+        fill: $indigo;
+        opacity: 1;
+    }
+}
+
+// 这些以后别写了
+// icon start
+// 底色为蓝色 中使用
+.i-1 {
+    fill: $white;
+    opacity: 0.36;
+
+    &:hover {
+        opacity: 0.72;
+    }
+}
+
+.lists .i-1 {
+    // opacity: 0.5;
+
+    &:hover {
+        opacity: 0.36;
+    }
+}
+
+.active .i-1 {
+}
+
+.i-1-1 {
+    fill: $white;
+}
+
+// 底色为白色 中使用
+.i-2,
+.i-2-1 {
+    fill: $darkgrey;
+}
+
+.i-2.black {
+    fill: $black;
+}
+
+.active {
+    .i-2,
+    .i-2-1 {
+        fill: $indigo;
+    }
+}
+
+.highlight {
+    .i-2 {
+        fill: $indigo;
+        color: $white;
+    }
+}
+
+.preset-time.active {
+    .i-2 {
+        // color: $white;
+    }
+}
+
+div.option-item:hover .i-2-1,
+div > a:hover .i-2-1,
+li a:hover .i-2-1 {
+    fill: $black85;
+}
+
+// 弹出框 选项 中使用
+.i-3,
+.i-3-1 {
+    fill: $darkgrey;
+}
+
+.active,
+.single-selected-item,
+.option-item-selected {
+    .i-3,
+    .i-3-1 {
+        fill: $indigo;
+    }
+}
+
+// div.option-item:hover .i-3,
+// div > a:hover .i-3 {
+//     fill: $manatee;
+// }
+
+// 不变色icon
+.i-4 {
+    fill: $lavendergray;
+    color: $lavendergray;
+}
+
+// hover 反白
+.i-4-1 {
+    fill: $silver;
+    color: $lavendergray;
+}
+
+// 填充icon的变色方案
+.i-5 {
+    fill: $black54;
+    color: $black54;
+}
+
+.i-6 {
+    fill: $silver;
+}
+
+.active .i-5 {
+    fill: $indigo;
+    color: $indigo;
+}
+
+.duedate-overdue .i-5,
+.active.duedate-overdue .i-5 {
+    fill: $darkRed;
+    color: $darkRed;
+
+    &.selected-date {
+        color: $white85;
+    }
+}
+
+div > a:hover .i-5,
+li a:hover .i-5 {
+    fill: $indigo;
+}
+
+.active > .i-6 {
+    fill: $indigo;
+    color: $indigo;
+}
+
+a:hover > .i-6 {
+    fill: $suvagrey;
+}
+
+.i-7 {
+    fill: $black18;
+}
+
+.i-8 {
+    fill: $indigo;
+}
+
+.i-9 {
+    fill: $theme-red;
+}
+
+.i-10 {
+    fill: $vanilla;
+}
+
+.i-11 {
+    fill: $theme-green;
+}
+
+.i-12 {
+    fill: $moonyellow;
+}
+
+.i-13 {
+    fill: $black36;
+}
+
+// priority color
+.priority-low {
+    fill: $priority-low;
+}
+
+.priority-medium {
+    fill: $priority-medium;
+}
+
+.priority-high {
+    fill: $priority-high;
+}
+
+// icon end
+
+// sort
+.tasks,
+.subtasks {
+    .ui-sortable-placeholder {
+        background-color: $steelblue;
+    }
+}
+
+.subtasks .ui-sortable-helper,
+.task.ui-sortable-helper {
+    border-color: $base-border-color;
+    background-color: $base-bg;
+
+    &:hover {
+        background-color: $base-bg !important;
+    }
+}
+
+// 显示更多task
+.show-more,
+.tl-loading {
+    border-top-color: $ashgrey;
+    color: $black36;
+}
+
+.notification-view {
+    .tabs {
+        .tab.active {
+            span {
+                color: $black85;
+            }
+        }
+    }
+}
+
+// 空白页icon
+.notification .notify-panel svg,
+.lists .empty-tag svg {
+    fill: $white;
+    border-radius: 50%;
+    background-color: $indigo;
+}
+
+.notification .notify-panel svg {
+    width: 156px;
+    height: 156px;
+}
+
+.empty-list-info span {
+    color: $manatee;
+}
+
+.empty-list-info svg {
+    // opacity: 0.7;
+    width: 200px;
+    height: 200px;
+}
+
+.lists .empty-tag svg {
+    width: 96px;
+    height: 96px;
+    background-color: transparent;
+    // padding: 12px;
+    // background-color: $black06;
+    opacity: 0.36;
+}
+
+.labs-panel .vcard {
+    border-color: $timberwolf;
+
+    &.active {
+        border-color: $base-focus-border-color;
+
+        .v-background {
+            &:before {
+                background-color: $base-active-bg;
+            }
+        }
+    }
+
+    .v-background {
+        background-color: $timberwolf;
+
+        &:before {
+            background-color: $timberwolf;
+        }
+    }
+}
+
+.tk-calendar {
+    .wk-grid-container {
+        .wk-daynames {
+            .wk-dayname {
+                .wk-daylink-today {
+                    color: $indigo;
+                }
+            }
+        }
+
+        .tg-allday-weekend:not(.tg-allday-today),
+        .tg-col-weekend,
+        .tg-col-weekend .cgd-col {
+            background-color: $vwhitegray;
+        }
+    }
+
+    &:not(.day) {
+        .bg .c-col-date-now,
+        .tg-allday-today,
+        .tg-col-today,
+        .tg-col-today .cgd-col {
+            background-color: $opacityindigo;
+        }
+    }
+}
+
+.tkcalendar-view {
+    .c-task {
+        color: $indigo-color;
+        background-color: rgba($indigo-c-task-bg, 0.54);
+
+        &.checked,
+        &.c-task-remain {
+            color: rgba($indigo-color, 0.54);
+            background-color: rgba($indigo-c-task-bg, 0.16);
+        }
+
+        svg {
+            fill: $indigo-color;
+        }
+
+        &.pop-task {
+            background-color: rgba($indigo-c-task-bg, 0.85);
+
+            &.checked {
+                color: $indigo-color;
+                background-color: rgba($indigo-c-task-bg, 0.36);
+            }
+
+            svg {
+                fill: $white;
+            }
+        }
+
+        .c-task-footnote {
+            border-bottom-color: $indigo;
+            border-right-color: $indigo;
+        }
+    }
+}
+
+.tl-quick {
+    .tl-q-preset {
+        .list-active {
+            .i-2-1 {
+                fill: $indigo;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+.advance-repeat-preview {
+    color: $indigo;
+}
+
+.beta {
+    display: inline-block;
+    font-size: rem-calc(12);
+    color: $moonyellow;
+    vertical-align: top;
+    margin-left: rem-calc(6);
+}
+
+// 因为结构问题特殊处理的地方
+.time-menu {
+    .item.active {
+        .i-med.i-2-1 {
+            fill: $indigo;
+        }
+    }
+}
+
+.reminders {
+    .r-task {
+        .subtask-list > li.active {
+            background-color: $opacityindigo;
+            color: $indigo;
+        }
+    }
+}
+
+.hide-list {
+    .g-center,
+    .g-right {
+        display: none;
+    }
+}
+
+.tag-item {
+    background-color: rgba($indigo, 0.54);
+    color: #364574;
+
+    .tag-name {
+        color: #364574;
+    }
+
+    .delete > svg {
+        fill: $black85;
+    }
+}
+
+.tag-list {
+    .tag-item:not(.new):not(.disable):hover {
+        background-color: rgba($indigo, 0.64);
+    }
+}
+
+.detail-tag-view {
+    .CodeMirror .CodeMirror-placeholder {
+        color: $opacityindigo-72;
+    }
+
+    .add-tag {
+        background-color: $opacityindigo-24;
+
+        &:hover {
+            background-color: $opacityindigo-36;
+        }
+    }
+}
+
+.dropdown-menu,
+.dropdown-menu-menu-submenu {
+    &.multi-select-menu {
+        .select-list {
+            background-color: transparent;
+        }
+    }
+}
+
+.column-list-view {
+    .column {
+        .column-main,
+        &.new-column {
+            background-color: $grey-column-bg;
+        }
+    }
+
+    .new-column {
+        .title-edit:focus {
+            border-color: rgba($indigo, 0.24);
+        }
+    }
+}
+
+textarea.input-fake,
+input {
+    &:focus {
+        border-color: $indigo;
+    }
+}
+
+.fill-input,
+.task-input,
+.search-input,
+.title-edit {
+    background-color: $grey-input-bg;
+    border-color: transparent;
+    border-radius: 4px;
+
+    &:focus,
+    &.focus {
+        border-color: $grey-input-active-border-color;
+    }
+
+    &.color-white {
+        color: white;
+    }
+}
+
+.group-header-box .title-edit {
+    background-color: $black08;
+    &:focus,
+    &.focus {
+        border-color: rgba($black, 0.16);
+    }
+}
+
+.CodeMirror-hints {
+    .CodeMirror-hint {
+        &:hover,
+        &:focus,
+        &.open {
+            background-color: $grey-dropdown-item-hover-bg;
+        }
+    }
+    .CodeMirror-hint-active {
+        background-color: $grey-dropdown-item-hover-bg;
+    }
+}
+
+.dropdown-menu-menu-submenu-open,
+.dropdown-menu-item:hover,
+.dropdown-menu-menu-item-active,
+.multi-select-menu .option-item:hover {
+    background-color: $grey-dropdown-item-hover-bg;
+}
+
+.task-menu {
+    .move-to,
+    .assign-to,
+    .copy_task_link,
+    .duplicate-task,
+    .manage-tags,
+    .merge-tasks,
+    .delete-task,
+    .start-task-pomo {
+        &:hover {
+            background-color: $grey-dropdown-item-hover-bg;
+        }
+    }
+}
+
+.before-background-theme {
+    &:before {
+        background-color: $indigo;
+    }
+}
+
+.after-background-theme {
+    &:after {
+        background-color: $indigo;
+    }
+}
+
+button.btn-secondary,
+button.btn-cancel,
+.button.btn-secondary,
+.button.btn-cancel,
+.btn.btn-secondary,
+.btn.btn-cancel {
+    background-color: rgba(46, 73, 136, 0.08);
+    border-color: rgba(0, 0, 0, 0.04);
+
+    &:hover,
+    &:focus {
+        background-color: rgba(46, 73, 136, 0.12);
+        border-color: rgba(0, 0, 0, 0.04);
+    }
+
+    &:active {
+        background-color: rgba(46, 73, 136, 0.18);
+        border-color: rgba(0, 0, 0, 0.04);
+    }
+}
+
+button.btn-primary,
+.button.btn-primary,
+.btn.btn-primary {
+    background-color: $grey-button-primary-bg;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+
+    &:hover,
+    &:focus {
+        background-color: $grey-button-primary-hover-bg;
+    }
+
+    &:active {
+        background-color: $grey-button-primary-active-bg;
+    }
+}
+
+button[disabled].btn-primary,
+.button[disabled].btn-primary,
+.btn[disabled].btn-primary {
+    background-color: $grey-button-disabled-bg;
+}
+
+.dropdown-menu,
+.dropdown-menu-menu-submenu-popup,
+.multi-select-menu {
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+// 升级提示
+//
+
+// .upgrade-pop {
+//   .popup-header {
+//     background-color: $indigo;
+//   }
+// }

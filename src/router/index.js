@@ -1,22 +1,67 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 import login from "../components/Login";
-import todo from "../components/Todo";
-import PageNotFound from "../components/Page404";
-import register from "../components/register";
-import resetPassword from "../components/resetPassword";
+import home from "@/views/home";
+import PageNotFound from "@/views/Page404";
+import register from "@/views/register";
+import accountCenter from "@/views/accountCenter";
+import resetPassword from "@/views/resetPassword";
+import todayTomorrow from "@/views/today-tomorrow";
+import statistics from "@/views/statistics";
+import group from "@/views/group/group";
+import groupDetail from "@/views/group/groupDetail";
 
 Vue.use(VueRouter)
 
 
 const routes = [
-  { path:  '/', component: login },
-  { path: '/todo', component: todo },
+  { path:  '/', redirect: '/todo', component: home },
+  { path: '/todo', component: home ,
+    children: [
+      {
+        path: 'today-tomorrow',
+        name: '今天明天',
+        component: todayTomorrow,
+      },
+      {
+        path: '7day',
+        name: '最近七天',
+        component: todayTomorrow,
+      },
+      {
+        path: '7day',
+        name: '最近七天',
+        component: todayTomorrow,
+      },
+      {
+        path: '7day',
+        name: '最近七天',
+        component: todayTomorrow,
+      },
+      {
+        path: '7day',
+        name: '最近七天',
+        component: todayTomorrow,
+      },
+      {
+        path: 'group',
+        name: '最近七天',
+        component: group,
+      },
+      {
+        path: 'team/:id',
+        name: '团队',
+        component: groupDetail
+      },
+      { path: 'account/center', component: accountCenter },
+    ]
+  },
   { path:  '/login', component: login },
-  { path: "*", component: PageNotFound},
   { path: '/register', component: register },
   { path: '/resetPassword', component: resetPassword },
+  { path: '/statistics', component: statistics },
+  { path: "*", component: PageNotFound},
+
 ];
 
 // const router = new VueRouter({

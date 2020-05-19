@@ -1,0 +1,17 @@
+.shortcuts-list {
+    height: $popup-max-height;
+    .popup-body {
+        padding-top: 0;
+        padding-bottom: rem-calc(14);
+    }
+
+    .popup-body > div > ul {
+        max-height: rem-calc(400);
+
+        .shortcut-item {
+            height: rem-calc(38);
+            line-height: rem-calc(38);
+            border-bottom: 1px solid $black06;
+        }
+    }
+}

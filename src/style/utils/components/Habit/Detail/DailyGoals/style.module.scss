@@ -1,0 +1,11 @@
+@import "./scss/utils/variables";
+.dailyGoalsWrapper {
+    margin-bottom: rem-calc(40);
+    padding-left: rem-calc(20);
+
+    .header {
+        font-size: rem-calc(16);
+        font-weight: 500;
+        line-height: rem-calc(24);
+    }
+}

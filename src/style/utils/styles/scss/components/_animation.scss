@@ -1,0 +1,195 @@
+@import "src/style/utils/var.scss";
+
+// Durations
+$fastDuration: .1s !default;
+$medFastDuration: .15s !default;
+$mediumDuration: .2s !default;
+$slowDuration: .5s !default;
+
+
+.animated {
+    animation-duration: $mediumDuration;
+    animation-fill-mode: both;
+
+    &.med-fast {
+        animation-duration: $medFastDuration;
+    }
+}
+
+@keyframes syncIng {
+    0% {
+        transform: scaleX(0);
+    }
+    100% {
+        transform: scaleX(0.9);
+    }
+}
+
+@keyframes syncDone {
+    0% {
+        transform: scaleX(0.9);
+    }
+    99% {
+        transform: scaleX(1);
+    }
+    100% {
+        transform: scaleX(0);
+    }
+}
+
+@keyframes pomo-progress {
+    0% {
+        transform: sclaeX(0);
+    }
+
+    99% {
+        transform: scaleX(1);
+    }
+
+    100% {
+        transform: sclaeX(0);
+    }
+}
+
+// slide up
+@keyframes slideInUp {
+    0% {
+        transform: translate3d(0, 100%, 0);
+        visibility: visible;
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.slideInUp {
+    animation-name: slideInUp;
+}
+
+// slide right
+@keyframes slideInRight {
+    0% {
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.slideInRight {
+    animation-name: slideInRight;
+}
+
+// slide left
+@keyframes slideInLeft {
+    0% {
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.slideInLeft {
+    animation-name: slideInLeft;
+}
+
+// fade down
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, -100%, 0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.fadeInDown {
+    animation-name: fadeInDown;
+}
+
+@keyframes bounceIn {
+
+    0%,
+    20%,
+    40%,
+    60%,
+    80%,
+    100% {
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+
+    0% {
+        opacity: 0;
+        transform: scale3d(.3, .3, .3);
+    }
+
+    20% {
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+
+    40% {
+        transform: scale3d(.9, .9, .9);
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale3d(1.03, 1.03, 1.03);
+    }
+
+    80% {
+        transform: scale3d(.97, .97, .97);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+.bounceIn {
+    animation-name: bounceIn;
+}
+
+// fade out
+.fadeOut {
+    opacity: 0 !important;
+}
+
+
+//
+.transite,
+.transition {
+    transition: all .2s ease-in-out;
+}
+
+.slow-transition {
+    transition: all .5s ease-in-out;
+}
+
+.fast-transition {
+    transition: all .1s ease-in-out;
+}
+
+// tip
+.tip-transition {
+    transition: all .2s ease;
+}
+
+// task-item
+.height-transition {
+    transition: height .2s ease-in-out;
+}
+
+// task detail
+.min-height-transition {
+    transition: min-height .15s ease-in-out;
+}

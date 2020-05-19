@@ -1,0 +1,164 @@
+$s-service-max-w: rem-calc(430);
+$s-service-row-p: rem-calc(30) 0;
+.service-panel {
+    .row {
+        line-height: 1.5;
+        padding: $s-service-row-p;
+        &:first-child {
+            padding-top: rem-calc(10);
+        }
+        border-bottom: 1px solid;
+        &:last-child {
+            border-bottom: 0;
+        }
+        input {
+            width: 100%;
+            margin: rem-calc(10) 0;
+        }
+        input[readonly] {
+            cursor: default;
+        }
+        .s-subscribe-menu > ul > li {
+            margin: rem-calc(10) 0;
+            span ~ input {
+                margin-top: 0;
+            }
+            .del-btn {
+                display: none;
+            }
+            &:hover {
+                .del-btn {
+                    display: block;
+                }
+            }
+        }
+        .action-btn {
+            margin-right: rem-calc(10);
+        }
+        .project-select {
+            > .direct {
+                position: static;
+                svg[class^="icon-chevron"] {
+                    width: rem-calc(12);
+                    height: rem-calc(12);
+                }
+            }
+            .dropdown-menu {
+                li {
+                    margin: 0;
+                }
+                .list-divider {
+                    width: 100%;
+                    height: rem-calc(1);
+                    margin: rem-calc(6) 0;
+                    background-color: $black08;
+                }
+            }
+        }
+        .row-left {
+            margin-right: rem-calc(80);
+        }
+        .s-menu {
+            width: calc(100% - 234px);
+        }
+    }
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+    } // Hover/Focus state
+    .dropdown-menu li > a {
+        &:hover,
+        &:focus,
+        &.open {
+            text-decoration: none;
+            background-color: $base-active-popup-bg;
+        }
+        &:hover,
+        &:focus {
+            .text-primary,
+            .text-secondary,
+            strong {
+                text-decoration: none;
+                color: $dropdown-link-hover-color;
+                background-color: $dropdown-link-hover-bg;
+            }
+        }
+    }
+    #subscribe-tick-project-select .dropdown-menu {
+        position: unset;
+        display: block;
+    }
+    .open {
+        // Show the menu
+        .dropdown-menu {
+            display: block;
+        } // Remove the outline when :focus is triggered
+        > a {
+            outline: 0;
+        }
+    }
+    .row-right {
+        max-width: $s-service-max-w;
+        min-width: $s-service-max-w;
+    }
+    .row-right + .row-right {
+        margin-top: rem-calc(30);
+    }
+    p {
+        width: 100%;
+    }
+    .action-result {
+        position: relative;
+    }
+    .input-handle {
+        position: absolute;
+        right: rem-calc(5);
+        top: rem-calc(15);
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .service-panel {
+        .row {
+            .s-menu {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.no-data {
+    text-align: left;
+    color: rgba(0, 0, 0, 0.36);
+}
+
+.oauth-row {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    height: 62px;
+    & {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+    &:last-child() {
+        border: none;
+    }
+    img {
+        width: 25px;
+        border-radius: 50%;
+    }
+    span {
+        margin: 0 16px;
+        flex: 1 1;
+    }
+    .app-name {
+        font-size: 14px;
+    }
+    .auth-time {
+        font-size: 12px;
+    }
+}

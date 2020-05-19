@@ -1,0 +1,8 @@
+.timepicker-widget {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    .timepicker-widget-content {
+        width: 100%;
+    }
+}

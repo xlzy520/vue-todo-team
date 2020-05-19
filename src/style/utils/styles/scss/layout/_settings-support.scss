@@ -1,0 +1,56 @@
+
+$support-s-row-divider: rem-calc(35);
+
+.support-panel {
+  text-align: left;
+
+  .s-row {
+    margin-bottom: $support-s-row-divider;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .title {
+      font-size: $base-font-size-mid;
+      margin-bottom: rem-calc(24);
+    }
+
+    p {
+      line-height: 1.7;
+
+      > a {
+        vertical-align: bottom;
+      }
+    }
+
+    .links {
+      margin-top: rem-calc(25);
+
+      .l-item {
+        display: inline-block;
+        width: rem-calc(110);
+        height: rem-calc(110);
+        vertical-align: middle;
+        padding-top: rem-calc(20);
+        margin-right: rem-calc(11);
+        margin-bottom: rem-calc(11);
+        border: 1px solid $lightblack;
+        text-align: center;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+    .nice-people {
+      margin-top: rem-calc(20);
+    }
+
+  }
+
+  .copy-holder {
+    position: absolute;
+    top: -1000%;
+  }
+}

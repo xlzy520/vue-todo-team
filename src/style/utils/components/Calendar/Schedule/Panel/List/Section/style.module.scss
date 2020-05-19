@@ -1,0 +1,8 @@
+@import "./scss/utils/variables";
+.sectionSwitchIcon {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: rem-calc(-10);
+    width: rem-calc(20);
+}

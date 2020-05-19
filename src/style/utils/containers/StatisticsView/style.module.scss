@@ -1,0 +1,54 @@
+@import "./utils/variables";
+.statistics {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(245, 245, 245);
+    z-index: 5;
+    .container {
+        max-width: rem-calc(980);
+        width: 85%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        .headerContainer {
+            margin-top: rem-calc(42);
+            flex: none;
+            padding: 0 rem-calc(10);
+        }
+        .contentContainer {
+            flex: 1 1 100%;
+            margin-top: rem-calc(50);
+            overflow: hidden;
+            .viewContainer {
+                display: flex;
+                flex-direction: column;
+                padding: rem-calc(10);
+                position: relative;
+                .upgradeTip {
+                    position: absolute;
+                    top: rem-calc(65);
+                    left: 0;
+                    right: 0;
+                }
+            }
+        }
+    }
+}
+
+[class*="-dark-theme"] {
+    .statistics {
+        background-color: #000000;
+        .container {
+            .headerContainer {
+            }
+            .contentContainer {
+                .viewContainer {
+                }
+            }
+        }
+    }
+}

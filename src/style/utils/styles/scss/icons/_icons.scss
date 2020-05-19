@@ -1,0 +1,38 @@
+.icon_home {
+    background-image: url("../assets/sprite/app-icons.png");
+}
+
+.icon_setting {
+    background-image: url("../assets/sprite/setting-icons.png");
+}
+
+.icon_pro {
+    background-image: url("../assets/sprite/pro-icons.png");
+}
+
+.icon_habit {
+    background-image: url("../assets/sprite/habit-icons.png");
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min--moz-device-pixel-ratio: 2),
+    only screen and (-o-min-device-pixel-ratio: 2/1),
+    only screen and (min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 192dpi),
+    only screen and (min-resolution: 2dppx) {
+    .icon_home {
+        background-image: url("../assets/sprite/app-icons@2.png");
+    }
+
+    .icon_setting {
+        background-image: url("../assets/sprite/setting-icons@2.png");
+    }
+
+    .icon_pro {
+        background-image: url("../assets/sprite/pro-icons@2.png");
+    }
+
+    .icon_habit {
+        background-image: url("../assets/sprite/habit-icons@2.png");
+    }
+}

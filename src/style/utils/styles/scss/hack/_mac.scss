@@ -1,0 +1,32 @@
+.mac,
+.windows {
+    .tk-calendar {
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        background-color: transparent;
+    }
+
+    .container-fluid {
+        background-image: none;
+    }
+
+    .left-bg {
+        display: none;
+    }
+}
+
+@media #{$large-low} {
+    .mac,
+    .windows {
+        .left-menu-t {
+            display: none;
+        }
+        .tk-calendar {
+            .c-nav {
+                padding-left: $tk-c-nav-padding;
+            }
+        }
+    }
+}

@@ -1,0 +1,362 @@
+$sprite: (
+  phone-bound-error: (
+  offset-x: -496px,
+  offset-y: -280px,
+  width: 66px,
+  height: 66px,
+  total-width: 636px,
+  total-height: 454px,
+  image: '~setting.png'
+  ),
+  s-copy: (
+  offset-x: 0px,
+  offset-y: 0px,
+  width: 178px,
+  height: 104px,
+  total-width: 636px,
+  total-height: 454px,
+  image: '~setting.png'
+  ),
+  s-min-cal: (
+  offset-x: -178px,
+  offset-y: 0px,
+  width: 178px,
+  height: 104px,
+  total-width: 636px,
+  total-height: 454px,
+  image: '~setting.png'
+  ),
+  s-pomo: (
+  offset-x: 0px,
+  offset-y: -104px,
+  width: 156px,
+  height: 104px,
+  total-width: 636px,
+  total-height: 454px,
+  image: '~setting.png'
+  ),
+  setting-pro-mid: (
+  offset-x: -562px,
+  offset-y: -280px,
+  width: 32px,
+  height: 32px,
+  total-width: 636px,
+  total-height: 454px,
+  image: '~setting.png'
+  ),
+  setting-pro: (
+  offset-x: 0px,
+  offset-y: -208px,
+  width: 106px,
+  height: 106px,
+  total-width: 636px,
+  total-height: 454px,
+  image: '~setting.png'
+  ),
+  theme-autumn: (
+  offset-x: -156px,
+  offset-y: -104px,
+  width: 140px,
+  height: 70px,
+  total-width: 636px,
+  total-height: 454px,
+  image: '~setting.png'
+  ),
+  theme-beijing: (
+  offset-x: -106px,
+  offset-y: -208px,
+  width: 140px,
+  height: 70px,
+  total-width: 636px,
+  total-height: 454px,
+  image: '~setting.png'
+  ),
+  theme-guangzhou: (
+  offset-x: -356px,
+  offset-y: 0px,
+  width: 140px,
+  height: 70px,
+  total-width: 636px,
+  total-height: 454px,
+  image: '~setting.png'
+  ),
+  theme-hangzhou: (
+  offset-x: -356px,
+  offset-y: -70px,
+  width: 140px,
+  height: 70px,
+  total-width: 636px,
+  total-height: 454px,
+  image: '~setting.png'
+  ),
+  theme-london: (
+  offset-x: -356px,
+  offset-y: -140px,
+  width: 140px,
+  height: 70px,
+  total-width: 636px,
+  total-height: 454px,
+  image: '~setting.png'
+  ),
+  theme-moscow: (
+  offset-x: -356px,
+  offset-y: -210px,
+  width: 140px,
+  height: 70px,
+  total-width: 636px,
+  total-height: 454px,
+  image: '~setting.png'
+  ),
+  theme-newyork: (
+  offset-x: 0px,
+  offset-y: -314px,
+  width: 140px,
+  height: 70px,
+  total-width: 636px,
+  total-height: 454px,
+  image: '~setting.png'
+  ),
+  theme-sanfrancisco: (
+  offset-x: -140px,
+  offset-y: -314px,
+  width: 140px,
+  height: 70px,
+  total-width: 636px,
+  total-height: 454px,
+  image: '~setting.png'
+  ),
+  theme-seoul: (
+  offset-x: -280px,
+  offset-y: -314px,
+  width: 140px,
+  height: 70px,
+  total-width: 636px,
+  total-height: 454px,
+  image: '~setting.png'
+  ),
+  theme-shanghai: (
+  offset-x: 0px,
+  offset-y: -384px,
+  width: 140px,
+  height: 70px,
+  total-width: 636px,
+  total-height: 454px,
+  image: '~setting.png'
+  ),
+  theme-shenzhen: (
+  offset-x: -140px,
+  offset-y: -384px,
+  width: 140px,
+  height: 70px,
+  total-width: 636px,
+  total-height: 454px,
+  image: '~setting.png'
+  ),
+  theme-spring: (
+  offset-x: -280px,
+  offset-y: -384px,
+  width: 140px,
+  height: 70px,
+  total-width: 636px,
+  total-height: 454px,
+  image: '~setting.png'
+  ),
+  theme-summer: (
+  offset-x: -496px,
+  offset-y: 0px,
+  width: 140px,
+  height: 70px,
+  total-width: 636px,
+  total-height: 454px,
+  image: '~setting.png'
+  ),
+  theme-sydney: (
+  offset-x: -496px,
+  offset-y: -70px,
+  width: 140px,
+  height: 70px,
+  total-width: 636px,
+  total-height: 454px,
+  image: '~setting.png'
+  ),
+  theme-tokyo: (
+  offset-x: -496px,
+  offset-y: -140px,
+  width: 140px,
+  height: 70px,
+  total-width: 636px,
+  total-height: 454px,
+  image: '~setting.png'
+  ),
+  theme-winter: (
+  offset-x: -496px,
+  offset-y: -210px,
+  width: 140px,
+  height: 70px,
+  total-width: 636px,
+  total-height: 454px,
+  image: '~setting.png'
+  ),
+parts: (
+  total-width: 636px,
+  total-height: 454px,
+  image: '~setting.png'
+  )
+);
+
+
+  @mixin sprite-size($image) {
+  background-size: map-get(map-get($sprite, $image), 'total-width') map-get(map-get($sprite, $image), 'total-height');
+  }
+
+  @mixin sprite-width($image) {
+  width: map-get(map-get($sprite, $image), 'width');
+  }
+
+  @mixin sprite-height($image) {
+  height: map-get(map-get($sprite, $image), 'height');
+  }
+
+  @mixin sprite-position($image) {
+  background-position: map-get(map-get($sprite, $image), 'offset-x') map-get(map-get($sprite, $image), 'offset-y');
+  }
+
+  @mixin sprite-image($image) {
+  background-image: url(map-get(map-get($sprite, $image), 'image') + '.png');
+  }
+
+  @mixin sprite-image-retina($image) {
+  background-image: url(map-get(map-get($sprite, $image), 'image') + '@2.png');
+  }
+
+
+
+
+  .icon-phone-bound-error {
+  @include sprite-width("phone-bound-error");
+  @include sprite-height("phone-bound-error");
+  @include sprite-position("phone-bound-error");
+  }
+  .icon-s-copy {
+  @include sprite-width("s-copy");
+  @include sprite-height("s-copy");
+  @include sprite-position("s-copy");
+  }
+  .icon-s-min-cal {
+  @include sprite-width("s-min-cal");
+  @include sprite-height("s-min-cal");
+  @include sprite-position("s-min-cal");
+  }
+  .icon-s-pomo {
+  @include sprite-width("s-pomo");
+  @include sprite-height("s-pomo");
+  @include sprite-position("s-pomo");
+  }
+  .icon-setting-pro-mid {
+  @include sprite-width("setting-pro-mid");
+  @include sprite-height("setting-pro-mid");
+  @include sprite-position("setting-pro-mid");
+  }
+  .icon-setting-pro {
+  @include sprite-width("setting-pro");
+  @include sprite-height("setting-pro");
+  @include sprite-position("setting-pro");
+  }
+  .icon-theme-autumn {
+  @include sprite-width("theme-autumn");
+  @include sprite-height("theme-autumn");
+  @include sprite-position("theme-autumn");
+  }
+  .icon-theme-beijing {
+  @include sprite-width("theme-beijing");
+  @include sprite-height("theme-beijing");
+  @include sprite-position("theme-beijing");
+  }
+  .icon-theme-guangzhou {
+  @include sprite-width("theme-guangzhou");
+  @include sprite-height("theme-guangzhou");
+  @include sprite-position("theme-guangzhou");
+  }
+  .icon-theme-hangzhou {
+  @include sprite-width("theme-hangzhou");
+  @include sprite-height("theme-hangzhou");
+  @include sprite-position("theme-hangzhou");
+  }
+  .icon-theme-london {
+  @include sprite-width("theme-london");
+  @include sprite-height("theme-london");
+  @include sprite-position("theme-london");
+  }
+  .icon-theme-moscow {
+  @include sprite-width("theme-moscow");
+  @include sprite-height("theme-moscow");
+  @include sprite-position("theme-moscow");
+  }
+  .icon-theme-newyork {
+  @include sprite-width("theme-newyork");
+  @include sprite-height("theme-newyork");
+  @include sprite-position("theme-newyork");
+  }
+  .icon-theme-sanfrancisco {
+  @include sprite-width("theme-sanfrancisco");
+  @include sprite-height("theme-sanfrancisco");
+  @include sprite-position("theme-sanfrancisco");
+  }
+  .icon-theme-seoul {
+  @include sprite-width("theme-seoul");
+  @include sprite-height("theme-seoul");
+  @include sprite-position("theme-seoul");
+  }
+  .icon-theme-shanghai {
+  @include sprite-width("theme-shanghai");
+  @include sprite-height("theme-shanghai");
+  @include sprite-position("theme-shanghai");
+  }
+  .icon-theme-shenzhen {
+  @include sprite-width("theme-shenzhen");
+  @include sprite-height("theme-shenzhen");
+  @include sprite-position("theme-shenzhen");
+  }
+  .icon-theme-spring {
+  @include sprite-width("theme-spring");
+  @include sprite-height("theme-spring");
+  @include sprite-position("theme-spring");
+  }
+  .icon-theme-summer {
+  @include sprite-width("theme-summer");
+  @include sprite-height("theme-summer");
+  @include sprite-position("theme-summer");
+  }
+  .icon-theme-sydney {
+  @include sprite-width("theme-sydney");
+  @include sprite-height("theme-sydney");
+  @include sprite-position("theme-sydney");
+  }
+  .icon-theme-tokyo {
+  @include sprite-width("theme-tokyo");
+  @include sprite-height("theme-tokyo");
+  @include sprite-position("theme-tokyo");
+  }
+  .icon-theme-winter {
+  @include sprite-width("theme-winter");
+  @include sprite-height("theme-winter");
+  @include sprite-position("theme-winter");
+  }
+
+
+.icon_setting {
+  @include sprite-size('parts');
+  background-repeat: no-repeat;
+  display: inline-block;
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (   min--moz-device-pixel-ratio: 2),
+  only screen and (     -o-min-device-pixel-ratio: 2/1),
+  only screen and (        min-device-pixel-ratio: 2),
+  only screen and (                min-resolution: 192dpi),
+  only screen and (                min-resolution: 2dppx) {
+
+    @include sprite-size('parts');
+
+  }
+}

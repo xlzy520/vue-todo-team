@@ -1,0 +1,313 @@
+$s-tab-height: rem-calc(42);
+$s-inner-width: rem-calc(960);
+$s-tabs-width: rem-calc(220);
+$s-tabs-top: rem-calc(40);
+$s-tab-left-w: rem-calc(154);
+$s-tab-left-m-r: rem-calc(30);
+$s-content-left: $s-tabs-width;
+$s-base-right: rem-calc(30);
+$s-tab-padding-left: rem-calc(30);
+
+$s-tabs-mobile-t: rem-calc(70);
+
+$s-base-p-t: rem-calc(16);
+
+.settings {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 998;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+
+    * {
+        user-select: text;
+        -moz-user-select: text;
+        -webkit-user-select: text;
+        -ms-user-select: text;
+    }
+
+    &.before-animation {
+        opacity: 0;
+    }
+
+    .row {
+        padding: rem-calc(10) 0;
+        @include clearfix;
+        @include minliheight($s-tab-height);
+
+        &:first-child {
+            padding-top: 0;
+        }
+    }
+
+    .row-left {
+        float: left;
+        width: $s-tab-left-w;
+        margin-right: $s-tab-left-m-r;
+    }
+
+    .row-right {
+        float: right;
+    }
+
+    .large-row {
+        margin: rem-calc(30) rem-calc(24);
+    }
+
+    .s-body {
+        position: relative;
+        height: 100%;
+        padding-top: rem-calc(78);
+    }
+
+    .s-inner {
+        position: relative;
+        width: $s-inner-width;
+        height: 100%;
+        margin: auto;
+        padding-top: rem-calc(42);
+    }
+
+    .s-header {
+        position: absolute;
+        width: 100%;
+        @include liheight(rem-calc(36));
+        padding-left: $s-tab-padding-left;
+        padding-right: $s-base-right;
+
+        .toggle-tabs {
+            z-index: $zindex-2;
+            display: none;
+            position: absolute;
+            left: rem-calc(60);
+            top: rem-calc(25);
+            width: rem-calc(120);
+            height: rem-calc(20);
+
+            .icon-left-menu {
+                width: rem-calc(16);
+                position: absolute;
+            }
+        }
+
+        h5 {
+            font-size: rem-calc(28);
+            color: $black85;
+            line-height: rem-calc(36);
+        }
+    }
+
+    .s-wrap {
+        position: relative;
+        height: 100%;
+        border: 1px solid $gallery;
+        border-radius: rem-calc(3);
+        background-color: $white;
+    }
+
+    .s-tabs {
+        z-index: $zindex-2;
+        position: absolute;
+        width: $s-tabs-width;
+    }
+
+    .s-content {
+        position: absolute;
+        left: $s-content-left;
+        right: 0;
+        padding: 0 $s-base-right;
+        height: 100%;
+    }
+
+    @-moz-document url-prefix() {
+        .tabs-content > div {
+            padding-right: $s-base-right;
+        }
+    }
+
+    .tabs-content {
+        padding-top: $s-base-p-t;
+        padding-bottom: $s-tabs-top;
+    }
+
+    // .tab {
+    //   @for $i from 0 through 9 {
+    //     &:nth-child(#{$i + 1}) {
+    //       a:hover {
+    //         &:before {
+    //           top: #{$i * $s-tab-height};
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
+
+    .tab {
+        &.boundary {
+            margin-bottom: rem-calc(30);
+        }
+    }
+
+    .tabs {
+        position: relative;
+        width: $s-tabs-width;
+        border-right: 1px solid;
+        padding-top: $s-base-p-t;
+
+        a {
+            display: block;
+            line-height: $s-tab-height;
+            height: $s-tab-height;
+            padding-left: $s-tab-padding-left;
+        }
+
+        li.active {
+            box-shadow: rem-calc(2) 0 0 inset;
+        }
+
+        li .text-secondary {
+            color: $base-font-color-secondary;
+        }
+
+        .active a {
+            color: $base-font-color-primary;
+        }
+
+        .handle-line {
+            color: $black18;
+            position: absolute;
+            left: 0;
+            height: $s-tab-height;
+            width: 0 !important;
+            border-left: 2px solid;
+        }
+
+        .tab-divider {
+            @include liheight($s-tab-height);
+        }
+    }
+
+    .input,
+    .select-menu .select-title,
+    .select-menu .option-item {
+        border-color: $black12;
+    }
+}
+
+// < 920
+@media #{$medium-low} {
+    .settings {
+        .s-body {
+            padding-top: $s-tabs-mobile-t;
+        }
+
+        .s-tabs,
+        .s-content {
+            transition: all 0.2s ease-in-out;
+        }
+
+        .s-header {
+            z-index: $zindex-1;
+            padding-left: rem-calc(65);
+            padding-top: rem-calc(20);
+
+            .toggle-tabs {
+                display: block;
+                left: rem-calc(30);
+            }
+        }
+
+        .s-inner {
+            padding: 0;
+        }
+
+        .s-inner,
+        .s-content {
+            width: 100%;
+        }
+
+        .s-tabs {
+            top: -$s-tabs-mobile-t;
+            padding-bottom: $s-tabs-mobile-t; //dirty fix
+            box-sizing: content-box;
+            left: -$s-tabs-width;
+            background-color: $whitegray;
+        }
+
+        .s-content {
+            left: $s-base-right;
+            padding-right: $s-base-right * 2;
+
+            > .antiscroll-scrollbar-vertical {
+                right: $s-base-right;
+            }
+        }
+
+        @-moz-document url-prefix() {
+            .tabs-content > div {
+                padding-right: $s-base-right * 2;
+            }
+        }
+    }
+
+    .team-settings {
+        .s-content {
+            left: 0;
+        }
+    }
+}
+
+// < 460
+@media #{$small-only} {
+    .settings .s-content {
+        .select-menu {
+            width: rem-calc(200);
+        }
+    }
+
+    .settings {
+        .service-panel {
+            .row-right {
+                min-width: 0;
+            }
+        }
+    }
+}
+
+.tabs-show {
+    .s-tabs {
+        left: 0;
+        box-shadow: $base-box-shadow;
+    }
+}
+
+// @maoq firefox fix
+.firefox {
+    .settings {
+        .tabs {
+            border-right-width: 0;
+        }
+
+        .s-content {
+            border-left: 1px solid $black08;
+        }
+
+        .tabs-content > div {
+            padding-right: rem-calc(60);
+        }
+    }
+
+    .team-members-settings {
+        .tabs-content > div {
+            padding-right: 0;
+        }
+    }
+
+    .task-template-tab-content {
+        .tabs-content > div {
+            padding-right: 0;
+        }
+    }
+}

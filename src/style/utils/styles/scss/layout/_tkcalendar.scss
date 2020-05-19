@@ -1,0 +1,824 @@
+@import "~@/styles/scss/global/var";
+// color
+$base-border: rem-calc(1) solid $whisper;
+$tk-task-border-color: $black04;
+$tk-task-now-bg: $paleorange;
+$tk-task-now-border-color: $lightorange;
+$tk-col-weekend-bg: rgba(44, 66, 118, 0.02);
+$tk-month-now-color: $base-font-color-primary;
+$tk-task-def-bg: $opacityindigo-4;
+$tk-task-active-bg: $indigo;
+$tk-task-dragging-bg: $opacityindigo-9;
+$tk-task-active-color: $white;
+$tk-pop-bg: $white;
+$tk-col-drag-bg: $grayishblue;
+
+$tk-c-nav-padding: rem-calc(15) rem-calc(18) rem-calc(7) rem-calc(70);
+$tk-nav-btn-size: rem-calc(28);
+$tk-base-divider: rem-calc(10);
+
+$tk-calendar-right-view-stash-position: 24px - $grid-left-width;
+
+.btn-group {
+    .group-btn {
+        float: left;
+        border: 1px solid $mercury;
+
+        & + .group-btn {
+            margin-left: -1px;
+        }
+    }
+}
+
+.tkcalendar-view {
+    min-width: rem-calc(300);
+}
+.tk-calendar {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: all 0.2s ease-out;
+    .tkcalendar-main-container {
+        position: relative;
+        flex: auto;
+    }
+
+    .tk-calendar-content {
+        display: flex;
+        flex: auto;
+        overflow: hidden;
+    }
+
+    .tk-calendar-main {
+        position: absolute;
+        top: 0;
+        transition: none;
+        z-index: 1;
+        flex: auto;
+        overflow: hidden;
+        height: 100%;
+        left: 0;
+        right: 0;
+
+        &.forward {
+            opacity: 0;
+            transform: translate(rem-calc(56), 0);
+        }
+        &.back {
+            opacity: 0;
+            transform: translate(rem-calc(-56), 0);
+        }
+        &.enter-active {
+            z-index: 2;
+            opacity: 1;
+            transform: translate(0, 0);
+            transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+            background-color: $white;
+        }
+        &.exit {
+            opacity: 0;
+        }
+    }
+
+    .tk-calendar-right-view {
+        box-shadow: -1px -1px #e8e8e8;
+        background-color: $white;
+        width: $grid-left-width;
+        position: relative;
+        z-index: 3;
+        .kalendae {
+            padding: rem-calc(16) 0;
+            box-shadow: 0 1px $black04;
+        }
+    }
+
+    &.day {
+        .tk-calendar-right-view {
+            display: flex;
+            flex-direction: column;
+        }
+        .tk-calendar-right-view {
+            margin-top: rem-calc(1);
+        }
+    }
+
+    &.week {
+        .tk-calendar-right-view {
+            margin-top: rem-calc(1);
+        }
+    }
+
+    &.month {
+        .tk-calendar-right-view {
+            margin-top: rem-calc(1);
+        }
+    }
+
+    .c-range-wrap:not(.disabled) {
+        cursor: pointer;
+    }
+
+    &.month .out-detail {
+        max-height: 400%;
+    }
+
+    // .day-grid-container {
+    //     margin-right: $grid-left-width;
+    //     & ~ .tk-calendar-right-view {
+    //         right: 0;
+    //         display: flex;
+    //         flex-direction: column;
+    //         .calendar-min-cal {
+    //             flex: none;
+    //         }
+    //         .schedule-tasks {
+    //             flex: auto;
+    //         }
+    //     }
+    // }
+
+    // &.open-schedule {
+    //     .tk-calendar-right-view {
+    //         right: 0;
+    //     }
+    // }
+
+    // &.stash-schedule:not(.day) {
+    //     .tk-calendar-right-view {
+    //         right: $tk-calendar-right-view-stash-position;
+    //     }
+    // }
+
+    &:not(.day) {
+        .c-col-date-weekend {
+            background-color: $tk-col-weekend-bg;
+        }
+
+        .bg .c-col-date-now {
+            background-color: $tk-task-now-bg;
+        }
+
+        .c-solar {
+            cursor: pointer;
+            &:not(.before-background-theme) {
+                &:before {
+                    background-color: $black06;
+                }
+            }
+            &:before {
+                content: "";
+                display: none;
+                border-radius: 50%;
+                position: absolute;
+                z-index: -1;
+            }
+            &:hover {
+                &:before {
+                    display: inline-block;
+                }
+            }
+        }
+    }
+
+    .c-row {
+        table {
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+
+            td {
+                vertical-align: top;
+            }
+        }
+
+        .bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+
+            table {
+                height: 100%;
+
+                td {
+                    border: 1px solid $tk-task-border-color;
+                    border-top-width: 0;
+                    border-bottom-width: 0;
+
+                    &:last-child {
+                        border-right-width: 0;
+                    }
+
+                    &.highlight {
+                        background-color: $black04;
+                    }
+                }
+            }
+        }
+
+        .content-skeleton {
+            position: relative;
+            z-index: 2;
+
+            .c-task {
+                margin-left: rem-calc(3);
+                margin-right: rem-calc(3);
+            }
+        }
+
+        & > .highlight-mask {
+            position: absolute;
+            top: 0;
+            background-color: $black04;
+            z-index: 10;
+        }
+    }
+
+    .d-n {
+        display: none;
+    }
+
+    /*nav start*/
+    .c-nav {
+        text-align: center;
+        position: relative;
+        padding: $tk-c-nav-padding;
+        z-index: 3;
+        height: rem-cacl($var-calendar-nav-height);
+
+        .kalendae {
+            position: absolute;
+            top: rem-calc(51);
+            left: rem-calc(10);
+        }
+
+        .c-btn {
+            position: relative;
+            min-width: $tk-nav-btn-size;
+            line-height: rem-calc(12);
+            background-color: $black06;
+            border-radius: rem-calc(4);
+            vertical-align: middle;
+            color: $black85;
+
+            &:hover {
+                background-color: $black12;
+            }
+
+            &.c-type-selected {
+                background-color: $indigo;
+                color: $white;
+            }
+        }
+
+        .switch-range {
+            display: inline-block;
+            margin-left: rem-calc(20);
+
+            & > *:not(:first-child) {
+                margin-left: rem-calc(1);
+            }
+        }
+
+        .c-type-wrapper,
+        .controller {
+            display: inline-block;
+        }
+
+        .controller {
+            margin-left: rem-calc(20);
+        }
+
+        .controller .c-btn {
+            &:not(:first-child) {
+                margin-left: rem-calc(12);
+            }
+        }
+
+        .c-prev,
+        .c-next,
+        .c-filter-project,
+        .c-more {
+            padding: rem-calc(2);
+            border: none;
+        }
+
+        .c-filter-project,
+        .c-more {
+            background-color: transparent;
+            &:hover {
+                background-color: $black06;
+            }
+
+            &:focus {
+                background-color: $black08;
+            }
+        }
+
+        .c-today {
+            border: none;
+        }
+
+        .c-week {
+            border-radius: 0;
+        }
+
+        .c-prev,
+        .c-day {
+            border-radius: 4px 0 0 4px;
+            border-right-width: 0;
+        }
+
+        .c-next,
+        .c-month,
+        .c-controller-next {
+            border-radius: 0 4px 4px 0;
+        }
+
+        .c-month {
+            margin-left: rem-calc(1);
+            margin-right: $tk-base-divider;
+        }
+
+        .c-day {
+            margin-right: rem-calc(1);
+            margin-left: $tk-base-divider;
+        }
+
+        .c-type-wrapper .c-btn {
+            min-width: rem-calc(60);
+        }
+    }
+    /*nav end*/
+
+    /*label start*/
+    .c-day-labels {
+        position: relative;
+        border-top: $base-border;
+        height: rem-calc($var-calendar-day-label-height);
+
+        .scrollbar-fix {
+            overflow: hidden;
+        }
+
+        .scrollbar-cover {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 20px;
+            height: 100%;
+            display: none;
+        }
+
+        .c-day-labels-inner {
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        .c-day-label {
+            padding: 0 rem-calc(10);
+            font-size: $base-font-size-sml;
+            line-height: rem-calc(28);
+            color: $black85;
+
+            &.c-day-weekend {
+                color: $black36;
+            }
+        }
+    }
+    /*label end*/
+
+    .c-scroll-container {
+        // position: relative;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        overflow-x: hidden;
+        height: rem-calc(836);
+        min-height: rem-calc(350);
+        min-width: rem-calc(280);
+
+        // hacking to fix checker
+        // &:hover {
+        //   margin-left: -20px;
+        //   padding-left: 20px;
+        // }
+    }
+
+    .c-row {
+        position: relative;
+        width: 100%;
+        flex: 1;
+        min-height: rem-calc(71);
+        border-top: 1px solid $tk-task-border-color;
+    }
+
+    .c-col {
+        position: relative;
+        vertical-align: top;
+        border-right: 1px solid $tk-task-border-color;
+        // background-color: $white;
+
+        .antiscroll-wrap {
+            position: static;
+        }
+    }
+
+    .c-row-inner {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    .bg .c-col-date-now {
+        position: relative;
+    }
+
+    .c-titlebar.c-col-date-now {
+        .c-title {
+            .c-solar {
+                color: $white85;
+
+                &:before {
+                    display: inline-block;
+                }
+            }
+        }
+    }
+
+    .c-date {
+        position: absolute;
+        width: 100%;
+        height: calc(100% - 1px);
+    }
+
+    .c-titlebar {
+        position: relative;
+        line-height: 1;
+        overflow: hidden;
+        padding: rem-calc(8);
+        padding-left: rem-calc(4);
+
+        .c-title .c-solar {
+            display: inline-block;
+            width: rem-calc(24);
+            text-align: center;
+            font-size: rem-calc(14);
+
+            & + span {
+                margin-left: rem-calc(6);
+            }
+        }
+
+        .c-solar {
+            &:before {
+                width: rem-calc(24);
+                height: rem-calc(24);
+                top: rem-calc(4);
+                left: rem-calc(4);
+            }
+        }
+    }
+
+    .c-title {
+        @include ellipsis;
+        height: rem-calc(16);
+        line-height: rem-calc(16);
+        font-size: 0;
+    }
+
+    .c-title .text-info {
+        margin-left: rem-calc(8);
+    }
+
+    .c-title .c-solar + span {
+        margin-left: rem-calc(12);
+    }
+
+    .c-col-date-month-now .c-title {
+        color: $tk-month-now-color;
+    }
+
+    .c-task-title {
+        max-width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .c-task-repeat,
+    .c-task-habit {
+        float: left;
+        font-size: 0;
+        padding-right: rem-calc(4);
+        display: none;
+    }
+
+    .c-tasks {
+        padding: 0 rem-calc(2);
+    }
+
+    .c-task {
+        position: relative;
+        overflow: hidden;
+        @include liheight(rem-calc(19));
+        padding: 0 rem-calc(4);
+        margin-bottom: rem-calc(2);
+        cursor: pointer;
+        border-radius: 2px;
+        opacity: 1;
+
+        .line-right {
+            z-index: 0;
+        }
+
+        .c-task-footnote {
+            $size: rem-calc(3);
+            position: absolute;
+            content: "";
+            bottom: 0;
+            right: 0;
+            border-radius: 2px;
+            border-bottom: $size solid #fff;
+            border-right: $size solid #fff;
+            border-left: $size solid transparent;
+            border-top: $size solid transparent;
+        }
+
+        &:not(.ui-draggable-dragging) {
+            display: none;
+        }
+
+        &.is-repeat-body {
+            .c-task-repeat {
+                display: inline;
+            }
+        }
+
+        &.is-habit-body {
+            .c-task-habit {
+                display: inline;
+            }
+        }
+
+        &:nth-child(-n + 3) {
+            display: block;
+        }
+
+        &.pop-task {
+            color: $tk-task-active-color;
+
+            .c-task-title > a {
+                color: $tk-task-active-color;
+            }
+
+            svg {
+                fill: $white;
+            }
+        }
+
+        &.ui-dragging,
+        &.c-task-new {
+            color: $tk-task-active-color !important;
+            background-color: $tk-task-dragging-bg;
+        }
+
+        &.ui-draggable-dragging {
+            position: absolute !important;
+            width: 96%;
+        }
+    }
+
+    div.c-task.subcalendar {
+        color: $subscribe-color;
+        background-color: rgba($subscribe-bg, 0.54);
+        background-size: rem-calc(38) rem-calc(24);
+
+        svg {
+            fill: $subscribe-color;
+        }
+
+        &.archived {
+            color: rgba($subscribe-color, 0.54);
+            background-color: rgba($subscribe-bg, 0.16);
+        }
+        &.pop-task {
+            color: $white;
+            background-color: rgba($subscribe-bg, 0.85);
+            opacity: 1;
+
+            svg {
+                fill: $white;
+            }
+        }
+    }
+
+    .c-task-drag-hovered {
+        background-color: $tk-col-drag-bg;
+    }
+
+    .c-more {
+        overflow: hidden;
+        padding: 0 $tk-base-divider;
+
+        span {
+            vertical-align: baseline;
+            cursor: pointer;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .c-date-popup {
+        z-index: 2;
+        position: absolute;
+        height: auto; // this is important!!
+        box-shadow: 0 0 0 1px $tk-task-border-color;
+
+        // &:hover {
+        //   z-index: 2;
+        // }
+
+        .c-tasks-wrap .antiscroll-wrap {
+            height: rem-calc(132 * 2 - 30);
+            background: $tk-pop-bg;
+        }
+
+        .c-task {
+            display: block;
+        }
+    }
+}
+
+.tk-calendar {
+    .c-more-popover {
+        position: absolute;
+        padding: 0 0 rem-calc(10) rem-calc(10);
+        background-color: white;
+        z-index: 1;
+        overflow: hidden;
+
+        .fc-header {
+            line-height: rem-calc(26);
+            padding-right: rem-calc(10);
+        }
+
+        .fc-body {
+            padding-right: rem-calc(10);
+        }
+
+        svg {
+            margin: 0;
+        }
+
+        .c-task {
+            display: block;
+        }
+    }
+
+    .c-task {
+        transition: opacity 0.5s ease-out;
+
+        &.c-task-hide {
+            display: none !important;
+        }
+    }
+
+    .c-range-wrap {
+        position: relative;
+        height: rem-calc(30);
+        line-height: rem-calc(30);
+        min-width: rem-calc(130);
+        text-align: left;
+        color: $black85;
+    }
+
+    .c-range {
+        position: relative;
+        top: 0;
+        display: inline-block;
+    }
+
+    .c-range-arrow {
+        display: inline-block;
+        font-size: rem-calc(14);
+        margin-left: rem-calc(5);
+    }
+    .c-range-select {
+        .c-range-arrow {
+            visibility: hidden;
+        }
+    }
+
+    .c-range-select:not(.disabled) {
+        &:hover > .c-range-arrow {
+            visibility: visible;
+        }
+    }
+
+    .calendar-month-selector {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        z-index: 100;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .c-tag-month {
+        display: none;
+        top: rem-calc(20);
+        position: absolute;
+        left: rem-calc(26);
+    }
+
+    .c-scrolling .c-tag-month {
+        display: block;
+    }
+
+    .c-hw-info {
+        position: absolute;
+        right: rem-calc(10);
+        text-align: center;
+        border-radius: 50%;
+    }
+
+    .wk-hw-info {
+        vertical-align: text-top;
+        margin-left: rem-calc(4);
+    }
+
+    .c-holiday.text-info {
+        color: #59c38f;
+    }
+
+    .c-holiday {
+        svg {
+            width: rem-calc(14);
+            height: rem-calc(14);
+            fill: $theme-green;
+        }
+    }
+
+    .c-workday {
+        svg {
+            width: rem-calc(14);
+            height: rem-calc(14);
+            fill: $softred;
+        }
+    }
+
+    .fc-event-container {
+        position: relative;
+    }
+}
+
+@media #{$large-low} {
+    .tk-calendar {
+        left: 0;
+
+        .c-nav {
+            padding-left: rem-calc(60);
+        }
+    }
+}
+
+.firefox {
+    .c-col {
+        background-color: transparent;
+    }
+}
+
+.ie {
+    .c-popup {
+        .c-col-date-now {
+            .c-date:not(.c-date-popup) {
+                height: rem-calc(130);
+            }
+        }
+    }
+
+    // .c-popup {
+    //   .c-col-date-now.c-date-popup {
+    //     .c-date {
+    //       height: calc(100% - 1px);
+    //     }
+    //   }
+    // }
+
+    .c-col {
+        background-color: transparent;
+    }
+
+    .c-nav {
+        .c-controller {
+            & > a {
+                line-height: $tk-nav-btn-size;
+            }
+        }
+    }
+}

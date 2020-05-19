@@ -1,0 +1,80 @@
+@import "./scss/utils/variables";
+.recordItem {
+    padding: 0 0 rem-calc(28) rem-calc(10);
+    border-left: 2px solid;
+    position: relative;
+    .decorateCircle {
+        position: absolute;
+        width: rem-calc(6);
+        height: rem-calc(6);
+        border-radius: 50%;
+        top: 0;
+        left: rem-calc(-1);
+        transform: translate(-50%, -50%);
+    }
+    &:hover {
+        .header {
+            .actions {
+                opacity: 1;
+            }
+        }
+    }
+    &:last-child {
+        border-left-color: transparent !important;
+    }
+
+    .header {
+        display: flex;
+        transform: translateY(-50%);
+        .info {
+            flex-grow: 1;
+        }
+        .date {
+            font-size: rem-calc(12);
+            color: $black36;
+            margin-right: rem-calc(8);
+        }
+        .status {
+            line-height: rem-calc(16);
+            border-radius: 2px;
+            font-size: rem-calc(10);
+            padding: 0 rem-calc(5);
+            cursor: default;
+            svg {
+                width: rem-calc(8);
+                height: rem-calc(8);
+                margin-right: rem-calc(2);
+                vertical-align: initial;
+            }
+        }
+        .actions {
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            i {
+                line-height: 0;
+                cursor: pointer;
+                & + i {
+                    margin-left: rem-calc(12);
+                }
+            }
+            svg {
+                width: rem-calc(20);
+                height: rem-calc(20);
+                fill: $black36;
+            }
+        }
+    }
+}
+
+[class*="-dark-theme"] .recordItem {
+    .header {
+        .date {
+            color: $white36;
+        }
+        .actions {
+            svg {
+                fill: $white36;
+            }
+        }
+    }
+}

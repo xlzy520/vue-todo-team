@@ -1,0 +1,29 @@
+@import "src/style/utils/var.scss";
+
+.avatar {
+    width: $avatar-size;
+    height: $avatar-size;
+    border: none;
+    border-radius: 50%;
+    overflow: hidden;
+
+    &.sml {
+        width: $avatar-size-sml;
+        height: $avatar-size-sml;
+    }
+
+    &.def {
+        width: rem-calc(20);
+        height: rem-calc(20);
+    }
+
+    &.med {
+        width: rem-calc(24);
+        height: rem-calc(24);
+    }
+
+    &.lrg {
+        width: $avatar-size-lrg;
+        height: $avatar-size-lrg;
+    }
+}
