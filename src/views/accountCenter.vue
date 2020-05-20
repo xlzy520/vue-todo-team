@@ -1,29 +1,91 @@
 <template>
   <div class="page-header-index-wide page-header-wrapper-grid-content-main">
-    <a-row :gutter="24">
+    <a-row :gutter="24" class="info-content">
       <a-col :md="24" :lg="7">
         <a-card :bordered="false">
-          <div class="account-center-avatarHolder">
-            <div class="avatar">
-              <img :src="avatar">
-            </div>
-            <div class="username">{{ nickname}}</div>
-            <div class="bio">海纳百川，有容乃大</div>
-          </div>
-          <div class="account-center-detail">
-            <p>
-              <i class="title"></i>交互专家
-            </p>
-            <p>
-              <i class="group"></i>蚂蚁金服－某某某事业群－某某平台部－某某技术部－UED
-            </p>
-            <p>
-              <i class="address"></i>
-              <span>浙江省</span>
-              <span>杭州市</span>
-            </p>
-          </div>
-          <a-divider/>
+<!--          <div class="account-center-avatarHolder">-->
+<!--            <div class="avatar">-->
+<!--              <img src="https://cdn.jsdelivr.net/gh/xlzy520/nav@gh-pages/favicon.png">-->
+<!--            </div>-->
+<!--            <div class="username">{{ userInfo.name}}</div>-->
+<!--            <div class="bio">海纳百川，有容乃大</div>-->
+<!--          </div>-->
+          <a-form-model ref="ruleForm" :model="form" :label-col="labelCol" :wrapper-col="wrapperCol"
+                        :rules="rules">
+            <a-form-model-item hasFeedback label="头像" prop="avatar">
+              <a-upload
+                  name="avatar"
+                  list-type="picture-card"
+                  class="avatar-uploader"
+                  :show-upload-list="false"
+                  action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                  @change="handleChange"
+              >
+                <img v-if="imageUrl" :src="imageUrl" alt="avatar" />
+                <div v-else>
+                  <a-icon :type="loading ? 'loading' : 'plus'" />
+                  <div class="ant-upload-text">
+                    Upload
+                  </div>
+                </div>
+              </a-upload>
+            </a-form-model-item>
+            <a-form-model-item hasFeedback label="手机号" prop="phone">
+              <a-input v-model="form.phone" type="phone" placeholder="手机号" >
+                <a-icon slot="prefix" type="phone" />
+              </a-input>
+            </a-form-model-item>
+            <a-form-model-item hasFeedback label="密码" prop="password">
+              <a-input v-model="form.password" type="password" placeholder="密码">
+                <a-icon slot="prefix" type="lock" />
+              </a-input>
+            </a-form-model-item>
+            <a-form-model-item hasFeedback label="密保问题" prop="question">
+              <a-input v-model="form.question" placeholder="用于忘记密码时使用" >
+                <a-icon slot="prefix" type="question-circle" />
+              </a-input>
+            </a-form-model-item>
+            <a-form-model-item hasFeedback label="密保答案" prop="answer">
+              <a-input v-model="form.answer" placeholder="请不要忘记答案哦" >
+                <a-icon slot="prefix" type="heart" />
+              </a-input>
+            </a-form-model-item>
+            <a-form-model-item hasFeedback label="邮箱" prop="email">
+              <a-input v-model="form.email" type="mail" placeholder="邮箱" >
+                <a-icon slot="prefix" type="mail" />
+              </a-input>
+            </a-form-model-item>
+            <a-form-model-item hasFeedback label="姓名" prop="name">
+              <a-input v-model="form.name" placeholder="姓名" >
+                <a-icon slot="prefix" type="idcard" />
+              </a-input>
+            </a-form-model-item>
+            <a-form-model-item hasFeedback label="性别" prop="gender">
+              <a-select v-model="form.gender" placeholder="请选择性别">
+                <a-select-option value="male">男</a-select-option>
+                <a-select-option value="female">女</a-select-option>
+              </a-select>
+            </a-form-model-item>
+            <a-form-model-item hasFeedback label="年龄" prop="age">
+              <a-input v-model="form.age" placeholder="年龄" >
+                <a-icon slot="prefix" type="calendar" />
+              </a-input>
+            </a-form-model-item>
+            <a-form-model-item hasFeedback label="特长" prop="skill">
+              <a-select v-model="form.skill" mode="tags" placeholder="可以自定义输入特长，按回车">
+                <a-select-option value="篮球">
+                  篮球
+                </a-select-option>
+                <a-select-option value="游泳">
+                  游泳
+                </a-select-option>
+              </a-select>
+            </a-form-model-item>
+            <a-form-model-item :wrapper-col="{ span: 20, offset: 4 }">
+              <button type="submit" @click="onSubmit" class="btn btn-success btn-round btn-block btn-lg">注册</button>
+            </a-form-model-item>
+          </a-form-model>
+
 
           <div class="account-center-tags">
             <div class="tagsTitle">标签</div>
@@ -85,9 +147,9 @@
 <script>
   // import { PageView, RouteView } from '@/layouts'
   // import { AppPage, ArticlePage, ProjectPage } from './page'
-  import { mapGetters } from 'vuex'
   import userApi from "../api/user";
   import teamApi from "../api/team";
+
   export default {
     name: 'accountCenter',
     data () {
@@ -97,9 +159,49 @@
         tagInputValue: '',
         teams: [],
         teamSpinning: true,
-        noTitleKey: 'app',
-        avatar: '',
-        nickname: '执笔'
+        userInfo: {},
+        labelCol: { span: 4 },
+        wrapperCol: { span: 20 },
+        form: {
+          name: '',
+          gender: 'male'
+        },
+        rules: {
+          password: [
+            this.$rules.required('密码', 'change'),
+            this.$rules.minMax(6, 20, '请输入6-20位密码', 'change'),
+          ],
+          question: [
+            this.$rules.required('密保问题', 'change'),
+          ],
+          answer: [
+            this.$rules.required('密保答案', 'change'),
+          ],
+          email: [
+            this.$rules.required('邮箱'),
+            this.$rules.email
+          ],
+          phone: [
+            this.$rules.required('手机号'),
+            this.$rules.phone,
+          ],
+          name: [
+            this.$rules.required('姓名'),
+            this.$rules.chinese,
+          ],
+          age: [
+            this.$rules.required('年龄'),
+            this.$rules.number,
+          ],
+          skill: [
+            {
+              type: 'array',
+              required: true,
+              message: '请至少选择一项特长',
+              trigger: 'change',
+            },
+          ],
+        },
       }
     },
     mounted () {
@@ -107,9 +209,20 @@
       this.getUserInfo()
     },
     methods: {
+      handleChange(info) {
+        if (info.file.status === 'uploading') {
+          this.loading = true;
+          return;
+        }
+        if (info.file.status === 'done') {
+          // Get this url from response in real world.
+          this.form.avatar = URL.createObjectURL(info.file);
+          this.loading = false;
+        }
+      },
       getUserInfo(){
         userApi.getInfo().then(res=>{
-          console.log(res);
+          this.userInfo = res
         })
       },
       getTeams () {
@@ -236,5 +349,9 @@
       color: rgba(0, 0, 0, 0.85);
       margin-bottom: 12px;
     }
+  }
+  .info-content{
+    display: flex;
+    justify-content: center;
   }
 </style>

@@ -1,21 +1,11 @@
 <template>
   <div class="">
-<!--    <div style="padding: 3px">-->
-<!--      <v-select :items="items" v-model="list" :multiple="true"></v-select>-->
-<!--    </div>-->
-
-<!--    <div class="date-select">-->
-<!--      <a-checkbox-group v-model="checkedList" :options="dates" @change="onChange"/>-->
-<!--    </div>-->
-
-
     <div style="display: flex;justify-content: space-between;overflow-x: scroll">
       <TodoList v-for="(tag, index) in checkedList"
                 :key="tag"
-                :todos="allTodos[dates[index].value]"
+                :todos="allTodos[keys[index]]"
                 @fetchTodoList="fetchTodoList"
-                @updateTodo="updateTodo"
-                :title="dates[index]" :index="index"></TodoList>
+                :title="tag" :index="index"></TodoList>
     </div>
   </div>
 </template>
@@ -25,14 +15,13 @@
   import taskApi from "../api/task";
 
   export default {
-    name: "myTodoList",
+    name: "7day",
     components: {TodoList},
     data() {
       return {
-        items: ['今天', '明天'],
         dates: [
-          {label: '今天', value: 'today'},
-          {label: '明天', value: 'tomorrow'}
+          {name: '今天', value: 'today'},
+          {name: '明天', value: 'tomorrow'}
         ],
         checkedList: ['today', 'tomorrow'],
         indeterminate: true,
@@ -41,9 +30,6 @@
       }
     },
     methods: {
-      updateTodo(data){
-        this.allTodos[this.dates[data.index].value] = data.val
-      },
       fetchTodoList(){
         taskApi.getFourDay().then(res=>{
           this.allTodos = res.list || []

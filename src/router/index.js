@@ -8,6 +8,8 @@ import accountCenter from "@/views/accountCenter";
 import resetPassword from "@/views/resetPassword";
 import todayTomorrow from "@/views/today-tomorrow";
 import statistics from "@/views/statistics";
+import sevenDay from "@/views/7day";
+import filter from "@/views/filter";
 import group from "@/views/group/group";
 import groupDetail from "@/views/group/groupDetail";
 
@@ -16,7 +18,7 @@ Vue.use(VueRouter)
 
 const routes = [
   { path:  '/', redirect: '/todo', component: home },
-  { path: '/todo', component: home ,
+  { path: '/todo', component: home , redirect: 'todo/today-tomorrow',
     children: [
       {
         path: 'today-tomorrow',
@@ -26,26 +28,21 @@ const routes = [
       {
         path: '7day',
         name: '最近七天',
-        component: todayTomorrow,
+        component: sevenDay,
       },
       {
-        path: '7day',
-        name: '最近七天',
-        component: todayTomorrow,
+        path: 'filter',
+        name: '筛选',
+        component: filter,
       },
       {
-        path: '7day',
-        name: '最近七天',
-        component: todayTomorrow,
+        path: 'group/:id',
+        name: '团队详情',
+        component: groupDetail,
       },
       {
-        path: '7day',
-        name: '最近七天',
-        component: todayTomorrow,
-      },
-      {
-        path: 'group',
-        name: '最近七天',
+        path: 'teamList',
+        name: '团队任务列表',
         component: group,
       },
       {

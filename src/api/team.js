@@ -25,5 +25,9 @@ export default {
   },
   teammates(data) {
     return fetch('/teammates', data)
-  }
+  },
+  getTeamInfo(data) {
+    return fetch('/getTeamInfo', data)
+  },
+  
 }

@@ -17,5 +17,6 @@ export default {
 <style lang="scss">
 #app{
   background-color: #fff;
+  overflow: auto!important;
 }
 </style>

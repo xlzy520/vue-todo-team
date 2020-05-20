@@ -75,7 +75,7 @@
                   class="todo-item"
                   :class="todo.status ? 'done': 'undone'"
                   v-for="(todo,key) in todos"
-                  :key="key"
+                  :key="todo.title"
                   @click="showDetail(todo, $event)"
                 >
                   <div class="handle-wrapper">

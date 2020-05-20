@@ -3197,6 +3197,11 @@ ecc-jsbn@~0.1.1:
     jsbn "~0.1.0"
     safer-buffer "^2.1.0"
 
+echarts-liquidfill@^2.0.5:
+  version "2.0.5"
+  resolved "https://npm2.myones.net/echarts-liquidfill/download/echarts-liquidfill-2.0.5.tgz#0d505a75c2dfb69950e18d440bdf3fe1795a0eed"
+  integrity sha1-DVBadcLftplQ4Y1EC98/4XlaDu0=
+
 echarts@^4.7.0:
   version "4.7.0"
   resolved "https://npm2.myones.net/echarts/download/echarts-4.7.0.tgz#5b3875a4c2f91e3929425fabab9eace7e4098b3f"

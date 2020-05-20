@@ -13,5 +13,11 @@ export default {
   },
   list(data) {
     return fetch('/list', data)
-  }
+  },
+  getFourDay(data) {
+    return fetch('/getFourDay', data)
+  },
+  get7Day(data) {
+    return fetch('/get7Day', data)
+  },
 }
