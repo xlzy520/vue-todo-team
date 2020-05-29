@@ -10,6 +10,8 @@ import todayTomorrow from "@/views/today-tomorrow";
 import statistics from "@/views/statistics";
 import sevenDay from "@/views/7day";
 import filter from "@/views/filter";
+import userManage from "@/views/user-manage";
+import taskManage from "@/views/task-manage";
 import group from "@/views/group/group";
 import groupDetail from "@/views/group/groupDetail";
 
@@ -33,7 +35,7 @@ const routes = [
       {
         path: 'filter',
         name: '筛选',
-        component: filter,
+        component: sevenDay,
       },
       {
         path: 'group/:id',
@@ -44,6 +46,16 @@ const routes = [
         path: 'teamList',
         name: '团队任务列表',
         component: group,
+      },
+      {
+        path: 'user-manage',
+        name: '用户管理',
+        component: userManage,
+      },
+      {
+        path: 'task-manage',
+        name: '团队任务管理',
+        component: taskManage,
       },
       {
         path: 'team/:id',

@@ -1,5 +1,5 @@
 <template>
-  <div ref="chart" class="chart" style="width: 250px;height: 160px" @click.stop="()=>{}">
+  <div ref="chart" class="chart" style="width: 250px;height: 180px" @click.stop="()=>{}">
 
   </div>
 </template>
@@ -17,24 +17,30 @@
 
       }
     },
+    computed: {
+      data() {
+        return [this.chartData.check, this.chartData.count - this.chartData.check]
+
+      }
+    },
     methods: {
       draw() {
         const names = this.type === '1day' ? [ '已签到', '未签到', ] : [ '已完成',  '未完成', ]
         const c = echarts.init(this.$refs.chart);
         var val1data2 = [{
-          value: this.chartData[0],
+          value: this.data[0],
           name: names[0],
         },
           {
-            value: this.chartData[1],
+            value: this.data[1],
             name: names[1],
           },
 
         ]
-        const total = this.chartData[0] + this.chartData[1]
-        const completeRate = ((this.chartData[0] / total)).toFixed(2)
+        const total = this.data[0] + this.data[1]
+        const completeRate = ((this.data[0] / total)).toFixed(2)
 
-        var arr = ['middleLost', completeRate, val1data2, '人数：'+total]
+        var arr = ['middleLost', completeRate, val1data2, '']
 
         const option = {
           legend: {
@@ -45,7 +51,7 @@
 
           },
           title: {
-            top: '55%',
+            top: '42%',
             left: 'center',
             text: arr[3],
             textStyle: {

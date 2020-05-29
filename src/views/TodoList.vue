@@ -2,7 +2,7 @@
   <div>
     <v-card style="width:37vw;min-height:70vh;margin: 20px">
       <v-card-title class="justify-center">
-        {{title.label}}
+        {{title}}
       </v-card-title>
       <div class="add-todo">
         <a-input-group compact>
@@ -30,7 +30,7 @@
               <a-tooltip :title="todo.title">
                 <span>{{todo.title}}</span>
               </a-tooltip>
-              <span>{{todo.start}}</span>
+              <span>{{handleDate(todo.start)}}</span>
               <a-tag :color="priorityTagClass[todo.priority]">
                 <span>{{todo.priority|priority}}</span>
               </a-tag>
@@ -164,6 +164,10 @@
         this.visible = false
         this.editForm = {}
       },
+      handleDate(str){
+        console.log(str);
+        return str.substr(0, 11)
+      },
       dragChange(a,b,c,d){
         if (a.added) {
           const todo = a.added.element
@@ -210,7 +214,8 @@
       },
       addTodo() {
         if (this.form.title.length > 0) {
-          this.form.start = moment().add(this.index, 'day').format('YYYY-MM-DD')
+          this.form.start = moment().add(this.index, 'day').format('YYYY-MM-DD hh:mm:ss')
+          this.form.end = moment().add(this.index, 'day').format('YYYY-MM-DD 23:59:59')
           taskApi.add(this.form).then(res=>{
             this.$msg('新增待办事项成功')
             this.fetchTodoList()
@@ -237,7 +242,7 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .todo-item{
     display: flex;
     cursor: default;
@@ -246,6 +251,7 @@
     margin-bottom: 10px;
     border-radius: 3px;
     color: #fff;
+    align-items: center;
     &.low{
       background-image: linear-gradient(to right, #4facfe 0%, #19c3cb 100%);
     }
@@ -261,7 +267,7 @@
       background-image: none;
       &:after{
         content: " ";
-        width: 90%;
+        width: 95%;
         height: 2px;
         background: #fff;
         position: absolute;

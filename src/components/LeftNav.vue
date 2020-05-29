@@ -12,7 +12,7 @@
                 <use xlink:href="#user-icon"></use>
               </svg>
             </a>
-            <span class="username t-name">执笔看墨花开</span>
+            <span class="username t-name">{{userInfo.name}}</span>
           </div>
           <a-menu slot="overlay">
             <a-menu-item @click="goToUserProfile">
@@ -114,37 +114,37 @@
                   </li>
                 </ul>
               </section>
-              <div class="tabs-container" id="project-view-area">
-                <div class="l-tabs l-l-t l-c">
-                  <a class="tab l-tab t-active l-tab-project"><span class="text-def">标签</span></a>
-                </div>
-                <div class="l-tab-panels">
-                  <section>
-                    <ul>
-                      <li v-for="(item, index) in tags" :key="item.name"
-                          @click="handleActive(item, true)"
-                          :class="['tag-li', {
-                   active: item.name === active
-                  }]">
-                        <a class="project-link l-item">
-                          <svg-icon icon-class="tag"></svg-icon>
-                          <span title="test" class="tag-name l-title">{{item.name}}</span>
-                          <div class="action-tip">
-                            <span class="count">{{item.count?item.count: ''}}</span>
-                          </div>
-                        </a>
-                      </li>
-                    </ul>
-                    <div class="l-new">
-                      <a class="pointer">
-                        <svg-icon icon-class="add-list"></svg-icon>
-                        <span class="l-title">添加标签</span>
-                      </a>
-                    </div>
-                  </section>
-                </div>
-              </div>
-              <div class="l-divider"></div>
+<!--              <div class="tabs-container" id="project-view-area">-->
+<!--                <div class="l-tabs l-l-t l-c">-->
+<!--                  <a class="tab l-tab t-active l-tab-project"><span class="text-def">标签</span></a>-->
+<!--                </div>-->
+<!--                <div class="l-tab-panels">-->
+<!--                  <section>-->
+<!--                    <ul>-->
+<!--                      <li v-for="(item, index) in tags" :key="item.name"-->
+<!--                          @click="handleActive(item, true)"-->
+<!--                          :class="['tag-li', {-->
+<!--                   active: item.name === active-->
+<!--                  }]">-->
+<!--                        <a class="project-link l-item">-->
+<!--                          <svg-icon icon-class="tag"></svg-icon>-->
+<!--                          <span title="test" class="tag-name l-title">{{item.name}}</span>-->
+<!--                          <div class="action-tip">-->
+<!--                            <span class="count">{{item.count?item.count: ''}}</span>-->
+<!--                          </div>-->
+<!--                        </a>-->
+<!--                      </li>-->
+<!--                    </ul>-->
+<!--                    <div class="l-new">-->
+<!--                      <a class="pointer">-->
+<!--                        <svg-icon icon-class="add-list"></svg-icon>-->
+<!--                        <span class="l-title">添加标签</span>-->
+<!--                      </a>-->
+<!--                    </div>-->
+<!--                  </section>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <div class="l-divider"></div>-->
             </div>
           </div>
         </div>
@@ -154,21 +154,6 @@
           <div class="project-list-inner antiscroll-wrap">
             <div id="project-list-scroller" class="antiscroll-inner first-hide" style="height: 100%">
               <section id="smart-project-view-area" class="smart-project-view-area">
-<!--                <ul>-->
-<!--                  <li v-for="(item, index) in team" :key="item.teamName"-->
-<!--                      @click="handleTeamActive(item)"-->
-<!--                      :class="['project', {-->
-<!--                    active: item.teamName === active-->
-<!--                  }]">-->
-<!--                    <a class="project-box project-link l-item">-->
-<!--                      <svg-icon icon-class="team"></svg-icon>-->
-<!--                      <span class="l-title">{{item.teamName}}</span>-->
-<!--                      <div class="action-tip">-->
-<!--                        <span class="count">{{item.count?item.count: ''}}</span>-->
-<!--                      </div>-->
-<!--                    </a>-->
-<!--                  </li>-->
-<!--                </ul>-->
                 <div class="l-new" @click="goToTeamList"
                      :class="['project', {
                        active: 'teamList' === active
@@ -204,6 +189,37 @@
         </div>
 
       </a-collapse-panel>
+      <a-collapse-panel key="4" v-if="userInfo.role === 'admin'" header="后台管理">
+        <div id="project-list-view" class="lists">
+          <div class="project-list-inner antiscroll-wrap">
+            <div id="project-list-scroller" class="antiscroll-inner first-hide" style="height: 100%">
+              <section id="smart-project-view-area" class="smart-project-view-area">
+                <ul>
+                  <li v-for="(item, index) in admin" :key="item.name"
+                      @click="handleAdmin(item)"
+                      :class="['project', {
+                    active: item.name === active
+                  }]">
+                    <a class="project-box project-link l-item">
+                      <svg-icon :icon-class="item.icon"></svg-icon>
+                      <div class="outer-date" v-if="item.key === 'date'">
+                        <span class="inner-date">{{item.num}}</span>
+                      </div>
+                      <span class="l-title">{{item.name}}</span>
+                      <div class="color-tip" style="background-color: transparent;"></div>
+                      <div class="action-tip" v-if="item.name !== '日历'">
+                        <span class="count">{{item.count?item.count: ''}}</span>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </section>
+
+            </div>
+          </div>
+        </div>
+      </a-collapse-panel>
+
     </a-collapse>
     <div id="left-bottom-view"></div>
     <a-modal
@@ -236,10 +252,6 @@
           <a-input type="textarea" v-model="form.desc" placeholder="团队任务介绍" >
           </a-input>
         </a-form-model-item>
-
-<!--        <a-form-model-item :wrapper-col="{ span: 20, offset: 4 }">-->
-<!--          <button type="submit" @click="onSubmit" class="btn btn-success btn-round btn-block btn-lg">注册</button>-->
-<!--        </a-form-model-item>-->
       </a-form-model>
 
     </a-modal>
@@ -295,9 +307,14 @@
           {name: '最近七天', icon: 'today-list', key: '7day', num: '七', type:'date'},
         ],
         project: [
-          {name: '所有', icon: 'all-list', key: 'all', type:'project'},
-          {name: '已完成', icon: 'completed-list', key: 'completed', type:'project'},
+          {name: '所有任务', icon: 'all-list', key: 'all', type:'project'},
+          // {name: '已完成', icon: 'completed-list', key: 'completed', type:'project'},
           {name: '垃圾桶', icon: 'delete-list', key: 'delete', type:'project'},
+        ],
+        admin: [
+          {name: '用户管理', icon: 'user', key: 'user-manage'},
+          // {name: '已完成', icon: 'completed-list', key: 'completed', type:'project'},
+          {name: '任务管理', icon: 'dashboard', key: 'task-manage'},
         ],
         tags: [
           {name: '标签1', icon: 'all-list', key: 'all', type:'tags'},
@@ -343,6 +360,7 @@
             this.$rules.required('请选择起止时间', 'change'),
           ],
         },
+        userInfo: {}
 
       }
     },
@@ -355,8 +373,16 @@
       if (this.$route.name) {
         this.active = this.$route.name
       }
+      this.getUserInfo()
+
     },
     methods: {
+      getUserInfo(){
+        userApi.getInfo().then(res=>{
+          this.userInfo = res
+          console.log(res);
+        })
+      },
       goToTeamList (){
         this.active = 'teamList'
         this.$router.push('/todo/teamList')
@@ -371,6 +397,7 @@
           password: this.teamPassword
         }).then(res=>{
           this.$msg('加入团队成功')
+          this.handlePasswordCancel()
         })
       },
       onSearch(){
@@ -392,9 +419,9 @@
           })
         })
       },
-      handleTeamActive(item){
-        this.active = item.teamName
-        this.$router.push('/todo/team/'+ item.id)
+      handleAdmin(item){
+        this.active = item.name
+        this.$router.push('/todo/'+ item.key)
       },
       handleActive(item, isTag = false) {
         this.active = item.name
@@ -409,14 +436,9 @@
             path: '/todo/'+ item.key,
             // query
           })
-        } else if (type === 'project') {
-          this.$router.push({
-            path: '/filter/',
-            query
-          })
         } else {
           this.$router.push({
-            path: '/todo/'+ item.key,
+            path: '/todo/filter',
             query
           })
         }

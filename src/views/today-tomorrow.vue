@@ -15,7 +15,7 @@
                 :todos="allTodos[dates[index].value]"
                 @fetchTodoList="fetchTodoList"
                 @updateTodo="updateTodo"
-                :title="dates[index]" :index="index"></TodoList>
+                :title="dates[index].label" :index="index"></TodoList>
     </div>
   </div>
 </template>

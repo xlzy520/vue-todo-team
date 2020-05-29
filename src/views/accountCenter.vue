@@ -1,7 +1,7 @@
 <template>
   <div class="page-header-index-wide page-header-wrapper-grid-content-main">
     <a-row :gutter="24" class="info-content">
-      <a-col :md="24" :lg="7">
+      <a-col :md="24" :lg="24">
         <a-card :bordered="false">
 <!--          <div class="account-center-avatarHolder">-->
 <!--            <div class="avatar">-->
@@ -14,18 +14,17 @@
                         :rules="rules">
             <a-form-model-item hasFeedback label="头像" prop="avatar">
               <a-upload
-                  name="avatar"
+                  name="file"
                   list-type="picture-card"
                   class="avatar-uploader"
                   :show-upload-list="false"
-                  action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                  action="/user/upload"
                   @change="handleChange"
               >
-                <img v-if="imageUrl" :src="imageUrl" alt="avatar" />
+                <img v-if="form.avatar" :src="form.avatar" alt="avatar" />
                 <div v-else>
-                  <a-icon :type="loading ? 'loading' : 'plus'" />
                   <div class="ant-upload-text">
-                    Upload
+                    上传头像
                   </div>
                 </div>
               </a-upload>
@@ -33,21 +32,6 @@
             <a-form-model-item hasFeedback label="手机号" prop="phone">
               <a-input v-model="form.phone" type="phone" placeholder="手机号" >
                 <a-icon slot="prefix" type="phone" />
-              </a-input>
-            </a-form-model-item>
-            <a-form-model-item hasFeedback label="密码" prop="password">
-              <a-input v-model="form.password" type="password" placeholder="密码">
-                <a-icon slot="prefix" type="lock" />
-              </a-input>
-            </a-form-model-item>
-            <a-form-model-item hasFeedback label="密保问题" prop="question">
-              <a-input v-model="form.question" placeholder="用于忘记密码时使用" >
-                <a-icon slot="prefix" type="question-circle" />
-              </a-input>
-            </a-form-model-item>
-            <a-form-model-item hasFeedback label="密保答案" prop="answer">
-              <a-input v-model="form.answer" placeholder="请不要忘记答案哦" >
-                <a-icon slot="prefix" type="heart" />
               </a-input>
             </a-form-model-item>
             <a-form-model-item hasFeedback label="邮箱" prop="email">
@@ -71,73 +55,10 @@
                 <a-icon slot="prefix" type="calendar" />
               </a-input>
             </a-form-model-item>
-            <a-form-model-item hasFeedback label="特长" prop="skill">
-              <a-select v-model="form.skill" mode="tags" placeholder="可以自定义输入特长，按回车">
-                <a-select-option value="篮球">
-                  篮球
-                </a-select-option>
-                <a-select-option value="游泳">
-                  游泳
-                </a-select-option>
-              </a-select>
-            </a-form-model-item>
             <a-form-model-item :wrapper-col="{ span: 20, offset: 4 }">
-              <button type="submit" @click="onSubmit" class="btn btn-success btn-round btn-block btn-lg">注册</button>
+              <button type="submit" @click="onSubmit" class="btn btn-success btn-round btn-block btn-lg">修改</button>
             </a-form-model-item>
           </a-form-model>
-
-
-          <div class="account-center-tags">
-            <div class="tagsTitle">标签</div>
-            <div>
-              <template v-for="(tag, index) in tags">
-                <a-tooltip v-if="tag.length > 20" :key="tag" :title="tag">
-                  <a-tag
-                      :key="tag"
-                      :closable="index !== 0"
-                      :afterClose="() => handleTagClose(tag)"
-                  >{{ `${tag.slice(0, 20)}...` }}</a-tag>
-                </a-tooltip>
-                <a-tag
-                    v-else
-                    :key="tag"
-                    :closable="index !== 0"
-                    :afterClose="() => handleTagClose(tag)"
-                >{{ tag }}</a-tag>
-              </template>
-              <a-input
-                  v-if="tagInputVisible"
-                  ref="tagInput"
-                  type="text"
-                  size="small"
-                  :style="{ width: '78px' }"
-                  :value="tagInputValue"
-                  @change="handleInputChange"
-                  @blur="handleTagInputConfirm"
-                  @keyup.enter="handleTagInputConfirm"
-              />
-              <a-tag v-else @click="showTagInput" style="background: #fff; borderStyle: dashed;">
-                <a-icon type="plus"/>New Tag
-              </a-tag>
-            </div>
-          </div>
-          <a-divider :dashed="true"/>
-
-          <div class="account-center-team">
-            <div class="teamTitle">团队</div>
-            <a-spin :spinning="teamSpinning">
-              <div class="members">
-                <a-row>
-                  <a-col :span="24" v-for="(item, index) in teams" :key="index">
-                    <a>
-                      <a-avatar size="small" :src="item.avatar"/>
-                      <span class="member">{{ item.name }}</span>
-                    </a>
-                  </a-col>
-                </a-row>
-              </div>
-            </a-spin>
-          </div>
         </a-card>
       </a-col>
     </a-row>
@@ -160,8 +81,9 @@
         teams: [],
         teamSpinning: true,
         userInfo: {},
-        labelCol: { span: 4 },
-        wrapperCol: { span: 20 },
+        imageUrl: 'https://cdn.jsdelivr.net/gh/xlzy520/nav@gh-pages/favicon.png',
+        labelCol: { span: 8 },
+        wrapperCol: { span: 16 },
         form: {
           name: '',
           gender: 'male'
@@ -216,13 +138,13 @@
         }
         if (info.file.status === 'done') {
           // Get this url from response in real world.
-          this.form.avatar = URL.createObjectURL(info.file);
+          this.form.avatar = info.file.response.data.url;
           this.loading = false;
         }
       },
       getUserInfo(){
         userApi.getInfo().then(res=>{
-          this.userInfo = res
+          this.form = res
         })
       },
       getTeams () {
@@ -231,29 +153,9 @@
           this.teamSpinning = false
         })
       },
-      handleTagClose (removeTag) {
-        const tags = this.tags.filter(tag => tag !== removeTag)
-        this.tags = tags
-      },
-      showTagInput () {
-        this.tagInputVisible = true
-        this.$nextTick(() => {
-          this.$refs.tagInput.focus()
-        })
-      },
-      handleInputChange (e) {
-        this.tagInputValue = e.target.value
-      },
-      handleTagInputConfirm () {
-        const inputValue = this.tagInputValue
-        let tags = this.tags
-        if (inputValue && !tags.includes(inputValue)) {
-          tags = [...tags, inputValue]
-        }
-        Object.assign(this, {
-          tags,
-          tagInputVisible: false,
-          tagInputValue: ''
+      onSubmit(){
+        userApi.update(this.form).then(res=>{
+          this.$msg('更新信息成功')
         })
       }
     }

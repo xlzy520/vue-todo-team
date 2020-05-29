@@ -20,4 +20,11 @@ export default {
   get7Day(data) {
     return fetch('/get7Day', data)
   },
+  search(data) {
+    return fetch('/search', data)
+  },
+  statistics(data) {
+    return fetch('/statistics', data)
+  },
+  
 }

@@ -23,18 +23,21 @@
             >
               <template v-slot:day="{ present, past, date }">
                 <v-row
-                    class="fill-height"
                 >
-                  <template v-if="past && tracked[date]">
+                  <template v-if="tracked[date]">
                     <v-sheet
-                        v-for="(percent, i) in tracked[date]"
-                        :key="i"
-                        :title="category[i]"
-                        :color="colors[i]"
-                        :width="`${percent}%`"
-                        height="100%"
+                        :title="category[0]"
+                        :color="colors[0]"
+                        @click="complete"
+                        :width="`100%`"
+                        height="50%"
                         tile
-                    ></v-sheet>
+                    >
+                      <div style="text-align: center; color: #fff;line-height: 22px">打卡成功</div>
+                      <div v-if="date === today && hasCheck"
+                           style="background: #1296db;text-align: center; color: #fff;line-height: 22px">
+                        已完成</div>
+                    </v-sheet>
                   </template>
                 </v-row>
               </template>
@@ -42,7 +45,23 @@
           </v-sheet>
         </v-card-text>
         <v-card-text>
-          <p>分析</p>
+          <div class="qiandao">
+            <div>
+              <span>已签到人员：</span>
+              <div>
+                <a-tag v-for="member in members1">{{member}}</a-tag>
+              </div>
+            </div>
+            <div>
+              <span>未签到人员：</span>
+              <div>
+                <a-tag color="#f50" v-for="member in members2">{{member}}</a-tag>
+              </div>
+            </div>
+          </div>
+        </v-card-text>
+        <v-card-text>
+          <p>团队签到统计</p>
           <div ref="chart" id="analysis" style="width: 100%;height: 300px">
 
           </div>
@@ -65,8 +84,27 @@
 
         </v-card-text>
       </v-card>
+      <a-divider></a-divider>
+      <v-card>
+        <v-card-title>今日任务</v-card-title>
+        <v-card-text>
+          <a-textarea
+              v-if="teamInfo.owner === userInfo.id"
+              v-model="teamInfo.todayTask"
+              @blur="updateTodayTask"
+              placeholder="今日任务"
+              :auto-size="{ minRows: 6, maxRows: 12 }"
+          />
+          <span v-else>{{teamInfo.todayTask}}</span>
+          <div class="justify-center flex" style="width: 100%;margin-top: 20px">
+            <a-tooltip :title="hasCheck? '已签到':''">
+              <a-button type="primary" @click="complete" :disabled="hasCheck">已完成任务</a-button>
+            </a-tooltip>
+          </div>
+        </v-card-text>
+      </v-card>
     </div>
-    <a-modal
+      <a-modal
         :title="currentMemberInfo.name + ' 的信息'"
         width="900px"
         :visible="detailDialog"
@@ -94,54 +132,6 @@
           <div id="main" style="width: 100%;height: 300px"></div>
         </div>
       </a-card>
-<!--      <v-card>-->
-<!--        <v-card-title-->
-<!--            class="headline grey lighten-2"-->
-<!--            primary-title-->
-<!--        >-->
-<!--          DXY 的信息-->
-<!--        </v-card-title>-->
-
-<!--        <v-card-text>-->
-
-<!--          <h2 style="margin:15px 0">-->
-<!--            基本信息-->
-<!--          </h2>-->
-<!--          <v-divider style="margin:15px 0"></v-divider>-->
-
-<!--          <div>-->
-<!--            <p style="display: flex">-->
-<!--              <span style="width: 50%">民族 : 汉</span>-->
-<!--              <span style="width: 50%">年龄 : 22 </span>-->
-<!--            </p>-->
-<!--            <p style="display: flex">-->
-<!--              <span style="width: 50%">民族 : 汉</span>-->
-<!--              <span style="width: 50%">年龄 : 22 </span>-->
-<!--            </p>-->
-<!--            <p style="display: flex">-->
-<!--              <span style="width: 50%">民族 : 汉</span>-->
-<!--              <span style="width: 50%">年龄 : 22 </span>-->
-<!--            </p>-->
-<!--          </div>-->
-
-
-
-
-<!--        </v-card-text>-->
-
-<!--        <v-divider></v-divider>-->
-
-<!--        <v-card-actions>-->
-<!--          <v-spacer></v-spacer>-->
-<!--          <v-btn-->
-<!--              color="primary"-->
-<!--              text-->
-<!--              @click="detailDialog = false"-->
-<!--          >-->
-<!--            关闭-->
-<!--          </v-btn>-->
-<!--        </v-card-actions>-->
-<!--      </v-card>-->
     </a-modal>
   </div>
 </template>
@@ -149,32 +139,51 @@
 <script>
   import echarts from 'echarts'
   import teamApi from "../../api/team";
+  import attendApi from "../../api/attend";
+  import moment from "moment";
+  import userApi from "../../api/user";
 
+  const mydDate = []
+  for (let i = 0; i < 7; i++) {
+    if (i < 6) {
+      mydDate.push(moment().subtract(i, 'day').format('MM-DD'))
+    } else {
+      mydDate.push('今天')
+    }
+  }
+  const tracked = {}
+  for (let i = 0; i < 30; i++) {
+    const date = moment().subtract(i, 'day').format('YYYY-MM-DD')
+    tracked[date] = [23,45,10]
+  }
   export default {
     name: "groupDetail",
     data() {
       return {
         detailDialog: false,
-        value: [0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0],
-        today: '2019-01-10',
-        tracked: {
-          '2019-01-09': [23, 45, 10],
-          '2019-01-08': [10],
-          '2019-01-07': [0, 78, 5],
-          '2019-01-06': [0, 0, 50],
-          '2019-01-05': [0, 10, 23],
-          '2019-01-04': [2, 90],
-          '2019-01-03': [10, 32],
-          '2019-01-02': [80, 10, 10],
-          '2019-01-01': [20, 25, 10],
-        },
-        colors: ['#1867c0', '#fb8c00', '#000000'],
+        today: moment().format('YYYY-MM-DD'),
+        tracked: tracked,
+        colors: ['green', '#fb8c00', '#000000'],
         tagColor: ['pink', 'orange', 'green', 'cyan', 'blue', 'purple', 'f50', '#87d068'],
         category: ['Development', 'Meetings', 'Slacking'],
         members: [],
         teamInfo: {},
-        currentMemberInfo:{}
+        currentMemberInfo:{},
+        todayTask: '完成这些作业',
+        userInfo: {}
       }
+    },
+    computed: {
+      members1() {
+        return this.members.filter(v=> v.check).map(v=> v.name)
+      },
+      members2() {
+        return this.members.filter(v=> !v.check).map(v=> v.name)
+      },
+      hasCheck(){
+        return this.members1.findIndex(v=> v === this.userInfo.name) > -1
+      }
+
     },
     watch: {
       $route(a, b){
@@ -185,14 +194,31 @@
       }
     },
     methods: {
+      updateTodayTask(){
+        teamApi.update({
+          id: this.teamInfo.id,
+          todayTask: this.teamInfo.todayTask
+        }).then(res=>{
+          this.$msg('更新今日任务成功')
+        })
+      },
+      complete(){
+        attendApi.add({
+          teamId: this.teamInfo.id,
+        }).then(res=>{
+          this.$msg('签到成功')
+          this.getTeamInfo()
+        })
+      },
       handleMale(male){
         return male === 'male'? '男' : '女'
       },
       handleSkill(skill){
         return skill? skill.split(','): ['无']
       },
-      memberChart(){
+      memberChart(data){
         const c = echarts.init(document.getElementById('main'));
+
         const optionData = {
           color: ['#3398DB'],
           tooltip: {
@@ -215,7 +241,7 @@
           xAxis: [
             {
               type: 'category',
-              data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+              data: mydDate,
               axisTick: {
                 alignWithLabel: true
               }
@@ -223,26 +249,36 @@
           ],
           yAxis: [
             {
-              type: 'value'
+              type: 'value',
+              minInterval: 1
+
             }
           ],
           series: [
             {
-              name: '直接访问',
+              name: '签到',
               type: 'bar',
               barWidth: '60%',
-              data: [10, 52, 200, 334, 390, 330, 220]
+              data: [0, 0, 0, 1, 1, 1, data]
             }
           ]
         };
+
         c.setOption(optionData);
+      },
+      todayCheck(teamId, userId){
+        return attendApi.todayCheck({
+          teamId,
+          userId
+        })
       },
       viewMemberDetail(member){
         this.detailDialog = true
         this.currentMemberInfo = member
-        this.$nextTick(() => {
-          this.memberChart()
+        this.todayCheck(this.teamInfo.id, member.id).then(res=>{
+          this.memberChart(res.list.length)
         })
+
       },
       handleCancel(){
         this.detailDialog = false
@@ -253,7 +289,23 @@
         teamApi.getTeamInfo({id}).then(res=>{
           const { users, ...teamInfo } = res
           this.teamInfo = teamInfo
-          this.members = users
+          const requests = users.map(v=> attendApi.todayCheck({
+            teamId: teamInfo.id,
+            userId: v.id
+          }))
+          Promise.all(requests).then(res=>{
+            const results = users.map((v,index)=>{
+              v.check = res[index].list.length
+              return v
+            })
+            this.members = results
+            this.teamChart()
+          })
+        })
+      },
+      getUserInfo(){
+        userApi.getInfo().then(res=>{
+          this.userInfo = res
         })
       },
       teamChart() {
@@ -261,29 +313,36 @@
         const optionData = {
           xAxis: {
             type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            data: mydDate
           },
           yAxis: {
-            type: 'value'
+            type: 'value',
+            minInterval: 1
           },
           grid: {
             top: '2%'
           },
           series: [{
-            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            data: [1, 1, 1, 1, 1, 2, this.members1.length],
             type: 'line',
-            smooth: true
           }]
         };
         c.setOption(optionData);
       }
     },
     mounted() {
-      this.teamChart()
       this.getTeamInfo()
+      this.getUserInfo()
     },
   }
 </script>
+
+<style>
+  .v-calendar-weekly__day-label{
+    height: 30px;
+  }
+
+</style>
 
 <style lang="scss" scoped>
   .v-card__subtitle + .v-card__subtitle{
@@ -311,6 +370,8 @@
 
     }
   }
+  .qiandao{
 
+  }
 
 </style>

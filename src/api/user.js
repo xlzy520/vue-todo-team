@@ -19,5 +19,14 @@ export default {
   },
   logout() {
     return fetch('/logout')
+  },
+  adminList(data) {
+    return fetch('/adminList', data)
+  },
+  delete(data) {
+    return fetch('/delete', data)
+  },
+  update(data) {
+    return fetch('/update', data)
   }
 }
