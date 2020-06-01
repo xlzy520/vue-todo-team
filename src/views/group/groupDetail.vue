@@ -33,7 +33,7 @@
                         height="50%"
                         tile
                     >
-                      <div style="text-align: center; color: #fff;line-height: 22px">打卡成功</div>
+                      <div v-if="date < today || hasCheck" style="text-align: center; color: #fff;line-height: 22px">打卡成功</div>
                       <div v-if="date === today && hasCheck"
                            style="background: #1296db;text-align: center; color: #fff;line-height: 22px">
                         已完成</div>
@@ -154,7 +154,7 @@
   const tracked = {}
   for (let i = 0; i < 30; i++) {
     const date = moment().subtract(i, 'day').format('YYYY-MM-DD')
-    tracked[date] = [23,45,10]
+    tracked[date] = [1]
   }
   export default {
     name: "groupDetail",

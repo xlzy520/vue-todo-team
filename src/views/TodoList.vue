@@ -172,9 +172,11 @@
         if (a.added) {
           const todo = a.added.element
           if (this.index) {
-            todo.start = moment(todo.start).add(1, "day").format('YYYY-MM-DD')
+            todo.start = moment(todo.start).add(1, "day").format('YYYY-MM-DD hh:mm:ss')
+            todo.end = moment(todo.end).add(1, "day").format('YYYY-MM-DD hh:mm:ss')
           } else {
-            todo.start = moment(todo.start).subtract(1, "day").format('YYYY-MM-DD')
+            todo.start = moment(todo.start).subtract(1, "day").format('YYYY-MM-DD hh:mm:ss')
+            todo.end = moment(todo.end).subtract(1, "day").format('YYYY-MM-DD hh:mm:ss')
           }
           this.updateTodo(todo)
         } else {

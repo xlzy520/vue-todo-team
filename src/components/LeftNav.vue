@@ -468,6 +468,8 @@
             this.confirmLoading = true;
             this.form.startTime = this.form.date[0]
             this.form.endTime = this.form.date[1]
+            this.form.todayTask = ''
+            this.form.desc = this.form.desc ? this.form.desc : ''
             teamApi.add(this.form).then(res=>{
               this.$msg('创建团队成功')
               this.getAllTeams()

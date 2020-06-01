@@ -76,6 +76,7 @@
                  </span>
               </a-popconfirm>
               <a-popconfirm
+                  v-if="title === '垃圾桶'"
                   title="确定还原该待办事项?"
                   ok-text="确定"
                   cancel-text="取消"
@@ -244,6 +245,8 @@
       },
       edit (row){
         this.visible = true
+        row.date = [moment(this.editForm.start).format('YYYY-MM-DD HH:mm'),
+          moment(this.editForm.end).format('YYYY-MM-DD HH:mm')]
         this.editForm = {...row}
       },
       handleUpdateTodo (){
